@@ -1,1083 +1,1484 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Grand Line — One Piece</title>
-
-  <meta name="description"
-    content="Explore Grand Line : personnages, équipages, arcs, Fruits du Démon et primes de l'univers One Piece.">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRAND LINE — One Piece</title>
+<style>
+/* =========================
+   RESET
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070b12;
+    color:white;
+    overflow-x:hidden;
+}
+/* =========================
+   BACKGROUND
+========================= */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,190,50,.10),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(20,110,180,.12),transparent 30%),
+        linear-gradient(135deg,#05080d,#0b111b 50%,#05070b);
+}
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.12;
+    background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:50px 50px;
+}
+/* =========================
+   HEADER
+========================= */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 6%;
+    background:rgba(5,8,13,.82);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+.logo span{
+    color:#e9b949;
+}
+nav{
+    display:flex;
+    gap:25px;
+}
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+    transition:.25s;
+}
+nav a:hover{
+    color:#e9b949;
+}
+/* =========================
+   HERO
+========================= */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:130px 8% 80px;
+    position:relative;
+    overflow:hidden;
+}
+.hero-content{
+    max-width:720px;
+}
+.small-title{
+    color:#e9b949;
+    letter-spacing:5px;
+    font-size:12px;
+    font-weight:bold;
+}
+.hero h1{
+    font-size:clamp(55px,9vw,120px);
+    line-height:.85;
+    margin:20px 0;
+    letter-spacing:-5px;
+}
+.hero h1 span{
+    color:#e9b949;
+}
+.hero p{
+    color:#aaa;
+    font-size:18px;
+    line-height:1.7;
+    max-width:600px;
+}
+.buttons{
+    display:flex;
+    gap:12px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+.btn{
+    padding:14px 22px;
+    border-radius:10px;
+    border:1px solid #444;
+    background:#111923;
+    color:white;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+.btn:hover{
+    transform:translateY(-3px);
+    border-color:#e9b949;
+}
+.btn.gold{
+    background:#e9b949;
+    color:#090b0f;
+    border-color:#e9b949;
+}
+/* bateau */
+.hero-ship{
+    position:absolute;
+    right:8%;
+    font-size:250px;
+    opacity:.08;
+    transform:rotate(-8deg);
+}
+/* =========================
+   SECTIONS
+========================= */
+section{
+    padding:100px 7%;
+}
+.section-title{
+    margin-bottom:45px;
+}
+.section-title small{
+    color:#e9b949;
+    letter-spacing:4px;
+}
+.section-title h2{
+    font-size:50px;
+    margin-top:10px;
+}
+/* =========================
+   STATS
+========================= */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    padding:20px 7%;
+}
+.stat{
+    background:#0d141e;
+    border:1px solid #202a36;
+    border-radius:15px;
+    padding:25px;
+}
+.stat strong{
+    font-size:30px;
+    color:#e9b949;
+}
+.stat p{
+    color:#777;
+    margin-top:6px;
+}
+/* =========================
+   SEARCH
+========================= */
+.search{
+    width:100%;
+    max-width:450px;
+    padding:15px 18px;
+    background:#0d141e;
+    color:white;
+    border:1px solid #283340;
+    border-radius:10px;
+    outline:none;
+}
+.search:focus{
+    border-color:#e9b949;
+}
+/* =========================
+   CHARACTER GRID
+========================= */
+.filters{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+.filter{
+    padding:9px 14px;
+    background:#0d141e;
+    color:#999;
+    border:1px solid #293440;
+    border-radius:20px;
+    cursor:pointer;
+}
+.filter.active,
+.filter:hover{
+    color:#111;
+    background:#e9b949;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:18px;
+}
+.card{
+    background:linear-gradient(145deg,#101923,#0b1017);
+    border:1px solid #202c38;
+    border-radius:16px;
+    padding:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#e9b949;
+    box-shadow:0 15px 40px #0008;
+}
+.character-image{
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:
+        radial-gradient(circle,#243445,#0b1017);
+    font-size:75px;
+    margin-bottom:15px;
+}
+.card h3{
+    margin-bottom:7px;
+}
+.card p{
+    color:#777;
+    font-size:13px;
+}
+.tag{
+    display:inline-block;
+    padding:5px 8px;
+    margin-top:10px;
+    font-size:10px;
+    border-radius:20px;
+    background:#17222e;
+    color:#e9b949;
+}
+/* =========================
+   WANTED
+========================= */
+.wanted-section{
+    background:
+        radial-gradient(circle at center,#352a18,#0a0d12 65%);
+}
+.wanted{
+    background:#d9c99e;
+    color:#16130e;
+    padding:20px;
+    border:6px solid #a99870;
+    box-shadow:0 15px 35px #0008;
+    transition:.3s;
+    cursor:pointer;
+}
+.wanted:hover{
+    transform:rotate(-1deg) scale(1.03);
+}
+.wanted-top{
+    text-align:center;
+    font-family:Georgia,serif;
+    font-size:25px;
+    font-weight:bold;
+    letter-spacing:5px;
+}
+.wanted-face{
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+    border:2px solid #82765b;
+    margin:15px 0;
+}
+.wanted-name{
+    text-align:center;
+    font-family:Georgia,serif;
+    font-size:19px;
+    font-weight:bold;
+}
+.wanted-price{
+    text-align:center;
+    margin-top:8px;
+    font-weight:bold;
+}
+/* =========================
+   FRUITS
+========================= */
+.fruit{
+    position:relative;
+    overflow:hidden;
+}
+.fruit-icon{
+    height:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+    background:#101923;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+/* =========================
+   TIMELINE
+========================= */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#e9b949;
+}
+.timeline-item{
+    position:relative;
+    margin-bottom:35px;
+    padding-left:60px;
+}
+.timeline-dot{
+    position:absolute;
+    left:12px;
+    top:5px;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    background:#e9b949;
+    box-shadow:0 0 20px #e9b94966;
+}
+.timeline-item h3{
+    color:#e9b949;
+    margin-bottom:8px;
+}
+.timeline-item p{
+    color:#888;
+    line-height:1.6;
+}
+/* =========================
+   QUIZ
+========================= */
+.quiz-box{
+    max-width:800px;
+    margin:auto;
+    background:#0d141e;
+    border:1px solid #273442;
+    border-radius:20px;
+    padding:30px;
+}
+.quiz-levels{
+    display:flex;
+    gap:10px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+.level{
+    padding:10px 15px;
+    background:#151f2a;
+    color:#aaa;
+    border:1px solid #293542;
+    border-radius:8px;
+    cursor:pointer;
+}
+.level.active{
+    color:#111;
+    background:#e9b949;
+}
+.quiz-question{
+    font-size:25px;
+    line-height:1.4;
+    margin-bottom:25px;
+}
+.answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+.answer{
+    padding:16px;
+    text-align:left;
+    background:#111b26;
+    color:white;
+    border:1px solid #293746;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+.answer:hover{
+    border-color:#e9b949;
+}
+.answer.correct{
+    background:#174b2b;
+    border-color:#42c76a;
+}
+.answer.wrong{
+    background:#512020;
+    border-color:#e34d4d;
+}
+/* =========================
+   PROFILE
+========================= */
+.profile{
+    max-width:850px;
+    margin:auto;
+    background:linear-gradient(145deg,#101923,#080d13);
+    border:1px solid #293542;
+    border-radius:20px;
+    padding:30px;
+}
+.profile-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+.profile-icon{
+    width:80px;
+    height:80px;
+    display:grid;
+    place-items:center;
+    background:#e9b949;
+    color:#111;
+    border-radius:50%;
+    font-size:35px;
+}
+.profile h3{
+    font-size:25px;
+}
+.progress{
+    height:10px;
+    margin-top:25px;
+    background:#18222d;
+    border-radius:10px;
+    overflow:hidden;
+}
+.progress-bar{
+    width:68%;
+    height:100%;
+    background:#e9b949;
+}
+/* =========================
+   MODAL
+========================= */
+.modal{
+    position:fixed;
+    inset:0;
+    background:#000c;
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:200;
+}
+.modal.hidden{
+    display:none;
+}
+.modal-box{
+    width:100%;
+    max-width:600px;
+    background:#0d141e;
+    border:1px solid #354352;
+    border-radius:20px;
+    padding:30px;
+    position:relative;
+}
+.close{
+    position:absolute;
+    top:15px;
+    right:18px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+.modal-big{
+    text-align:center;
+    font-size:90px;
+    padding:25px;
+}
+.modal-box h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
+.modal-box p{
+    color:#999;
+    line-height:1.7;
+}
+/* =========================
+   FOOTER
+========================= */
+footer{
+    text-align:center;
+    padding:50px 20px;
+    color:#555;
+    border-top:1px solid #151e28;
+}
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:800px){
+    header{
+        padding:15px 5%;
     }
-
-    html {
-      scroll-behavior: smooth;
+    nav{
+        display:none;
     }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(0, 119, 255, .18), transparent 30%),
-        linear-gradient(180deg, #061522, #02070b);
-      min-height: 100vh;
+    .hero{
+        padding-left:7%;
+        padding-right:7%;
     }
-
-    /* NAVIGATION */
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 16px 6%;
-
-      background: rgba(2, 9, 15, .88);
-      backdrop-filter: blur(14px);
-
-      border-bottom: 1px solid rgba(255,255,255,.08);
+    .hero-ship{
+        display:none;
     }
-
-    .logo {
-      color: #ffd166;
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 2px;
+    .stats{
+        grid-template-columns:1fr 1fr;
     }
-
-    nav ul {
-      display: flex;
-      gap: 25px;
-      list-style: none;
+    .section-title h2{
+        font-size:38px;
     }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .2s;
+    .answers{
+        grid-template-columns:1fr;
     }
-
-    nav a:hover {
-      color: #ffd166;
+    section{
+        padding:75px 6%;
     }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-
-      padding: 150px 8% 80px;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 650px;
-      height: 650px;
-
-      right: -250px;
-      top: 100px;
-
-      background: #0077ff;
-      filter: blur(190px);
-      opacity: .16;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .tag {
-      display: inline-block;
-
-      padding: 9px 15px;
-
-      margin-bottom: 20px;
-
-      border-radius: 50px;
-
-      color: #ffd166;
-
-      background: rgba(255,209,102,.1);
-      border: 1px solid rgba(255,209,102,.35);
-
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: clamp(60px, 10vw, 120px);
-      line-height: .85;
-      margin-bottom: 30px;
-    }
-
-    h1 span {
-      color: #ffd166;
-    }
-
-    .hero p {
-      max-width: 680px;
-
-      color: #b5c5d0;
-
-      font-size: 19px;
-      line-height: 1.7;
-
-      margin-bottom: 35px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 15px 25px;
-
-      border-radius: 10px;
-
-      text-decoration: none;
-
-      font-weight: 900;
-
-      transition: .25s;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-    }
-
-    .primary {
-      background: #ffd166;
-      color: #06121b;
-    }
-
-    .secondary {
-      color: white;
-      background: rgba(255,255,255,.04);
-      border: 1px solid #304453;
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 90px 7%;
-    }
-
-    .section-title {
-      margin-bottom: 35px;
-    }
-
-    .section-title small {
-      color: #ffd166;
-
-      text-transform: uppercase;
-
-      letter-spacing: 3px;
-
-      font-weight: bold;
-    }
-
-    .section-title h2 {
-      font-size: 45px;
-      margin-top: 8px;
-    }
-
-    .section-title p {
-      color: #8fa4b4;
-      margin-top: 10px;
-    }
-
-    /* RECHERCHE */
-
-    .search-box {
-      margin-bottom: 30px;
-    }
-
-    .search-box input {
-      width: 100%;
-      max-width: 600px;
-
-      padding: 17px 20px;
-
-      border-radius: 12px;
-
-      border: 1px solid #304453;
-
-      outline: none;
-
-      background: #0a1924;
-      color: white;
-
-      font-size: 16px;
-    }
-
-    .search-box input:focus {
-      border-color: #ffd166;
-    }
-
-    /* CARTES */
-
-    .grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(auto-fit, minmax(230px, 1fr));
-
-      gap: 20px;
-    }
-
-    .card {
-      padding: 25px;
-
-      border-radius: 18px;
-
-      background:
-        linear-gradient(145deg, #0d1e2b, #071119);
-
-      border: 1px solid #1c3444;
-
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-
-      border-color: #ffd166;
-
-      box-shadow:
-        0 15px 40px rgba(0,0,0,.35);
-    }
-
-    .card-icon {
-      width: 58px;
-      height: 58px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 15px;
-
-      background: rgba(255,209,102,.1);
-
-      font-size: 28px;
-
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 21px;
-    }
-
-    .card p {
-      color: #91a5b5;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .badge {
-      display: inline-block;
-
-      margin-top: 16px;
-
-      padding: 6px 10px;
-
-      border-radius: 20px;
-
-      background: rgba(0,136,255,.12);
-
-      color: #55b7ff;
-
-      font-size: 12px;
-
-      font-weight: bold;
-    }
-
-    /* WANTED */
-
-    .wanted {
-      padding: 25px;
-
-      text-align: center;
-
-      border-radius: 12px;
-
-      color: #261d0f;
-
-      background:
-        linear-gradient(
-          rgba(218,199,143,.95),
-          rgba(183,161,102,.95)
-        );
-
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.3);
-    }
-
-    .wanted-photo {
-      height: 140px;
-
-      display: grid;
-      place-items: center;
-
-      margin-bottom: 15px;
-
-      border-radius: 8px;
-
-      background: #9e8b5d;
-
-      font-size: 55px;
-    }
-
-    .wanted h3 {
-      font-family: Georgia, serif;
-      font-size: 23px;
-    }
-
-    .bounty {
-      margin-top: 10px;
-
-      color: #76251d;
-
-      font-weight: 900;
-      font-size: 18px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 50px 7%;
-
-      text-align: center;
-
-      color: #718695;
-
-      border-top: 1px solid #1a2c38;
-    }
-
-    /* SIGNATURE */
-
-    .signature {
-      position: fixed;
-
-      left: 14px;
-      bottom: 12px;
-
-      z-index: 9999;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 12px;
-
-      letter-spacing: 1px;
-
-      pointer-events: none;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 700px) {
-
-      nav {
-        padding: 15px 5%;
-      }
-
-      nav ul {
-        display: none;
-      }
-
-      .hero {
-        padding: 130px 5% 70px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 65px 5%;
-      }
-
-      .section-title h2 {
-        font-size: 34px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
-
 <body>
-
-  <!-- NAVIGATION -->
-
-  <nav>
-
+<!-- ================= HEADER ================= -->
+<header>
     <div class="logo">
-      GRAND LINE
+        ☠ <span>GRAND</span> LINE
     </div>
-
-    <ul>
-      <li>
-        <a href="#accueil">Accueil</a>
-      </li>
-
-      <li>
+    <nav>
         <a href="#personnages">Personnages</a>
-      </li>
-
-      <li>
-        <a href="#arcs">Arcs</a>
-      </li>
-
-      <li>
-        <a href="#fruits">Fruits</a>
-      </li>
-
-      <li>
         <a href="#primes">Primes</a>
-      </li>
-    </ul>
-
-  </nav>
-
-
-  <!-- ACCUEIL -->
-
-  <header class="hero" id="accueil">
-
+        <a href="#fruits">Fruits</a>
+        <a href="#chronologie">Chronologie</a>
+        <a href="#quiz">Quiz</a>
+    </nav>
+</header>
+<!-- ================= HERO ================= -->
+<section class="hero">
     <div class="hero-content">
-
-      <div class="tag">
-        ☠️ BIENVENUE SUR GRAND LINE
-      </div>
-
-      <h1>
-        ONE <span>PIECE</span>
-      </h1>
-
-      <p>
-        « Vous cherchez le plus grand trésor de toutes les mers ?
-        Alors partez à l'aventure. Des légendes, des pirates,
-        des équipages et des mystères vous attendent au-delà
-        de la Grand Line. »
-      </p>
-
-      <div class="buttons">
-
-        <a href="#personnages" class="btn primary">
-          Explorer
-        </a>
-
-        <a href="#primes" class="btn secondary">
-          Voir les primes
-        </a>
-
-      </div>
-
+        <div class="small-title">
+            ONE PIECE • FAN DATABASE
+        </div>
+        <h1>
+            EXPLORE<br>
+            <span>GRAND LINE</span>
+        </h1>
+        <p>
+            Découvre les pirates, les Marines, les fruits du démon,
+            les grandes primes et teste tes connaissances sur le monde
+            de One Piece.
+        </p>
+        <div class="buttons">
+            <a class="btn gold" href="#personnages">
+                Explorer le monde
+            </a>
+            <a class="btn" href="#quiz">
+                ⚔ Lancer un quiz
+            </a>
+        </div>
     </div>
-
-  </header>
-
-
-  <!-- PERSONNAGES -->
-
-  <section id="personnages">
-
+    <div class="hero-ship">
+        ☠
+    </div>
+</section>
+<!-- ================= STATS ================= -->
+<div class="stats">
+    <div class="stat">
+        <strong>30+</strong>
+        <p>Personnages</p>
+    </div>
+    <div class="stat">
+        <strong>20+</strong>
+        <p>Primes</p>
+    </div>
+    <div class="stat">
+        <strong>12</strong>
+        <p>Fruits du démon</p>
+    </div>
+    <div class="stat">
+        <strong>15</strong>
+        <p>Questions quiz</p>
+    </div>
+</div>
+<!-- ================= PERSONNAGES ================= -->
+<section id="personnages">
     <div class="section-title">
-
-      <small>Équipages</small>
-
-      <h2>Personnages</h2>
-
-      <p>
-        Découvre les pirates qui parcourent les mers.
-      </p>
-
+        <small>DATABASE</small>
+        <h2>Personnages</h2>
     </div>
-
-
-    <div class="search-box">
-
-      <input
-        type="text"
+    <input
+        class="search"
         id="search"
-        placeholder="🔎 Rechercher un personnage..."
-      >
-
+        placeholder="🔎 Rechercher Luffy, Zoro, Kizaru..."
+    >
+    <div class="filters">
+        <button class="filter active" data-group="all">
+            Tous
+        </button>
+        <button class="filter" data-group="Mugiwara">
+            Mugiwara
+        </button>
+        <button class="filter" data-group="Marine">
+            Marines
+        </button>
+        <button class="filter" data-group="Révolutionnaires">
+            Révolutionnaires
+        </button>
+        <button class="filter" data-group="Pirates">
+            Pirates
+        </button>
     </div>
-
-
-    <div class="grid" id="characterGrid">
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          👒
-        </div>
-
-        <h3>
-          Monkey D. Luffy
-        </h3>
-
-        <p>
-          Capitaine de l'équipage du Chapeau de Paille
-          et pirate déterminé à devenir le Roi des Pirates.
-        </p>
-
-        <span class="badge">
-          Chapeau de Paille
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          ⚔️
-        </div>
-
-        <h3>
-          Roronoa Zoro
-        </h3>
-
-        <p>
-          Épéiste de l'équipage du Chapeau de Paille,
-          utilisant son style aux trois sabres.
-        </p>
-
-        <span class="badge">
-          Épéiste
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          🧭
-        </div>
-
-        <h3>
-          Nami
-        </h3>
-
-        <p>
-          Navigatrice talentueuse capable de guider
-          l'équipage à travers les mers dangereuses.
-        </p>
-
-        <span class="badge">
-          Navigatrice
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          🍳
-        </div>
-
-        <h3>
-          Sanji
-        </h3>
-
-        <p>
-          Cuisinier de l'équipage et combattant
-          spécialisé dans les techniques de jambes.
-        </p>
-
-        <span class="badge">
-          Cuisinier
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          🌸
-        </div>
-
-        <h3>
-          Nico Robin
-        </h3>
-
-        <p>
-          Archéologue passionnée par l'histoire oubliée
-          et les secrets des Ponéglyphes.
-        </p>
-
-        <span class="badge">
-          Archéologue
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          🦌
-        </div>
-
-        <h3>
-          Tony Tony Chopper
-        </h3>
-
-        <p>
-          Médecin de l'équipage et renne ayant mangé
-          un Fruit du Démon.
-        </p>
-
-        <span class="badge">
-          Médecin
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          🎯
-        </div>
-
-        <h3>
-          Usopp
-        </h3>
-
-        <p>
-          Tireur d'élite et inventeur de l'équipage
-          du Chapeau de Paille.
-        </p>
-
-        <span class="badge">
-          Sniper
-        </span>
-
-      </article>
-
-
-      <article class="card character">
-
-        <div class="card-icon">
-          🎸
-        </div>
-
-        <h3>
-          Brook
-        </h3>
-
-        <p>
-          Musicien de l'équipage et épéiste
-          au destin particulièrement étrange.
-        </p>
-
-        <span class="badge">
-          Musicien
-        </span>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- ARCS -->
-
-  <section id="arcs">
-
+    <div class="grid" id="characters"></div>
+</section>
+<!-- ================= PRIMES ================= -->
+<section id="primes" class="wanted-section">
     <div class="section-title">
-
-      <small>Les aventures</small>
-
-      <h2>Arcs principaux</h2>
-
-      <p>
-        Quelques grandes étapes de l'aventure.
-      </p>
-
+        <small>WANTED</small>
+        <h2>Les grandes primes</h2>
     </div>
-
-
-    <div class="grid">
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🌊
-        </div>
-
-        <h3>
-          East Blue
-        </h3>
-
-        <p>
-          Les débuts de Luffy et la formation
-          progressive de son équipage.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🏜️
-        </div>
-
-        <h3>
-          Alabasta
-        </h3>
-
-        <p>
-          Une aventure majeure autour du royaume
-          d'Alabasta et de Baroque Works.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          ☁️
-        </div>
-
-        <h3>
-          Skypiea
-        </h3>
-
-        <p>
-          L'équipage découvre une mystérieuse
-          île située dans le ciel.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🏯
-        </div>
-
-        <h3>
-          Wano
-        </h3>
-
-        <p>
-          Une aventure majeure dans un pays
-          marqué par les samouraïs.
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- FRUITS -->
-
-  <section id="fruits">
-
+    <div class="grid" id="bounties"></div>
+</section>
+<!-- ================= FRUITS ================= -->
+<section id="fruits">
     <div class="section-title">
-
-      <small>Pouvoirs</small>
-
-      <h2>Fruits du Démon</h2>
-
-      <p>
-        Découvre quelques pouvoirs emblématiques.
-      </p>
-
+        <small>DEVIL FRUITS</small>
+        <h2>Fruits du démon</h2>
     </div>
-
-
-    <div class="grid">
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🍎
-        </div>
-
-        <h3>
-          Gomu Gomu no Mi
-        </h3>
-
-        <p>
-          Un pouvoir permettant au corps de
-          posséder des propriétés élastiques.
-        </p>
-
-        <span class="badge">
-          Paramecia
-        </span>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🔥
-        </div>
-
-        <h3>
-          Mera Mera no Mi
-        </h3>
-
-        <p>
-          Un pouvoir permettant de créer
-          et contrôler le feu.
-        </p>
-
-        <span class="badge">
-          Logia
-        </span>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🌑
-        </div>
-
-        <h3>
-          Yami Yami no Mi
-        </h3>
-
-        <p>
-          Un pouvoir lié aux ténèbres
-          et à leur force d'attraction.
-        </p>
-
-        <span class="badge">
-          Logia
-        </span>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          🐉
-        </div>
-
-        <h3>
-          Uo Uo no Mi
-        </h3>
-
-        <p>
-          Un pouvoir permettant une transformation
-          associée à un dragon oriental.
-        </p>
-
-        <span class="badge">
-          Zoan Mythique
-        </span>
-
-      </article>
-
-
+    <div class="filters">
+        <button class="filter active" data-fruit="all">
+            Tous
+        </button>
+        <button class="filter" data-fruit="Paramecia">
+            Paramecia
+        </button>
+        <button class="filter" data-fruit="Zoan">
+            Zoan
+        </button>
+        <button class="filter" data-fruit="Logia">
+            Logia
+        </button>
     </div>
-
-  </section>
-
-
-  <!-- PRIMES -->
-
-  <section id="primes">
-
+    <div class="grid" id="fruitsGrid"></div>
+</section>
+<!-- ================= CHRONOLOGIE ================= -->
+<section id="chronologie">
     <div class="section-title">
-
-      <small>Wanted</small>
-
-      <h2>Les grandes primes</h2>
-
-      <p>
-        Quelques primes connues dans l'univers de One Piece.
-      </p>
-
+        <small>HISTORY</small>
+        <h2>Chronologie</h2>
     </div>
-
-
-    <div class="grid">
-
-
-      <article class="wanted">
-
-        <div class="wanted-photo">
-          👒
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3>L'ère de Roger</h3>
+            <p>
+                Gol D. Roger devient le Roi des Pirates et atteint
+                Laugh Tale.
+            </p>
         </div>
-
-        <h3>
-          Monkey D. Luffy
-        </h3>
-
-        <div class="bounty">
-          3 000 000 000 ฿
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3>Début de l'aventure</h3>
+            <p>
+                Monkey D. Luffy quitte son village pour devenir
+                le Roi des Pirates.
+            </p>
         </div>
-
-      </article>
-
-
-      <article class="wanted">
-
-        <div class="wanted-photo">
-          ⚔️
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3>Marineford</h3>
+            <p>
+                La guerre au sommet bouleverse le monde.
+            </p>
         </div>
-
-        <h3>
-          Roronoa Zoro
-        </h3>
-
-        <div class="bounty">
-          1 111 000 000 ฿
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3>Dressrosa</h3>
+            <p>
+                Luffy affronte Doflamingo et forme une grande alliance.
+            </p>
         </div>
-
-      </article>
-
-
-      <article class="wanted">
-
-        <div class="wanted-photo">
-          🍳
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3>Wano</h3>
+            <p>
+                L'alliance affronte Kaido et Big Mom.
+            </p>
         </div>
-
-        <h3>
-          Sanji
-        </h3>
-
-        <div class="bounty">
-          1 032 000 000 ฿
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3>Egghead</h3>
+            <p>
+                Les événements autour de Vegapunk changent
+                profondément l'équilibre du monde.
+            </p>
         </div>
-
-      </article>
-
-
-      <article class="wanted">
-
-        <div class="wanted-photo">
-          🐊
-        </div>
-
-        <h3>
-          Crocodile
-        </h3>
-
-        <div class="bounty">
-          1 965 000 000 ฿
-        </div>
-
-      </article>
-
-
     </div>
-
-  </section>
-
-
-  <!-- PIED DE PAGE -->
-
-  <footer>
-
-    <p>
-      🏴‍☠️ Grand Line — Fan website consacré à l'univers de One Piece.
-    </p>
-
-    <br>
-
-    <p>
-      One Piece appartient à ses ayants droit.
-    </p>
-
-  </footer>
-
-
-  <!-- SIGNATURE -->
-
-  <div class="signature">
-    ntm nada 
-  </div>
-
-
-  <!-- JAVASCRIPT -->
-
-  <script>
-
-    const search = document.getElementById("search");
-
-    const characters =
-      document.querySelectorAll(".character");
-
-
-    search.addEventListener("input", function () {
-
-      const value =
-        this.value.toLowerCase().trim();
-
-
-      characters.forEach(character => {
-
-        const text =
-          character.textContent.toLowerCase();
-
-
-        if (text.includes(value)) {
-
-          character.style.display = "";
-
-        } else {
-
-          character.style.display = "none";
-
-        }
-
-      });
-
+</section>
+<!-- ================= QUIZ ================= -->
+<section id="quiz">
+    <div class="section-title">
+        <small>TESTE TES CONNAISSANCES</small>
+        <h2>Quiz One Piece</h2>
+    </div>
+    <div class="quiz-box">
+        <div class="quiz-levels">
+            <button class="level active" data-level="easy">
+                🟢 Facile
+            </button>
+            <button class="level" data-level="hard">
+                🟠 Difficile
+            </button>
+            <button class="level" data-level="expert">
+                🔴 Expert
+            </button>
+        </div>
+        <div id="questionNumber">
+            Question 1 / 5
+        </div>
+        <h3 class="quiz-question" id="question">
+            Qui est le capitaine des Mugiwara ?
+        </h3>
+        <div class="answers" id="answers"></div>
+        <div class="buttons">
+            <button class="btn gold" id="next">
+                Question suivante →
+            </button>
+        </div>
+        <p id="quizScore" style="margin-top:20px;color:#e9b949;">
+            Score : 0
+        </p>
+    </div>
+</section>
+<!-- ================= PROFIL ================= -->
+<section>
+    <div class="section-title">
+        <small>YOUR JOURNEY</small>
+        <h2>Ton profil pirate</h2>
+    </div>
+    <div class="profile">
+        <div class="profile-header">
+            <div class="profile-icon">
+                ☠
+            </div>
+            <div>
+                <h3>Pirate débutant</h3>
+                <p style="color:#777;margin-top:5px;">
+                    Continue à explorer Grand Line.
+                </p>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+        <p style="margin-top:10px;color:#777;">
+            Progression : 68%
+        </p>
+    </div>
+</section>
+<footer>
+    ☠ GRAND LINE — ONE PIECE FAN PROJECT
+    <br><br>
+    Site non officiel créé par un fan.
+</footer>
+<!-- ================= MODAL ================= -->
+<div class="modal hidden" id="modal">
+    <div class="modal-box">
+        <button class="close" id="close">
+            ×
+        </button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+<script>
+/* =========================================
+   PERSONNAGES
+========================================= */
+const characters = [
+{
+name:"Monkey D. Luffy",
+group:"Mugiwara",
+emoji:"👒",
+bounty:"3 000 000 000 B",
+fruit:"Hito Hito no Mi, modèle Nika"
+},
+{
+name:"Roronoa Zoro",
+group:"Mugiwara",
+emoji:"⚔️",
+bounty:"1 111 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Nami",
+group:"Mugiwara",
+emoji:"🍊",
+bounty:"366 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Usopp",
+group:"Mugiwara",
+emoji:"🎯",
+bounty:"500 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Sanji",
+group:"Mugiwara",
+emoji:"🔥",
+bounty:"1 032 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Chopper",
+group:"Mugiwara",
+emoji:"🦌",
+bounty:"1 000 B",
+fruit:"Hito Hito no Mi"
+},
+{
+name:"Nico Robin",
+group:"Mugiwara",
+emoji:"🌸",
+bounty:"930 000 000 B",
+fruit:"Hana Hana no Mi"
+},
+{
+name:"Franky",
+group:"Mugiwara",
+emoji:"🤖",
+bounty:"394 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Brook",
+group:"Mugiwara",
+emoji:"🎸",
+bounty:"383 000 000 B",
+fruit:"Yomi Yomi no Mi"
+},
+{
+name:"Jinbe",
+group:"Mugiwara",
+emoji:"🌊",
+bounty:"1 100 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Yamato",
+group:"Pirates",
+emoji:"🐺",
+bounty:"Inconnue",
+fruit:"Inu Inu no Mi, modèle Okuchi no Makami"
+},
+{
+name:"Trafalgar Law",
+group:"Pirates",
+emoji:"💉",
+bounty:"3 000 000 000 B",
+fruit:"Ope Ope no Mi"
+},
+{
+name:"Eustass Kid",
+group:"Pirates",
+emoji:"🧲",
+bounty:"3 000 000 000 B",
+fruit:"Jiki Jiki no Mi"
+},
+{
+name:"Shanks",
+group:"Pirates",
+emoji:"🍷",
+bounty:"4 048 900 000 B",
+fruit:"Aucun"
+},
+{
+name:"Mihawk",
+group:"Pirates",
+emoji:"🗡️",
+bounty:"3 590 000 000 B",
+fruit:"Aucun"
+},
+{
+name:"Buggy",
+group:"Pirates",
+emoji:"🤡",
+bounty:"3 189 000 000 B",
+fruit:"Bara Bara no Mi"
+},
+{
+name:"Bartolomeo",
+group:"Pirates",
+emoji:"🛡️",
+bounty:"200 000 000 B",
+fruit:"Bari Bari no Mi"
+},
+{
+name:"Kizaru",
+group:"Marine",
+emoji:"✨",
+bounty:"—",
+fruit:"Pika Pika no Mi"
+},
+{
+name:"Akainu",
+group:"Marine",
+emoji:"🌋",
+bounty:"—",
+fruit:"Magu Magu no Mi"
+},
+{
+name:"Kuzan",
+group:"Marine",
+emoji:"❄️",
+bounty:"—",
+fruit:"Hie Hie no Mi"
+},
+{
+name:"Garp",
+group:"Marine",
+emoji:"👊",
+bounty:"—",
+fruit:"Aucun"
+},
+{
+name:"Sengoku",
+group:"Marine",
+emoji:"🧘",
+bounty:"—",
+fruit:"Hito Hito no Mi, modèle Daibutsu"
+},
+{
+name:"Monkey D. Dragon",
+group:"Révolutionnaires",
+emoji:"🐉",
+bounty:"—",
+fruit:"Inconnu"
+},
+{
+name:"Sabo",
+group:"Révolutionnaires",
+emoji:"🔥",
+bounty:"602 000 000 B",
+fruit:"Mera Mera no Mi"
+},
+{
+name:"Barbe Blanche",
+group:"Pirates",
+emoji:"⚡",
+bounty:"5 046 000 000 B",
+fruit:"Gura Gura no Mi"
+},
+{
+name:"Gol D. Roger",
+group:"Pirates",
+emoji:"👑",
+bounty:"5 564 800 000 B",
+fruit:"Aucun"
+},
+{
+name:"Kaido",
+group:"Pirates",
+emoji:"🐉",
+bounty:"4 611 100 000 B",
+fruit:"Uo Uo no Mi, modèle Seiryu"
+},
+{
+name:"Big Mom",
+group:"Pirates",
+emoji:"🍰",
+bounty:"4 388 000 000 B",
+fruit:"Soru Soru no Mi"
+},
+{
+name:"Barbe Noire",
+group:"Pirates",
+emoji:"🌑",
+bounty:"3 996 000 000 B",
+fruit:"Yami Yami no Mi"
+}
+];
+/* =========================================
+   PERSONNAGES
+========================================= */
+const characterGrid =
+document.getElementById("characters");
+function renderCharacters(){
+    const search =
+    document.getElementById("search").value
+    .toLowerCase();
+    const active =
+    document.querySelector(".filter.active")
+    .dataset.group;
+    characterGrid.innerHTML="";
+    characters
+    .filter(c =>
+        (active==="all" || c.group===active)
+        &&
+        c.name.toLowerCase().includes(search)
+    )
+    .forEach((c,index)=>{
+        const card=document.createElement("div");
+        card.className="card";
+        card.innerHTML=`
+            <div class="character-image">
+                ${c.emoji}
+            </div>
+            <span class="tag">
+                ${c.group}
+            </span>
+            <h3>${c.name}</h3>
+            <p>
+                Prime : ${c.bounty}
+            </p>
+            <p>
+                Fruit : ${c.fruit}
+            </p>
+        `;
+        card.onclick=()=>openCharacter(c);
+        characterGrid.appendChild(card);
     });
-
-  </script>
-
+}
+document.getElementById("search")
+.addEventListener("input",renderCharacters);
+/* filtres personnages */
+document.querySelectorAll(
+    "#personnages .filter"
+).forEach(button=>{
+    button.addEventListener("click",()=>{
+        document.querySelectorAll(
+            "#personnages .filter"
+        ).forEach(b=>b.classList.remove("active"));
+        button.classList.add("active");
+        renderCharacters();
+    });
+});
+/* =========================================
+   MODAL
+========================================= */
+const modal=
+document.getElementById("modal");
+const modalContent=
+document.getElementById("modalContent");
+function openCharacter(c){
+    modalContent.innerHTML=`
+        <div class="modal-big">
+            ${c.emoji}
+        </div>
+        <h2>${c.name}</h2>
+        <p>
+            <strong>Affiliation :</strong>
+            ${c.group}
+        </p>
+        <p>
+            <strong>Prime :</strong>
+            ${c.bounty}
+        </p>
+        <p>
+            <strong>Fruit :</strong>
+            ${c.fruit}
+        </p>
+    `;
+    modal.classList.remove("hidden");
+}
+document.getElementById("close")
+.onclick=()=>{
+    modal.classList.add("hidden");
+};
+modal.onclick=e=>{
+    if(e.target===modal){
+        modal.classList.add("hidden");
+    }
+};
+/* =========================================
+   PRIMES
+========================================= */
+const bountyGrid=
+document.getElementById("bounties");
+characters
+.filter(c=>c.bounty!=="—" && c.bounty!=="Inconnue")
+.slice(0,18)
+.forEach(c=>{
+    const wanted=
+    document.createElement("div");
+    wanted.className="wanted";
+    wanted.innerHTML=`
+        <div class="wanted-top">
+            WANTED
+        </div>
+        <div class="wanted-face">
+            ${c.emoji}
+        </div>
+        <div class="wanted-name">
+            ${c.name}
+        </div>
+        <div class="wanted-price">
+            ${c.bounty}
+        </div>
+    `;
+    wanted.onclick=()=>{
+        openCharacter(c);
+    };
+    bountyGrid.appendChild(wanted);
+});
+/* =========================================
+   FRUITS
+========================================= */
+const fruits=[
+{
+name:"Pika Pika no Mi",
+type:"Logia",
+user:"Kizaru",
+emoji:"✨",
+power:"Permet de créer, contrôler et devenir de la lumière."
+},
+{
+name:"Magu Magu no Mi",
+type:"Logia",
+user:"Akainu",
+emoji:"🌋",
+power:"Permet de créer et contrôler le magma."
+},
+{
+name:"Hie Hie no Mi",
+type:"Logia",
+user:"Kuzan",
+emoji:"❄️",
+power:"Permet de créer et contrôler la glace."
+},
+{
+name:"Ope Ope no Mi",
+type:"Paramecia",
+user:"Trafalgar Law",
+emoji:"💉",
+power:"Permet de créer une ROOM et de manipuler ce qui s'y trouve."
+},
+{
+name:"Hana Hana no Mi",
+type:"Paramecia",
+user:"Nico Robin",
+emoji:"🌸",
+power:"Permet de faire apparaître des parties de son corps."
+},
+{
+name:"Bari Bari no Mi",
+type:"Paramecia",
+user:"Bartolomeo",
+emoji:"🛡️",
+power:"Permet de créer des barrières extrêmement résistantes."
+},
+{
+name:"Mera Mera no Mi",
+type:"Logia",
+user:"Sabo",
+emoji:"🔥",
+power:"Permet de créer et contrôler le feu."
+},
+{
+name:"Gura Gura no Mi",
+type:"Paramecia",
+user:"Barbe Blanche",
+emoji:"⚡",
+power:"Permet de produire de puissantes vibrations."
+},
+{
+name:"Tori Tori no Mi",
+type:"Zoan",
+user:"Marco",
+emoji:"🦅",
+power:"Permet de se transformer en phénix."
+},
+{
+name:"Inu Inu no Mi",
+type:"Zoan",
+user:"Yamato",
+emoji:"🐺",
+power:"Permet de se transformer en Okuchi no Makami."
+}
+];
+const fruitsGrid=
+document.getElementById("fruitsGrid");
+function renderFruits(type="all"){
+    fruitsGrid.innerHTML="";
+    fruits
+    .filter(f=>type==="all" || f.type===type)
+    .forEach(f=>{
+        const card=
+        document.createElement("div");
+        card.className="card fruit";
+        card.innerHTML=`
+            <div class="fruit-icon">
+                ${f.emoji}
+            </div>
+            <span class="tag">
+                ${f.type}
+            </span>
+            <h3>${f.name}</h3>
+            <p>
+                Utilisateur : ${f.user}
+            </p>
+            <p>
+                ${f.power}
+            </p>
+        `;
+        fruitsGrid.appendChild(card);
+    });
+}
+document.querySelectorAll(
+    "#fruits .filter"
+).forEach(button=>{
+    button.addEventListener("click",()=>{
+        document.querySelectorAll(
+            "#fruits .filter"
+        ).forEach(b=>b.classList.remove("active"));
+        button.classList.add("active");
+        renderFruits(button.dataset.fruit);
+    });
+});
+/* =========================================
+   QUIZ
+========================================= */
+const quizzes={
+easy:[
+{
+q:"Qui est le capitaine des Mugiwara ?",
+a:["Zoro","Luffy","Shanks","Law"],
+correct:1
+},
+{
+q:"Qui est le cuisinier des Mugiwara ?",
+a:["Sanji","Brook","Franky","Usopp"],
+correct:0
+},
+{
+q:"Quel est le rêve de Luffy ?",
+a:["Devenir Amiral","Devenir Roi des Pirates","Devenir Yonko","Trouver All Blue"],
+correct:1
+},
+{
+q:"Qui est le médecin de l'équipage ?",
+a:["Robin","Chopper","Jinbe","Nami"],
+correct:1
+},
+{
+q:"Qui utilise trois sabres ?",
+a:["Sanji","Law","Zoro","Mihawk"],
+correct:2
+}
+],
+hard:[
+{
+q:"Quelle est la prime de Nico Robin après Wano ?",
+a:["500 M","930 M","1,032 Md","366 M"],
+correct:1
+},
+{
+q:"Quel fruit possède Kizaru ?",
+a:["Magu Magu","Pika Pika","Hie Hie","Goro Goro"],
+correct:1
+},
+{
+q:"Qui possède le Bari Bari no Mi ?",
+a:["Bartolomeo","Buggy","Bonney","Bellamy"],
+correct:0
+},
+{
+q:"Quel est le modèle du fruit de Yamato ?",
+a:["Seiryu","Nika","Okuchi no Makami","Phénix"],
+correct:2
+},
+{
+q:"Quelle est la prime de Jinbe ?",
+a:["1,032 Md","930 M","1,1 Md","500 M"],
+correct:2
+}
+],
+expert:[
+{
+q:"Quelle est la prime exacte de Gol D. Roger ?",
+a:[
+"5 046 000 000",
+"5 564 800 000",
+"4 611 100 000",
+"4 388 000 000"
+],
+correct:1
+},
+{
+q:"Quelle était la prime de Barbe Blanche ?",
+a:[
+"5 046 000 000",
+"5 564 800 000",
+"4 388 000 000",
+"4 048 900 000"
+],
+correct:0
+},
+{
+q:"Quel fruit permet de créer une ROOM ?",
+a:[
+"Hana Hana no Mi",
+"Ope Ope no Mi",
+"Bari Bari no Mi",
+"Jiki Jiki no Mi"
+],
+correct:1
+},
+{
+q:"Quel est le modèle du fruit de Sengoku ?",
+a:[
+"Daibutsu",
+"Nika",
+"Seiryu",
+"Phénix"
+],
+correct:0
+},
+{
+q:"Quelle est la prime de Mihawk ?",
+a:[
+"3 189 000 000",
+"3 590 000 000",
+"4 048 900 000",
+"3 000 000 000"
+],
+correct:1
+}
+]
+};
+let currentLevel="easy";
+let questionIndex=0;
+let score=0;
+const question=
+document.getElementById("question");
+const answers=
+document.getElementById("answers");
+const next=
+document.getElementById("next");
+function startQuiz(level){
+    currentLevel=level;
+    questionIndex=0;
+    score=0;
+    showQuestion();
+}
+function showQuestion(){
+    const quiz=
+    quizzes[currentLevel];
+    const q=
+    quiz[questionIndex];
+    document.getElementById(
+        "questionNumber"
+    ).textContent=
+    `Question ${questionIndex+1} / ${quiz.length}`;
+    question.textContent=q.q;
+    answers.innerHTML="";
+    q.a.forEach((answer,index)=>{
+        const button=
+        document.createElement("button");
+        button.className="answer";
+        button.textContent=answer;
+        button.onclick=()=>{
+            [...answers.children]
+            .forEach(b=>b.disabled=true);
+            if(index===q.correct){
+                button.classList.add("correct");
+                score++;
+            }else{
+                button.classList.add("wrong");
+                answers.children[
+                    q.correct
+                ].classList.add("correct");
+            }
+        };
+        answers.appendChild(button);
+    });
+}
+next.onclick=()=>{
+    questionIndex++;
+    if(
+        questionIndex>=
+        quizzes[currentLevel].length
+    ){
+        question.textContent=
+        `🏆 Quiz terminé — ${score}/${quizzes[currentLevel].length}`;
+        answers.innerHTML="";
+        next.textContent="Recommencer";
+        next.onclick=()=>{
+            next.textContent="Question suivante →";
+            startQuiz(currentLevel);
+        };
+        return;
+    }
+    showQuestion();
+};
+/* niveaux */
+document.querySelectorAll(".level")
+.forEach(button=>{
+    button.onclick=()=>{
+        document.querySelectorAll(".level")
+        .forEach(b=>b.classList.remove("active"));
+        button.classList.add("active");
+        next.textContent=
+        "Question suivante →";
+        next.onclick=()=>{
+            questionIndex++;
+            if(
+                questionIndex>=
+                quizzes[currentLevel].length
+            ){
+                question.textContent=
+                `🏆 Quiz terminé — ${score}/${quizzes[currentLevel].length}`;
+                answers.innerHTML="";
+                next.textContent="Recommencer";
+                next.onclick=()=>{
+                    next.textContent=
+                    "Question suivante →";
+                    startQuiz(currentLevel);
+                };
+            }else{
+                showQuestion();
+            }
+        };
+        startQuiz(button.dataset.level);
+    };
+});
+/* =========================================
+   START
+========================================= */
+renderCharacters();
+renderFruits();
+startQuiz("easy");
+</script>
 </body>
 </html>
