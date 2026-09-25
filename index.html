@@ -1,1 +1,1083 @@
-index.html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Grand Line — One Piece</title>
+
+  <meta name="description"
+    content="Explore Grand Line : personnages, équipages, arcs, Fruits du Démon et primes de l'univers One Piece.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(0, 119, 255, .18), transparent 30%),
+        linear-gradient(180deg, #061522, #02070b);
+      min-height: 100vh;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 16px 6%;
+
+      background: rgba(2, 9, 15, .88);
+      backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      color: #ffd166;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: #ffd166;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 150px 8% 80px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+      height: 650px;
+
+      right: -250px;
+      top: 100px;
+
+      background: #0077ff;
+      filter: blur(190px);
+      opacity: .16;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      display: inline-block;
+
+      padding: 9px 15px;
+
+      margin-bottom: 20px;
+
+      border-radius: 50px;
+
+      color: #ffd166;
+
+      background: rgba(255,209,102,.1);
+      border: 1px solid rgba(255,209,102,.35);
+
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: .85;
+      margin-bottom: 30px;
+    }
+
+    h1 span {
+      color: #ffd166;
+    }
+
+    .hero p {
+      max-width: 680px;
+
+      color: #b5c5d0;
+
+      font-size: 19px;
+      line-height: 1.7;
+
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 25px;
+
+      border-radius: 10px;
+
+      text-decoration: none;
+
+      font-weight: 900;
+
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .primary {
+      background: #ffd166;
+      color: #06121b;
+    }
+
+    .secondary {
+      color: white;
+      background: rgba(255,255,255,.04);
+      border: 1px solid #304453;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      margin-bottom: 35px;
+    }
+
+    .section-title small {
+      color: #ffd166;
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-weight: bold;
+    }
+
+    .section-title h2 {
+      font-size: 45px;
+      margin-top: 8px;
+    }
+
+    .section-title p {
+      color: #8fa4b4;
+      margin-top: 10px;
+    }
+
+    /* RECHERCHE */
+
+    .search-box {
+      margin-bottom: 30px;
+    }
+
+    .search-box input {
+      width: 100%;
+      max-width: 600px;
+
+      padding: 17px 20px;
+
+      border-radius: 12px;
+
+      border: 1px solid #304453;
+
+      outline: none;
+
+      background: #0a1924;
+      color: white;
+
+      font-size: 16px;
+    }
+
+    .search-box input:focus {
+      border-color: #ffd166;
+    }
+
+    /* CARTES */
+
+    .grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+      gap: 20px;
+    }
+
+    .card {
+      padding: 25px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(145deg, #0d1e2b, #071119);
+
+      border: 1px solid #1c3444;
+
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      border-color: #ffd166;
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+    }
+
+    .card-icon {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 15px;
+
+      background: rgba(255,209,102,.1);
+
+      font-size: 28px;
+
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #91a5b5;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      margin-top: 16px;
+
+      padding: 6px 10px;
+
+      border-radius: 20px;
+
+      background: rgba(0,136,255,.12);
+
+      color: #55b7ff;
+
+      font-size: 12px;
+
+      font-weight: bold;
+    }
+
+    /* WANTED */
+
+    .wanted {
+      padding: 25px;
+
+      text-align: center;
+
+      border-radius: 12px;
+
+      color: #261d0f;
+
+      background:
+        linear-gradient(
+          rgba(218,199,143,.95),
+          rgba(183,161,102,.95)
+        );
+
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.3);
+    }
+
+    .wanted-photo {
+      height: 140px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 15px;
+
+      border-radius: 8px;
+
+      background: #9e8b5d;
+
+      font-size: 55px;
+    }
+
+    .wanted h3 {
+      font-family: Georgia, serif;
+      font-size: 23px;
+    }
+
+    .bounty {
+      margin-top: 10px;
+
+      color: #76251d;
+
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 50px 7%;
+
+      text-align: center;
+
+      color: #718695;
+
+      border-top: 1px solid #1a2c38;
+    }
+
+    /* SIGNATURE */
+
+    .signature {
+      position: fixed;
+
+      left: 14px;
+      bottom: 12px;
+
+      z-index: 9999;
+
+      color: rgba(255,255,255,.55);
+
+      font-size: 12px;
+
+      letter-spacing: 1px;
+
+      pointer-events: none;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        padding: 130px 5% 70px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 65px 5%;
+      }
+
+      .section-title h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="logo">
+      GRAND LINE
+    </div>
+
+    <ul>
+      <li>
+        <a href="#accueil">Accueil</a>
+      </li>
+
+      <li>
+        <a href="#personnages">Personnages</a>
+      </li>
+
+      <li>
+        <a href="#arcs">Arcs</a>
+      </li>
+
+      <li>
+        <a href="#fruits">Fruits</a>
+      </li>
+
+      <li>
+        <a href="#primes">Primes</a>
+      </li>
+    </ul>
+
+  </nav>
+
+
+  <!-- ACCUEIL -->
+
+  <header class="hero" id="accueil">
+
+    <div class="hero-content">
+
+      <div class="tag">
+        ☠️ BIENVENUE SUR GRAND LINE
+      </div>
+
+      <h1>
+        ONE <span>PIECE</span>
+      </h1>
+
+      <p>
+        « Vous cherchez le plus grand trésor de toutes les mers ?
+        Alors partez à l'aventure. Des légendes, des pirates,
+        des équipages et des mystères vous attendent au-delà
+        de la Grand Line. »
+      </p>
+
+      <div class="buttons">
+
+        <a href="#personnages" class="btn primary">
+          Explorer
+        </a>
+
+        <a href="#primes" class="btn secondary">
+          Voir les primes
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- PERSONNAGES -->
+
+  <section id="personnages">
+
+    <div class="section-title">
+
+      <small>Équipages</small>
+
+      <h2>Personnages</h2>
+
+      <p>
+        Découvre les pirates qui parcourent les mers.
+      </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="search"
+        placeholder="🔎 Rechercher un personnage..."
+      >
+
+    </div>
+
+
+    <div class="grid" id="characterGrid">
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          👒
+        </div>
+
+        <h3>
+          Monkey D. Luffy
+        </h3>
+
+        <p>
+          Capitaine de l'équipage du Chapeau de Paille
+          et pirate déterminé à devenir le Roi des Pirates.
+        </p>
+
+        <span class="badge">
+          Chapeau de Paille
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          ⚔️
+        </div>
+
+        <h3>
+          Roronoa Zoro
+        </h3>
+
+        <p>
+          Épéiste de l'équipage du Chapeau de Paille,
+          utilisant son style aux trois sabres.
+        </p>
+
+        <span class="badge">
+          Épéiste
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          🧭
+        </div>
+
+        <h3>
+          Nami
+        </h3>
+
+        <p>
+          Navigatrice talentueuse capable de guider
+          l'équipage à travers les mers dangereuses.
+        </p>
+
+        <span class="badge">
+          Navigatrice
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          🍳
+        </div>
+
+        <h3>
+          Sanji
+        </h3>
+
+        <p>
+          Cuisinier de l'équipage et combattant
+          spécialisé dans les techniques de jambes.
+        </p>
+
+        <span class="badge">
+          Cuisinier
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          🌸
+        </div>
+
+        <h3>
+          Nico Robin
+        </h3>
+
+        <p>
+          Archéologue passionnée par l'histoire oubliée
+          et les secrets des Ponéglyphes.
+        </p>
+
+        <span class="badge">
+          Archéologue
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          🦌
+        </div>
+
+        <h3>
+          Tony Tony Chopper
+        </h3>
+
+        <p>
+          Médecin de l'équipage et renne ayant mangé
+          un Fruit du Démon.
+        </p>
+
+        <span class="badge">
+          Médecin
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          🎯
+        </div>
+
+        <h3>
+          Usopp
+        </h3>
+
+        <p>
+          Tireur d'élite et inventeur de l'équipage
+          du Chapeau de Paille.
+        </p>
+
+        <span class="badge">
+          Sniper
+        </span>
+
+      </article>
+
+
+      <article class="card character">
+
+        <div class="card-icon">
+          🎸
+        </div>
+
+        <h3>
+          Brook
+        </h3>
+
+        <p>
+          Musicien de l'équipage et épéiste
+          au destin particulièrement étrange.
+        </p>
+
+        <span class="badge">
+          Musicien
+        </span>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ARCS -->
+
+  <section id="arcs">
+
+    <div class="section-title">
+
+      <small>Les aventures</small>
+
+      <h2>Arcs principaux</h2>
+
+      <p>
+        Quelques grandes étapes de l'aventure.
+      </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🌊
+        </div>
+
+        <h3>
+          East Blue
+        </h3>
+
+        <p>
+          Les débuts de Luffy et la formation
+          progressive de son équipage.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🏜️
+        </div>
+
+        <h3>
+          Alabasta
+        </h3>
+
+        <p>
+          Une aventure majeure autour du royaume
+          d'Alabasta et de Baroque Works.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          ☁️
+        </div>
+
+        <h3>
+          Skypiea
+        </h3>
+
+        <p>
+          L'équipage découvre une mystérieuse
+          île située dans le ciel.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🏯
+        </div>
+
+        <h3>
+          Wano
+        </h3>
+
+        <p>
+          Une aventure majeure dans un pays
+          marqué par les samouraïs.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- FRUITS -->
+
+  <section id="fruits">
+
+    <div class="section-title">
+
+      <small>Pouvoirs</small>
+
+      <h2>Fruits du Démon</h2>
+
+      <p>
+        Découvre quelques pouvoirs emblématiques.
+      </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🍎
+        </div>
+
+        <h3>
+          Gomu Gomu no Mi
+        </h3>
+
+        <p>
+          Un pouvoir permettant au corps de
+          posséder des propriétés élastiques.
+        </p>
+
+        <span class="badge">
+          Paramecia
+        </span>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🔥
+        </div>
+
+        <h3>
+          Mera Mera no Mi
+        </h3>
+
+        <p>
+          Un pouvoir permettant de créer
+          et contrôler le feu.
+        </p>
+
+        <span class="badge">
+          Logia
+        </span>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🌑
+        </div>
+
+        <h3>
+          Yami Yami no Mi
+        </h3>
+
+        <p>
+          Un pouvoir lié aux ténèbres
+          et à leur force d'attraction.
+        </p>
+
+        <span class="badge">
+          Logia
+        </span>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="card-icon">
+          🐉
+        </div>
+
+        <h3>
+          Uo Uo no Mi
+        </h3>
+
+        <p>
+          Un pouvoir permettant une transformation
+          associée à un dragon oriental.
+        </p>
+
+        <span class="badge">
+          Zoan Mythique
+        </span>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- PRIMES -->
+
+  <section id="primes">
+
+    <div class="section-title">
+
+      <small>Wanted</small>
+
+      <h2>Les grandes primes</h2>
+
+      <p>
+        Quelques primes connues dans l'univers de One Piece.
+      </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+      <article class="wanted">
+
+        <div class="wanted-photo">
+          👒
+        </div>
+
+        <h3>
+          Monkey D. Luffy
+        </h3>
+
+        <div class="bounty">
+          3 000 000 000 ฿
+        </div>
+
+      </article>
+
+
+      <article class="wanted">
+
+        <div class="wanted-photo">
+          ⚔️
+        </div>
+
+        <h3>
+          Roronoa Zoro
+        </h3>
+
+        <div class="bounty">
+          1 111 000 000 ฿
+        </div>
+
+      </article>
+
+
+      <article class="wanted">
+
+        <div class="wanted-photo">
+          🍳
+        </div>
+
+        <h3>
+          Sanji
+        </h3>
+
+        <div class="bounty">
+          1 032 000 000 ฿
+        </div>
+
+      </article>
+
+
+      <article class="wanted">
+
+        <div class="wanted-photo">
+          🐊
+        </div>
+
+        <h3>
+          Crocodile
+        </h3>
+
+        <div class="bounty">
+          1 965 000 000 ฿
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- PIED DE PAGE -->
+
+  <footer>
+
+    <p>
+      🏴‍☠️ Grand Line — Fan website consacré à l'univers de One Piece.
+    </p>
+
+    <br>
+
+    <p>
+      One Piece appartient à ses ayants droit.
+    </p>
+
+  </footer>
+
+
+  <!-- SIGNATURE -->
+
+  <div class="signature">
+    pklagg
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const search = document.getElementById("search");
+
+    const characters =
+      document.querySelectorAll(".character");
+
+
+    search.addEventListener("input", function () {
+
+      const value =
+        this.value.toLowerCase().trim();
+
+
+      characters.forEach(character => {
+
+        const text =
+          character.textContent.toLowerCase();
+
+
+        if (text.includes(value)) {
+
+          character.style.display = "";
+
+        } else {
+
+          character.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
