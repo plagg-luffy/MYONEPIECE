@@ -1,0 +1,3788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>ONE PIECE — Grand Line</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#05080d;
+  color:#eee;
+  overflow-x:hidden
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,8,13,.92);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #26313d
+}
+
+nav{
+  max-width:1300px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 22px
+}
+
+.logo{
+  color:#f4c542;
+  font-size:25px;
+  font-weight:1000;
+  letter-spacing:-1px
+}
+
+nav a{
+  color:#bbb;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:800;
+  transition:.2s
+}
+
+nav a:hover{
+  color:#f4c542
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:680px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,#02060a 0%,rgba(3,15,25,.6),#02060a 100%),
+    linear-gradient(#071725,#05080d)
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.32;
+  filter:saturate(1.2)
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center,transparent 20%,#02060a 100%);
+  pointer-events:none
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  padding:30px
+}
+
+.hero-kicker{
+  color:#f4c542;
+  font-weight:900;
+  letter-spacing:5px;
+  font-size:13px;
+  margin-bottom:18px
+}
+
+.hero h1{
+  font-size:clamp(65px,13vw,150px);
+  line-height:.9;
+  color:#f4c542;
+  text-shadow:
+    0 5px 0 #9a7314,
+    0 15px 40px #000
+}
+
+.hero h1 span{
+  color:white
+}
+
+.hero p{
+  color:#b7c0c8;
+  font-size:20px;
+  max-width:650px;
+  margin:25px auto 30px;
+  line-height:1.6
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap
+}
+
+.btn{
+  display:inline-block;
+  background:#f4c542;
+  color:#111;
+  padding:14px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:900;
+  border:0;
+  cursor:pointer;
+  transition:.2s
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px #f4c54233
+}
+
+.btn.dark{
+  background:#121c26;
+  color:#fff;
+  border:1px solid #344555
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+  max-width:1300px;
+  margin:auto;
+  padding:75px 22px
+}
+
+.title{
+  color:#f4c542;
+  font-size:40px;
+  margin-bottom:10px
+}
+
+.subtitle{
+  color:#778694;
+  margin-bottom:30px;
+  line-height:1.6
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px
+}
+
+.stat{
+  background:linear-gradient(145deg,#101a24,#080d13);
+  border:1px solid #26313d;
+  border-radius:17px;
+  padding:28px;
+  text-align:center;
+  transition:.25s
+}
+
+.stat:hover{
+  transform:translateY(-5px);
+  border-color:#f4c542
+}
+
+.stat b{
+  display:block;
+  color:#f4c542;
+  font-size:34px;
+  margin-bottom:6px
+}
+
+.stat span{
+  color:#818f9c
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:30px
+}
+
+input,select{
+  background:#0c141d;
+  color:white;
+  border:1px solid #334454;
+  padding:14px;
+  border-radius:10px;
+  outline:none
+}
+
+input:focus,select:focus{
+  border-color:#f4c542
+}
+
+input{
+  flex:1;
+  min-width:240px
+}
+
+/* =========================
+   CHARACTERS
+========================= */
+
+.characters{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px
+}
+
+.card{
+  background:linear-gradient(145deg,#0e1721,#080d13);
+  border:1px solid #26313d;
+  border-radius:17px;
+  overflow:hidden;
+  transition:.3s
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#f4c542;
+  box-shadow:0 20px 45px #0008
+}
+
+.card-img{
+  height:280px;
+  background:#101923;
+  overflow:hidden;
+  position:relative
+}
+
+.card-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s
+}
+
+.card:hover .card-img img{
+  transform:scale(1.06)
+}
+
+.card-img::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 60%,#000c)
+}
+
+.card-body{
+  padding:18px
+}
+
+.card h3{
+  font-size:21px;
+  margin-bottom:5px
+}
+
+.group{
+  color:#738493;
+  font-size:13px
+}
+
+.bounty{
+  color:#f4c542;
+  font-size:20px;
+  font-weight:900;
+  margin:13px 0
+}
+
+.card-fruit{
+  color:#9ba8b3;
+  font-size:13px;
+  line-height:1.5;
+  min-height:40px;
+  margin-bottom:14px
+}
+
+.small-btn{
+  width:100%;
+  background:#151f29;
+  border:1px solid #354554;
+  color:white;
+  padding:11px;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:800;
+  transition:.2s
+}
+
+.small-btn:hover{
+  background:#f4c542;
+  color:#111
+}
+
+/* =========================
+   WANTED
+========================= */
+
+.wanted{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  padding:15px 5px
+}
+
+.poster{
+  background:
+    radial-gradient(circle,#f0e4c5,#cfc09b);
+  color:#18130d;
+  padding:12px;
+  border-radius:3px;
+  box-shadow:0 18px 35px #0009;
+  transform:rotate(var(--r));
+  transition:.3s;
+  position:relative
+}
+
+.poster:hover{
+  transform:rotate(0) translateY(-10px) scale(1.03);
+  z-index:5
+}
+
+.poster-inner{
+  border:5px solid #21190e;
+  padding:12px;
+  text-align:center;
+  min-height:390px
+}
+
+.poster-top{
+  font-family:Georgia,serif;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:3px
+}
+
+.wanted-title{
+  font-family:Georgia,serif;
+  font-size:45px;
+  font-weight:1000;
+  line-height:1
+}
+
+.poster-subtitle{
+  font-family:Georgia,serif;
+  font-size:17px;
+  font-weight:bold
+}
+
+.poster img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  margin:10px 0;
+  border:4px solid #21190e;
+  filter:sepia(.25)
+}
+
+.poster h3{
+  font-family:Georgia,serif;
+  font-size:22px
+}
+
+.poster-dead{
+  font-family:Georgia,serif;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:3px
+}
+
+.poster .money{
+  font-family:Georgia,serif;
+  font-weight:1000;
+  font-size:21px;
+  margin-top:7px
+}
+
+/* =========================
+   FRUITS
+========================= */
+
+.fruits{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px
+}
+
+.fruit{
+  background:linear-gradient(145deg,#101923,#090e14);
+  border:1px solid #26313d;
+  border-radius:17px;
+  overflow:hidden;
+  transition:.25s
+}
+
+.fruit:hover{
+  transform:translateY(-7px);
+  border-color:#f4c542
+}
+
+.fruit-img{
+  height:180px;
+  background:#131e29;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden
+}
+
+.fruit-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.fruit-icon{
+  font-size:65px
+}
+
+.fruit-body{
+  padding:20px
+}
+
+.fruit h3{
+  color:#f4c542;
+  margin-bottom:8px
+}
+
+.fruit p{
+  color:#98a5af;
+  line-height:1.55;
+  font-size:14px
+}
+
+/* =========================
+   ARCS
+========================= */
+
+.arc-intro{
+  color:#8c9aa6;
+  max-width:750px;
+  line-height:1.7;
+  margin-bottom:28px
+}
+
+.arc-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:40px
+}
+
+.arc-filter{
+  background:#0d141d;
+  border:1px solid #26313d;
+  color:#aaa;
+  padding:11px 15px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold
+}
+
+.arc-filter.active,
+.arc-filter:hover{
+  background:#f4c542;
+  color:#111;
+  border-color:#f4c542
+}
+
+.arc-route{
+  position:relative;
+  padding:10px 0
+}
+
+.arc-route::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:3px;
+  transform:translateX(-50%);
+  background:linear-gradient(#f4c542,#27526b,#f4c542)
+}
+
+.arc-card{
+  width:calc(50% - 40px);
+  background:#0c141d;
+  border:1px solid #263746;
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:50px;
+  cursor:pointer;
+  position:relative;
+  transition:.3s
+}
+
+.arc-card:nth-child(even){
+  margin-left:auto
+}
+
+.arc-card:hover{
+  transform:translateY(-7px);
+  border-color:#f4c542;
+  box-shadow:0 20px 50px #0008
+}
+
+.arc-card::after{
+  content:"";
+  position:absolute;
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  background:#f4c542;
+  border:4px solid #071019;
+  top:30px
+}
+
+.arc-card:nth-child(odd)::after{
+  right:-48px
+}
+
+.arc-card:nth-child(even)::after{
+  left:-48px
+}
+
+.arc-image{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  background:#101923
+}
+
+.arc-content{
+  padding:22px
+}
+
+.arc-number{
+  color:#f4c542;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px
+}
+
+.arc-content h3{
+  font-size:29px;
+  margin:6px 0
+}
+
+.arc-location{
+  color:#708392;
+  font-size:13px;
+  margin-bottom:13px
+}
+
+.arc-content p{
+  color:#a9b5bd;
+  line-height:1.6;
+  font-size:14px
+}
+
+.arc-info{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:17px
+}
+
+.arc-info span{
+  background:#151f29;
+  border:1px solid #2b3c4c;
+  color:#9aa7b1;
+  padding:7px 9px;
+  border-radius:7px;
+  font-size:11px
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+  border-left:3px solid #f4c542;
+  margin-left:15px;
+  padding-left:30px
+}
+
+.event{
+  position:relative;
+  margin-bottom:35px;
+  padding:20px;
+  background:#0d141d;
+  border:1px solid #26313d;
+  border-radius:13px
+}
+
+.event::before{
+  content:"";
+  width:14px;
+  height:14px;
+  background:#f4c542;
+  border-radius:50%;
+  position:absolute;
+  left:-39px;
+  top:24px
+}
+
+.event h3{
+  color:#f4c542;
+  margin-bottom:7px
+}
+
+.event p{
+  color:#909da8;
+  line-height:1.6
+}
+
+/* =========================
+   RANDOM
+========================= */
+
+.random{
+  background:
+    radial-gradient(circle at center,#142a3a,#080e15);
+  border:1px solid #26313d;
+  border-radius:22px;
+  padding:45px 25px;
+  text-align:center
+}
+
+.random-img{
+  width:170px;
+  height:170px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  border:4px solid #f4c542;
+  overflow:hidden;
+  background:#111c26;
+  box-shadow:0 0 40px #f4c54222
+}
+
+.random-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.random-name{
+  color:#f4c542;
+  font-size:40px;
+  font-weight:900;
+  margin:10px
+}
+
+.random-info{
+  color:#8e9da9;
+  margin-bottom:25px
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-box{
+  max-width:900px;
+  margin:auto;
+  background:#0c141d;
+  border:1px solid #263746;
+  border-radius:20px;
+  padding:30px
+}
+
+.quiz-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px
+}
+
+.quiz-progress{
+  height:8px;
+  background:#17222c;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:30px
+}
+
+.quiz-progress-bar{
+  height:100%;
+  background:#f4c542;
+  width:0;
+  transition:.3s
+}
+
+.quiz-question{
+  font-size:25px;
+  line-height:1.4;
+  margin-bottom:22px
+}
+
+.quiz-answer{
+  display:block;
+  width:100%;
+  background:#131e29;
+  border:1px solid #304252;
+  color:#ddd;
+  text-align:left;
+  padding:15px;
+  margin:9px 0;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.2s
+}
+
+.quiz-answer:hover{
+  border-color:#f4c542;
+  transform:translateX(4px)
+}
+
+.quiz-answer.correct{
+  background:#103323;
+  border-color:#43d17a;
+  color:#7ff0a9
+}
+
+.quiz-answer.wrong{
+  background:#351719;
+  border-color:#e65353;
+  color:#ff8585
+}
+
+.quiz-result{
+  text-align:center;
+  padding:30px
+}
+
+.quiz-result-score{
+  font-size:70px;
+  color:#f4c542;
+  font-weight:1000;
+  margin:15px
+}
+
+/* =========================
+   MINI-JEUX
+========================= */
+
+.game-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:30px
+}
+
+.game-tab{
+  background:#0d141d;
+  border:1px solid #26313d;
+  color:#aaa;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold
+}
+
+.game-tab.active,
+.game-tab:hover{
+  background:#f4c542;
+  color:#111;
+  border-color:#f4c542
+}
+
+.game-panel{
+  display:none
+}
+
+.game-panel.active{
+  display:block
+}
+
+.game-box{
+  max-width:900px;
+  margin:auto;
+  background:#0c141d;
+  border:1px solid #263746;
+  border-radius:20px;
+  padding:30px
+}
+
+.game-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:22px
+}
+
+.game-head h3{
+  color:#f4c542;
+  font-size:24px
+}
+
+/* --- Bingo --- */
+
+.bingo-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-bottom:20px
+}
+
+.bingo-cell{
+  aspect-ratio:1;
+  background:#121d27;
+  border:1px solid #2b3c4c;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:5px;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:bold;
+  color:#c3ccd4;
+  transition:.2s
+}
+
+.bingo-cell span{
+  font-size:20px;
+  margin-bottom:3px
+}
+
+.bingo-cell:hover{
+  border-color:#f4c542
+}
+
+.bingo-cell.marked{
+  background:#f4c542;
+  color:#111;
+  border-color:#f4c542
+}
+
+.bingo-cell.free{
+  background:#1a2a1e;
+  border-color:#43d17a;
+  color:#7ff0a9
+}
+
+.bingo-win{
+  text-align:center;
+  color:#7ff0a9;
+  font-weight:900;
+  font-size:20px;
+  margin-top:10px;
+  display:none
+}
+
+.bingo-win.show{
+  display:block
+}
+
+/* --- Memory --- */
+
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:20px
+}
+
+.memory-card{
+  aspect-ratio:3/4;
+  perspective:600px;
+  cursor:pointer
+}
+
+.memory-card-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .4s;
+  transform-style:preserve-3d
+}
+
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched .memory-card-inner{
+  transform:rotateY(180deg)
+}
+
+.memory-face{
+  position:absolute;
+  inset:0;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  backface-visibility:hidden;
+  border:1px solid #2b3c4c
+}
+
+.memory-back{
+  background:linear-gradient(145deg,#121d27,#0a1119);
+  font-size:26px;
+  color:#f4c542
+}
+
+.memory-front{
+  background:#151f29;
+  transform:rotateY(180deg);
+  flex-direction:column;
+  padding:6px;
+  text-align:center
+}
+
+.memory-front span{
+  font-size:26px
+}
+
+.memory-front small{
+  color:#c3ccd4;
+  font-size:10px;
+  margin-top:4px
+}
+
+.memory-card.matched .memory-front{
+  background:#103323;
+  border-color:#43d17a
+}
+
+.memory-stats{
+  display:flex;
+  justify-content:space-between;
+  color:#9aa7b1;
+  margin-bottom:15px;
+  font-weight:bold
+}
+
+/* --- Qui suis-je --- */
+
+.guess-clues{
+  margin-bottom:20px
+}
+
+.guess-clue{
+  background:#121d27;
+  border:1px solid #2b3c4c;
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:10px;
+  color:#c3ccd4
+}
+
+.guess-clue b{
+  color:#f4c542
+}
+
+.guess-options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:15px
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000c;
+  z-index:3000;
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+
+.modal.active{
+  display:flex
+}
+
+.modal-box{
+  background:#0b141d;
+  border:1px solid #f4c542;
+  border-radius:20px;
+  max-width:700px;
+  width:100%;
+  max-height:90vh;
+  overflow:auto;
+  padding:30px;
+  position:relative;
+  box-shadow:0 30px 80px #000
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:12px;
+  font-size:30px;
+  color:#aaa;
+  cursor:pointer;
+  z-index:2
+}
+
+.close:hover{
+  color:#fff
+}
+
+.modal-img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:13px;
+  margin:18px 0
+}
+
+.modal-title{
+  color:#f4c542;
+  font-size:34px
+}
+
+.modal-sub{
+  color:#758694;
+  margin-top:5px
+}
+
+.modal-info{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px
+}
+
+.modal-stat{
+  background:#121d27;
+  border:1px solid #263746;
+  padding:15px;
+  border-radius:10px
+}
+
+.modal-stat small{
+  display:block;
+  color:#6f8291;
+  margin-bottom:5px
+}
+
+.modal-stat b{
+  color:#f4c542
+}
+
+.modal-description{
+  color:#aab6bf;
+  line-height:1.7;
+  margin-top:20px
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  border-top:1px solid #26313d;
+  padding:35px 20px;
+  text-align:center;
+  color:#66737e
+}
+
+.footer-logo{
+  color:#f4c542;
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:10px
+}
+
+.signature{
+  position:fixed;
+  bottom:12px;
+  left:15px;
+  color:#f4c542;
+  font-size:12px;
+  font-weight:900;
+  opacity:.65;
+  z-index:1500
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+  .characters,
+  .wanted,
+  .fruits{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  nav a{
+    display:none
+  }
+
+  .arc-card{
+    width:calc(50% - 30px)
+  }
+}
+
+@media(max-width:700px){
+
+  .hero{
+    min-height:580px
+  }
+
+  .container{
+    padding:55px 16px
+  }
+
+  .title{
+    font-size:31px
+  }
+
+  .characters,
+  .wanted,
+  .fruits,
+  .stats{
+    grid-template-columns:1fr
+  }
+
+  .arc-route::before{
+    left:8px
+  }
+
+  .arc-card,
+  .arc-card:nth-child(even){
+    width:calc(100% - 30px);
+    margin-left:30px
+  }
+
+  .arc-card::after,
+  .arc-card:nth-child(odd)::after,
+  .arc-card:nth-child(even)::after{
+    left:-30px;
+    right:auto
+  }
+
+  .modal-info{
+    grid-template-columns:1fr
+  }
+
+  .random-name{
+    font-size:30px
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+☠ ONE PIECE
+</div>
+
+<div>
+<a href="#persos">Personnages</a>
+<a href="#primes">Primes</a>
+<a href="#fruits">Fruits</a>
+<a href="#arcs">Arcs</a>
+<a href="#random">Aléatoire</a>
+<a href="#quiz">Quiz</a>
+<a href="#minigames">Mini-jeux</a>
+</div>
+
+</nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<img
+class="hero-bg"
+src="images/grand-line.jpg"
+alt="Grand Line"
+onerror="this.style.display='none'"
+>
+
+<div class="hero-content">
+
+<div class="hero-kicker">
+☠️ BIENVENUE SUR GRAND LINE
+</div>
+
+<h1>
+ONE <span>PIECE</span>
+</h1>
+
+<p>
+Le monde de la piraterie, des légendes, des trésors
+et des aventures du Chapeau de Paille.
+</p>
+
+<div class="hero-buttons">
+
+<a class="btn" href="#persos">
+Explorer Grand Line
+</a>
+
+<a class="btn dark" href="#primes">
+Voir les primes
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="container">
+
+<div class="stats">
+
+<div class="stat">
+<b>1194</b>
+<span>Dernier chapitre</span>
+</div>
+
+<div class="stat">
+<b>1179</b>
+<span>Dernier épisode</span>
+</div>
+
+<div class="stat">
+<b>∞</b>
+<span>Îles à découvrir</span>
+</div>
+
+<div class="stat">
+<b>25+</b>
+<span>Années d'aventure</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PERSONNAGES
+========================= -->
+
+<section class="container" id="persos">
+
+<h2 class="title">👒 Personnages</h2>
+
+<p class="subtitle">
+Explore les pirates, Mugiwara, Marines et révolutionnaires.
+</p>
+
+<div class="controls">
+
+<input
+id="search"
+placeholder="🔎 Rechercher un personnage..."
+>
+
+<select id="group">
+
+<option value="all">
+Tous les groupes
+</option>
+
+<option value="Mugiwara">
+Mugiwara
+</option>
+
+<option value="Alliés">
+Alliés
+</option>
+
+<option value="Pirates">
+Pirates
+</option>
+
+<option value="Marine">
+Marine
+</option>
+
+<option value="Révolutionnaires">
+Révolutionnaires
+</option>
+
+</select>
+
+</div>
+
+<div
+class="characters"
+id="characters"
+></div>
+
+</section>
+
+
+<!-- =========================
+     PRIMES
+========================= -->
+
+<section class="container" id="primes">
+
+<h2 class="title">💰 Les primes</h2>
+
+<p class="subtitle">
+Les affiches recherchées des pirates les plus célèbres.
+</p>
+
+<div class="controls">
+
+<select id="bountyFilter">
+
+<option value="all">
+Toutes les primes
+</option>
+
+<option value="billion">
+1 milliard+
+</option>
+
+<option value="500">
+500 millions+
+</option>
+
+<option value="under">
+Moins de 500 millions
+</option>
+
+</select>
+
+</div>
+
+<div
+class="wanted"
+id="wanted"
+></div>
+
+</section>
+
+
+<!-- =========================
+     FRUITS
+========================= -->
+
+<section class="container" id="fruits">
+
+<h2 class="title">🍎 Fruits du démon</h2>
+
+<p class="subtitle">
+Les pouvoirs qui ont façonné le monde de One Piece.
+</p>
+
+<div
+class="fruits"
+id="fruitsList"
+></div>
+
+</section>
+
+
+<!-- =========================
+     ARCS
+========================= -->
+
+<section class="container" id="arcs">
+
+<h2 class="title">🌊 Voyage sur Grand Line</h2>
+
+<p class="arc-intro">
+Suis le voyage des Mugiwara à travers toutes les grandes étapes,
+et les plus petites, de leur aventure, d'East Blue jusqu'à la saga finale.
+</p>
+
+<div class="arc-filters">
+
+<button
+class="arc-filter active"
+onclick="filterArcs('all',this)"
+>
+🌍 Tous
+</button>
+
+<button
+class="arc-filter"
+onclick="filterArcs('East Blue',this)"
+>
+🌊 East Blue
+</button>
+
+<button
+class="arc-filter"
+onclick="filterArcs('Grand Line',this)"
+>
+🏜️ Grand Line
+</button>
+
+<button
+class="arc-filter"
+onclick="filterArcs('Nouveau Monde',this)"
+>
+⚔️ Nouveau Monde
+</button>
+
+<button
+class="arc-filter"
+onclick="filterArcs('Saga Finale',this)"
+>
+👑 Saga Finale
+</button>
+
+</div>
+
+<div
+class="arc-route"
+id="arcRoute"
+></div>
+
+</section>
+
+
+<!-- =========================
+     CHRONOLOGIE
+========================= -->
+
+<section class="container">
+
+<h2 class="title">🌍 Chronologie</h2>
+
+<p class="subtitle">
+Quelques-uns des événements qui ont changé le monde.
+</p>
+
+<div class="timeline">
+
+<div class="event">
+<h3>🏴‍☠️ L'ère de Roger</h3>
+<p>
+Gol D. Roger atteint Laugh Tale et déclenche
+la Grande Ère de la Piraterie.
+</p>
+</div>
+
+<div class="event">
+<h3>🌊 Début du voyage</h3>
+<p>
+Luffy prend la mer avec un objectif :
+devenir le Roi des Pirates.
+</p>
+</div>
+
+<div class="event">
+<h3>⚔️ Marineford</h3>
+<p>
+La guerre au sommet bouleverse
+l'équilibre du monde.
+</p>
+</div>
+
+<div class="event">
+<h3>🐉 Wano</h3>
+<p>
+Luffy et ses alliés affrontent Kaido
+et libèrent le pays de Wano.
+</p>
+</div>
+
+<div class="event">
+<h3>🏝️ Egghead</h3>
+<p>
+Les Mugiwara arrivent sur l'île futuriste
+du scientifique Vegapunk.
+</p>
+</div>
+
+<div class="event">
+<h3>🌍 Saga finale</h3>
+<p>
+Les secrets du monde et le One Piece
+se rapprochent du centre de l'histoire.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     RANDOM
+========================= -->
+
+<section class="container" id="random">
+
+<h2 class="title">🎲 Personnage aléatoire</h2>
+
+<p class="subtitle">
+Tu ne sais pas quel personnage découvrir ?
+Laisse Grand Line choisir pour toi.
+</p>
+
+<div class="random">
+
+<div class="random-img">
+
+<img
+id="randomImage"
+src=""
+alt=""
+>
+
+</div>
+
+<div
+class="random-name"
+id="randomName"
+>
+Clique !
+</div>
+
+<div
+class="random-info"
+id="randomInfo"
+>
+Découvre un personnage au hasard.
+</div>
+
+<button
+class="btn"
+onclick="randomCharacter()"
+>
+🎲 Tirer au sort
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section class="container" id="quiz">
+
+<h2 class="title">🧠 Quiz One Piece</h2>
+
+<p class="subtitle">
+Teste tes connaissances et découvre ton score.
+</p>
+
+<div class="quiz-box">
+
+<div id="quizGame"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MINI-JEUX
+========================= -->
+
+<section class="container" id="minigames">
+
+<h2 class="title">🎮 Mini-jeux</h2>
+
+<p class="subtitle">
+Bingo, mémoire et devinettes avec plusieurs personnages de One Piece.
+</p>
+
+<div class="game-tabs">
+
+<button
+class="game-tab active"
+onclick="switchGame('bingo',this)"
+>
+🎯 Bingo
+</button>
+
+<button
+class="game-tab"
+onclick="switchGame('memory',this)"
+>
+🧩 Mémoire
+</button>
+
+<button
+class="game-tab"
+onclick="switchGame('guesswho',this)"
+>
+❓ Qui suis-je ?
+</button>
+
+</div>
+
+<!-- BINGO -->
+
+<div class="game-panel active" id="panel-bingo">
+
+<div class="game-box">
+
+<div class="game-head">
+<h3>🎯 Bingo Grand Line</h3>
+<button class="btn dark" onclick="newBingo()">🔄 Nouvelle grille</button>
+</div>
+
+<p class="subtitle" style="margin-bottom:15px">
+Clique sur les personnages pour les cocher. Aligne 5 cases (ligne, colonne ou diagonale) pour gagner.
+</p>
+
+<div class="bingo-grid" id="bingoGrid"></div>
+
+<div class="bingo-win" id="bingoWin">🏆 BINGO ! Grille complétée !</div>
+
+</div>
+
+</div>
+
+<!-- MEMORY -->
+
+<div class="game-panel" id="panel-memory">
+
+<div class="game-box">
+
+<div class="game-head">
+<h3>🧩 Jeu de mémoire</h3>
+<button class="btn dark" onclick="newMemory()">🔄 Recommencer</button>
+</div>
+
+<div class="memory-stats">
+<span id="memoryMoves">Coups : 0</span>
+<span id="memoryPairs">Paires : 0/8</span>
+</div>
+
+<div class="memory-grid" id="memoryGrid"></div>
+
+</div>
+
+</div>
+
+<!-- QUI SUIS-JE -->
+
+<div class="game-panel" id="panel-guesswho">
+
+<div class="game-box">
+
+<div class="game-head">
+<h3>❓ Qui suis-je ?</h3>
+<button class="btn dark" onclick="newGuessWho()">🔄 Nouveau personnage</button>
+</div>
+
+<div class="guess-clues" id="guessClues"></div>
+
+<button class="btn" id="guessNextBtn" onclick="nextClue()">💡 Indice suivant</button>
+
+<div class="guess-options" id="guessOptions"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="footer-logo">
+☠ ONE PIECE
+</div>
+
+<p>
+ONE PIECE FAN SITE — Projet non officiel
+</p>
+
+<br>
+
+<p>
+Made with ❤️ by a fan
+</p>
+
+</footer>
+
+
+<div class="signature">
+pklagg
+</div>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+class="modal"
+id="modal"
+onclick="closeModalOutside(event)"
+>
+
+<div
+class="modal-box"
+>
+
+<div
+class="close"
+onclick="closeModal()"
+>
+×
+</div>
+
+<div id="modalContent"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PERSONNAGES
+===================================================== */
+
+const characters=[
+
+{
+name:"Monkey D. Luffy",
+group:"Mugiwara",
+emoji:"👒",
+img:"images/luffy.jpg",
+bounty:3000000000,
+fruit:"Gomu Gomu no Mi / Hito Hito no Mi, modèle Nika"
+},
+
+{
+name:"Roronoa Zoro",
+group:"Mugiwara",
+emoji:"⚔️",
+img:"images/zoro.jpg",
+bounty:1111000000,
+fruit:"Aucun"
+},
+
+{
+name:"Nami",
+group:"Mugiwara",
+emoji:"🍊",
+img:"images/nami.jpg",
+bounty:366000000,
+fruit:"Aucun"
+},
+
+{
+name:"Usopp",
+group:"Mugiwara",
+emoji:"🎯",
+img:"images/usopp.jpg",
+bounty:500000000,
+fruit:"Aucun"
+},
+
+{
+name:"Sanji",
+group:"Mugiwara",
+emoji:"🔥",
+img:"images/sanji.jpg",
+bounty:1032000000,
+fruit:"Aucun"
+},
+
+{
+name:"Tony Tony Chopper",
+group:"Mugiwara",
+emoji:"🦌",
+img:"images/chopper.jpg",
+bounty:1000,
+fruit:"Hito Hito no Mi"
+},
+
+{
+name:"Nico Robin",
+group:"Mugiwara",
+emoji:"🌸",
+img:"images/robin.jpg",
+bounty:930000000,
+fruit:"Hana Hana no Mi"
+},
+
+{
+name:"Franky",
+group:"Mugiwara",
+emoji:"🤖",
+img:"images/franky.jpg",
+bounty:394000000,
+fruit:"Aucun"
+},
+
+{
+name:"Brook",
+group:"Mugiwara",
+emoji:"💀",
+img:"images/brook.jpg",
+bounty:383000000,
+fruit:"Yomi Yomi no Mi"
+},
+
+{
+name:"Jinbe",
+group:"Mugiwara",
+emoji:"🌊",
+img:"images/jinbe.jpg",
+bounty:1100000000,
+fruit:"Aucun"
+},
+
+{
+name:"Shanks",
+group:"Pirates",
+emoji:"🍷",
+img:"images/shanks.jpg",
+bounty:4048900000,
+fruit:"Aucun"
+},
+
+{
+name:"Marshall D. Teach",
+group:"Pirates",
+emoji:"🌑",
+img:"images/blackbeard.jpg",
+bounty:3996000000,
+fruit:"Yami Yami no Mi + Gura Gura no Mi"
+},
+
+{
+name:"Dracule Mihawk",
+group:"Pirates",
+emoji:"🗡️",
+img:"images/mihawk.jpg",
+bounty:3590000000,
+fruit:"Aucun"
+},
+
+{
+name:"Buggy",
+group:"Pirates",
+emoji:"🤡",
+img:"images/buggy.jpg",
+bounty:3189000000,
+fruit:"Bara Bara no Mi"
+},
+
+{
+name:"Trafalgar Law",
+group:"Pirates",
+emoji:"💉",
+img:"images/law.jpg",
+bounty:3000000000,
+fruit:"Ope Ope no Mi"
+},
+
+{
+name:"Eustass Kid",
+group:"Pirates",
+emoji:"🧲",
+img:"images/kid.jpg",
+bounty:3000000000,
+fruit:"Jiki Jiki no Mi"
+},
+
+{
+name:"Gol D. Roger",
+group:"Pirates",
+emoji:"👑",
+img:"images/roger.jpg",
+bounty:5564800000,
+fruit:"Aucun"
+},
+
+{
+name:"Edward Newgate",
+group:"Pirates",
+emoji:"🌊",
+img:"images/whitebeard.jpg",
+bounty:5046000000,
+fruit:"Gura Gura no Mi"
+},
+
+{
+name:"Kaido",
+group:"Pirates",
+emoji:"🐲",
+img:"images/kaido.jpg",
+bounty:4611100000,
+fruit:"Uo Uo no Mi, modèle Seiryu"
+},
+
+{
+name:"Charlotte Linlin",
+group:"Pirates",
+emoji:"🍰",
+img:"images/bigmom.jpg",
+bounty:4388000000,
+fruit:"Soru Soru no Mi"
+},
+
+{
+name:"Bartolomeo",
+group:"Pirates",
+emoji:"🛡️",
+img:"images/bartolomeo.jpg",
+bounty:200000000,
+fruit:"Bari Bari no Mi"
+},
+
+{
+name:"Borsalino Kizaru",
+group:"Marine",
+emoji:"✨",
+img:"images/kizaru.jpg",
+bounty:5000000000,
+fruit:"Pika Pika no Mi"
+},
+
+{
+name:"Issho Fujitora",
+group:"Marine",
+emoji:"🌑",
+img:"images/fujitora.jpg",
+bounty:4800000000,
+fruit:"Zushi Zushi no Mi"
+},
+
+{
+name:"Ryokugyu Aramaki",
+group:"Marine",
+emoji:"🌳",
+img:"images/ryokugyu.jpg",
+bounty:4500000000,
+fruit:"Ryu Ryu no Mi, modèle Buruutosaurusu"
+},
+
+{
+name:"Sakazuki Akainu",
+group:"Marine",
+emoji:"🌋",
+img:"images/akainu.jpg",
+bounty:5500000000,
+fruit:"Magu Magu no Mi"
+},
+
+{
+name:"Kuzan Aokiji",
+group:"Marine",
+emoji:"❄️",
+img:"images/aokiji.jpg",
+bounty:0,
+fruit:"Hie Hie no Mi"
+},
+
+{
+name:"Monkey D. Garp",
+group:"Marine",
+emoji:"👊",
+img:"images/garp.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Sengoku",
+group:"Marine",
+emoji:"🧘",
+img:"images/sengoku.jpg",
+bounty:0,
+fruit:"Hito Hito no Mi, modèle Daibutsu"
+},
+
+{
+name:"Monkey D. Dragon",
+group:"Révolutionnaires",
+emoji:"🐉",
+img:"images/dragon.jpg",
+bounty:0,
+fruit:"Inconnue"
+},
+
+{
+name:"Sabo",
+group:"Révolutionnaires",
+emoji:"🔥",
+img:"images/sabo.jpg",
+bounty:602000000,
+fruit:"Mera Mera no Mi"
+},
+
+{
+name:"Yamato",
+group:"Alliés",
+emoji:"🐺",
+img:"images/yamato.jpg",
+bounty:1000000000,
+fruit:"Inu Inu no Mi, modèle Okuchi no Makami"
+}
+
+];
+
+
+/* =====================================================
+   ARCS
+===================================================== */
+
+const arcs=[
+
+{
+name:"Romance Dawn",
+saga:"East Blue",
+location:"🏝️ Île de Dawn",
+image:"images/romance-dawn.jpg",
+episodes:"1",
+chapters:"1 — 7",
+enemy:"Higuma",
+description:
+"Luffy quitte le village de Fusha après des années passées auprès de Shanks le Roux. Il affronte le bandit Higuma et recrute Roronoa Zoro, le chasseur de pirates, comme premier membre de son équipage.",
+moment:
+"La rencontre entre Luffy et Zoro."
+},
+
+{
+name:"Orange Town",
+saga:"East Blue",
+location:"🏘️ Orange Town",
+image:"images/orange-town.jpg",
+episodes:"2 — 8",
+chapters:"8 — 21",
+enemy:"Buggy le Clown",
+description:
+"Luffy et Zoro sauvent Nami, une voleuse alliée aux pirates, d'un village terrorisé par Buggy le Clown et son second Cabaji. Nami rejoint temporairement l'équipage pour son propre intérêt.",
+moment:
+"La première grande victoire de l'équipage contre Buggy."
+},
+
+{
+name:"Syrup Village",
+saga:"East Blue",
+location:"🌲 Syrup Village",
+image:"images/syrup-village.jpg",
+episodes:"9 — 18",
+chapters:"22 — 41",
+enemy:"Kuro",
+description:
+"L'équipage débarque à Syrup Village où Usopp, un menteur au grand cœur, tente de protéger sa ville de l'ancien pirate Kuro et de ses hommes, Jango et Sham et Buchi.",
+moment:
+"Usopp rejoint l'équipage après la défaite de Kuro."
+},
+
+{
+name:"Baratie",
+saga:"East Blue",
+location:"🍽️ Le Baratie",
+image:"images/baratie.jpg",
+episodes:"19 — 30",
+chapters:"42 — 68",
+enemy:"Don Krieg",
+description:
+"Sur le restaurant flottant du Baratie, l'équipage affronte le pirate Don Krieg et son bras droit Gin, pendant que le redoutable chasseur de pirates Dracule Mihawk fait une apparition marquante face à Zoro. Sanji le cuisinier rejoint l'équipage.",
+moment:
+"La première défaite écrasante de Zoro face à Mihawk."
+},
+
+{
+name:"Arlong Park",
+saga:"East Blue",
+location:"🐟 Cocoyasi Village",
+image:"images/arlong-park.jpg",
+episodes:"31 — 44",
+chapters:"69 — 95",
+enemy:"Arlong",
+description:
+"Nami révèle son passé douloureux sous la coupe de l'homme-poisson Arlong, qui opprime son village avec ses hommes Hatchan, Kuroobi et Chew. Luffy déclare la guerre à Arlong pour libérer Nami.",
+moment:
+"Nami rejoint officiellement l'équipage du Chapeau de Paille."
+},
+
+{
+name:"Loguetown",
+saga:"East Blue",
+location:"⚓ Loguetown",
+image:"images/loguetown.jpg",
+episodes:"44 — 53",
+chapters:"96 — 100",
+enemy:"Buggy et Smoker",
+description:
+"L'équipage traverse la ville où Gol D. Roger est né et est mort. Buggy le Clown revient se venger pendant que le capitaine de la Marine Smoker et l'enquêtrice Tashigi tentent d'arrêter Luffy avant son entrée sur Grand Line.",
+moment:
+"Luffy entre sur Grand Line malgré la Marine."
+},
+
+{
+name:"Reverse Mountain",
+saga:"Grand Line",
+location:"⛰️ Reverse Mountain",
+image:"images/reverse-mountain.jpg",
+episodes:"54 — 55",
+chapters:"100 — 102",
+enemy:"Laboon (mésentente)",
+description:
+"Petit arc de transition où l'équipage franchit la montagne renversée pour entrer sur Grand Line et rencontre la baleine géante Laboon, gardée par le pirate Crocus.",
+moment:
+"L'entrée officielle sur Grand Line."
+},
+
+{
+name:"Whisky Peak",
+saga:"Grand Line",
+location:"🌵 Whisky Peak",
+image:"images/whisky-peak.jpg",
+episodes:"56 — 60",
+chapters:"103 — 114",
+enemy:"Miss Wednesday et Mr.9 (Baroque Works)",
+description:
+"L'équipage découvre que toute une ville de chasseurs de primes leur a tendu un piège pour le compte de l'organisation secrète Baroque Works, dirigée par Mr.5 et Miss Valentine. Vivi, une princesse infiltrée, croise leur route.",
+moment:
+"La première apparition de Vivi et de Baroque Works."
+},
+
+{
+name:"Little Garden",
+saga:"Grand Line",
+location:"🦕 Little Garden",
+image:"images/little-garden.jpg",
+episodes:"61 — 67",
+chapters:"115 — 129",
+enemy:"Mr.3",
+description:
+"Sur une île préhistorique peuplée de géants et de dinosaures, l'équipage affronte l'homme de cire Mr.3 et sa complice Miss Golden Week, tout en se liant d'amitié avec les géants Dorry et Brogy.",
+moment:
+"L'amitié centenaire de Dorry et Brogy est révélée."
+},
+
+{
+name:"Drum Island",
+saga:"Grand Line",
+location:"❄️ Drum Island",
+image:"images/drum-island.jpg",
+episodes:"68 — 78",
+chapters:"130 — 152",
+enemy:"Wapol",
+description:
+"Sur l'île enneigée de Drum, l'équipage affronte le roi tyrannique Wapol et ses subordonnés Chess et Kuromarimo, tout en rencontrant Tony Tony Chopper, le renne médecin, ainsi que le docteur Kureha.",
+moment:
+"Chopper rejoint l'équipage du Chapeau de Paille."
+},
+
+{
+name:"Alabasta",
+saga:"Grand Line",
+location:"🏜️ Royaume d'Alabasta",
+image:"images/alabasta.jpg",
+episodes:"79 — 96",
+chapters:"153 — 217",
+enemy:"Crocodile",
+description:
+"Les Mugiwara arrivent dans le royaume d'Alabasta pour empêcher une guerre civile orchestrée par Sir Crocodile et son organisation Baroque Works, dont les agents Mr.1, Mr.2 Bon Clay et Miss All Sunday (Nico Robin).",
+moment:
+"Luffy affronte Crocodile pour sauver le royaume."
+},
+
+{
+name:"Jaya",
+saga:"Grand Line",
+location:"🏴‍☠️ Île de Jaya",
+image:"images/jaya.jpg",
+episodes:"145 — 152",
+chapters:"236 — 251",
+enemy:"Bellamy",
+description:
+"L'équipage se moque de la légende du Ciel et croise le pirate arrogant Bellamy la Hyène et son second Sarquiss, avant de suivre les indications de l'inventeur excentrique Montblanc Cricket vers Skypiea.",
+moment:
+"Luffy laisse Bellamy l'humilier sans se battre."
+},
+
+{
+name:"Skypiea",
+saga:"Grand Line",
+location:"☁️ Île céleste",
+image:"images/skypiea.jpg",
+episodes:"153 — 206",
+chapters:"236 — 302",
+enemy:"Ener",
+description:
+"Les Mugiwara atteignent une île flottant dans le ciel et découvrent une civilisation coupée du monde, dominée par le faux dieu Ener et ses prêtres Satori, Gedatsu et Shura.",
+moment:
+"Le conflit avec Ener et les secrets de l'île céleste."
+},
+
+{
+name:"Long Ring Long Land",
+saga:"Grand Line",
+location:"🏝️ Long Ring Long Land",
+image:"images/long-ring.jpg",
+episodes:"207 — 219",
+chapters:"303 — 321",
+enemy:"Foxy",
+description:
+"L'équipage affronte le capitaine Foxy le Renard et ses Pirates Foxy lors du Davy Back Fight, un jeu de compétitions maritimes, et manque de perdre l'un des siens.",
+moment:
+"Robin choisit de rester avec les Mugiwara."
+},
+
+{
+name:"Water 7",
+saga:"Grand Line",
+location:"🚂 Water 7",
+image:"images/water7.jpg",
+episodes:"229 — 263",
+chapters:"322 — 374",
+enemy:"CP9",
+description:
+"L'équipage arrive à Water 7 pour réparer le Going Merry mais se heurte aux agents secrets du CP9, menés par Rob Lucci, et à leur charpentier Franky, tandis que Nico Robin s'éloigne du groupe.",
+moment:
+"La séparation temporaire de l'équipage."
+},
+
+{
+name:"Enies Lobby",
+saga:"Grand Line",
+location:"⚖️ Enies Lobby",
+image:"images/enies-lobby.jpg",
+episodes:"264 — 312",
+chapters:"375 — 430",
+enemy:"Rob Lucci et le CP9",
+description:
+"Les Mugiwara déclarent ouvertement la guerre au Gouvernement Mondial pour sauver Nico Robin, affrontant Rob Lucci, Kaku, Kalifa et le reste du CP9 sur l'île judiciaire d'Enies Lobby.",
+moment:
+"L'affrontement entre Luffy et Rob Lucci, et la naissance du Thousand Sunny."
+},
+
+{
+name:"Thriller Bark",
+saga:"Grand Line",
+location:"👻 Thriller Bark",
+image:"images/thriller-bark.jpg",
+episodes:"337 — 381",
+chapters:"442 — 489",
+enemy:"Gecko Moria",
+description:
+"Sur une île-navire hantée, l'équipage affronte le Shichibukai Gecko Moria, son bras droit Absalom et le sinistre Hogback, avant de recruter le squelette musicien Brook.",
+moment:
+"Brook rejoint l'équipage et Zoro sauve Luffy en encaissant ses blessures."
+},
+
+{
+name:"Sabaody Archipelago",
+saga:"Grand Line",
+location:"🌳 Archipel Sabaody",
+image:"images/sabaody.jpg",
+episodes:"382 — 405",
+chapters:"490 — 513",
+enemy:"Bartholomew Kuma et la Marine",
+description:
+"L'équipage découvre l'esclavage organisé par les Nobles Mondiaux, affronte l'amiral Kizaru et se fait disperser aux quatre coins du monde par le Shichibukai Bartholomew Kuma.",
+moment:
+"La dispersion de l'équipage avant deux années d'entraînement."
+},
+
+{
+name:"Amazon Lily & Impel Down",
+saga:"Grand Line",
+location:"🏝️ Amazon Lily / Impel Down",
+image:"images/impel-down.jpg",
+episodes:"406 — 425 / 436 — 452",
+chapters:"514 — 549",
+enemy:"Magellan",
+description:
+"Luffy est recueilli par l'impératrice Boa Hancock sur l'île des femmes, avant de s'infiltrer dans la prison sous-marine d'Impel Down pour sauver son frère Ace, affrontant le geôlier venimeux Magellan.",
+moment:
+"L'évasion massive des prisonniers d'Impel Down."
+},
+
+{
+name:"Marineford",
+saga:"Grand Line",
+location:"⚓ Quartier général de la Marine",
+image:"images/marineford.jpg",
+episodes:"457 — 489",
+chapters:"550 — 580",
+enemy:"La Marine (Akainu, Kizaru, Aokiji)",
+description:
+"Une guerre gigantesque oppose les pirates de Barbe Blanche et leurs alliés à la Marine tout entière, avec ses amiraux Akainu, Kizaru et Aokiji, pour déterminer le sort d'Ace et de Portgas D. Ace.",
+moment:
+"La mort de Barbe Blanche et d'Ace bouleverse l'équilibre du monde."
+},
+
+{
+name:"Fish-Man Island",
+saga:"Nouveau Monde",
+location:"🐠 L'île des Hommes-Poissons",
+image:"images/fishman-island.jpg",
+episodes:"517 — 574",
+chapters:"603 — 653",
+enemy:"Hody Jones",
+description:
+"Deux ans plus tard, l'équipage reformé plonge vers l'île des hommes-poissons où le pirate raciste Hody Jones et son allié Vander Decken IX menacent de renverser la reine Otohime et sa famille.",
+moment:
+"Luffy empêche la guerre entre humains et hommes-poissons."
+},
+
+{
+name:"Punk Hazard",
+saga:"Nouveau Monde",
+location:"☢️ Punk Hazard",
+image:"images/punk-hazard.jpg",
+episodes:"575 — 628",
+chapters:"654 — 700",
+enemy:"Caesar Clown",
+description:
+"Sur une île à moitié gelée et moitié brûlante, l'équipage s'allie temporairement à Trafalgar Law pour affronter le scientifique Caesar Clown, qui expérimente des gaz toxiques sur des enfants.",
+moment:
+"La formation de l'Alliance Law-Luffy."
+},
+
+{
+name:"Dressrosa",
+saga:"Nouveau Monde",
+location:"🌹 Dressrosa",
+image:"images/dressrosa.jpg",
+episodes:"629 — 746",
+chapters:"700 — 801",
+enemy:"Donquixote Doflamingo",
+description:
+"Luffy et ses alliés affrontent le Shichibukai Donquixote Doflamingo et ses exécutants Trebol, Pica, Diamante et Vergo dans une bataille gigantesque pour libérer Dressrosa et le royaume de Riku.",
+moment:
+"Luffy dévoile le Gear Fourth et bat Doflamingo."
+},
+
+{
+name:"Zou",
+saga:"Nouveau Monde",
+location:"🐘 Zou",
+image:"images/zou.jpg",
+episodes:"751 — 782",
+chapters:"803 — 824",
+enemy:"Jack",
+description:
+"Sur le dos d'un éléphant géant vivant depuis des siècles, l'équipage retrouve Nekomamushi et Inuarashi et affronte Jack, l'un des Tobiroppo de Kaido, tout en apprenant l'existence de Wano.",
+moment:
+"La rencontre avec Yamato est annoncée."
+},
+
+{
+name:"Whole Cake Island",
+saga:"Nouveau Monde",
+location:"🍰 Totto Land",
+image:"images/whole-cake.jpg",
+episodes:"783 — 877",
+chapters:"825 — 902",
+enemy:"Charlotte Linlin (Big Mom)",
+description:
+"Luffy part récupérer Sanji, promis à un mariage forcé, et se retrouve au cœur du territoire du Yonko Big Mom, affrontant ses enfants Katakuri, Cracker et Perospero.",
+moment:
+"Luffy affronte Katakuri et échappe de justesse à Big Mom."
+},
+
+{
+name:"Levely (Reverie)",
+saga:"Nouveau Monde",
+location:"🏛️ Mary Geoise",
+image:"images/levely.jpg",
+episodes:"878 — 880",
+chapters:"901 — 908",
+enemy:"Gouvernement Mondial",
+description:
+"Petit arc politique montrant la réunion des rois du monde entier à Mary Geoise, où les tensions entre le Gouvernement Mondial et les puissances pirates s'intensifient.",
+moment:
+"Sabo est aperçu près de la salle du trône vide."
+},
+
+{
+name:"Wano",
+saga:"Nouveau Monde",
+location:"🏯 Pays de Wano",
+image:"images/wano.jpg",
+episodes:"890 — 1085",
+chapters:"909 — 1057",
+enemy:"Kaido et Kurozumi Orochi",
+description:
+"Une alliance gigantesque menée par Luffy, Law et Kid se forme pour libérer Wano du Yonko Kaido et du shogun tyrannique Kurozumi Orochi, avec l'aide de Yamato, la fille de Kaido.",
+moment:
+"L'éveil du pouvoir de Nika et la chute de Kaido."
+},
+
+{
+name:"Egghead",
+saga:"Saga Finale",
+location:"🏝️ Île d'Egghead",
+image:"images/egghead.jpg",
+episodes:"1086+",
+chapters:"1058+",
+enemy:"Le Gouvernement Mondial et les CP0",
+description:
+"Les Mugiwara arrivent sur l'île futuriste du scientifique Vegapunk et affrontent les agents du CP0 et l'amiral Kizaru, découvrant des vérités majeures sur le Siècle Vide et le monde.",
+moment:
+"Les secrets de Vegapunk et les événements qui bouleversent le monde."
+}
+
+];
+
+
+/* =====================================================
+   FRUITS
+===================================================== */
+
+const fruits=[
+
+{
+name:"Gomu Gomu no Mi",
+type:"Zoan mythique",
+owner:"Luffy",
+emoji:"👒",
+img:"images/fruit-luffy.jpg",
+description:"Le pouvoir associé au modèle Nika, donnant à son utilisateur une liberté physique exceptionnelle."
+},
+
+{
+name:"Ope Ope no Mi",
+type:"Paramecia",
+owner:"Trafalgar Law",
+emoji:"💉",
+img:"images/fruit-law.jpg",
+description:"Permet de créer une ROOM dans laquelle l'utilisateur peut manipuler les objets et personnes."
+},
+
+{
+name:"Mera Mera no Mi",
+type:"Logia",
+owner:"Sabo",
+emoji:"🔥",
+img:"images/fruit-mera.jpg",
+description:"Permet de créer, contrôler et devenir du feu."
+},
+
+{
+name:"Pika Pika no Mi",
+type:"Logia",
+owner:"Kizaru",
+emoji:"✨",
+img:"images/fruit-pika.jpg",
+description:"Permet de créer, contrôler et devenir la lumière."
+},
+
+{
+name:"Hie Hie no Mi",
+type:"Logia",
+owner:"Kuzan",
+emoji:"❄️",
+img:"images/fruit-hie.jpg",
+description:"Permet de créer et contrôler la glace."
+},
+
+{
+name:"Magu Magu no Mi",
+type:"Logia",
+owner:"Akainu",
+emoji:"🌋",
+img:"images/fruit-magu.jpg",
+description:"Permet de créer et contrôler le magma."
+},
+
+{
+name:"Gura Gura no Mi",
+type:"Paramecia",
+owner:"Barbe Blanche",
+emoji:"🌊",
+img:"images/fruit-gura.jpg",
+description:"Permet de générer de puissantes vibrations capables de provoquer des tremblements."
+},
+
+{
+name:"Hana Hana no Mi",
+type:"Paramecia",
+owner:"Nico Robin",
+emoji:"🌸",
+img:"images/fruit-hana.jpg",
+description:"Permet de faire apparaître des parties du corps de l'utilisateur sur différentes surfaces."
+},
+
+{
+name:"Bari Bari no Mi",
+type:"Paramecia",
+owner:"Bartolomeo",
+emoji:"🛡️",
+img:"images/fruit-bari.jpg",
+description:"Permet de créer des barrières extrêmement résistantes."
+},
+
+{
+name:"Uo Uo no Mi",
+type:"Zoan mythique",
+owner:"Kaido",
+emoji:"🐉",
+img:"images/fruit-kaido.jpg",
+description:"Permet notamment de prendre une forme de dragon oriental."
+}
+
+];
+
+
+/* =====================================================
+   OUTILS
+===================================================== */
+
+function formatBounty(n){
+
+if(!n)
+return "Inconnue";
+
+return n.toLocaleString("fr-FR")+" B";
+
+}
+
+
+/* =====================================================
+   PERSONNAGES
+===================================================== */
+
+function imageHTML(c){
+
+return `
+<img
+src="${c.img}"
+alt="${c.name}"
+onerror="this.style.display='none';this.parentElement.innerHTML='<span style=&quot;font-size:70px&quot;>${c.emoji}</span>'"
+>
+`;
+
+}
+
+
+function renderCharacters(){
+
+const search=
+document.getElementById("search")
+.value
+.toLowerCase();
+
+const group=
+document.getElementById("group")
+.value;
+
+const list=characters.filter(c=>
+
+c.name
+.toLowerCase()
+.includes(search)
+
+&&
+
+(group==="all"||c.group===group)
+
+);
+
+
+document.getElementById("characters").innerHTML=
+
+list.map(c=>`
+
+<div class="card">
+
+<div class="card-img">
+
+${imageHTML(c)}
+
+</div>
+
+<div class="card-body">
+
+<h3>
+${c.name}
+</h3>
+
+<div class="group">
+${c.group}
+</div>
+
+<div class="bounty">
+${formatBounty(c.bounty)}
+</div>
+
+<div class="card-fruit">
+🍎 ${c.fruit}
+</div>
+
+<button
+class="small-btn"
+onclick="openCharacter('${c.name}')"
+>
+Voir la fiche
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   WANTED
+===================================================== */
+
+function renderWanted(){
+
+const filter=
+document.getElementById("bountyFilter").value;
+
+let list=characters
+.filter(c=>c.bounty>0)
+.sort((a,b)=>b.bounty-a.bounty);
+
+if(filter==="billion")
+list=list.filter(c=>c.bounty>=1000000000);
+
+if(filter==="500")
+list=list.filter(c=>c.bounty>=500000000);
+
+if(filter==="under")
+list=list.filter(c=>c.bounty<500000000);
+
+
+document.getElementById("wanted").innerHTML=
+
+list.map((c,i)=>`
+
+<div
+class="poster"
+style="--r:${i%2===0?'-1':'1'}deg"
+>
+
+<div class="poster-inner">
+
+<div class="poster-top">
+MARINE HEADQUARTERS
+</div>
+
+<div class="wanted-title">
+WANTED
+</div>
+
+<div class="poster-subtitle">
+DEAD OR ALIVE
+</div>
+
+<img
+src="${c.img}"
+alt="${c.name}"
+onerror="this.style.opacity='0'"
+>
+
+<h3>
+${c.name}
+</h3>
+
+<div class="poster-dead">
+DEAD OR ALIVE
+</div>
+
+<div class="money">
+${formatBounty(c.bounty)}
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   FRUITS
+===================================================== */
+
+function renderFruits(){
+
+document.getElementById("fruitsList").innerHTML=
+
+fruits.map(f=>`
+
+<div class="fruit">
+
+<div class="fruit-img">
+
+<img
+src="${f.img}"
+alt="${f.name}"
+onerror="
+this.style.display='none';
+this.parentElement.innerHTML='<span class=&quot;fruit-icon&quot;>${f.emoji}</span>'
+"
+>
+
+</div>
+
+<div class="fruit-body">
+
+<h3>
+${f.name}
+</h3>
+
+<p>
+<b>${f.type}</b> — ${f.owner}
+</p>
+
+<p style="margin-top:10px">
+${f.description}
+</p>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   ARCS
+===================================================== */
+
+function renderArcs(filter="all"){
+
+const list=arcs.filter(a=>
+filter==="all"||a.saga===filter
+);
+
+document.getElementById("arcRoute").innerHTML=
+
+list.map((arc,index)=>`
+
+<article
+class="arc-card"
+onclick="openArc('${arc.name}')"
+>
+
+<img
+class="arc-image"
+src="${arc.image}"
+alt="${arc.name}"
+onerror="this.style.background='linear-gradient(135deg,#182330,#080b10)'"
+>
+
+<div class="arc-content">
+
+<div class="arc-number">
+ARC ${String(index+1).padStart(2,"0")}
+</div>
+
+<h3>
+${arc.name}
+</h3>
+
+<div class="arc-location">
+${arc.location}
+</div>
+
+<p>
+${arc.description}
+</p>
+
+<div class="arc-info">
+
+<span>
+📺 ${arc.episodes}
+</span>
+
+<span>
+📖 ${arc.chapters}
+</span>
+
+<span>
+👑 ${arc.enemy}
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+
+function filterArcs(type,button){
+
+document
+.querySelectorAll(".arc-filter")
+.forEach(b=>b.classList.remove("active"));
+
+button.classList.add("active");
+
+renderArcs(type);
+
+}
+
+
+/* =====================================================
+   RANDOM
+===================================================== */
+
+function randomCharacter(){
+
+const c=
+characters[
+Math.floor(
+Math.random()*characters.length
+)
+];
+
+const image=
+document.getElementById("randomImage");
+
+image.src=c.img;
+image.alt=c.name;
+
+document.getElementById("randomName")
+.innerHTML=c.name;
+
+document.getElementById("randomInfo")
+.innerHTML=
+`${c.group} • ${formatBounty(c.bounty)} • ${c.fruit}`;
+
+}
+
+
+/* =====================================================
+   MODAL PERSONNAGE
+===================================================== */
+
+function openCharacter(name){
+
+const c=
+characters.find(x=>x.name===name);
+
+if(!c)return;
+
+document.getElementById("modalContent")
+.innerHTML=`
+
+<h2 class="modal-title">
+${c.name}
+</h2>
+
+<div class="modal-sub">
+${c.group}
+</div>
+
+<img
+class="modal-img"
+src="${c.img}"
+alt="${c.name}"
+onerror="this.style.display='none'"
+>
+
+<div class="modal-info">
+
+<div class="modal-stat">
+<small>💰 Prime</small>
+<b>${formatBounty(c.bounty)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🍎 Fruit</small>
+<b>${c.fruit}</b>
+</div>
+
+<div class="modal-stat">
+<small>🏴‍☠️ Groupe</small>
+<b>${c.group}</b>
+</div>
+
+<div class="modal-stat">
+<small>👤 Personnage</small>
+<b>${c.name}</b>
+</div>
+
+</div>
+
+<p class="modal-description">
+
+${c.name} est un personnage de l'univers
+de One Piece appartenant au groupe
+<strong>${c.group}</strong>.
+
+</p>
+
+`;
+
+document
+.getElementById("modal")
+.classList.add("active");
+
+}
+
+
+/* =====================================================
+   MODAL ARC
+===================================================== */
+
+function openArc(name){
+
+const arc=
+arcs.find(a=>a.name===name);
+
+if(!arc)return;
+
+document.getElementById("modalContent")
+.innerHTML=`
+
+<h2 class="modal-title">
+${arc.name}
+</h2>
+
+<div class="modal-sub">
+${arc.location}
+</div>
+
+<img
+class="modal-img"
+src="${arc.image}"
+alt="${arc.name}"
+>
+
+<p class="modal-description">
+${arc.description}
+</p>
+
+<div class="modal-info">
+
+<div class="modal-stat">
+<small>📺 Épisodes</small>
+<b>${arc.episodes}</b>
+</div>
+
+<div class="modal-stat">
+<small>📖 Chapitres</small>
+<b>${arc.chapters}</b>
+</div>
+
+<div class="modal-stat">
+<small>👑 Antagoniste</small>
+<b>${arc.enemy}</b>
+</div>
+
+<div class="modal-stat">
+<small>🔥 Moment important</small>
+<b>${arc.moment}</b>
+</div>
+
+</div>
+
+`;
+
+document
+.getElementById("modal")
+.classList.add("active");
+
+}
+
+
+function closeModal(){
+
+document
+.getElementById("modal")
+.classList.remove("active");
+
+}
+
+
+function closeModalOutside(event){
+
+if(event.target.id==="modal"){
+closeModal();
+}
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions=[
+
+{
+q:"Qui est le capitaine des Mugiwara ?",
+a:[
+"Roronoa Zoro",
+"Monkey D. Luffy",
+"Sanji",
+"Shanks"
+],
+c:1
+},
+
+{
+q:"Quelle est la prime de Gol D. Roger ?",
+a:[
+"3 000 000 000",
+"4 048 900 000",
+"5 564 800 000",
+"6 000 000 000"
+],
+c:2
+},
+
+{
+q:"Quel fruit possède Trafalgar Law ?",
+a:[
+"Ope Ope no Mi",
+"Mera Mera no Mi",
+"Hie Hie no Mi",
+"Pika Pika no Mi"
+],
+c:0
+},
+
+{
+q:"Qui possède le Pika Pika no Mi ?",
+a:[
+"Akainu",
+"Kizaru",
+"Kuzan",
+"Sabo"
+],
+c:1
+},
+
+{
+q:"Quel est le rêve de Luffy ?",
+a:[
+"Devenir Amiral",
+"Devenir Roi des Pirates",
+"Devenir Yonko",
+"Devenir Révolutionnaire"
+],
+c:1
+},
+
+{
+q:"Qui est le père de Luffy ?",
+a:[
+"Monkey D. Garp",
+"Shanks",
+"Monkey D. Dragon",
+"Gol D. Roger"
+],
+c:2
+},
+
+{
+q:"Quel est le surnom de Zoro ?",
+a:[
+"Le Chasseur de Pirates",
+"Le Démon",
+"Le Dragon",
+"Le Faucon"
+],
+c:0
+},
+
+{
+q:"Qui était le capitaine des Pirates de Barbe Blanche ?",
+a:[
+"Shanks",
+"Kaido",
+"Edward Newgate",
+"Marshall D. Teach"
+],
+c:2
+},
+
+{
+q:"Quel personnage est surnommé le Dieu de Skypiea ?",
+a:[
+"Enel",
+"Doflamingo",
+"Kaido",
+"Crocodile"
+],
+c:0
+},
+
+{
+q:"Quel est le nom du navire principal des Mugiwara après le Going Merry ?",
+a:[
+"Red Force",
+"Thousand Sunny",
+"Polar Tang",
+"Moby Dick"
+],
+c:1
+}
+
+];
+
+
+let currentQuestion=0;
+let score=0;
+let quizLocked=false;
+
+
+function renderQuiz(){
+
+const game=
+document.getElementById("quizGame");
+
+if(currentQuestion>=questions.length){
+
+game.innerHTML=`
+
+<div class="quiz-result">
+
+<div>
+🏆 QUIZ TERMINÉ
+</div>
+
+<div class="quiz-result-score">
+${score}/${questions.length}
+</div>
+
+<p style="color:#9aa8b3;line-height:1.6">
+
+${
+score===questions.length
+?"🔥 LÉGENDAIRE ! Tu connais Grand Line par cœur."
+:
+score>=7
+?"🏴‍☠️ Excellent ! Tu es un vrai pirate."
+:
+score>=5
+?"🌊 Pas mal ! Ton aventure continue."
+:
+"📖 Il est temps de repartir à l'aventure !"
+}
+
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="restartQuiz()"
+>
+🔄 Recommencer
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const q=questions[currentQuestion];
+
+const progress=
+(currentQuestion/questions.length)*100;
+
+game.innerHTML=`
+
+<div class="quiz-top">
+
+<strong>
+Question ${currentQuestion+1}/${questions.length}
+</strong>
+
+<strong style="color:#f4c542">
+${score} point${score>1?"s":""}
+</strong>
+
+</div>
+
+<div class="quiz-progress">
+
+<div
+class="quiz-progress-bar"
+style="width:${progress}%"
+></div>
+
+</div>
+
+<div class="quiz-question">
+${q.q}
+</div>
+
+<div>
+
+${q.a.map((answer,index)=>`
+
+<button
+class="quiz-answer"
+onclick="answerQuiz(this,${index})"
+>
+${answer}
+</button>
+
+`).join("")}
+
+</div>
+
+`;
+
+quizLocked=false;
+
+}
+
+
+function answerQuiz(button,index){
+
+if(quizLocked)return;
+
+quizLocked=true;
+
+const q=questions[currentQuestion];
+
+const buttons=
+document.querySelectorAll(".quiz-answer");
+
+buttons.forEach((btn,i)=>{
+
+if(i===q.c){
+btn.classList.add("correct");
+}
+
+});
+
+if(index===q.c){
+
+score++;
+
+}else{
+
+button.classList.add("wrong");
+
+}
+
+setTimeout(()=>{
+
+currentQuestion++;
+
+renderQuiz();
+
+},900);
+
+}
+
+
+function restartQuiz(){
+
+currentQuestion=0;
+score=0;
+
+renderQuiz();
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+document
+.getElementById("search")
+.addEventListener(
+"input",
+renderCharacters
+);
+
+document
+.getElementById("group")
+.addEventListener(
+"change",
+renderCharacters
+);
+
+document
+.getElementById("bountyFilter")
+.addEventListener(
+"change",
+renderWanted
+);
+
+
+/* =====================================================
+   MINI-JEUX : ONGLETS
+===================================================== */
+
+function switchGame(name,button){
+
+document
+.querySelectorAll(".game-tab")
+.forEach(b=>b.classList.remove("active"));
+
+document
+.querySelectorAll(".game-panel")
+.forEach(p=>p.classList.remove("active"));
+
+button.classList.add("active");
+
+document
+.getElementById("panel-"+name)
+.classList.add("active");
+
+}
+
+
+/* =====================================================
+   MINI-JEU : BINGO
+===================================================== */
+
+function shuffle(array){
+
+const a=array.slice();
+
+for(let i=a.length-1;i>0;i--){
+
+const j=Math.floor(Math.random()*(i+1));
+
+[a[i],a[j]]=[a[j],a[i]];
+
+}
+
+return a;
+
+}
+
+
+let bingoMarked=[];
+
+function newBingo(){
+
+const pool=shuffle(characters).slice(0,24);
+
+document.getElementById("bingoWin").classList.remove("show");
+
+bingoMarked=new Array(25).fill(false);
+
+bingoMarked[12]=true;
+
+let html="";
+
+let poolIndex=0;
+
+for(let i=0;i<25;i++){
+
+if(i===12){
+
+html+=`
+<div class="bingo-cell free" data-i="${i}">
+<span>★</span>
+GRATUIT
+</div>
+`;
+
+continue;
+
+}
+
+const c=pool[poolIndex];
+
+poolIndex++;
+
+html+=`
+<div class="bingo-cell" data-i="${i}" data-name="${c.name}" onclick="toggleBingo(${i},this)">
+<span>${c.emoji}</span>
+${c.name}
+</div>
+`;
+
+}
+
+document.getElementById("bingoGrid").innerHTML=html;
+
+}
+
+
+function toggleBingo(i,cell){
+
+bingoMarked[i]=!bingoMarked[i];
+
+cell.classList.toggle("marked");
+
+checkBingo();
+
+}
+
+
+function checkBingo(){
+
+const lines=[
+
+[0,1,2,3,4],
+[5,6,7,8,9],
+[10,11,12,13,14],
+[15,16,17,18,19],
+[20,21,22,23,24],
+
+[0,5,10,15,20],
+[1,6,11,16,21],
+[2,7,12,17,22],
+[3,8,13,18,23],
+[4,9,14,19,24],
+
+[0,6,12,18,24],
+[4,8,12,16,20]
+
+];
+
+const win=lines.some(line=>line.every(i=>bingoMarked[i]));
+
+document.getElementById("bingoWin").classList.toggle("show",win);
+
+}
+
+
+/* =====================================================
+   MINI-JEU : MEMOIRE
+===================================================== */
+
+let memoryCards=[];
+let memoryFlipped=[];
+let memoryMoves=0;
+let memoryPairs=0;
+let memoryLock=false;
+
+function newMemory(){
+
+const chosen=shuffle(characters).slice(0,8);
+
+const pairs=shuffle([...chosen,...chosen]);
+
+memoryCards=pairs;
+memoryFlipped=[];
+memoryMoves=0;
+memoryPairs=0;
+memoryLock=false;
+
+document.getElementById("memoryMoves").textContent="Coups : 0";
+document.getElementById("memoryPairs").textContent="Paires : 0/8";
+
+document.getElementById("memoryGrid").innerHTML=
+
+pairs.map((c,i)=>`
+
+<div class="memory-card" data-i="${i}" onclick="flipMemory(${i})">
+
+<div class="memory-card-inner">
+
+<div class="memory-face memory-back">❓</div>
+
+<div class="memory-face memory-front">
+<span>${c.emoji}</span>
+<small>${c.name}</small>
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function flipMemory(i){
+
+if(memoryLock)return;
+
+const cardEl=document.querySelector(`.memory-card[data-i="${i}"]`);
+
+if(cardEl.classList.contains("flipped")||cardEl.classList.contains("matched"))return;
+
+cardEl.classList.add("flipped");
+
+memoryFlipped.push(i);
+
+if(memoryFlipped.length===2){
+
+memoryMoves++;
+
+document.getElementById("memoryMoves").textContent="Coups : "+memoryMoves;
+
+memoryLock=true;
+
+const [a,b]=memoryFlipped;
+
+if(memoryCards[a].name===memoryCards[b].name){
+
+document
+.querySelector(`.memory-card[data-i="${a}"]`)
+.classList.add("matched");
+
+document
+.querySelector(`.memory-card[data-i="${b}"]`)
+.classList.add("matched");
+
+memoryPairs++;
+
+document.getElementById("memoryPairs").textContent="Paires : "+memoryPairs+"/8";
+
+memoryFlipped=[];
+
+memoryLock=false;
+
+}else{
+
+setTimeout(()=>{
+
+document
+.querySelector(`.memory-card[data-i="${a}"]`)
+.classList.remove("flipped");
+
+document
+.querySelector(`.memory-card[data-i="${b}"]`)
+.classList.remove("flipped");
+
+memoryFlipped=[];
+
+memoryLock=false;
+
+},900);
+
+}
+
+}
+
+}
+
+
+/* =====================================================
+   MINI-JEU : QUI SUIS-JE
+===================================================== */
+
+let guessTarget=null;
+let guessStep=0;
+
+function bountyRange(n){
+
+if(!n)return "Aucune prime connue";
+
+if(n>=4000000000)return "Plus de 4 milliards";
+
+if(n>=1000000000)return "Entre 1 et 4 milliards";
+
+if(n>=500000000)return "Entre 500 millions et 1 milliard";
+
+return "Moins de 500 millions";
+
+}
+
+
+function newGuessWho(){
+
+guessTarget=characters[Math.floor(Math.random()*characters.length)];
+
+guessStep=1;
+
+document.getElementById("guessOptions").innerHTML="";
+
+document.getElementById("guessNextBtn").style.display="inline-block";
+
+renderGuessClues();
+
+}
+
+
+function renderGuessClues(){
+
+const c=guessTarget;
+
+let html="";
+
+if(guessStep>=1){
+
+html+=`<div class="guess-clue">🏴‍☠️ Groupe : <b>${c.group}</b></div>`;
+
+}
+
+if(guessStep>=2){
+
+html+=`<div class="guess-clue">🍎 Fruit du démon : <b>${c.fruit}</b></div>`;
+
+}
+
+if(guessStep>=3){
+
+html+=`<div class="guess-clue">💰 Prime : <b>${bountyRange(c.bounty)}</b></div>`;
+
+}
+
+document.getElementById("guessClues").innerHTML=html;
+
+if(guessStep>=3){
+
+document.getElementById("guessNextBtn").style.display="none";
+
+showGuessOptions();
+
+}
+
+}
+
+
+function nextClue(){
+
+guessStep++;
+
+renderGuessClues();
+
+}
+
+
+function showGuessOptions(){
+
+const wrong=shuffle(
+characters.filter(c=>c.name!==guessTarget.name)
+).slice(0,3);
+
+const options=shuffle([guessTarget,...wrong]);
+
+document.getElementById("guessOptions").innerHTML=
+
+options.map(c=>`
+
+<button
+class="quiz-answer"
+onclick="answerGuessWho('${c.name}',this)"
+>
+${c.emoji} ${c.name}
+</button>
+
+`).join("");
+
+}
+
+
+function answerGuessWho(name,button){
+
+const buttons=document.querySelectorAll("#guessOptions .quiz-answer");
+
+buttons.forEach(b=>{
+
+if(b.textContent.includes(guessTarget.name)){
+
+b.classList.add("correct");
+
+}
+
+});
+
+if(name!==guessTarget.name){
+
+button.classList.add("wrong");
+
+}
+
+buttons.forEach(b=>b.onclick=null);
+
+}
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+renderCharacters();
+renderWanted();
+renderFruits();
+renderArcs();
+renderQuiz();
+newBingo();
+newMemory();
+newGuessWho();
+
+</script>
+
+</body>
+</html>
