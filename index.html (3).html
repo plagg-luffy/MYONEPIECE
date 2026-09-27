@@ -1,0 +1,5957 @@
+ROJET : ONE PIECE — GRANDE ENCYCLOPÉDIE INTERACTIVE
+
+Tu dois créer un site web fan consacré à l’univers de One Piece. Je veux une véritable encyclopédie interactive, moderne, immersive, très complète et fonctionnelle.
+
+IMPORTANT : ne crée PAS seulement une maquette ou une page d’accueil avec des boutons fictifs. Je veux un véritable site fonctionnel avec plusieurs pages, navigation, recherche, filtres, système de progression, protection anti-spoiler, quiz, mini-jeux, carte interactive et sauvegarde locale.
+
+Le site doit être conçu pour pouvoir être publié sur GitHub Pages.
+
+
+
+1. IDENTITÉ GÉNÉRALE
+
+Le site doit avoir une identité visuelle inspirée de l’univers maritime et pirate de One Piece, tout en possédant son propre design.
+
+Ambiance générale :
+
+Grand Line
+océan
+cartes maritimes
+vieux papier
+bois
+boussole
+cordages
+journaux de bord
+affiches de primes
+navires
+vagues
+aventure
+exploration
+Le design doit être moderne et premium.
+
+Éviter de faire quelque chose qui ressemble à un simple site Wikipédia.
+
+Je veux avoir l’impression d’entrer dans une immense base de données dédiée à l’exploration du monde de One Piece.
+
+Le site doit être beau même lorsqu’il n’y a pas beaucoup de contenu affiché.
+
+
+
+2. PAGE D’ACCUEIL
+
+Créer une grande page d’accueil immersive.
+
+Elle doit contenir :
+
+un grand titre « ONE PIECE »
+un sous-titre présentant l’encyclopédie
+un bouton « Commencer l’exploration »
+un bouton « Explorer le monde »
+une barre de recherche globale
+une section « Continuer mon aventure »
+une section « Dernières pages consultées »
+une section « Explorer l’univers »
+une section personnages
+une section équipages
+une section Fruits du Démon
+une section arcs
+une section îles
+une section quiz
+une section mini-jeux
+une section progression
+Créer une grande animation d’océan en arrière-plan.
+
+Ajouter des vagues animées mais légères.
+
+Ajouter quelques particules flottantes.
+
+Ne pas rendre les animations trop lourdes.
+
+
+
+3. MENU PRINCIPAL
+
+Créer un menu complet et parfaitement fonctionnel.
+
+Le menu doit contenir :
+
+Accueil
+Personnages
+Équipages
+Fruits du Démon
+Haki
+Monde
+Îles
+Carte
+Arcs & Sagas
+Chronologie
+Primes
+Navires
+Marine
+Gouvernement
+Révolutionnaires
+Combats
+Techniques
+Mystères
+Quiz
+Mini-jeux
+Où suis-je ?
+Ma progression
+
+Sur ordinateur :
+
+menu horizontal
+menus déroulants si nécessaire
+recherche facilement accessible
+Sur téléphone :
+
+menu hamburger
+animation d’ouverture
+menu plein écran ou panneau latéral
+navigation tactile facile
+Le menu doit rester utilisable sur toutes les pages.
+
+
+
+4. RECHERCHE GLOBALE
+
+Créer une véritable recherche globale.
+
+La recherche doit pouvoir trouver :
+
+personnages
+équipages
+Fruits du Démon
+Haki
+îles
+arcs
+sagas
+navires
+organisations
+techniques
+combats
+mystères
+Les résultats doivent apparaître instantanément pendant que l’utilisateur écrit.
+
+Exemple :
+
+L’utilisateur écrit « Luf »
+
+Le site peut proposer les résultats correspondants.
+
+Chaque résultat doit afficher :
+
+nom
+catégorie
+petite description
+bouton pour ouvrir la fiche
+Ajouter un raccourci clavier :
+
+CTRL + K
+
+Ce raccourci doit ouvrir directement la recherche.
+
+Sur mobile, prévoir un bouton recherche visible.
+
+La recherche doit respecter le système anti-spoiler.
+
+Si un résultat concerne un élément situé après le chapitre choisi par l’utilisateur, il ne doit pas être affiché normalement.
+
+
+
+5. SYSTÈME ANTI-SPOILER
+
+C’est une fonctionnalité extrêmement importante.
+
+Créer un système global de protection contre les spoilers.
+
+Lors de la première utilisation, demander à l’utilisateur :
+
+« Jusqu’à quel chapitre de One Piece es-tu ? »
+
+L’utilisateur peut entrer par exemple :
+
+535
+
+Le site sauvegarde ce nombre avec localStorage.
+
+Chaque donnée du site doit avoir une propriété du type :
+
+unlockChapter
+
+Exemple :
+
+character :
+unlockChapter: 100
+
+Si l’utilisateur est au chapitre 535, cette information peut être affichée.
+
+Si une information possède :
+
+unlockChapter: 600
+
+elle doit être verrouillée.
+
+Afficher alors :
+
+🔒 Contenu verrouillé
+
+« Continue jusqu’au chapitre 600 pour découvrir cette information. »
+
+IMPORTANT :
+
+Ne pas afficher inutilement le nom d’un élément futur si son nom lui-même constitue un spoiler.
+
+Créer plusieurs niveaux de protection :
+
+Protection normale
+Protection renforcée
+Protection maximale
+En protection maximale, les éléments futurs doivent être complètement masqués.
+
+Le système anti-spoiler doit fonctionner partout :
+
+recherche
+personnages
+équipages
+arcs
+chronologie
+carte
+primes
+combats
+techniques
+mystères
+quiz
+recommandations
+pages liées
+Aucune page ne doit contourner le système.
+
+Ajouter dans les paramètres une possibilité de modifier le chapitre actuel.
+
+
+
+6. « OÙ SUIS-JE DANS ONE PIECE ? »
+
+Créer une page spéciale :
+
+🧭 OÙ SUIS-JE DANS ONE PIECE ?
+
+L’utilisateur entre son chapitre.
+
+Le site lui indique :
+
+sa position dans l’histoire
+sa saga
+son arc
+les lieux accessibles
+les personnages débloqués
+les éléments débloqués
+son pourcentage de progression
+Créer une grande barre de progression.
+
+Exemple :
+
+CHAPITRE 535
+
+████████████░░░░░░░░
+
+Progression de l’histoire : XX %
+
+Ne jamais afficher les arcs futurs par leur nom si cela peut spoiler l’utilisateur.
+
+Les informations futures doivent rester verrouillées.
+
+
+
+7. PERSONNAGES
+
+Créer une énorme encyclopédie des personnages.
+
+Chaque personnage doit avoir une fiche détaillée.
+
+Informations possibles :
+
+nom
+surnom
+affiliation
+équipage
+rôle
+première apparition
+statut
+prime
+Fruit du Démon
+Haki
+techniques
+relations
+arcs associés
+combats
+navires associés
+îles associées
+niveau de spoiler
+chapitre de déblocage
+Créer une interface avec des cartes.
+
+Chaque carte doit contenir :
+
+image ou emplacement d’image
+nom
+catégorie
+informations principales
+bouton « Voir la fiche »
+Créer des filtres :
+
+équipage
+organisation
+Fruit du Démon
+Haki
+rôle
+statut
+arc
+Ajouter recherche et tri.
+
+
+
+8. FICHES PERSONNAGES
+
+Lorsqu’on clique sur un personnage, ouvrir une fiche complète.
+
+Créer un grand en-tête.
+
+Afficher :
+
+Nom
+Surnom
+Affiliation
+Rôle
+Prime si connue
+Pouvoirs
+Haki
+Fruit du Démon
+
+Puis des sections :
+
+Présentation
+Histoire
+Relations
+Techniques
+Combats
+Équipages
+Arcs
+Îles associées
+
+Toutes les sections doivent respecter le niveau de spoiler.
+
+Créer des liens cliquables vers les autres fiches.
+
+Exemple :
+
+Personnage → Équipage → Navire → Arc → Île
+
+
+
+9. ÉQUIPAGES
+
+Créer une page complète dédiée aux équipages.
+
+Chaque équipage doit avoir :
+
+nom
+capitaine
+membres
+navire
+rôle des membres
+territoire
+affiliations
+histoire
+arcs associés
+Afficher les membres sous forme de cartes.
+
+Cliquer sur un membre ouvre sa fiche.
+
+Créer des filtres par organisation ou type d’équipage.
+
+
+
+10. FRUITS DU DÉMON
+
+Créer une encyclopédie des Fruits du Démon.
+
+Catégories :
+
+Paramecia
+Zoan
+Zoan antique
+Zoan mythique
+Logia
+Chaque fruit possède :
+
+nom
+type
+utilisateur
+capacités
+techniques
+première apparition
+informations
+chapitre de déblocage
+Créer :
+
+recherche
+filtres
+tri
+fiches détaillées
+Les informations futures doivent être protégées.
+
+
+
+11. HAKI
+
+Créer une page dédiée au Haki.
+
+Sections :
+
+Haki de l’Observation
+Haki de l’Armement
+Haki des Rois
+Présenter :
+
+principe
+utilisateurs connus
+applications
+techniques
+évolutions
+Chaque information possède son niveau de spoiler.
+
+
+
+12. MONDE
+
+Créer une véritable encyclopédie du monde.
+
+Catégories :
+
+mers
+îles
+royaumes
+territoires
+organisations
+lieux importants
+routes
+phénomènes
+événements
+Chaque élément possède une fiche.
+
+Créer des liens entre les pages.
+
+
+
+13. ÎLES
+
+Créer une base de données des îles.
+
+Chaque île :
+
+nom
+mer
+localisation
+arc
+habitants
+événements
+personnages associés
+lieux importants
+chapitre de déblocage
+Créer des filtres.
+
+
+
+14. CARTE INTERACTIVE
+
+Créer une page :
+
+🗺️ CARTE DU MONDE
+
+La carte doit être interactive.
+
+Fonctions :
+
+zoom
+déplacement
+marqueurs
+recherche
+filtres
+clic sur les îles
+fiches des lieux
+progression
+verrouillage anti-spoiler
+Créer une architecture permettant de remplacer facilement la carte temporaire par une véritable illustration plus tard.
+
+Les marqueurs futurs doivent être masqués.
+
+
+
+15. ARCS & SAGAS
+
+Créer une page complète.
+
+Afficher les arcs et sagas sous forme de chronologie ou de cartes.
+
+Chaque arc possède :
+
+nom
+saga
+chapitres
+épisodes si disponibles
+lieux
+personnages
+combats
+événements
+niveau de spoiler
+Les arcs futurs doivent être masqués selon la progression.
+
+
+
+16. CHRONOLOGIE
+
+Créer une chronologie interactive.
+
+Afficher les événements dans l’ordre.
+
+Fonctions :
+
+filtrage
+recherche
+clic sur événement
+personnages associés
+lieux associés
+chapitre
+protection anti-spoiler
+Créer une interface visuelle ressemblant à une véritable chronologie.
+
+
+
+17. PRIMES
+
+Créer une section dédiée aux primes.
+
+Créer des cartes inspirées de l’idée d’une affiche de recherche, mais avec un design original.
+
+Afficher :
+
+personnage
+prime
+affiliation
+statut
+Les primes futures doivent être verrouillées.
+
+Créer des filtres et une recherche.
+
+
+
+18. NAVIRES
+
+Créer une encyclopédie des navires.
+
+Chaque navire :
+
+nom
+équipage
+capitaine
+type
+caractéristiques
+histoire
+apparitions
+chapitre de déblocage
+Créer des fiches interactives.
+
+
+
+19. MARINE
+
+Créer une page dédiée à la Marine.
+
+Organiser les informations par :
+
+personnages
+grades
+unités
+événements
+lieux
+navires
+Respecter le système anti-spoiler.
+
+
+
+20. GOUVERNEMENT
+
+Créer une page dédiée aux organisations gouvernementales.
+
+Créer :
+
+fiches d’organisations
+membres
+fonctions
+relations
+événements
+niveau de spoiler
+Ne jamais présenter une théorie comme une information officielle.
+
+
+
+21. RÉVOLUTIONNAIRES
+
+Créer une page dédiée.
+
+Afficher :
+
+personnages
+organisation
+informations connues
+événements
+relations
+lieux
+Tout doit être protégé par chapitre.
+
+
+
+22. COMBATS
+
+Créer une base de données des combats.
+
+Chaque combat possède :
+
+participants
+lieu
+arc
+chapitre
+contexte
+résultat
+techniques utilisées
+Le résultat doit être verrouillé si nécessaire.
+
+Ne pas créer de classement automatique du « meilleur combat ».
+
+
+
+23. TECHNIQUES
+
+Créer une encyclopédie des techniques.
+
+Filtres :
+
+personnage
+Fruit du Démon
+Haki
+type
+catégorie
+Chaque technique possède :
+
+nom
+utilisateur
+description courte
+chapitre d’apparition
+niveau de spoiler
+
+
+24. MYSTÈRES
+
+Créer une section :
+
+❓ MYSTÈRES
+
+Chaque mystère doit avoir :
+
+description
+éléments connus
+indices
+chapitres concernés
+statut
+niveau de spoiler
+Statuts possibles :
+
+ouvert
+partiellement expliqué
+expliqué
+IMPORTANT :
+
+Les théories de fans doivent être clairement identifiées comme des théories.
+
+Ne jamais présenter une théorie comme un fait.
+
+
+
+25. QUIZ
+
+Créer un véritable système de quiz.
+
+Catégories :
+
+personnages
+équipages
+Fruits du Démon
+Haki
+îles
+arcs
+navires
+Marine
+techniques
+monde
+Difficultés :
+
+facile
+moyen
+difficile
+expert
+Types :
+
+QCM
+vrai/faux
+identification
+plusieurs réponses
+Fonctions :
+
+score
+nombre de bonnes réponses
+série
+explication
+progression
+meilleur score
+badges
+quiz aléatoire
+quiz par chapitre
+Les questions doivent respecter le système anti-spoiler.
+
+Ajouter un écran de résultats.
+
+
+
+26. MINI-JEU : COURSE VERS LE ONE PIECE
+
+Créer un mini-jeu jouable directement dans le navigateur.
+
+Le joueur contrôle un navire.
+
+Objectif :
+
+Naviguer le plus loin possible tout en évitant les obstacles et en récupérant des bonus.
+
+Fonctions :
+
+clavier
+tactile
+score
+distance
+vitesse progressive
+obstacles
+bonus
+meilleur score
+pause
+game over
+recommencer
+Créer une difficulté progressive.
+
+Le jeu doit être adapté au téléphone.
+
+Ne pas nécessiter de serveur.
+
+Préparer l’architecture pour pouvoir ajouter d’autres mini-jeux.
+
+
+
+27. AUTRES MINI-JEUX
+
+Préparer une structure permettant d’ajouter plus tard :
+
+quiz chronométré
+mémoire de personnages
+reconnaissance de Fruits du Démon
+navigation
+chasse au trésor
+jeu de rapidité
+Les nouveaux jeux doivent pouvoir être ajoutés sans refaire tout le site.
+
+
+
+28. MA PROGRESSION
+
+Créer une page :
+
+📊 MA PROGRESSION
+
+Afficher :
+
+chapitre actuel
+saga actuelle
+arc actuel
+progression générale
+arcs consultés
+personnages consultés
+quiz terminés
+meilleurs scores
+badges
+mini-jeux joués
+pages visitées
+Créer des statistiques visuelles.
+
+
+
+29. BADGES
+
+Créer un système de récompenses.
+
+Exemples :
+
+🏴‍☠️ Première exploration
+📖 Premier article
+🧠 Premier quiz
+🏆 10 quiz réussis
+🗺️ Explorateur
+🔎 Grand chercheur
+🎮 Premier mini-jeu
+📚 Archiviste
+
+Les badges doivent être débloqués automatiquement.
+
+
+
+30. LOCALSTORAGE
+
+Utiliser localStorage pour sauvegarder :
+
+chapitre actuel
+mode anti-spoil
+thème
+préférence d’animation
+progression
+badges
+scores
+dernières pages
+pages consultées
+Le site ne doit pas nécessiter de compte.
+
+
+
+31. PARAMÈTRES
+
+Créer une page :
+
+⚙️ PARAMÈTRES
+
+Options :
+
+modifier son chapitre
+modifier le niveau anti-spoil
+changer le thème
+activer/désactiver les animations
+réduire les animations
+réinitialiser la progression
+effacer les données locales
+Avant de supprimer toutes les données, afficher une confirmation.
+
+
+
+32. THÈMES
+
+Créer plusieurs thèmes.
+
+Thème principal :
+sombre, maritime, aventure.
+
+Thème clair :
+papier ancien et carte maritime.
+
+Éventuellement un troisième thème plus coloré.
+
+Le changement doit être instantané.
+
+Sauvegarder le choix.
+
+
+
+33. ANIMATIONS
+
+Ajouter :
+
+vagues
+particules
+apparition des cartes
+transitions
+effets de survol
+boutons animés
+progression animée
+ouverture des fiches
+changement de page
+Mais éviter les animations excessives.
+
+Respecter :
+
+prefers-reduced-motion
+
+et proposer :
+
+« Réduire les animations »
+
+
+
+34. RESPONSIVE DESIGN
+
+Le site doit fonctionner parfaitement sur :
+
+iPhone
+Android
+tablette
+ordinateur portable
+grand écran
+Sur téléphone :
+
+cartes en colonne
+menu hamburger
+boutons tactiles
+recherche accessible
+mini-jeux tactiles
+Aucun élément ne doit dépasser horizontalement.
+
+
+
+35. ACCESSIBILITÉ
+
+Prévoir :
+
+contraste correct
+navigation clavier
+focus visible
+textes lisibles
+attributs alt pour les images
+boutons compréhensibles
+respect des préférences de mouvement
+
+
+36. STRUCTURE TECHNIQUE
+
+Créer une architecture propre.
+
+Par exemple :
+
+/
+index.html
+style.css
+script.js
+README.md
+
+/pages/
+characters.html
+crews.html
+fruits.html
+haki.html
+world.html
+islands.html
+map.html
+arcs.html
+timeline.html
+bounties.html
+ships.html
+marine.html
+government.html
+revolutionaries.html
+fights.html
+techniques.html
+mysteries.html
+quiz.html
+games.html
+where-am-i.html
+progress.html
+settings.html
+
+/data/
+characters.js
+crews.js
+fruits.js
+haki.js
+islands.js
+arcs.js
+ships.js
+organizations.js
+techniques.js
+fights.js
+mysteries.js
+quizzes.js
+
+/assets/
+images/
+icons/
+sounds/
+
+L’architecture peut être adaptée si le générateur utilise un framework, mais le résultat doit rester facilement déployable.
+
+
+
+37. DONNÉES
+
+Toutes les données doivent être séparées du code d’interface autant que possible.
+
+Chaque élément doit pouvoir contenir :
+
+name
+type
+description
+unlockChapter
+spoilerLevel
+relatedItems
+
+Exemple conceptuel :
+
+{
+name: “Nom”,
+type: “character”,
+unlockChapter: 100,
+spoilerLevel: 1
+}
+
+Le système anti-spoil doit automatiquement utiliser ces informations.
+
+
+
+38. LIENS ENTRE LES DONNÉES
+
+Créer de vrais liens internes.
+
+Exemple :
+
+Personnage
+↓
+Équipage
+↓
+Navire
+↓
+Arc
+↓
+Île
+↓
+Combat
+↓
+Technique
+
+Chaque élément lié doit être cliquable.
+
+Cela doit donner l’impression d’explorer un immense réseau d’informations.
+
+
+
+39. FILTRES
+
+Toutes les grosses bases de données doivent avoir :
+
+recherche
+filtres
+tri
+catégories
+bouton « Réinitialiser »
+Les filtres doivent fonctionner réellement.
+
+
+
+40. CHARGEMENT
+
+Créer des animations de chargement lorsque nécessaire.
+
+Utiliser éventuellement des skeleton loaders.
+
+Ne pas afficher une page vide pendant plusieurs secondes.
+
+
+
+41. GESTION DES ERREURS
+
+Si une donnée manque :
+
+Afficher une interface propre.
+
+Ne jamais laisser une erreur JavaScript casser toute la page.
+
+Ajouter des valeurs par défaut.
+
+
+
+42. PAGE 404
+
+Créer une page 404 personnalisée.
+
+Elle doit rester dans le thème maritime.
+
+Message du style :
+
+« Cette île n’existe pas sur notre carte. »
+
+Puis :
+
+« Retourner à l’accueil »
+
+Ne pas utiliser de longs textes issus de l’œuvre.
+
+
+
+43. PAGE DÉTAIL
+
+Toutes les fiches doivent avoir une structure cohérente.
+
+En-tête :
+
+nom
+catégorie
+image
+informations principales
+Puis :
+
+description
+informations détaillées
+relations
+événements
+pages associées
+En bas :
+« Explorer les éléments liés »
+
+
+
+44. SYSTÈME DE NAVIGATION
+
+Ajouter :
+
+fil d’Ariane
+bouton retour
+liens vers les éléments associés
+navigation précédente/suivante lorsque pertinent
+Exemple :
+
+Accueil > Personnages > Équipage > Fiche
+
+
+
+45. EXPÉRIENCE VISUELLE
+
+Les cartes doivent avoir :
+
+bordures travaillées
+ombres
+animations au survol
+effet de profondeur
+icônes
+catégories clairement visibles
+Mais éviter le design trop chargé.
+
+
+
+46. PAGE D’ACCUEIL PERSONNALISÉE
+
+Une fois que l’utilisateur a indiqué son chapitre, l’accueil doit devenir personnalisé.
+
+Afficher par exemple :
+
+« Tu es actuellement au chapitre 535 »
+
+Puis :
+
+arc actuel
+progression
+dernières pages
+quiz disponibles
+contenus accessibles
+mini-jeu
+recommandations ne contenant aucun spoiler.
+
+
+47. SYSTÈME DE RECOMMANDATIONS
+
+Créer une section :
+
+« À explorer maintenant »
+
+Elle recommande uniquement des contenus accessibles au niveau de progression de l’utilisateur.
+
+Ne jamais recommander un élément futur.
+
+
+
+48. DONNÉES FUTURES
+
+Le site doit pouvoir contenir énormément de données, mais les informations futures doivent être strictement verrouillées.
+
+Ne pas afficher automatiquement les noms, images, événements ou résultats futurs.
+
+Le système de protection doit être centralisé dans une fonction commune afin qu’une page ne puisse pas accidentellement contourner la protection.
+
+
+
+49. PAS DE SPOILER PAR DÉFAUT
+
+Si l’utilisateur indique qu’il est au chapitre 535, le site doit se comporter comme si tout ce qui arrive après était inconnu.
+
+Même les recherches et recommandations doivent respecter cette règle.
+
+
+
+50. CONTENU
+
+Utiliser des descriptions originales et synthétiques.
+
+Ne pas copier de longs passages du manga, des épisodes ou d’autres sites.
+
+Ne pas reproduire de dialogues ou de textes protégés inutilement.
+
+Les informations factuelles nécessaires à l’encyclopédie peuvent être présentées de manière concise et originale.
+
+
+
+51. IMAGES
+
+Prévoir un système permettant de remplacer facilement les images.
+
+Ne pas coder les images de manière impossible à modifier.
+
+Chaque image doit être associée à une donnée.
+
+Prévoir un fallback si une image manque.
+
+
+
+52. PERFORMANCE
+
+Le site doit être rapide.
+
+Éviter les bibliothèques inutiles.
+
+Éviter les scripts lourds.
+
+Optimiser les images.
+
+Ne pas charger toutes les ressources inutiles immédiatement.
+
+Le site doit fonctionner sur un téléphone moyen.
+
+
+
+53. GITHUB PAGES
+
+Le projet doit être compatible avec GitHub Pages.
+
+Il doit pouvoir être lancé sans serveur backend.
+
+Les fonctionnalités principales doivent fonctionner côté client.
+
+Créer un README contenant :
+
+création du repository
+ajout des fichiers
+activation de GitHub Pages
+modification des données
+ajout d’un personnage
+ajout d’un arc
+ajout d’un quiz
+ajout d’un mini-jeu
+modification du design.
+
+
+54. CODE PROPRE
+
+Le code doit être :
+
+organisé
+commenté lorsque nécessaire
+réutilisable
+facilement modifiable
+sans fonctions inutiles
+sans code mort inutile
+Créer des fonctions réutilisables pour :
+
+recherche
+filtres
+anti-spoil
+cartes
+fiches
+localStorage
+progression
+badges
+quiz.
+
+
+55. SYSTÈME CENTRAL ANTI-SPOILER
+
+Créer une fonction centrale similaire à :
+
+canShowContent(item, currentChapter)
+
+Elle doit décider si un élément est visible.
+
+Créer également un système similaire à :
+
+getVisibleData()
+
+afin que toutes les pages utilisent les mêmes règles.
+
+Ne pas dupliquer une logique différente dans chaque page.
+
+
+
+56. QUIZ ET SPOILERS
+
+Les questions elles-mêmes doivent être filtrées.
+
+Si une question nécessite des connaissances après le chapitre actuel :
+
+elle ne doit pas apparaître.
+
+Les explications des réponses doivent également être protégées.
+
+
+
+57. MINI-JEU ET PROGRESSION
+
+Le mini-jeu doit enregistrer :
+
+meilleur score
+nombre de parties
+record de distance
+Débloquer éventuellement certains éléments purement cosmétiques avec les performances du joueur.
+
+Ne jamais utiliser le mini-jeu pour révéler des informations futures.
+
+
+
+58. PAGE STATISTIQUES
+
+Afficher :
+
+nombre de personnages consultés
+nombre d’îles consultées
+nombre de quiz
+meilleur score
+nombre de badges
+temps approximatif passé si techniquement possible
+progression de l’encyclopédie.
+
+
+59. DESIGN MOBILE
+
+Sur téléphone, le site doit être aussi agréable que sur ordinateur.
+
+Créer des composants adaptés au tactile.
+
+Les fenêtres modales doivent être adaptées aux petits écrans.
+
+Les tableaux trop larges doivent devenir des cartes ou être défilables.
+
+
+
+60. MODE IMMERSIF
+
+Ajouter éventuellement un bouton :
+
+🌊 Mode immersion
+
+Ce mode active davantage d’animations :
+
+vagues
+particules
+mouvements
+parallaxe
+Mais il doit pouvoir être désactivé.
+
+
+
+61. PAGE « EXPLORER »
+
+Créer une page permettant de choisir une catégorie.
+
+Grandes cartes :
+
+👤 Personnages
+🏴‍☠️ Équipages
+🍎 Fruits du Démon
+⚡ Haki
+🏝️ Îles
+🗺️ Carte
+📖 Arcs
+🚢 Navires
+⚓ Organisations
+⚔️ Combats
+❓ Mystères
+🧠 Quiz
+🎮 Mini-jeux
+
+
+
+62. ÉTAT VIDE
+
+Lorsqu’une recherche ne trouve rien :
+
+Afficher :
+
+« Aucun résultat trouvé »
+
+Puis proposer :
+
+vérifier l’orthographe
+modifier les filtres
+rechercher une autre catégorie.
+
+
+63. FAVORIS
+
+Ajouter éventuellement un système de favoris avec localStorage.
+
+L’utilisateur peut ajouter :
+
+personnages
+arcs
+îles
+navires
+Fruits du Démon
+techniques
+Créer une section :
+
+⭐ Mes favoris
+
+Les favoris doivent également respecter l’anti-spoil.
+
+
+
+64. HISTORIQUE
+
+Sauvegarder les dernières pages consultées.
+
+Afficher :
+
+« Reprendre l’exploration »
+
+avec les dernières fiches ouvertes.
+
+Permettre d’effacer l’historique.
+
+
+
+65. NOTIFICATIONS INTERNES
+
+Créer de petites notifications visuelles lorsque :
+
+un badge est obtenu
+un nouveau record est établi
+une préférence est sauvegardée
+un contenu est déverrouillé
+Ne pas utiliser de notifications système obligatoires.
+
+
+
+66. ARCHITECTURE EXTENSIBLE
+
+Le site doit être conçu pour pouvoir devenir beaucoup plus gros.
+
+Il doit être facile d’ajouter :
+
+nouveaux personnages
+nouveaux arcs
+nouveaux quiz
+nouvelles îles
+nouveaux jeux
+nouveaux filtres
+nouvelles catégories.
+L’ajout d’un personnage ne doit pas nécessiter de modifier 15 fichiers différents.
+
+
+
+67. QUALITÉ DU RÉSULTAT
+
+Avant de terminer, effectuer une vérification complète.
+
+Vérifier :
+
+aucun lien cassé
+aucun bouton important fictif
+aucune erreur JavaScript
+navigation fonctionnelle
+recherche fonctionnelle
+filtres fonctionnels
+anti-spoil fonctionnel
+localStorage fonctionnel
+quiz fonctionnel
+mini-jeu fonctionnel
+progression fonctionnelle
+paramètres fonctionnels
+responsive fonctionnel
+page 404 fonctionnelle.
+
+
+68. PRIORITÉS
+
+Priorité 1 :
+fonctionnalités réellement fonctionnelles.
+
+Priorité 2 :
+système anti-spoiler.
+
+Priorité 3 :
+navigation et recherche.
+
+Priorité 4 :
+design et immersion.
+
+Priorité 5 :
+quiz et mini-jeux.
+
+Priorité 6 :
+progression et badges.
+
+Priorité 7 :
+optimisation et accessibilité.
+
+Ne sacrifie pas les fonctionnalités pour avoir seulement une belle page d’accueil.
+
+
+
+69. SI LE PROJET EST TROP GROS
+
+Si tu ne peux pas générer toutes les données immédiatement, crée une architecture complète avec suffisamment de données d’exemple pour démontrer chaque fonctionnalité.
+
+Mais toutes les fonctionnalités doivent déjà être fonctionnelles.
+
+Je dois pouvoir ajouter facilement le reste des données plus tard.
+
+Ne remplace pas une fonctionnalité par :
+
+« Cette fonctionnalité sera disponible prochainement. »
+
+Construis au minimum une première version fonctionnelle.
+
+
+
+70. OBJECTIF FINAL
+
+Le résultat final doit être une véritable encyclopédie interactive One Piece.
+
+L’utilisateur doit pouvoir :
+
+rechercher n’importe quelle information accessible
+parcourir les personnages
+découvrir les équipages
+explorer les Fruits du Démon
+comprendre le Haki
+explorer les îles
+naviguer sur une carte
+parcourir les arcs
+consulter une chronologie
+découvrir les navires
+explorer les organisations
+consulter les combats
+découvrir les techniques
+suivre les mystères
+faire des quiz
+jouer à des mini-jeux
+suivre sa progression
+obtenir des badges
+personnaliser son expérience
+et surtout éviter les spoilers grâce à son chapitre actuel.
+Le site doit donner l’impression d’être une immense bibliothèque maritime interactive.
+
+IMPORTANT FINAL :
+
+NE CRÉE PAS UNE SIMPLE MAQUETTE.
+
+NE CRÉE PAS DE FAUX BOUTONS.
+
+NE CRÉE PAS UNIQUEMENT UNE PAGE D’ACCUEIL.
+
+CONSTRUIS UNE VÉRITABLE BASE DE SITE EXTENSIBLE.
+
+Tout doit être pensé pour pouvoir être publié sur GitHub Pages et amélioré progressivement.
+
+Le résultat doit être moderne, immersif, responsive, rapide, accessible et réellement fonctionnel.
+
+Commence par construire l’architecture complète du projet, puis implémente les pages, les composants, les données, le système anti-spoiler, la recherche, la progression, les quiz, les mini-jeux et les animations.
+
+À la fin, fournis tous les fichiers nécessaires et les instructions permettant de lancer et publier le site. voicui ma ligne de code  <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ONE PIECE — Grand Line</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#05080d;
+color:#eee;
+overflow-x:hidden
+}
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(5,8,13,.94);
+backdrop-filter:blur(15px);
+border-bottom:1px solid #26313d
+}
+
+nav{
+max-width:1350px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 22px
+}
+
+.logo{
+color:#f4c542;
+font-size:25px;
+font-weight:1000;
+letter-spacing:-1px
+}
+
+nav a{
+color:#bbb;
+text-decoration:none;
+margin-left:15px;
+font-weight:800;
+transition:.2s
+}
+
+nav a:hover{color:#f4c542}
+
+.hero{
+min-height:680px;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+background:
+linear-gradient(90deg,#02060a 0%,rgba(3,15,25,.6),#02060a 100%),
+linear-gradient(#071725,#05080d)
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:.32;
+filter:saturate(1.2)
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,transparent 20%,#02060a 100%);
+pointer-events:none
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:900px;
+padding:30px
+}
+
+.hero-kicker{
+color:#f4c542;
+font-weight:900;
+letter-spacing:5px;
+font-size:13px;
+margin-bottom:18px
+}
+
+.hero h1{
+font-size:clamp(65px,13vw,150px);
+line-height:.9;
+color:#f4c542;
+text-shadow:0 5px 0 #9a7314,0 15px 40px #000
+}
+
+.hero h1 span{color:white}
+
+.hero p{
+color:#b7c0c8;
+font-size:20px;
+max-width:650px;
+margin:25px auto 30px;
+line-height:1.6
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap
+}
+
+.btn{
+display:inline-block;
+background:#f4c542;
+color:#111;
+padding:14px 22px;
+border-radius:10px;
+text-decoration:none;
+font-weight:900;
+border:0;
+cursor:pointer;
+transition:.2s
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px #f4c54233
+}
+
+.btn.dark{
+background:#121c26;
+color:#fff;
+border:1px solid #344555
+}
+
+.container{
+max-width:1350px;
+margin:auto;
+padding:75px 22px
+}
+
+.title{
+color:#f4c542;
+font-size:40px;
+margin-bottom:10px
+}
+
+.subtitle{
+color:#778694;
+margin-bottom:30px;
+line-height:1.6
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px
+}
+
+.stat{
+background:linear-gradient(145deg,#101a24,#080d13);
+border:1px solid #26313d;
+border-radius:17px;
+padding:28px;
+text-align:center;
+transition:.25s
+}
+
+.stat:hover{
+transform:translateY(-5px);
+border-color:#f4c542
+}
+
+.stat b{
+display:block;
+color:#f4c542;
+font-size:34px;
+margin-bottom:6px
+}
+
+.stat span{color:#818f9c}
+
+.controls{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:30px
+}
+
+input,select,textarea{
+background:#0c141d;
+color:white;
+border:1px solid #334454;
+padding:14px;
+border-radius:10px;
+outline:none
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#f4c542
+}
+
+input{flex:1;min-width:240px}
+
+.characters{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+
+.card{
+background:linear-gradient(145deg,#0e1721,#080d13);
+border:1px solid #26313d;
+border-radius:17px;
+overflow:hidden;
+transition:.3s
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#f4c542;
+box-shadow:0 20px 45px #0008
+}
+
+.card-img{
+height:280px;
+background:#101923;
+overflow:hidden;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.card-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.4s
+}
+
+.card:hover .card-img img{transform:scale(1.06)}
+
+.card-img::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 60%,#000c)
+}
+
+.fallback{
+font-size:70px;
+position:relative;
+z-index:1
+}
+
+.card-body{padding:18px}
+
+.card h3{
+font-size:21px;
+margin-bottom:5px
+}
+
+.group{
+color:#738493;
+font-size:13px
+}
+
+.bounty{
+color:#f4c542;
+font-size:20px;
+font-weight:900;
+margin:13px 0
+}
+
+.card-fruit{
+color:#9ba8b3;
+font-size:13px;
+line-height:1.5;
+min-height:40px;
+margin-bottom:14px
+}
+
+.small-btn{
+width:100%;
+background:#151f29;
+border:1px solid #354554;
+color:white;
+padding:11px;
+border-radius:9px;
+cursor:pointer;
+font-weight:800;
+transition:.2s
+}
+
+.small-btn:hover{
+background:#f4c542;
+color:#111
+}
+
+.wanted{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+padding:15px 5px
+}
+
+.poster{
+background:radial-gradient(circle,#f0e4c5,#cfc09b);
+color:#18130d;
+padding:12px;
+border-radius:3px;
+box-shadow:0 18px 35px #0009;
+transform:rotate(var(--r));
+transition:.3s;
+position:relative
+}
+
+.poster:hover{
+transform:rotate(0) translateY(-10px) scale(1.03);
+z-index:5
+}
+
+.poster-inner{
+border:5px solid #21190e;
+padding:12px;
+text-align:center;
+min-height:390px
+}
+
+.poster-top{
+font-family:Georgia,serif;
+font-size:14px;
+font-weight:bold;
+letter-spacing:3px
+}
+
+.wanted-title{
+font-family:Georgia,serif;
+font-size:45px;
+font-weight:1000;
+line-height:1
+}
+
+.poster-subtitle{
+font-family:Georgia,serif;
+font-size:17px;
+font-weight:bold
+}
+
+.poster img{
+width:100%;
+height:210px;
+object-fit:cover;
+margin:10px 0;
+border:4px solid #21190e;
+filter:sepia(.25)
+}
+
+.poster h3{
+font-family:Georgia,serif;
+font-size:22px
+}
+
+.poster-dead{
+font-family:Georgia,serif;
+font-size:12px;
+font-weight:bold;
+margin-top:3px
+}
+
+.poster .money{
+font-family:Georgia,serif;
+font-weight:1000;
+font-size:21px;
+margin-top:7px
+}
+
+.fruits{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+
+.fruit{
+background:linear-gradient(145deg,#101923,#090e14);
+border:1px solid #26313d;
+border-radius:17px;
+overflow:hidden;
+transition:.25s
+}
+
+.fruit:hover{
+transform:translateY(-7px);
+border-color:#f4c542
+}
+
+.fruit-img{
+height:180px;
+background:#131e29;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden
+}
+
+.fruit-img img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.fruit-icon{font-size:65px}
+
+.fruit-body{padding:20px}
+
+.fruit h3{
+color:#f4c542;
+margin-bottom:8px
+}
+
+.fruit p{
+color:#98a5af;
+line-height:1.55;
+font-size:14px
+}
+
+.arc-intro{
+color:#8c9aa6;
+max-width:850px;
+line-height:1.7;
+margin-bottom:28px
+}
+
+.arc-filters{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:40px
+}
+
+.arc-filter{
+background:#0d141d;
+border:1px solid #26313d;
+color:#aaa;
+padding:11px 15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+.arc-filter.active,.arc-filter:hover{
+background:#f4c542;
+color:#111;
+border-color:#f4c542
+}
+
+.arc-route{
+position:relative;
+padding:10px 0
+}
+
+.arc-route::before{
+content:"";
+position:absolute;
+left:50%;
+top:0;
+bottom:0;
+width:3px;
+transform:translateX(-50%);
+background:linear-gradient(#f4c542,#27526b,#f4c542)
+}
+
+.arc-card{
+width:calc(50% - 40px);
+background:#0c141d;
+border:1px solid #263746;
+border-radius:18px;
+overflow:hidden;
+margin-bottom:50px;
+cursor:pointer;
+position:relative;
+transition:.3s
+}
+
+.arc-card:nth-child(even){margin-left:auto}
+
+.arc-card:hover{
+transform:translateY(-7px);
+border-color:#f4c542;
+box-shadow:0 20px 50px #0008
+}
+
+.arc-card::after{
+content:"";
+position:absolute;
+width:17px;
+height:17px;
+border-radius:50%;
+background:#f4c542;
+border:4px solid #071019;
+top:30px
+}
+
+.arc-card:nth-child(odd)::after{right:-48px}
+.arc-card:nth-child(even)::after{left:-48px}
+
+.arc-card.current{
+border-color:#e65353;
+box-shadow:0 0 30px #e6535320
+}
+
+.arc-image{
+width:100%;
+height:230px;
+object-fit:cover;
+background:#101923
+}
+
+.arc-content{padding:22px}
+
+.arc-number{
+color:#f4c542;
+font-size:11px;
+font-weight:900;
+letter-spacing:2px
+}
+
+.current-badge{
+display:inline-block;
+background:#351719;
+border:1px solid #e65353;
+color:#ff8585;
+padding:5px 8px;
+border-radius:6px;
+font-size:9px;
+letter-spacing:1px;
+margin-left:8px
+}
+
+.arc-content h3{
+font-size:29px;
+margin:8px 0
+}
+
+.arc-location{
+color:#708392;
+font-size:13px;
+margin-bottom:13px
+}
+
+.arc-content p{
+color:#a9b5bd;
+line-height:1.6;
+font-size:14px
+}
+
+.arc-info{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:17px
+}
+
+.arc-info span{
+background:#151f29;
+border:1px solid #2b3c4c;
+color:#9aa7b1;
+padding:7px 9px;
+border-radius:7px;
+font-size:11px
+}
+
+.timeline{
+border-left:3px solid #f4c542;
+margin-left:15px;
+padding-left:30px
+}
+
+.event{
+position:relative;
+margin-bottom:35px;
+padding:20px;
+background:#0d141d;
+border:1px solid #26313d;
+border-radius:13px
+}
+
+.event::before{
+content:"";
+width:14px;
+height:14px;
+background:#f4c542;
+border-radius:50%;
+position:absolute;
+left:-39px;
+top:24px
+}
+
+.event.current-event{
+border-color:#e65353
+}
+
+.event.current-event h3{color:#ff8585}
+
+.event h3{
+color:#f4c542;
+margin-bottom:7px
+}
+
+.event p{
+color:#909da8;
+line-height:1.6
+}
+
+.random{
+background:radial-gradient(circle at center,#142a3a,#080e15);
+border:1px solid #26313d;
+border-radius:22px;
+padding:45px 25px;
+text-align:center
+}
+
+.random-img{
+width:170px;
+height:170px;
+margin:0 auto 20px;
+border-radius:50%;
+border:4px solid #f4c542;
+overflow:hidden;
+background:#111c26;
+box-shadow:0 0 40px #f4c54222;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.random-img img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.random-emoji{font-size:75px}
+
+.random-name{
+color:#f4c542;
+font-size:40px;
+font-weight:900;
+margin:10px
+}
+
+.random-info{
+color:#8e9da9;
+margin-bottom:25px
+}
+
+.quiz-box{
+max-width:900px;
+margin:auto;
+background:#0c141d;
+border:1px solid #263746;
+border-radius:20px;
+padding:30px
+}
+
+.quiz-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:20px
+}
+
+.quiz-progress{
+height:8px;
+background:#17222c;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:30px
+}
+
+.quiz-progress-bar{
+height:100%;
+background:#f4c542;
+width:0;
+transition:.3s
+}
+
+.quiz-question{
+font-size:25px;
+line-height:1.4;
+margin-bottom:22px
+}
+
+.quiz-answer{
+display:block;
+width:100%;
+background:#131e29;
+border:1px solid #304252;
+color:#ddd;
+text-align:left;
+padding:15px;
+margin:9px 0;
+border-radius:10px;
+cursor:pointer;
+transition:.2s
+}
+
+.quiz-answer:hover{
+border-color:#f4c542;
+transform:translateX(4px)
+}
+
+.quiz-answer.correct{
+background:#103323;
+border-color:#43d17a;
+color:#7ff0a9
+}
+
+.quiz-answer.wrong{
+background:#351719;
+border-color:#e65353;
+color:#ff8585
+}
+
+.quiz-result{
+text-align:center;
+padding:30px
+}
+
+.quiz-result-score{
+font-size:70px;
+color:#f4c542;
+font-weight:1000;
+margin:15px
+}
+
+.game-tabs{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:30px
+}
+
+.game-tab{
+background:#0d141d;
+border:1px solid #26313d;
+color:#aaa;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+.game-tab.active,.game-tab:hover{
+background:#f4c542;
+color:#111;
+border-color:#f4c542
+}
+
+.game-panel{display:none}
+.game-panel.active{display:block}
+
+.game-box{
+max-width:900px;
+margin:auto;
+background:#0c141d;
+border:1px solid #263746;
+border-radius:20px;
+padding:30px
+}
+
+.game-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:22px
+}
+
+.game-head h3{
+color:#f4c542;
+font-size:24px
+}
+
+.bingo-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:8px;
+margin-bottom:20px
+}
+
+.bingo-cell{
+aspect-ratio:1;
+background:#121d27;
+border:1px solid #2b3c4c;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:5px;
+cursor:pointer;
+font-size:11px;
+font-weight:bold;
+color:#c3ccd4;
+transition:.2s
+}
+
+.bingo-cell span{
+font-size:20px;
+margin-bottom:3px
+}
+
+.bingo-cell:hover{border-color:#f4c542}
+
+.bingo-cell.marked{
+background:#f4c542;
+color:#111;
+border-color:#f4c542
+}
+
+.bingo-cell.free{
+background:#1a2a1e;
+border-color:#43d17a;
+color:#7ff0a9
+}
+
+.bingo-win{
+text-align:center;
+color:#7ff0a9;
+font-weight:900;
+font-size:20px;
+margin-top:10px;
+display:none
+}
+
+.bingo-win.show{display:block}
+
+.memory-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:20px
+}
+
+.memory-card{
+aspect-ratio:3/4;
+perspective:600px;
+cursor:pointer
+}
+
+.memory-card-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform .4s;
+transform-style:preserve-3d
+}
+
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched .memory-card-inner{
+transform:rotateY(180deg)
+}
+
+.memory-face{
+position:absolute;
+inset:0;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+backface-visibility:hidden;
+border:1px solid #2b3c4c
+}
+
+.memory-back{
+background:linear-gradient(145deg,#121d27,#0a1119);
+font-size:26px;
+color:#f4c542
+}
+
+.memory-front{
+background:#151f29;
+transform:rotateY(180deg);
+flex-direction:column;
+padding:6px;
+text-align:center
+}
+
+.memory-front span{font-size:26px}
+
+.memory-front small{
+color:#c3ccd4;
+font-size:10px;
+margin-top:4px
+}
+
+.memory-card.matched .memory-front{
+background:#103323;
+border-color:#43d17a
+}
+
+.memory-stats{
+display:flex;
+justify-content:space-between;
+color:#9aa7b1;
+margin-bottom:15px;
+font-weight:bold
+}
+
+.guess-clue{
+background:#121d27;
+border:1px solid #2b3c4c;
+border-radius:10px;
+padding:14px;
+margin-bottom:10px;
+color:#c3ccd4
+}
+
+.guess-clue b{color:#f4c542}
+
+.guess-options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px
+}
+
+/* QUESTIONS */
+
+.questions-box{
+max-width:950px;
+margin:auto;
+background:#0c141d;
+border:1px solid #263746;
+border-radius:20px;
+padding:30px
+}
+
+.question-form{
+display:grid;
+gap:12px;
+margin-bottom:30px
+}
+
+.question-form input,
+.question-form textarea{
+width:100%;
+background:#101a24;
+color:#fff;
+border:1px solid #334454;
+border-radius:10px;
+padding:14px;
+outline:none;
+font-family:inherit
+}
+
+.question-form textarea{
+min-height:120px;
+resize:vertical
+}
+
+.question-form input:focus,
+.question-form textarea:focus{
+border-color:#f4c542
+}
+
+.questions-list{
+display:grid;
+gap:14px
+}
+
+.question-card{
+background:#111c26;
+border:1px solid #293b4b;
+border-radius:14px;
+padding:18px;
+transition:.2s
+}
+
+.question-card:hover{
+border-color:#f4c542;
+transform:translateY(-2px)
+}
+
+.question-author{
+color:#f4c542;
+font-weight:900;
+margin-bottom:8px
+}
+
+.question-date{
+color:#647583;
+font-size:11px;
+margin-bottom:10px
+}
+
+.question-text{
+color:#c4ced6;
+line-height:1.6;
+white-space:pre-wrap
+}
+
+.question-delete{
+margin-top:12px;
+background:#151f29;
+border:1px solid #354554;
+color:#aaa;
+padding:7px 10px;
+border-radius:7px;
+cursor:pointer;
+font-size:11px
+}
+
+.question-delete:hover{
+background:#351719;
+border-color:#e65353;
+color:#ff8585
+}
+
+.no-question{
+text-align:center;
+color:#71818e;
+padding:25px
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#000c;
+z-index:3000;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal.active{display:flex}
+
+.modal-box{
+background:#0b141d;
+border:1px solid #f4c542;
+border-radius:20px;
+max-width:700px;
+width:100%;
+max-height:90vh;
+overflow:auto;
+padding:30px;
+position:relative;
+box-shadow:0 30px 80px #000
+}
+
+.close{
+position:absolute;
+right:18px;
+top:12px;
+font-size:30px;
+color:#aaa;
+cursor:pointer;
+z-index:2
+}
+
+.close:hover{color:#fff}
+
+.modal-img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:13px;
+margin:18px 0
+}
+
+.modal-title{
+color:#f4c542;
+font-size:34px
+}
+
+.modal-sub{
+color:#758694;
+margin-top:5px
+}
+
+.modal-info{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:20px
+}
+
+.modal-stat{
+background:#121d27;
+border:1px solid #263746;
+padding:15px;
+border-radius:10px
+}
+
+.modal-stat small{
+display:block;
+color:#6f8291;
+margin-bottom:5px
+}
+
+.modal-stat b{color:#f4c542}
+
+.modal-description{
+color:#aab6bf;
+line-height:1.7;
+margin-top:20px
+}
+
+footer{
+border-top:1px solid #26313d;
+padding:35px 20px;
+text-align:center;
+color:#66737e
+}
+
+.footer-logo{
+color:#f4c542;
+font-size:24px;
+font-weight:900;
+margin-bottom:10px
+}
+
+.signature{
+position:fixed;
+bottom:12px;
+left:15px;
+color:#f4c542;
+font-size:12px;
+font-weight:900;
+opacity:.65;
+z-index:1500
+}
+
+@media(max-width:1100px){
+.characters,.wanted,.fruits{grid-template-columns:repeat(2,1fr)}
+.stats{grid-template-columns:repeat(2,1fr)}
+nav a{display:none}
+.arc-card{width:calc(50% - 30px)}
+}
+
+@media(max-width:700px){
+.hero{min-height:580px}
+.container{padding:55px 16px}
+.title{font-size:31px}
+.characters,.wanted,.fruits,.stats{grid-template-columns:1fr}
+.arc-route::before{left:8px}
+.arc-card,.arc-card:nth-child(even){
+width:calc(100% - 30px);
+margin-left:30px
+}
+.arc-card::after,
+.arc-card:nth-child(odd)::after,
+.arc-card:nth-child(even)::after{
+left:-30px;
+right:auto
+}
+.modal-info{grid-template-columns:1fr}
+.random-name{font-size:30px}
+.guess-options{grid-template-columns:1fr}
+}
+
+/* ===== ENCYCLOPEDIE INTERACTIVE V2 ===== */
+:root{
+ --gold:#f4c542;--ocean:#071725;--panel:#0c141d;--line:#263746;
+ --paper:#e8dcc0;--ink:#21190e;
+}
+body{background:radial-gradient(circle at 50% -10%,#12344b 0,#05080d 38%);min-height:100vh}
+body::before{content:"";position:fixed;inset:auto 0 0;height:180px;z-index:-1;opacity:.22;
+ background:repeating-radial-gradient(ellipse at 50% 100%,transparent 0 25px,#2a7192 27px 29px,transparent 31px 60px);
+ animation:epWave 12s linear infinite}
+@keyframes epWave{to{transform:translateX(-120px)}}
+.ep-topbar{position:sticky;top:67px;z-index:900;background:#07101ae8;border-bottom:1px solid #263746;backdrop-filter:blur(12px);padding:8px 16px}
+.ep-topbar-inner{max-width:1350px;margin:auto;display:flex;gap:8px;align-items:center;overflow:auto}
+.ep-topbar button,.ep-icon-btn{white-space:nowrap;background:#101c27;color:#cbd4db;border:1px solid #2d4050;border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:800}
+.ep-topbar button:hover,.ep-icon-btn:hover{color:#111;background:var(--gold);border-color:var(--gold)}
+.ep-searchbar{max-width:1350px;margin:25px auto 0;padding:0 22px;position:relative}
+.ep-searchbar input{width:100%;font-size:16px;background:#0b151f;border-color:#3b5263}
+.ep-results{position:absolute;left:22px;right:22px;top:56px;background:#09121b;border:1px solid #405467;border-radius:14px;overflow:hidden;z-index:2500;box-shadow:0 25px 70px #000b;display:none}
+.ep-results.show{display:block}.ep-result{display:flex;gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid #1d2b38;cursor:pointer}
+.ep-result:hover{background:#13212d}.ep-result b{color:#f4c542}.ep-result small{display:block;color:#82919d}
+.ep-panel{max-width:1350px;margin:25px auto;padding:0 22px}
+.ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ep-feature{background:linear-gradient(145deg,#101d28,#081019);border:1px solid #293c4c;border-radius:18px;padding:22px;min-height:150px;cursor:pointer;transition:.25s}
+.ep-feature:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 18px 45px #0007}
+.ep-feature b{display:block;color:var(--gold);font-size:22px;margin-bottom:8px}.ep-feature span{color:#8998a5;line-height:1.5}
+.ep-section-title{color:var(--gold);font-size:34px;margin:45px 0 10px}.ep-section-sub{color:#7f8e9a;margin-bottom:18px;line-height:1.6}
+.ep-locked{filter:none!important;background:linear-gradient(145deg,#10151a,#080b0e)!important;position:relative!important}
+.ep-locked>*{visibility:hidden}.ep-locked::after{content:"🔒 CONTENU VERROUILLÉ\A\AContinue jusqu'au chapitre " attr(data-unlock) " pour découvrir cette information.";white-space:pre-wrap;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;color:#9eabb4;font-weight:800;line-height:1.5}
+.ep-meter{height:12px;background:#17232d;border-radius:20px;overflow:hidden;border:1px solid #2c4050}.ep-meter i{display:block;height:100%;background:linear-gradient(90deg,#d99d1d,#f4c542);width:0;transition:width .6s}
+.ep-statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.ep-statbox{background:#0c151e;border:1px solid #263746;border-radius:15px;padding:18px}.ep-statbox b{display:block;color:var(--gold);font-size:27px;margin-bottom:4px}.ep-statbox span{color:#7f8d99}
+.ep-map{height:520px;border:1px solid #3b4e5e;border-radius:20px;position:relative;overflow:hidden;background:
+ radial-gradient(circle at 30% 40%,#24536c 0 2px,transparent 3px),
+ radial-gradient(circle at 72% 62%,#24536c 0 2px,transparent 3px),
+ linear-gradient(135deg,#082235,#0a1823 50%,#06131d)}
+.ep-map::before{content:"GRAND LINE";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:70px;letter-spacing:14px;color:#ffffff09;font-weight:1000;transform:rotate(-12deg)}
+.ep-marker{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--gold);border:3px solid #07131d;box-shadow:0 0 0 6px #f4c54222;cursor:pointer}.ep-marker:hover{transform:scale(1.4)}
+.ep-map-note{position:absolute;left:18px;bottom:18px;background:#06101add;border:1px solid #334b5e;border-radius:10px;padding:10px 13px;color:#9aa8b4}
+.ep-settings{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.ep-setting{background:#0d1720;border:1px solid #293c4c;border-radius:15px;padding:18px}.ep-setting h3{color:var(--gold);margin-bottom:12px}.ep-setting label{display:flex;gap:10px;align-items:center;color:#aab6bf;margin:9px 0}.ep-setting input[type=number]{width:150px}.ep-danger{background:#34191c!important;border-color:#7c3037!important;color:#ff9b9b!important}
+.ep-breadcrumb{max-width:1350px;margin:18px auto 0;padding:0 22px;color:#657683;font-size:13px}.ep-breadcrumb span{color:var(--gold)}
+.ep-toast{position:fixed;right:18px;bottom:18px;background:#0c171f;border:1px solid var(--gold);color:#fff;padding:14px 18px;border-radius:12px;z-index:5000;box-shadow:0 20px 50px #0009;transform:translateY(120px);transition:.3s}.ep-toast.show{transform:none}
+.ep-mode-paper{background:#e9dfc8!important;color:#21190e!important}.ep-mode-paper .ep-feature,.ep-mode-paper .ep-setting,.ep-mode-paper .ep-statbox{background:#f4ead5;border-color:#9b8a68;color:#21190e}.ep-mode-paper .ep-section-title,.ep-mode-paper .ep-feature b{color:#78540e}
+@media(max-width:800px){.ep-grid{grid-template-columns:1fr}.ep-statgrid{grid-template-columns:repeat(2,1fr)}.ep-settings{grid-template-columns:1fr}.ep-map{height:390px}.ep-map::before{font-size:35px}.ep-topbar{top:58px}.ep-searchbar{padding:0 16px}.ep-results{left:16px;right:16px}}
+@media(max-width:520px){.ep-statgrid{grid-template-columns:1fr 1fr}.ep-feature{min-height:125px}.ep-section-title{font-size:27px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">☠ ONE PIECE</div>
+
+<div>
+<a href="#persos">Personnages</a>
+<a href="#primes">Primes</a>
+<a href="#fruits">Fruits</a>
+<a href="#arcs">Arcs</a>
+<a href="#random">Aléatoire</a>
+<a href="#quiz">Quiz</a>
+<a href="#minigames">Mini-jeux</a>
+<a href="#questions">Questions</a>
+</div>
+</nav>
+</header>
+
+<div class="ep-topbar">
+ <div class="ep-topbar-inner">
+  <button onclick="EP.go('home')">🏴‍☠️ Accueil</button>
+  <button onclick="EP.go('characters')">👤 Personnages</button>
+  <button onclick="EP.go('world')">🌍 Monde</button>
+  <button onclick="EP.go('map')">🗺️ Carte</button>
+  <button onclick="EP.go('arcs')">📖 Arcs</button>
+  <button onclick="EP.go('quiz')">🧠 Quiz</button>
+  <button onclick="EP.go('games')">🎮 Mini-jeux</button>
+  <button onclick="EP.go('progress')">📊 Progression</button>
+  <button onclick="EP.go('settings')">⚙️</button>
+ </div>
+</div>
+
+<div class="ep-searchbar" id="epSearchArea">
+ <input id="epGlobalSearch" autocomplete="off" placeholder="🔎 Recherche globale — personnages, fruits, arcs, îles, navires, techniques... (Ctrl + K)">
+ <div class="ep-results" id="epResults"></div>
+</div>
+
+<div class="ep-breadcrumb" id="epBreadcrumb">Grand Line <span>›</span> Accueil</div>
+
+<section class="ep-panel" id="epHome">
+ <h2 class="ep-section-title">🌊 Grande Encyclopédie Interactive</h2>
+ <p class="ep-section-sub">Une base de données maritime conçue pour explorer One Piece sans dépasser ton chapitre.</p>
+ <div class="ep-statgrid">
+  <div class="ep-statbox"><b id="epChapterLabel">—</b><span>Chapitre actuel</span></div>
+  <div class="ep-statbox"><b id="epVisibleCount">—</b><span>Éléments accessibles</span></div>
+  <div class="ep-statbox"><b id="epPagesCount">0</b><span>Pages consultées</span></div>
+  <div class="ep-statbox"><b id="epBadgeCount">0</b><span>Badges</span></div>
+ </div>
+ <div class="ep-feature" style="margin-top:18px;cursor:default">
+  <b>📖 Progression de l'histoire</b>
+  <div class="ep-meter" style="margin:14px 0 8px"><i id="epStoryMeter"></i></div>
+  <span id="epStoryText">Configure ton chapitre pour commencer.</span>
+ </div>
+ <div class="ep-grid" style="margin-top:18px">
+  <div class="ep-feature" onclick="EP.go('characters')"><b>👒 Personnages</b><span>Fiches, affiliations, primes, pouvoirs et liens.</span></div>
+  <div class="ep-feature" onclick="EP.go('world')"><b>🌍 Explorer le monde</b><span>Îles, organisations, navires, Haki et techniques.</span></div>
+  <div class="ep-feature" onclick="EP.go('map')"><b>🗺️ Carte interactive</b><span>Explore les lieux accessibles à ton niveau.</span></div>
+  <div class="ep-feature" onclick="EP.go('arcs')"><b>📖 Arcs & chronologie</b><span>Parcours l'histoire sans afficher les éléments futurs.</span></div>
+  <div class="ep-feature" onclick="EP.go('quiz')"><b>🧠 Quiz</b><span>Questions filtrées selon ton chapitre.</span></div>
+  <div class="ep-feature" onclick="EP.go('games')"><b>🎮 Mini-jeux</b><span>Joue et conserve tes records localement.</span></div>
+ </div>
+</section>
+
+<section class="ep-panel" id="epWorld" style="display:none">
+ <h2 class="ep-section-title">🌍 Explorer l'univers</h2>
+ <p class="ep-section-sub">Chaque catégorie utilise la même protection anti-spoiler.</p>
+ <div class="ep-grid">
+  <div class="ep-feature" onclick="EP.openCategory('fruits')"><b>🍎 Fruits du Démon</b><span>Recherche et filtres par type.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('haki')"><b>⚡ Haki</b><span>Observation, Armement et Rois.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('ships')"><b>🚢 Navires</b><span>Fiches et équipages associés.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('marine')"><b>⚓ Marine</b><span>Grades, personnages et unités.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('government')"><b>🏛️ Gouvernement</b><span>Organisations et informations connues.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('revolutionaries')"><b>🔥 Révolutionnaires</b><span>Personnages et événements accessibles.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('fights')"><b>⚔️ Combats</b><span>Participants, lieux et chapitres.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('techniques')"><b>💥 Techniques</b><span>Techniques liées aux personnages.</span></div>
+  <div class="ep-feature" onclick="EP.openCategory('mysteries')"><b>❓ Mystères</b><span>Faits et théories clairement séparés.</span></div>
+ </div>
+ <div id="epCategoryContent"></div>
+</section>
+
+<section class="ep-panel" id="epMap" style="display:none">
+ <h2 class="ep-section-title">🗺️ Carte du monde</h2>
+ <p class="ep-section-sub">Prototype cartographique remplaçable : les marqueurs sont filtrés par chapitre.</p>
+ <div class="ep-map" id="epMapCanvas"></div>
+</section>
+
+<section class="ep-panel" id="epProgress" style="display:none">
+ <h2 class="ep-section-title">📊 Ma progression</h2>
+ <p class="ep-section-sub">Toutes ces données restent dans ton navigateur avec localStorage.</p>
+ <div class="ep-statgrid">
+  <div class="ep-statbox"><b id="epPCharacters">0</b><span>Personnages consultés</span></div>
+  <div class="ep-statbox"><b id="epPFruits">0</b><span>Fruits consultés</span></div>
+  <div class="ep-statbox"><b id="epPQuiz">0</b><span>Quiz terminés</span></div>
+  <div class="ep-statbox"><b id="epPGames">0</b><span>Parties jouées</span></div>
+ </div>
+ <div class="ep-feature" style="margin-top:16px;cursor:default"><b>🏅 Badges</b><div id="epBadges" style="margin-top:15px"></div></div>
+ <div class="ep-feature" style="margin-top:16px;cursor:default"><b>⭐ Dernières pages</b><div id="epHistory" style="margin-top:12px;color:#93a1ad"></div></div>
+</section>
+
+<section class="ep-panel" id="epSettings" style="display:none">
+ <h2 class="ep-section-title">⚙️ Paramètres</h2>
+ <div class="ep-settings">
+  <div class="ep-setting">
+   <h3>📖 Chapitre actuel</h3>
+   <p style="color:#8796a2;margin-bottom:12px">Les contenus après ce chapitre sont verrouillés.</p>
+   <label>Chapitre <input id="epChapterInput" type="number" min="1" max="9999"></label>
+   <button class="btn" onclick="EP.saveChapter()">💾 Enregistrer</button>
+  </div>
+  <div class="ep-setting">
+   <h3>🛡️ Protection anti-spoiler</h3>
+   <label><input type="radio" name="epSpoil" value="1"> Normale</label>
+   <label><input type="radio" name="epSpoil" value="2"> Renforcée</label>
+   <label><input type="radio" name="epSpoil" value="3"> Maximale</label>
+   <p style="color:#71818e;font-size:12px">Le mode maximal masque aussi les noms et images des éléments futurs.</p>
+  </div>
+  <div class="ep-setting">
+   <h3>🎨 Apparence</h3>
+   <label><input type="radio" name="epTheme" value="dark"> Sombre maritime</label>
+   <label><input type="radio" name="epTheme" value="paper"> Papier ancien</label>
+   <label><input id="epMotion" type="checkbox"> Réduire les animations</label>
+  </div>
+  <div class="ep-setting">
+   <h3>🧹 Données locales</h3>
+   <p style="color:#8796a2;margin-bottom:12px">Efface chapitre, progression, scores, badges et historique.</p>
+   <button class="btn ep-danger" onclick="EP.reset()">🗑️ Réinitialiser toutes les données</button>
+  </div>
+ </div>
+</section>
+
+<div class="ep-toast" id="epToast"></div>
+
+
+<section class="hero">
+
+<img
+class="hero-bg"
+src="images/grand-line.jpg"
+alt="Grand Line"
+onerror="this.style.display='none'"
+>
+
+<div class="hero-content">
+
+<div class="hero-kicker">☠️ BIENVENUE SUR GRAND LINE</div>
+
+<h1>ONE <span>PIECE</span></h1>
+
+<p>
+Le monde de la piraterie, des légendes, des trésors
+et des aventures du Chapeau de Paille.
+</p>
+
+<div class="hero-buttons">
+<a class="btn" href="#persos">Explorer Grand Line</a>
+<a class="btn dark" href="#primes">Voir les primes</a>
+</div>
+
+</div>
+</section>
+
+<section class="container">
+
+<div class="stats">
+
+<div class="stat">
+<b>1194</b>
+<span>Dernier chapitre</span>
+</div>
+
+<div class="stat">
+<b>1179</b>
+<span>Dernier épisode</span>
+</div>
+
+<div class="stat">
+<b>∞</b>
+<span>Îles à découvrir</span>
+</div>
+
+<div class="stat">
+<b>25+</b>
+<span>Années d'aventure</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="container" id="persos">
+
+<h2 class="title">👒 Personnages</h2>
+
+<p class="subtitle">
+Explore les pirates, Mugiwara, Marines, alliés,
+CP0 et révolutionnaires.
+</p>
+
+<div class="controls">
+
+<input
+id="search"
+placeholder="🔎 Rechercher un personnage..."
+>
+
+<select id="group">
+
+<option value="all">Tous les groupes</option>
+<option value="Mugiwara">Mugiwara</option>
+<option value="Alliés">Alliés</option>
+<option value="Pirates">Pirates</option>
+<option value="Marine">Marine</option>
+<option value="Révolutionnaires">Révolutionnaires</option>
+<option value="CP0">CP0</option>
+
+</select>
+
+</div>
+
+<div class="characters" id="characters"></div>
+
+</section>
+
+<section class="container" id="primes">
+
+<h2 class="title">💰 Les primes</h2>
+
+<p class="subtitle">
+Les affiches recherchées des pirates les plus célèbres.
+</p>
+
+<div class="controls">
+
+<select id="bountyFilter">
+
+<option value="all">Toutes les primes</option>
+<option value="billion">1 milliard+</option>
+<option value="500">500 millions+</option>
+<option value="under">Moins de 500 millions</option>
+
+</select>
+
+</div>
+
+<div class="wanted" id="wanted"></div>
+
+</section>
+
+<section class="container" id="fruits">
+
+<h2 class="title">🍎 Fruits du démon</h2>
+
+<p class="subtitle">
+Les pouvoirs qui ont façonné le monde de One Piece.
+</p>
+
+<div class="fruits" id="fruitsList"></div>
+
+</section>
+
+<section class="container" id="arcs">
+
+<h2 class="title">🌊 Voyage sur Grand Line</h2>
+
+<p class="arc-intro">
+Suis le voyage des Mugiwara depuis East Blue jusqu'à
+la saga finale et découvre l'arc actuellement en cours.
+</p>
+
+<div class="arc-filters">
+
+<button class="arc-filter active" onclick="filterArcs('all',this)">
+🌍 Tous
+</button>
+
+<button class="arc-filter" onclick="filterArcs('East Blue',this)">
+🌊 East Blue
+</button>
+
+<button class="arc-filter" onclick="filterArcs('Grand Line',this)">
+🏜️ Grand Line
+</button>
+
+<button class="arc-filter" onclick="filterArcs('Nouveau Monde',this)">
+⚔️ Nouveau Monde
+</button>
+
+<button class="arc-filter" onclick="filterArcs('Saga Finale',this)">
+👑 Saga Finale
+</button>
+
+</div>
+
+<div class="arc-route" id="arcRoute"></div>
+
+</section>
+
+<section class="container">
+
+<h2 class="title">🌍 Chronologie</h2>
+
+<p class="subtitle">
+Quelques événements qui ont changé le monde.
+</p>
+
+<div class="timeline">
+
+<div class="event">
+<h3>🏴‍☠️ L'ère de Roger</h3>
+<p>
+Gol D. Roger atteint Laugh Tale et déclenche
+la Grande Ère de la Piraterie.
+</p>
+</div>
+
+<div class="event">
+<h3>🌊 Début du voyage</h3>
+<p>
+Luffy prend la mer avec un objectif :
+devenir le Roi des Pirates.
+</p>
+</div>
+
+<div class="event">
+<h3>⚔️ Marineford</h3>
+<p>
+La guerre au sommet bouleverse l'équilibre du monde.
+</p>
+</div>
+
+<div class="event">
+<h3>🐉 Wano</h3>
+<p>
+Luffy et ses alliés affrontent Kaido
+et libèrent le pays de Wano.
+</p>
+</div>
+
+<div class="event">
+<h3>🏝️ Egghead</h3>
+<p>
+Les Mugiwara découvrent les secrets de Vegapunk
+et affrontent le Gouvernement Mondial.
+</p>
+</div>
+
+<div class="event current-event">
+<h3>🏔️ Elbaf — ARC ACTUEL</h3>
+<p>
+Les Mugiwara poursuivent leur aventure sur Elbaf,
+la légendaire terre des Géants.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="container" id="random">
+
+<h2 class="title">🎲 Personnage aléatoire</h2>
+
+<p class="subtitle">
+Laisse Grand Line choisir un personnage pour toi.
+</p>
+
+<div class="random">
+
+<div class="random-img" id="randomContainer">
+
+<span class="random-emoji">🎲</span>
+
+<img
+id="randomImage"
+src=""
+alt=""
+style="display:none"
+>
+
+</div>
+
+<div class="random-name" id="randomName">
+Clique !
+</div>
+
+<div class="random-info" id="randomInfo">
+Découvre un personnage au hasard.
+</div>
+
+<button class="btn" onclick="randomCharacter()">
+🎲 Tirer au sort
+</button>
+
+</div>
+
+</section>
+
+<section class="container" id="quiz">
+
+<h2 class="title">🧠 Quiz One Piece</h2>
+
+<p class="subtitle">
+Teste tes connaissances.
+</p>
+
+<div class="quiz-box">
+<div id="quizGame"></div>
+</div>
+
+</section>
+
+<section class="container" id="minigames">
+
+<h2 class="title">🎮 Mini-jeux</h2>
+
+<p class="subtitle">
+Bingo, mémoire et Qui suis-je ?
+</p>
+
+<div class="game-tabs">
+
+<button class="game-tab active" onclick="switchGame('bingo',this)">
+🎯 Bingo
+</button>
+
+<button class="game-tab" onclick="switchGame('memory',this)">
+🧩 Mémoire
+</button>
+
+<button class="game-tab" onclick="switchGame('guesswho',this)">
+❓ Qui suis-je ?
+</button>
+
+</div>
+
+<div class="game-panel active" id="panel-bingo">
+
+<div class="game-box">
+
+<div class="game-head">
+
+<h3>🎯 Bingo Grand Line</h3>
+
+<button class="btn dark" onclick="newBingo()">
+🔄 Nouvelle grille
+</button>
+
+</div>
+
+<p class="subtitle">
+Aligne 5 cases pour gagner.
+</p>
+
+<div class="bingo-grid" id="bingoGrid"></div>
+
+<div class="bingo-win" id="bingoWin">
+🏆 BINGO !
+</div>
+
+</div>
+</div>
+
+<div class="game-panel" id="panel-memory">
+
+<div class="game-box">
+
+<div class="game-head">
+
+<h3>🧩 Jeu de mémoire</h3>
+
+<button class="btn dark" onclick="newMemory()">
+🔄 Recommencer
+</button>
+
+</div>
+
+<div class="memory-stats">
+<span id="memoryMoves">Coups : 0</span>
+<span id="memoryPairs">Paires : 0/8</span>
+</div>
+
+<div class="memory-grid" id="memoryGrid"></div>
+
+</div>
+</div>
+
+<div class="game-panel" id="panel-guesswho">
+
+<div class="game-box">
+
+<div class="game-head">
+
+<h3>❓ Qui suis-je ?</h3>
+
+<button class="btn dark" onclick="newGuessWho()">
+🔄 Nouveau personnage
+</button>
+
+</div>
+
+<div id="guessClues"></div>
+
+<button class="btn" id="guessNextBtn" onclick="nextClue()">
+💡 Indice suivant
+</button>
+
+<div class="guess-options" id="guessOptions"></div>
+
+</div>
+</div>
+
+</section>
+
+<!-- QUESTIONS -->
+
+<section class="container" id="questions">
+
+<h2 class="title">💬 Questions & Discussion</h2>
+
+<p class="subtitle">
+Pose une question sur One Piece et partage-la avec les autres fans.
+</p>
+
+<div class="questions-box">
+
+<form class="question-form" onsubmit="addQuestion(event)">
+
+<input
+id="questionAuthor"
+type="text"
+maxlength="30"
+placeholder="👤 Ton pseudo"
+required
+>
+
+<textarea
+id="questionText"
+maxlength="500"
+placeholder="💭 Pose ta question sur One Piece..."
+required
+></textarea>
+
+<button class="btn" type="submit">
+🚀 Publier ma question
+</button>
+
+</form>
+
+<div class="questions-list" id="questionsList"></div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-logo">
+☠ ONE PIECE
+</div>
+
+<p>ONE PIECE FAN SITE — Projet non officiel</p>
+
+<br>
+
+<p>Made with ❤️ by a fan</p>
+
+</footer>
+
+<div class="signature">pklagg</div>
+
+<div class="modal" id="modal" onclick="closeModalOutside(event)">
+
+<div class="modal-box">
+
+<div class="close" onclick="closeModal()">×</div>
+
+<div id="modalContent"></div>
+
+</div>
+</div>
+
+<script>
+
+/* =====================================================
+   PERSONNAGES
+===================================================== */
+
+const characters=[
+
+/* MUGIWARA */
+
+{
+name:"Monkey D. Luffy",
+group:"Mugiwara",
+emoji:"👒",
+img:"images/luffy.jpg",
+bounty:3000000000,
+fruit:"Gomu Gomu no Mi / Hito Hito no Mi, modèle Nika"
+},
+
+{
+name:"Roronoa Zoro",
+group:"Mugiwara",
+emoji:"⚔️",
+img:"images/zoro.jpg",
+bounty:1111000000,
+fruit:"Aucun"
+},
+
+{
+name:"Nami",
+group:"Mugiwara",
+emoji:"🍊",
+img:"images/nami.jpg",
+bounty:366000000,
+fruit:"Aucun"
+},
+
+{
+name:"Usopp",
+group:"Mugiwara",
+emoji:"🎯",
+img:"images/usopp.jpg",
+bounty:500000000,
+fruit:"Aucun"
+},
+
+{
+name:"Sanji",
+group:"Mugiwara",
+emoji:"🔥",
+img:"images/sanji.jpg",
+bounty:1032000000,
+fruit:"Aucun"
+},
+
+{
+name:"Tony Tony Chopper",
+group:"Mugiwara",
+emoji:"🦌",
+img:"images/chopper.jpg",
+bounty:1000,
+fruit:"Hito Hito no Mi"
+},
+
+{
+name:"Nico Robin",
+group:"Mugiwara",
+emoji:"🌸",
+img:"images/robin.jpg",
+bounty:930000000,
+fruit:"Hana Hana no Mi"
+},
+
+{
+name:"Franky",
+group:"Mugiwara",
+emoji:"🤖",
+img:"images/franky.jpg",
+bounty:394000000,
+fruit:"Aucun"
+},
+
+{
+name:"Brook",
+group:"Mugiwara",
+emoji:"💀",
+img:"images/brook.jpg",
+bounty:383000000,
+fruit:"Yomi Yomi no Mi"
+},
+
+{
+name:"Jinbe",
+group:"Mugiwara",
+emoji:"🌊",
+img:"images/jinbe.jpg",
+bounty:1100000000,
+fruit:"Aucun"
+},
+
+/* PIRATES */
+
+{
+name:"Shanks",
+group:"Pirates",
+emoji:"🍷",
+img:"images/shanks.jpg",
+bounty:4048900000,
+fruit:"Aucun"
+},
+
+{
+name:"Marshall D. Teach",
+group:"Pirates",
+emoji:"🌑",
+img:"images/blackbeard.jpg",
+bounty:3996000000,
+fruit:"Yami Yami no Mi + Gura Gura no Mi"
+},
+
+{
+name:"Dracule Mihawk",
+group:"Pirates",
+emoji:"🗡️",
+img:"images/mihawk.jpg",
+bounty:3590000000,
+fruit:"Aucun"
+},
+
+{
+name:"Buggy",
+group:"Pirates",
+emoji:"🤡",
+img:"images/buggy.jpg",
+bounty:3189000000,
+fruit:"Bara Bara no Mi"
+},
+
+{
+name:"Trafalgar Law",
+group:"Pirates",
+emoji:"💉",
+img:"images/law.jpg",
+bounty:3000000000,
+fruit:"Ope Ope no Mi"
+},
+
+{
+name:"Eustass Kid",
+group:"Pirates",
+emoji:"🧲",
+img:"images/kid.jpg",
+bounty:3000000000,
+fruit:"Jiki Jiki no Mi"
+},
+
+{
+name:"Gol D. Roger",
+group:"Pirates",
+emoji:"👑",
+img:"images/roger.jpg",
+bounty:5564800000,
+fruit:"Aucun"
+},
+
+{
+name:"Edward Newgate",
+group:"Pirates",
+emoji:"🌊",
+img:"images/whitebeard.jpg",
+bounty:5046000000,
+fruit:"Gura Gura no Mi"
+},
+
+{
+name:"Kaido",
+group:"Pirates",
+emoji:"🐲",
+img:"images/kaido.jpg",
+bounty:4611100000,
+fruit:"Uo Uo no Mi, modèle Seiryu"
+},
+
+{
+name:"Charlotte Linlin",
+group:"Pirates",
+emoji:"🍰",
+img:"images/bigmom.jpg",
+bounty:4388000000,
+fruit:"Soru Soru no Mi"
+},
+
+{
+name:"Bartolomeo",
+group:"Pirates",
+emoji:"🛡️",
+img:"images/bartolomeo.jpg",
+bounty:200000000,
+fruit:"Bari Bari no Mi"
+},
+
+{
+name:"Crocodile",
+group:"Pirates",
+emoji:"🏜️",
+img:"images/crocodile.jpg",
+bounty:1965000000,
+fruit:"Suna Suna no Mi"
+},
+
+{
+name:"Donquixote Doflamingo",
+group:"Pirates",
+emoji:"🦩",
+img:"images/doflamingo.jpg",
+bounty:340000000,
+fruit:"Ito Ito no Mi"
+},
+
+{
+name:"Arlong",
+group:"Pirates",
+emoji:"🦈",
+img:"images/arlong.jpg",
+bounty:20000000,
+fruit:"Aucun"
+},
+
+{
+name:"Kuro",
+group:"Pirates",
+emoji:"🐈",
+img:"images/kuro.jpg",
+bounty:24000000,
+fruit:"Aucun"
+},
+
+{
+name:"Don Krieg",
+group:"Pirates",
+emoji:"🛡️",
+img:"images/krieg.jpg",
+bounty:17000000,
+fruit:"Aucun"
+},
+
+{
+name:"Alvida",
+group:"Pirates",
+emoji:"🏴‍☠️",
+img:"images/alvida.jpg",
+bounty:5000000,
+fruit:"Sube Sube no Mi"
+},
+
+{
+name:"Bellamy",
+group:"Pirates",
+emoji:"🦁",
+img:"images/bellamy.jpg",
+bounty:195000000,
+fruit:"Bane Bane no Mi"
+},
+
+{
+name:"Jewelry Bonney",
+group:"Pirates",
+emoji:"💎",
+img:"images/bonney.jpg",
+bounty:320000000,
+fruit:"Toshi Toshi no Mi"
+},
+
+{
+name:"X Drake",
+group:"Pirates",
+emoji:"🦖",
+img:"images/drake.jpg",
+bounty:222000000,
+fruit:"Ryu Ryu no Mi, modèle Allosaurus"
+},
+
+{
+name:"Gecko Moria",
+group:"Pirates",
+emoji:"🦇",
+img:"images/moria.jpg",
+bounty:320000000,
+fruit:"Kage Kage no Mi"
+},
+
+{
+name:"Doc Q",
+group:"Pirates",
+emoji:"💀",
+img:"images/docq.jpg",
+bounty:0,
+fruit:"Shiku Shiku no Mi"
+},
+
+{
+name:"Boa Hancock",
+group:"Pirates",
+emoji:"🐍",
+img:"images/boa.jpg",
+bounty:1659000000,
+fruit:"Mero Mero no Mi"
+},
+
+{
+name:"Portgas D. Ace",
+group:"Pirates",
+emoji:"🔥",
+img:"images/ace.jpg",
+bounty:550000000,
+fruit:"Mera Mera no Mi"
+},
+
+{
+name:"Brogy",
+group:"Pirates",
+emoji:"🪓",
+img:"images/brogy.jpg",
+bounty:100000000,
+fruit:"Aucun"
+},
+
+{
+name:"Dorry",
+group:"Pirates",
+emoji:"⚔️",
+img:"images/dorry.jpg",
+bounty:100000000,
+fruit:"Aucun"
+},
+
+{
+name:"Charlotte Katakuri",
+group:"Pirates",
+emoji:"🍩",
+img:"images/katakuri.jpg",
+bounty:1057000000,
+fruit:"Mochi Mochi no Mi"
+},
+
+{
+name:"Charlotte Perospero",
+group:"Pirates",
+emoji:"🍭",
+img:"images/perospero.jpg",
+bounty:700000000,
+fruit:"Pero Pero no Mi"
+},
+
+{
+name:"King",
+group:"Pirates",
+emoji:"🔥",
+img:"images/king.jpg",
+bounty:1390000000,
+fruit:"Ryu Ryu no Mi, modèle Pteranodon"
+},
+
+{
+name:"Ulti",
+group:"Pirates",
+emoji:"🦖",
+img:"images/ulti.jpg",
+bounty:400000000,
+fruit:"Ryu Ryu no Mi, modèle Pachycephalosaurus"
+},
+
+{
+name:"Page One",
+group:"Pirates",
+emoji:"🦖",
+img:"images/page-one.jpg",
+bounty:290000000,
+fruit:"Ryu Ryu no Mi, modèle Spinosaurus"
+},
+
+{
+name:"Loki",
+group:"Alliés",
+emoji:"👑",
+img:"images/loki.jpg",
+bounty:0,
+fruit:"Inconnue"
+},
+
+/* MARINE */
+
+{
+name:"Borsalino Kizaru",
+group:"Marine",
+emoji:"✨",
+img:"images/kizaru.jpg",
+bounty:0,
+fruit:"Pika Pika no Mi"
+},
+
+{
+name:"Issho Fujitora",
+group:"Marine",
+emoji:"🌑",
+img:"images/fujitora.jpg",
+bounty:0,
+fruit:"Zushi Zushi no Mi"
+},
+
+{
+name:"Ryokugyu Aramaki",
+group:"Marine",
+emoji:"🌳",
+img:"images/ryokugyu.jpg",
+bounty:0,
+fruit:"Mori Mori no Mi"
+},
+
+{
+name:"Sakazuki Akainu",
+group:"Marine",
+emoji:"🌋",
+img:"images/akainu.jpg",
+bounty:0,
+fruit:"Magu Magu no Mi"
+},
+
+{
+name:"Kuzan Aokiji",
+group:"Marine",
+emoji:"❄️",
+img:"images/aokiji.jpg",
+bounty:0,
+fruit:"Hie Hie no Mi"
+},
+
+{
+name:"Monkey D. Garp",
+group:"Marine",
+emoji:"👊",
+img:"images/garp.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Sengoku",
+group:"Marine",
+emoji:"🧘",
+img:"images/sengoku.jpg",
+bounty:0,
+fruit:"Hito Hito no Mi, modèle Daibutsu"
+},
+
+{
+name:"Koby",
+group:"Marine",
+emoji:"👊",
+img:"images/koby.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Morgan",
+group:"Marine",
+emoji:"⚓",
+img:"images/morgan.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+/* CP0 */
+
+{
+name:"Rob Lucci",
+group:"CP0",
+emoji:"🐆",
+img:"images/lucci.jpg",
+bounty:0,
+fruit:"Neko Neko no Mi, modèle Léopard"
+},
+
+{
+name:"Kaku",
+group:"CP0",
+emoji:"🦒",
+img:"images/kaku.jpg",
+bounty:0,
+fruit:"Ushi Ushi no Mi, modèle Girafe"
+},
+
+{
+name:"Jabra",
+group:"CP0",
+emoji:"🐺",
+img:"images/jabra.jpg",
+bounty:0,
+fruit:"Inu Inu no Mi, modèle Loup"
+},
+
+{
+name:"Blueno",
+group:"CP0",
+emoji:"🚪",
+img:"images/blueno.jpg",
+bounty:0,
+fruit:"Doa Doa no Mi"
+},
+
+/* REVOLUTIONNAIRES */
+
+{
+name:"Monkey D. Dragon",
+group:"Révolutionnaires",
+emoji:"🐉",
+img:"images/dragon.jpg",
+bounty:0,
+fruit:"Inconnue"
+},
+
+{
+name:"Sabo",
+group:"Révolutionnaires",
+emoji:"🔥",
+img:"images/sabo.jpg",
+bounty:602000000,
+fruit:"Mera Mera no Mi"
+},
+
+{
+name:"Bartholomew Kuma",
+group:"Révolutionnaires",
+emoji:"🐾",
+img:"images/kuma.jpg",
+bounty:296000000,
+fruit:"Nikyu Nikyu no Mi"
+},
+
+/* ALLIÉS */
+
+{
+name:"Yamato",
+group:"Alliés",
+emoji:"🐺",
+img:"images/yamato.jpg",
+bounty:0,
+fruit:"Inu Inu no Mi, modèle Okuchi no Makami"
+},
+
+{
+name:"Gaimon",
+group:"Alliés",
+emoji:"📦",
+img:"images/gaimon.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Gan Fall",
+group:"Alliés",
+emoji:"🪽",
+img:"images/gan-fall.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Wyper",
+group:"Alliés",
+emoji:"🔥",
+img:"images/wyper.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Enel",
+group:"Pirates",
+emoji:"⚡",
+img:"images/enel.jpg",
+bounty:0,
+fruit:"Goro Goro no Mi"
+}
+
+];
+
+
+/* =====================================================
+   ARCS
+===================================================== */
+
+const arcs=[
+
+{
+name:"Romance Dawn",
+saga:"East Blue",
+location:"🏝️ Île de Dawn",
+image:"images/romance-dawn.jpg",
+episodes:"1",
+chapters:"1 — 7",
+enemy:"Higuma",
+description:"Luffy quitte le village de Fusha et rencontre Zoro.",
+moment:"La rencontre entre Luffy et Zoro."
+},
+
+{
+name:"Orange Town",
+saga:"East Blue",
+location:"🏘️ Orange Town",
+image:"images/orange-town.jpg",
+episodes:"2 — 8",
+chapters:"8 — 21",
+enemy:"Buggy",
+description:"Luffy et Zoro affrontent Buggy et rencontrent Nami.",
+moment:"La première grande victoire contre Buggy."
+},
+
+{
+name:"Syrup Village",
+saga:"East Blue",
+location:"🌲 Syrup Village",
+image:"images/syrup-village.jpg",
+episodes:"9 — 18",
+chapters:"22 — 41",
+enemy:"Kuro",
+description:"Usopp rejoint l'aventure après l'affrontement contre Kuro.",
+moment:"Usopp rejoint l'équipage."
+},
+
+{
+name:"Baratie",
+saga:"East Blue",
+location:"🍽️ Le Baratie",
+image:"images/baratie.jpg",
+episodes:"19 — 30",
+chapters:"42 — 68",
+enemy:"Don Krieg",
+description:"Luffy rencontre Sanji et Zoro affronte Mihawk.",
+moment:"Zoro affronte Mihawk."
+},
+
+{
+name:"Arlong Park",
+saga:"East Blue",
+location:"🐟 Cocoyasi Village",
+image:"images/arlong-park.jpg",
+episodes:"31 — 44",
+chapters:"69 — 95",
+enemy:"Arlong",
+description:"Luffy affronte Arlong pour libérer Nami.",
+moment:"Nami rejoint officiellement l'équipage."
+},
+
+{
+name:"Loguetown",
+saga:"East Blue",
+location:"⚓ Loguetown",
+image:"images/loguetown.jpg",
+episodes:"45 — 53",
+chapters:"96 — 100",
+enemy:"Smoker",
+description:"L'équipage quitte East Blue et entre sur Grand Line.",
+moment:"Luffy entre sur Grand Line."
+},
+
+{
+name:"Reverse Mountain",
+saga:"Grand Line",
+location:"⛰️ Reverse Mountain",
+image:"images/reverse-mountain.jpg",
+episodes:"54 — 55",
+chapters:"101 — 105",
+enemy:"Laboon",
+description:"Les Mugiwara franchissent Reverse Mountain et rencontrent Laboon.",
+moment:"Entrée sur Grand Line."
+},
+
+{
+name:"Whisky Peak",
+saga:"Grand Line",
+location:"🌵 Whisky Peak",
+image:"images/whisky-peak.jpg",
+episodes:"56 — 61",
+chapters:"106 — 114",
+enemy:"Baroque Works",
+description:"L'équipage découvre Baroque Works.",
+moment:"Première apparition de Vivi."
+},
+
+{
+name:"Little Garden",
+saga:"Grand Line",
+location:"🦕 Little Garden",
+image:"images/little-garden.jpg",
+episodes:"61 — 67",
+chapters:"115 — 129",
+enemy:"Mr. 3",
+description:"Les Mugiwara rencontrent les géants Dorry et Brogy.",
+moment:"L'amitié de Dorry et Brogy."
+},
+
+{
+name:"Drum Island",
+saga:"Grand Line",
+location:"❄️ Drum Island",
+image:"images/drum-island.jpg",
+episodes:"68 — 91",
+chapters:"130 — 154",
+enemy:"Wapol",
+description:"Luffy rencontre Chopper.",
+moment:"Chopper rejoint l'équipage."
+},
+
+{
+name:"Alabasta",
+saga:"Grand Line",
+location:"🏜️ Royaume d'Alabasta",
+image:"images/alabasta.jpg",
+episodes:"92 — 130",
+chapters:"155 — 217",
+enemy:"Crocodile",
+description:"Les Mugiwara tentent d'empêcher la guerre civile organisée par Crocodile.",
+moment:"Luffy bat Crocodile."
+},
+
+{
+name:"Jaya",
+saga:"Grand Line",
+location:"🏴‍☠️ Île de Jaya",
+image:"images/jaya.jpg",
+episodes:"144 — 152",
+chapters:"218 — 236",
+enemy:"Bellamy",
+description:"Luffy rencontre Bellamy et découvre l'existence de Skypiea.",
+moment:"Luffy frappe Bellamy d'un seul coup."
+},
+
+{
+name:"Skypiea",
+saga:"Grand Line",
+location:"☁️ Île céleste",
+image:"images/skypiea.jpg",
+episodes:"153 — 195",
+chapters:"237 — 302",
+enemy:"Ener",
+description:"Les Mugiwara arrivent dans le ciel et affrontent Ener.",
+moment:"Luffy contre Ener."
+},
+
+{
+name:"Water 7",
+saga:"Grand Line",
+location:"🚂 Water 7",
+image:"images/water7.jpg",
+episodes:"229 — 263",
+chapters:"322 — 374",
+enemy:"CP9",
+description:"L'équipage rencontre le CP9 et traverse une crise majeure.",
+moment:"La séparation avec le Going Merry."
+},
+
+{
+name:"Enies Lobby",
+saga:"Grand Line",
+location:"⚖️ Enies Lobby",
+image:"images/enies-lobby.jpg",
+episodes:"264 — 312",
+chapters:"375 — 430",
+enemy:"Rob Lucci",
+description:"Les Mugiwara déclarent la guerre au Gouvernement Mondial pour sauver Robin.",
+moment:"Luffy contre Rob Lucci."
+},
+
+{
+name:"Thriller Bark",
+saga:"Grand Line",
+location:"👻 Thriller Bark",
+image:"images/thriller-bark.jpg",
+episodes:"337 — 381",
+chapters:"442 — 489",
+enemy:"Gecko Moria",
+description:"Les Mugiwara affrontent Moria et recrutent Brook.",
+moment:"Zoro accepte de prendre la douleur de Luffy."
+},
+
+{
+name:"Sabaody",
+saga:"Grand Line",
+location:"🌳 Archipel Sabaody",
+image:"images/sabaody.jpg",
+episodes:"382 — 405",
+chapters:"490 — 513",
+enemy:"Kizaru / Kuma",
+description:"L'équipage découvre les Nobles Mondiaux avant d'être séparé.",
+moment:"Kuma disperse l'équipage."
+},
+
+{
+name:"Impel Down",
+saga:"Grand Line",
+location:"⛓️ Impel Down",
+image:"images/impel-down.jpg",
+episodes:"422 — 452",
+chapters:"525 — 549",
+enemy:"Magellan",
+description:"Luffy infiltre la prison pour tenter de sauver Ace.",
+moment:"L'évasion massive d'Impel Down."
+},
+
+{
+name:"Marineford",
+saga:"Grand Line",
+location:"⚓ Marineford",
+image:"images/marineford.jpg",
+episodes:"457 — 489",
+chapters:"550 — 580",
+enemy:"Marine",
+description:"La guerre au sommet bouleverse le monde.",
+moment:"La mort d'Ace et de Barbe Blanche."
+},
+
+{
+name:"Fish-Man Island",
+saga:"Nouveau Monde",
+location:"🐠 Île des Hommes-Poissons",
+image:"images/fishman-island.jpg",
+episodes:"517 — 574",
+chapters:"603 — 653",
+enemy:"Hody Jones",
+description:"Les Mugiwara retrouvent l'océan après deux années d'entraînement.",
+moment:"Luffy protège l'île des Hommes-Poissons."
+},
+
+{
+name:"Punk Hazard",
+saga:"Nouveau Monde",
+location:"☢️ Punk Hazard",
+image:"images/punk-hazard.jpg",
+episodes:"579 — 625",
+chapters:"654 — 700",
+enemy:"Caesar Clown",
+description:"Luffy et Law forment leur alliance.",
+moment:"Alliance Luffy-Law."
+},
+
+{
+name:"Dressrosa",
+saga:"Nouveau Monde",
+location:"🌹 Dressrosa",
+image:"images/dressrosa.jpg",
+episodes:"629 — 746",
+chapters:"701 — 801",
+enemy:"Doflamingo",
+description:"Luffy affronte Doflamingo pour libérer Dressrosa.",
+moment:"Gear Fourth contre Doflamingo."
+},
+
+{
+name:"Zou",
+saga:"Nouveau Monde",
+location:"🐘 Zou",
+image:"images/zou.jpg",
+episodes:"751 — 779",
+chapters:"802 — 824",
+enemy:"Jack",
+description:"Les Mugiwara découvrent les secrets des Minks et de Wano.",
+moment:"Découverte de la Road Ponéglyphe."
+},
+
+{
+name:"Whole Cake Island",
+saga:"Nouveau Monde",
+location:"🍰 Totto Land",
+image:"images/whole-cake.jpg",
+episodes:"783 — 877",
+chapters:"825 — 902",
+enemy:"Big Mom",
+description:"Luffy part récupérer Sanji.",
+moment:"Luffy contre Katakuri."
+},
+
+{
+name:"Wano",
+saga:"Nouveau Monde",
+location:"🏯 Pays de Wano",
+image:"images/wano.jpg",
+episodes:"890 — 1085",
+chapters:"909 — 1057",
+enemy:"Kaido",
+description:"Une alliance gigantesque tente de libérer Wano.",
+moment:"L'éveil de Nika et la chute de Kaido."
+},
+
+{
+name:"Egghead",
+saga:"Saga Finale",
+location:"🏝️ Île d'Egghead",
+image:"images/egghead.jpg",
+episodes:"1086 — 1178",
+chapters:"1058 — 1125",
+enemy:"Gouvernement Mondial",
+description:"Les Mugiwara rencontrent Vegapunk et découvrent des informations majeures sur le monde.",
+moment:"Le message de Vegapunk."
+},
+
+{
+name:"Elbaf",
+saga:"Saga Finale",
+location:"🏔️ Royaume des Géants",
+image:"images/elbaf.jpg",
+episodes:"1179+",
+chapters:"1126+",
+enemy:"Gouvernement Mondial / Chevaliers Divins",
+current:true,
+description:"Les Mugiwara arrivent enfin à Elbaf, la légendaire terre des Géants. Cette étape est liée à l'histoire des Géants, d'Usopp et aux grands mystères de la saga finale.",
+moment:"🔴 ARC ACTUEL — Les Mugiwara sont à Elbaf."
+}
+
+];
+
+
+/* =====================================================
+   FRUITS
+===================================================== */
+
+const fruits=[
+
+{
+name:"Gomu Gomu no Mi",
+type:"Zoan mythique",
+owner:"Luffy",
+emoji:"👒",
+img:"images/fruit-luffy.jpg",
+description:"Le pouvoir associé au modèle Nika."
+},
+
+{
+name:"Ope Ope no Mi",
+type:"Paramecia",
+owner:"Trafalgar Law",
+emoji:"💉",
+img:"images/fruit-law.jpg",
+description:"Permet de créer une ROOM et de manipuler ce qui s'y trouve."
+},
+
+{
+name:"Mera Mera no Mi",
+type:"Logia",
+owner:"Sabo",
+emoji:"🔥",
+img:"images/fruit-mera.jpg",
+description:"Permet de créer, contrôler et devenir du feu."
+},
+
+{
+name:"Pika Pika no Mi",
+type:"Logia",
+owner:"Kizaru",
+emoji:"✨",
+img:"images/fruit-pika.jpg",
+description:"Permet de créer et contrôler la lumière."
+},
+
+{
+name:"Hie Hie no Mi",
+type:"Logia",
+owner:"Kuzan",
+emoji:"❄️",
+img:"images/fruit-hie.jpg",
+description:"Permet de créer et contrôler la glace."
+},
+
+{
+name:"Magu Magu no Mi",
+type:"Logia",
+owner:"Akainu",
+emoji:"🌋",
+img:"images/fruit-magu.jpg",
+description:"Permet de créer et contrôler le magma."
+},
+
+{
+name:"Gura Gura no Mi",
+type:"Paramecia",
+owner:"Barbe Blanche",
+emoji:"🌊",
+img:"images/fruit-gura.jpg",
+description:"Permet de générer de puissantes vibrations."
+},
+
+{
+name:"Hana Hana no Mi",
+type:"Paramecia",
+owner:"Nico Robin",
+emoji:"🌸",
+img:"images/fruit-hana.jpg",
+description:"Permet de faire apparaître des parties du corps sur différentes surfaces."
+},
+
+{
+name:"Bari Bari no Mi",
+type:"Paramecia",
+owner:"Bartolomeo",
+emoji:"🛡️",
+img:"images/fruit-bari.jpg",
+description:"Permet de créer de puissantes barrières."
+},
+
+{
+name:"Goro Goro no Mi",
+type:"Logia",
+owner:"Enel",
+emoji:"⚡",
+img:"images/fruit-goro.jpg",
+description:"Permet de créer, contrôler et devenir la foudre."
+},
+
+{
+name:"Ito Ito no Mi",
+type:"Paramecia",
+owner:"Doflamingo",
+emoji:"🦩",
+img:"images/fruit-ito.jpg",
+description:"Permet de créer et contrôler des fils extrêmement résistants."
+},
+
+{
+name:"Mochi Mochi no Mi",
+type:"Paramecia spécial",
+owner:"Katakuri",
+emoji:"🍩",
+img:"images/fruit-mochi.jpg",
+description:"Permet de créer et contrôler du mochi."
+},
+
+{
+name:"Nikyu Nikyu no Mi",
+type:"Paramecia",
+owner:"Kuma",
+emoji:"🐾",
+img:"images/fruit-kuma.jpg",
+description:"Permet de repousser pratiquement toute chose avec les coussinets des mains."
+},
+
+{
+name:"Kage Kage no Mi",
+type:"Paramecia",
+owner:"Gecko Moria",
+emoji:"🌑",
+img:"images/fruit-kage.jpg",
+description:"Permet de manipuler les ombres."
+},
+
+{
+name:"Suna Suna no Mi",
+type:"Logia",
+owner:"Crocodile",
+emoji:"🏜️",
+img:"images/fruit-suna.jpg",
+description:"Permet de créer et contrôler le sable."
+}
+
+];
+
+
+/* =====================================================
+   OUTILS
+===================================================== */
+
+function formatBounty(n){
+
+if(!n)return "Inconnue";
+
+return n.toLocaleString("fr-FR")+" B";
+
+}
+
+function imageHTML(c){
+
+return `
+<img
+src="${c.img}"
+alt="${escapeHTML(c.name)}"
+onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span class=\\'fallback\\'>${c.emoji}</span>')"
+>
+`;
+
+}
+
+function escapeHTML(text){
+
+return String(text)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   PERSONNAGES
+===================================================== */
+
+function renderCharacters(){
+
+const search=document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+const group=document
+.getElementById("group")
+.value;
+
+const list=characters.filter(c=>
+c.name.toLowerCase().includes(search)
+&&
+(group==="all"||c.group===group)
+);
+
+document.getElementById("characters").innerHTML=
+
+list.length
+
+?
+
+list.map(c=>`
+
+<div class="card">
+
+<div class="card-img">
+${imageHTML(c)}
+</div>
+
+<div class="card-body">
+
+<h3>${escapeHTML(c.name)}</h3>
+
+<div class="group">${escapeHTML(c.group)}</div>
+
+<div class="bounty">
+${formatBounty(c.bounty)}
+</div>
+
+<div class="card-fruit">
+🍎 ${escapeHTML(c.fruit)}
+</div>
+
+<button
+class="small-btn"
+onclick="openCharacter('${escapeHTML(c.name)}')"
+>
+Voir la fiche
+</button>
+
+</div>
+</div>
+
+`).join("")
+
+:
+
+`
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:50px;
+color:#71818e;
+">
+🔎 Aucun personnage trouvé.
+</div>
+`;
+
+}
+
+
+/* =====================================================
+   WANTED
+===================================================== */
+
+function renderWanted(){
+
+const filter=document
+.getElementById("bountyFilter")
+.value;
+
+let list=characters
+.filter(c=>c.bounty>0)
+.sort((a,b)=>b.bounty-a.bounty);
+
+if(filter==="billion")
+list=list.filter(c=>c.bounty>=1000000000);
+
+if(filter==="500")
+list=list.filter(c=>c.bounty>=500000000);
+
+if(filter==="under")
+list=list.filter(c=>c.bounty<500000000);
+
+document.getElementById("wanted").innerHTML=
+
+list.map((c,i)=>`
+
+<div
+class="poster"
+style="--r:${i%2===0?'-1':'1'}deg"
+>
+
+<div class="poster-inner">
+
+<div class="poster-top">
+MARINE HEADQUARTERS
+</div>
+
+<div class="wanted-title">
+WANTED
+</div>
+
+<div class="poster-subtitle">
+DEAD OR ALIVE
+</div>
+
+<img
+src="${c.img}"
+alt="${escapeHTML(c.name)}"
+onerror="this.style.opacity='.15'"
+>
+
+<h3>${escapeHTML(c.name)}</h3>
+
+<div class="poster-dead">
+DEAD OR ALIVE
+</div>
+
+<div class="money">
+${formatBounty(c.bounty)}
+</div>
+
+</div>
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   FRUITS
+===================================================== */
+
+function renderFruits(){
+
+document.getElementById("fruitsList").innerHTML=
+
+fruits.map(f=>`
+
+<div class="fruit">
+
+<div class="fruit-img">
+
+<img
+src="${f.img}"
+alt="${escapeHTML(f.name)}"
+onerror="
+this.style.display='none';
+this.parentElement.innerHTML='<span class=\\'fruit-icon\\'>${f.emoji}</span>'
+"
+>
+
+</div>
+
+<div class="fruit-body">
+
+<h3>${escapeHTML(f.name)}</h3>
+
+<p>
+<b>${escapeHTML(f.type)}</b> — ${escapeHTML(f.owner)}
+</p>
+
+<p style="margin-top:10px">
+${escapeHTML(f.description)}
+</p>
+
+</div>
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   ARCS
+===================================================== */
+
+function renderArcs(filter="all"){
+
+const list=arcs.filter(a=>
+filter==="all"||a.saga===filter
+);
+
+document.getElementById("arcRoute").innerHTML=
+
+list.map((arc,index)=>`
+
+<article
+class="arc-card ${arc.current?"current":""}"
+onclick="openArc('${escapeHTML(arc.name)}')"
+>
+
+<img
+class="arc-image"
+src="${arc.image}"
+alt="${escapeHTML(arc.name)}"
+onerror="this.style.opacity='.2'"
+>
+
+<div class="arc-content">
+
+<div class="arc-number">
+
+ARC ${String(index+1).padStart(2,"0")}
+
+${arc.current
+?
+`<span class="current-badge">🔴 ARC ACTUEL</span>`
+:
+""
+}
+
+</div>
+
+<h3>${escapeHTML(arc.name)}</h3>
+
+<div class="arc-location">
+${escapeHTML(arc.location)}
+</div>
+
+<p>
+${escapeHTML(arc.description)}
+</p>
+
+<div class="arc-info">
+
+<span>📺 ${escapeHTML(arc.episodes)}</span>
+
+<span>📖 ${escapeHTML(arc.chapters)}</span>
+
+<span>👑 ${escapeHTML(arc.enemy)}</span>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+function filterArcs(type,button){
+
+document
+.querySelectorAll(".arc-filter")
+.forEach(b=>b.classList.remove("active"));
+
+button.classList.add("active");
+
+renderArcs(type);
+
+}
+
+
+/* =====================================================
+   RANDOM
+===================================================== */
+
+function randomCharacter(){
+
+const c=characters[
+Math.floor(Math.random()*characters.length)
+];
+
+const image=document.getElementById("randomImage");
+const container=document.getElementById("randomContainer");
+
+image.src=c.img;
+image.alt=c.name;
+image.style.display="block";
+
+container.querySelector(".random-emoji")?.remove();
+
+image.onerror=()=>{
+image.style.display="none";
+
+if(!container.querySelector(".random-emoji")){
+container.insertAdjacentHTML(
+"beforeend",
+`<span class="random-emoji">${c.emoji}</span>`
+);
+}
+};
+
+document.getElementById("randomName")
+.textContent=c.name;
+
+document.getElementById("randomInfo")
+.textContent=
+`${c.group} • ${formatBounty(c.bounty)} • ${c.fruit}`;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openCharacter(name){
+
+const c=characters.find(x=>x.name===name);
+
+if(!c)return;
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2 class="modal-title">
+${escapeHTML(c.name)}
+</h2>
+
+<div class="modal-sub">
+${escapeHTML(c.group)}
+</div>
+
+<img
+class="modal-img"
+src="${c.img}"
+alt="${escapeHTML(c.name)}"
+onerror="this.style.opacity='.15'"
+>
+
+<div class="modal-info">
+
+<div class="modal-stat">
+<small>💰 Prime</small>
+<b>${formatBounty(c.bounty)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🍎 Fruit</small>
+<b>${escapeHTML(c.fruit)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🏴‍☠️ Groupe</small>
+<b>${escapeHTML(c.group)}</b>
+</div>
+
+<div class="modal-stat">
+<small>👤 Personnage</small>
+<b>${escapeHTML(c.name)}</b>
+</div>
+
+</div>
+
+<p class="modal-description">
+${escapeHTML(c.name)} est un personnage de l'univers
+One Piece appartenant au groupe
+<strong>${escapeHTML(c.group)}</strong>.
+</p>
+
+`;
+
+document.getElementById("modal").classList.add("active");
+
+}
+
+function openArc(name){
+
+const arc=arcs.find(a=>a.name===name);
+
+if(!arc)return;
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2 class="modal-title">
+${escapeHTML(arc.name)}
+${arc.current?` <span class="current-badge">🔴 ACTUEL</span>`:""}
+</h2>
+
+<div class="modal-sub">
+${escapeHTML(arc.location)}
+</div>
+
+<img
+class="modal-img"
+src="${arc.image}"
+alt="${escapeHTML(arc.name)}"
+>
+
+<p class="modal-description">
+${escapeHTML(arc.description)}
+</p>
+
+<div class="modal-info">
+
+<div class="modal-stat">
+<small>📺 Épisodes</small>
+<b>${escapeHTML(arc.episodes)}</b>
+</div>
+
+<div class="modal-stat">
+<small>📖 Chapitres</small>
+<b>${escapeHTML(arc.chapters)}</b>
+</div>
+
+<div class="modal-stat">
+<small>👑 Antagoniste</small>
+<b>${escapeHTML(arc.enemy)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🔥 Moment</small>
+<b>${escapeHTML(arc.moment)}</b>
+</div>
+
+</div>
+
+`;
+
+document.getElementById("modal").classList.add("active");
+
+}
+
+function closeModal(){
+document.getElementById("modal").classList.remove("active");
+}
+
+function closeModalOutside(event){
+
+if(event.target.id==="modal"){
+closeModal();
+}
+
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape")closeModal();
+});
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions=[
+
+{
+q:"Qui est le capitaine des Mugiwara ?",
+a:["Roronoa Zoro","Monkey D. Luffy","Sanji","Shanks"],
+c:1
+},
+
+{
+q:"Quelle est la prime de Gol D. Roger ?",
+a:["3 milliards","4 milliards","5 564 800 000","6 milliards"],
+c:2
+},
+
+{
+q:"Quel fruit possède Trafalgar Law ?",
+a:["Ope Ope no Mi","Mera Mera no Mi","Hie Hie no Mi","Pika Pika no Mi"],
+c:0
+},
+
+{
+q:"Qui possède le Pika Pika no Mi ?",
+a:["Akainu","Kizaru","Kuzan","Sabo"],
+c:1
+},
+
+{
+q:"Quel est le rêve de Luffy ?",
+a:["Devenir Amiral","Devenir Roi des Pirates","Devenir Yonko","Devenir Marine"],
+c:1
+},
+
+{
+q:"Qui est le père de Luffy ?",
+a:["Garp","Shanks","Monkey D. Dragon","Roger"],
+c:2
+},
+
+{
+q:"Quel est le surnom de Zoro ?",
+a:["Le Chasseur de Pirates","Le Démon","Le Dragon","Le Faucon"],
+c:0
+},
+
+{
+q:"Qui était le capitaine des Pirates de Barbe Blanche ?",
+a:["Shanks","Kaido","Edward Newgate","Teach"],
+c:2
+},
+
+{
+q:"Qui est le Dieu de Skypiea ?",
+a:["Enel","Doflamingo","Kaido","Crocodile"],
+c:0
+},
+
+{
+q:"Quel est le navire principal des Mugiwara après le Going Merry ?",
+a:["Red Force","Thousand Sunny","Polar Tang","Moby Dick"],
+c:1
+},
+
+{
+q:"Qui est l'ennemi principal d'Enies Lobby ?",
+a:["Crocodile","Rob Lucci","Kaido","Katakuri"],
+c:1
+},
+
+{
+q:"Quel personnage possède le Ito Ito no Mi ?",
+a:["Doflamingo","Law","Kuma","Moria"],
+c:0
+},
+
+{
+q:"Sur quelle île vivent les Géants dans la saga finale ?",
+a:["Wano","Elbaf","Zou","Dressrosa"],
+c:1
+},
+
+{
+q:"Quel personnage est associé à Elbaf depuis East Blue ?",
+a:["Usopp","Nami","Brook","Franky"],
+c:0
+}
+
+];
+
+let currentQuestion=0;
+let score=0;
+let quizLocked=false;
+
+function renderQuiz(){
+
+const game=document.getElementById("quizGame");
+
+if(currentQuestion>=questions.length){
+
+game.innerHTML=`
+
+<div class="quiz-result">
+
+<div>🏆 QUIZ TERMINÉ</div>
+
+<div class="quiz-result-score">
+${score}/${questions.length}
+</div>
+
+<p style="color:#9aa8b3;line-height:1.6">
+
+${
+score===questions.length
+?"🔥 LÉGENDAIRE !"
+:
+score>=10
+?"🏴‍☠️ Excellent !"
+:
+score>=7
+?"🌊 Pas mal !"
+:
+"📖 Il faut repartir à l'aventure !"
+}
+
+</p>
+
+<br>
+
+<button class="btn" onclick="restartQuiz()">
+🔄 Recommencer
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+const q=questions[currentQuestion];
+
+const progress=
+(currentQuestion/questions.length)*100;
+
+game.innerHTML=`
+
+<div class="quiz-top">
+
+<strong>
+Question ${currentQuestion+1}/${questions.length}
+</strong>
+
+<strong style="color:#f4c542">
+${score} point${score>1?"s":""}
+</strong>
+
+</div>
+
+<div class="quiz-progress">
+
+<div
+class="quiz-progress-bar"
+style="width:${progress}%"
+></div>
+
+</div>
+
+<div class="quiz-question">
+${escapeHTML(q.q)}
+</div>
+
+${q.a.map((answer,index)=>`
+
+<button
+class="quiz-answer"
+onclick="answerQuiz(this,${index})"
+>
+${escapeHTML(answer)}
+</button>
+
+`).join("")}
+
+`;
+
+quizLocked=false;
+
+}
+
+function answerQuiz(button,index){
+
+if(quizLocked)return;
+
+quizLocked=true;
+
+const q=questions[currentQuestion];
+
+const buttons=document.querySelectorAll(".quiz-answer");
+
+buttons.forEach((btn,i)=>{
+if(i===q.c)btn.classList.add("correct");
+});
+
+if(index===q.c){
+score++;
+}else{
+button.classList.add("wrong");
+}
+
+setTimeout(()=>{
+currentQuestion++;
+renderQuiz();
+},900);
+
+}
+
+function restartQuiz(){
+
+currentQuestion=0;
+score=0;
+
+renderQuiz();
+
+}
+
+
+/* =====================================================
+   MINI-JEUX
+===================================================== */
+
+function shuffle(array){
+
+const a=array.slice();
+
+for(let i=a.length-1;i>0;i--){
+
+const j=Math.floor(Math.random()*(i+1));
+
+[a[i],a[j]]=[a[j],a[i]];
+
+}
+
+return a;
+
+}
+
+function switchGame(name,button){
+
+document
+.querySelectorAll(".game-tab")
+.forEach(b=>b.classList.remove("active"));
+
+document
+.querySelectorAll(".game-panel")
+.forEach(p=>p.classList.remove("active"));
+
+button.classList.add("active");
+
+document
+.getElementById("panel-"+name)
+.classList.add("active");
+
+}
+
+
+/* BINGO */
+
+let bingoMarked=[];
+
+function newBingo(){
+
+const pool=shuffle(characters).slice(0,24);
+
+document
+.getElementById("bingoWin")
+.classList.remove("show");
+
+bingoMarked=new Array(25).fill(false);
+
+bingoMarked[12]=true;
+
+let html="";
+let poolIndex=0;
+
+for(let i=0;i<25;i++){
+
+if(i===12){
+
+html+=`
+<div class="bingo-cell free">
+<span>★</span>
+GRATUIT
+</div>
+`;
+
+continue;
+
+}
+
+const c=pool[poolIndex++];
+
+html+=`
+
+<div
+class="bingo-cell"
+data-i="${i}"
+onclick="toggleBingo(${i},this)"
+>
+
+<span>${c.emoji}</span>
+
+${escapeHTML(c.name)}
+
+</div>
+
+`;
+
+}
+
+document.getElementById("bingoGrid").innerHTML=html;
+
+}
+
+function toggleBingo(i,cell){
+
+bingoMarked[i]=!bingoMarked[i];
+
+cell.classList.toggle("marked");
+
+checkBingo();
+
+}
+
+function checkBingo(){
+
+const lines=[
+
+[0,1,2,3,4],
+[5,6,7,8,9],
+[10,11,12,13,14],
+[15,16,17,18,19],
+[20,21,22,23,24],
+
+[0,5,10,15,20],
+[1,6,11,16,21],
+[2,7,12,17,22],
+[3,8,13,18,23],
+[4,9,14,19,24],
+
+[0,6,12,18,24],
+[4,8,12,16,20]
+
+];
+
+const win=lines.some(line=>
+line.every(i=>bingoMarked[i])
+);
+
+document
+.getElementById("bingoWin")
+.classList
+.toggle("show",win);
+
+}
+
+
+/* MEMORY */
+
+let memoryCards=[];
+let memoryFlipped=[];
+let memoryMoves=0;
+let memoryPairs=0;
+let memoryLock=false;
+
+function newMemory(){
+
+const chosen=shuffle(characters).slice(0,8);
+
+const pairs=shuffle([...chosen,...chosen]);
+
+memoryCards=pairs;
+memoryFlipped=[];
+memoryMoves=0;
+memoryPairs=0;
+memoryLock=false;
+
+document.getElementById("memoryMoves")
+.textContent="Coups : 0";
+
+document.getElementById("memoryPairs")
+.textContent="Paires : 0/8";
+
+document.getElementById("memoryGrid").innerHTML=
+
+pairs.map((c,i)=>`
+
+<div
+class="memory-card"
+data-i="${i}"
+onclick="flipMemory(${i})"
+>
+
+<div class="memory-card-inner">
+
+<div class="memory-face memory-back">
+❓
+</div>
+
+<div class="memory-face memory-front">
+
+<span>${c.emoji}</span>
+
+<small>
+${escapeHTML(c.name)}
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function flipMemory(i){
+
+if(memoryLock)return;
+
+const cardEl=
+document.querySelector(
+`.memory-card[data-i="${i}"]`
+);
+
+if(
+cardEl.classList.contains("flipped")||
+cardEl.classList.contains("matched")
+)return;
+
+cardEl.classList.add("flipped");
+
+memoryFlipped.push(i);
+
+if(memoryFlipped.length===2){
+
+memoryMoves++;
+
+document.getElementById("memoryMoves")
+.textContent="Coups : "+memoryMoves;
+
+memoryLock=true;
+
+const [a,b]=memoryFlipped;
+
+if(memoryCards[a].name===memoryCards[b].name){
+
+document
+.querySelector(`.memory-card[data-i="${a}"]`)
+.classList.add("matched");
+
+document
+.querySelector(`.memory-card[data-i="${b}"]`)
+.classList.add("matched");
+
+memoryPairs++;
+
+document.getElementById("memoryPairs")
+.textContent="Paires : "+memoryPairs+"/8";
+
+memoryFlipped=[];
+memoryLock=false;
+
+}else{
+
+setTimeout(()=>{
+
+document
+.querySelector(`.memory-card[data-i="${a}"]`)
+.classList.remove("flipped");
+
+document
+.querySelector(`.memory-card[data-i="${b}"]`)
+.classList.remove("flipped");
+
+memoryFlipped=[];
+memoryLock=false;
+
+},900);
+
+}
+
+}
+
+}
+
+
+/* QUI SUIS-JE */
+
+let guessTarget=null;
+let guessStep=0;
+
+function bountyRange(n){
+
+if(!n)return "Aucune prime connue";
+
+if(n>=4000000000)return "Plus de 4 milliards";
+
+if(n>=1000000000)return "Entre 1 et 4 milliards";
+
+if(n>=500000000)return "Entre 500 millions et 1 milliard";
+
+return "Moins de 500 millions";
+
+}
+
+function newGuessWho(){
+
+guessTarget=
+characters[
+Math.floor(Math.random()*characters.length)
+];
+
+guessStep=1;
+
+document.getElementById("guessOptions").innerHTML="";
+
+document.getElementById("guessNextBtn").style.display="inline-block";
+
+renderGuessClues();
+
+}
+
+function renderGuessClues(){
+
+const c=guessTarget;
+
+let html="";
+
+if(guessStep>=1){
+
+html+=`
+<div class="guess-clue">
+🏴‍☠️ Groupe :
+<b>${escapeHTML(c.group)}</b>
+</div>
+`;
+
+}
+
+if(guessStep>=2){
+
+html+=`
+<div class="guess-clue">
+🍎 Fruit :
+<b>${escapeHTML(c.fruit)}</b>
+</div>
+`;
+
+}
+
+if(guessStep>=3){
+
+html+=`
+<div class="guess-clue">
+💰 Prime :
+<b>${bountyRange(c.bounty)}</b>
+</div>
+`;
+
+}
+
+document.getElementById("guessClues").innerHTML=html;
+
+if(guessStep>=3){
+
+document
+.getElementById("guessNextBtn")
+.style.display="none";
+
+showGuessOptions();
+
+}
+
+}
+
+function nextClue(){
+
+guessStep++;
+
+renderGuessClues();
+
+}
+
+function showGuessOptions(){
+
+const wrong=shuffle(
+characters.filter(
+c=>c.name!==guessTarget.name
+)
+).slice(0,3);
+
+const options=shuffle([
+guessTarget,
+...wrong
+]);
+
+document.getElementById("guessOptions").innerHTML=
+
+options.map(c=>`
+
+<button
+class="quiz-answer"
+onclick="answerGuessWho('${escapeHTML(c.name)}',this)"
+>
+${c.emoji} ${escapeHTML(c.name)}
+</button>
+
+`).join("");
+
+}
+
+function answerGuessWho(name,button){
+
+const buttons=
+document.querySelectorAll(
+"#guessOptions .quiz-answer"
+);
+
+buttons.forEach(b=>{
+
+if(
+b.textContent.trim()
+.includes(guessTarget.name)
+){
+
+b.classList.add("correct");
+
+}
+
+});
+
+if(name!==guessTarget.name){
+button.classList.add("wrong");
+}
+
+buttons.forEach(b=>b.onclick=null);
+
+}
+
+
+/* =====================================================
+   QUESTIONS / DISCUSSION
+===================================================== */
+
+let questionsUsers=
+JSON.parse(
+localStorage.getItem("onePieceQuestions")||"[]"
+);
+
+function saveQuestions(){
+
+localStorage.setItem(
+"onePieceQuestions",
+JSON.stringify(questionsUsers)
+);
+
+}
+
+function addQuestion(event){
+
+event.preventDefault();
+
+const author=
+document.getElementById("questionAuthor")
+.value.trim();
+
+const text=
+document.getElementById("questionText")
+.value.trim();
+
+if(!author||!text)return;
+
+questionsUsers.unshift({
+
+id:Date.now(),
+
+author:author,
+
+text:text,
+
+date:new Date().toLocaleString("fr-FR")
+
+});
+
+saveQuestions();
+
+document.getElementById("questionAuthor").value="";
+document.getElementById("questionText").value="";
+
+renderQuestions();
+
+}
+
+function deleteQuestion(id){
+
+questionsUsers=
+questionsUsers.filter(q=>q.id!==id);
+
+saveQuestions();
+
+renderQuestions();
+
+}
+
+function renderQuestions(){
+
+const container=
+document.getElementById("questionsList");
+
+if(!container)return;
+
+if(questionsUsers.length===0){
+
+container.innerHTML=`
+
+<div class="no-question">
+
+💭 Aucune question pour le moment.<br><br>
+
+Sois le premier à lancer la discussion !
+
+</div>
+
+`;
+
+return;
+
+}
+
+container.innerHTML=
+
+questionsUsers.map(q=>`
+
+<div class="question-card">
+
+<div class="question-author">
+👤 ${escapeHTML(q.author)}
+</div>
+
+<div class="question-date">
+🕐 ${escapeHTML(q.date)}
+</div>
+
+<div class="question-text">
+${escapeHTML(q.text)}
+</div>
+
+<button
+class="question-delete"
+onclick="deleteQuestion(${q.id})"
+>
+🗑️ Supprimer
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+document
+.getElementById("search")
+.addEventListener("input",renderCharacters);
+
+document
+.getElementById("group")
+.addEventListener("change",renderCharacters);
+
+document
+.getElementById("bountyFilter")
+.addEventListener("change",renderWanted);
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+renderCharacters();
+renderWanted();
+renderFruits();
+renderArcs();
+renderQuiz();
+newBingo();
+newMemory();
+newGuessWho();
+renderQuestions();
+
+</script>
+
+
+<script>
+/* =====================================================
+   GRANDE ENCYCLOPEDIE — COUCHE INTERACTIVE CENTRALE
+===================================================== */
+const EP=(()=>{
+ const KEY="onePieceEncyclopediaV2";
+ const defaultState={chapter:null,spoiler:3,theme:"dark",motion:false,visited:[],history:[],badges:[],quizDone:0,games:0,records:{},favorites:[]};
+ let state={...defaultState,...JSON.parse(localStorage.getItem(KEY)||"{}")};
+ const extra={
+  islands:[
+   {name:"Île de Dawn",type:"île",unlockChapter:1,x:10,y:70,emoji:"🏝️",desc:"Point de départ de l'aventure de Luffy."},
+   {name:"Grand Line",type:"mer",unlockChapter:101,x:32,y:48,emoji:"🌊",desc:"Route maritime légendaire."},
+   {name:"Water 7",type:"île",unlockChapter:323,x:51,y:36,emoji:"🌊",desc:"Ville maritime liée aux charpentiers."},
+   {name:"Marineford",type:"île",unlockChapter:550,x:70,y:57,emoji:"⚓",desc:"Quartier général associé à un événement majeur."},
+   {name:"Wano",type:"pays",unlockChapter:909,x:78,y:35,emoji:"🏯",desc:"Pays isolé du Nouveau Monde."},
+   {name:"Egghead",type:"île",unlockChapter:1058,x:88,y:70,emoji:"🧪",desc:"Île futuriste associée à Vegapunk."},
+   {name:"Elbaf",type:"île",unlockChapter:1126,x:91,y:25,emoji:"🏔️",desc:"Terre légendaire des Géants."}
+  ],
+  ships:[
+   {name:"Going Merry",unlockChapter:41,desc:"Premier grand navire des Mugiwara."},
+   {name:"Thousand Sunny",unlockChapter:436,desc:"Navire principal des Mugiwara après le Going Merry."},
+   {name:"Red Force",unlockChapter:1,desc:"Navire associé à l'équipage de Shanks."},
+   {name:"Polar Tang",unlockChapter:498,desc:"Sous-marin associé à Law."}
+  ],
+  techniques:[
+   {name:"Gomu Gomu no Pistol",unlockChapter:1,user:"Luffy",desc:"Une attaque élastique de Luffy."},
+   {name:"Santoryu",unlockChapter:5,user:"Zoro",desc:"Style de combat à trois sabres."},
+   {name:"Room",unlockChapter:498,user:"Law",desc:"Zone de pouvoir créée par Law."},
+   {name:"Future Sight",unlockChapter:894,user:"Katakuri",desc:"Application avancée du Haki de l'Observation."},
+   {name:"Bajrang Gun",unlockChapter:1048,user:"Luffy",desc:"Technique avancée de Luffy."}
+  ],
+  mysteries:[
+   {name:"One Piece",unlockChapter:1,status:"ouvert",desc:"Le trésor au centre de la Grande Ère de la Piraterie.",theory:false},
+   {name:"Siècle oublié",unlockChapter:395,status:"partiellement expliqué",desc:"Période historique dont les informations sont limitées.",theory:false},
+   {name:"Volonté du D.",unlockChapter:154,status:"ouvert",desc:"Mystère récurrent autour de la lettre D.",theory:false},
+   {name:"Théories de fans",unlockChapter:1,status:"théorie",desc:"Les hypothèses de fans ne sont pas des informations officielles.",theory:true}
+  ]
+ };
+ const unlocks={
+  "Monkey D. Luffy":1,"Roronoa Zoro":3,"Nami":8,"Usopp":23,"Sanji":43,"Tony Tony Chopper":134,"Nico Robin":114,
+  "Franky":323,"Brook":442,"Jinbe":528,"Shanks":1,"Marshall D. Teach":223,"Dracule Mihawk":49,"Buggy":9,
+  "Trafalgar Law":498,"Eustass Kid":498,"Gol D. Roger":0,"Edward Newgate":234,"Kaido":795,"Charlotte Linlin":651,
+  "Bartolomeo":706,"Crocodile":126,"Donquixote Doflamingo":233,"Arlong":69,"Kuro":23,"Don Krieg":42,"Alvida":1,
+  "Bellamy":222,"Jewelry Bonney":498,"X Drake":498,"Gecko Moria":449,"Boa Hancock":516,"Portgas D. Ace":154,
+  "Brogy":116,"Dorry":116,"Charlotte Katakuri":860,"Charlotte Perospero":651,"King":925,"Ulti":977,"Page One":977,
+  "Loki":1130,"Borsalino Kizaru":506,"Issho Fujitora":701,"Ryokugyu Aramaki":905,"Sakazuki Akainu":397,
+  "Kuzan Aokiji":319,"Monkey D. Garp":92,"Sengoku":234,"Koby":1,"Morgan":2,"Rob Lucci":348,"Kaku":323,
+  "Jabra":375,"Blueno":322,"Monkey D. Dragon":100,"Sabo":583,"Bartholomew Kuma":234,"Yamato":983,"Gaimon":22,
+  "Gan Fall":238,"Wyper":238,"Enel":254
+ };
+ const fruitUnlocks={
+  "Gomu Gomu no Mi":1,"Ope Ope no Mi":498,"Mera Mera no Mi":154,"Pika Pika no Mi":504,"Hie Hie no Mi":319,
+  "Magu Magu no Mi":397,"Gura Gura no Mi":234,"Hana Hana no Mi":114,"Bari Bari no Mi":706,"Goro Goro no Mi":254,
+  "Ito Ito no Mi":233,"Mochi Mochi no Mi":860,"Nikyu Nikyu no Mi":473,"Kage Kage no Mi":449,"Suna Suna no Mi":155
+ };
+ const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+ const toast=t=>{const e=document.getElementById("epToast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2200)};
+ const chapter=()=>Number(state.chapter||0);
+ const canShow=item=>!item||chapter()<=0||Number(item.unlockChapter||0)<=chapter();
+ const protect=(item,el)=>{
+   if(!item||!el)return;
+   const ok=canShow(item);
+   if(ok){el.classList.remove("ep-locked");el.removeAttribute("data-unlock");return true}
+   el.classList.add("ep-locked");el.dataset.unlock=item.unlockChapter||"?";return false;
+ };
+ const visible=arr=>(arr||[]).filter(canShow);
+ const remember=(type,id)=>{
+   const k=type+":"+id;
+   if(!state.visited.includes(k))state.visited.push(k);
+   state.history=[k,...state.history.filter(x=>x!==k)].slice(0,12);
+   save();updateStats();badges();
+ };
+ const addBadge=(name)=>{
+   if(!state.badges.includes(name)){state.badges.push(name);save();toast("🏅 Badge débloqué : "+name)}
+ };
+ const badges=()=>{
+   if(state.visited.length>=1)addBadge("🏴‍☠️ Première exploration");
+   if(state.visited.some(x=>x.startsWith("character:")))addBadge("📖 Premier article");
+   if(state.quizDone>=1)addBadge("🧠 Premier quiz");
+   if(state.quizDone>=10)addBadge("🏆 10 quiz réussis");
+   if(state.visited.some(x=>x.startsWith("island:")))addBadge("🗺️ Explorateur");
+   if(state.visited.length>=10)addBadge("🔎 Grand chercheur");
+   if(state.games>=1)addBadge("🎮 Premier mini-jeu");
+   if(state.visited.length>=25)addBadge("📚 Archiviste");
+ };
+ const updateStats=()=>{
+   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+   set("epChapterLabel",chapter()||"—");set("epPagesCount",state.visited.length);set("epBadgeCount",state.badges.length);
+   set("epPCharacters",state.visited.filter(x=>x.startsWith("character:")).length);
+   set("epPFruits",state.visited.filter(x=>x.startsWith("fruit:")).length);
+   set("epPQuiz",state.quizDone);set("epPGames",state.games);
+   const all=[...(characters||[]).map(x=>({...x,unlockChapter:unlocks[x.name]||1})),...(fruits||[]).map(x=>({...x,unlockChapter:fruitUnlocks[x.name]||1})),...(arcs||[]).map(x=>({...x,unlockChapter:Number(String(x.chapters||"1").match(/\d+/)?.[0]||1)})),...extra.islands,...extra.ships,...extra.techniques,...extra.mysteries];
+   set("epVisibleCount",visible(all).length);
+   const max=Math.max(...all.map(x=>Number(x.unlockChapter||1)),1194);
+   const pct=Math.min(100,Math.round((chapter()/max)*100));
+   const meter=document.getElementById("epStoryMeter");if(meter)meter.style.width=pct+"%";
+   const txt=document.getElementById("epStoryText");if(txt)txt.textContent=chapter()?`Tu es au chapitre ${chapter()} — progression approximative de l'histoire : ${pct}%.`:"Configure ton chapitre dans ⚙️ Paramètres.";
+   const input=document.getElementById("epChapterInput");if(input)input.value=chapter()||"";
+ };
+ const setView=(id)=>{
+   ["epHome","epWorld","epMap","epProgress","epSettings"].forEach(x=>{const e=document.getElementById(x);if(e)e.style.display=x===id?"block":"none"});
+   const labels={epHome:"Accueil",epWorld:"Explorer",epMap:"Carte",epProgress:"Ma progression",epSettings:"Paramètres"};
+   document.getElementById("epBreadcrumb").innerHTML=`Grand Line <span>›</span> ${labels[id]||id}`;
+   window.scrollTo({top:0,behavior:state.motion?"auto":"smooth"});
+ };
+ const go=where=>{
+   if(where==="home")setView("epHome");
+   else if(where==="world")setView("epWorld");
+   else if(where==="map"){setView("epMap");renderMap()}
+   else if(where==="progress"){setView("epProgress");renderProgress()}
+   else if(where==="settings"){setView("epSettings");syncSettings()}
+   else if(where==="characters"){setView("epHome");document.getElementById("persos")?.scrollIntoView({behavior:state.motion?"auto":"smooth"});remember("category","characters")}
+   else if(where==="arcs"){setView("epHome");document.getElementById("arcs")?.scrollIntoView({behavior:state.motion?"auto":"smooth"})}
+   else if(where==="quiz"){setView("epHome");document.getElementById("quiz")?.scrollIntoView({behavior:state.motion?"auto":"smooth"})}
+   else if(where==="games"){setView("epHome");document.getElementById("minigames")?.scrollIntoView({behavior:state.motion?"auto":"smooth"})}
+ };
+ const openCategory=cat=>{
+   setView("epWorld");const box=document.getElementById("epCategoryContent");
+   let arr=[],title="";
+   if(cat==="fruits"){arr=fruits.map(x=>({...x,unlockChapter:fruitUnlocks[x.name]||1}));title="🍎 Fruits du Démon"}
+   if(cat==="ships"){arr=extra.ships;title="🚢 Navires"}
+   if(cat==="techniques"){arr=extra.techniques;title="💥 Techniques"}
+   if(cat==="mysteries"){arr=extra.mysteries;title="❓ Mystères"}
+   if(cat==="haki"){arr=[{name:"Haki de l'Observation",unlockChapter:246,desc:"Permet de percevoir la présence et les intentions des êtres vivants."},{name:"Haki de l'Armement",unlockChapter:171,desc:"Permet de renforcer les attaques et la défense."},{name:"Haki des Rois",unlockChapter:519,desc:"Pouvoir rare associé à la volonté et à la domination."}];title="⚡ Haki"}
+   if(cat==="marine"){arr=characters.filter(x=>x.group==="Marine").map(x=>({...x,unlockChapter:unlocks[x.name]||1}));title="⚓ Marine"}
+   if(cat==="revolutionaries"){arr=characters.filter(x=>x.group==="Révolutionnaires").map(x=>({...x,unlockChapter:unlocks[x.name]||1}));title="🔥 Révolutionnaires"}
+   if(cat==="government"){arr=characters.filter(x=>x.group==="CP0").map(x=>({...x,unlockChapter:unlocks[x.name]||1}));title="🏛️ Gouvernement"}
+   if(cat==="fights"){arr=[{name:"Enies Lobby",unlockChapter:430,desc:"Base de données de combat à compléter avec des données structurées."},{name:"Marineford",unlockChapter:576,desc:"Événements et affrontements majeurs de la guerre au sommet."},{name:"Wano",unlockChapter:1049,desc:"Affrontements majeurs de l'arc de Wano."}];title="⚔️ Combats"}
+   box.innerHTML=`<h2 class="ep-section-title">${title}</h2><div class="ep-grid">${arr.map(item=>{const ok=canShow(item);return `<article class="ep-feature ${ok?"":"ep-locked"}" data-unlock="${item.unlockChapter||1}" onclick="${ok?`EP.openItem('${String(item.name).replace(/'/g,"\\'")}','${cat}'`:"void 0"}"><b>${ok?(item.emoji||"•")+" "+escapeHTML(item.name):"🔒 Contenu verrouillé"}</b><span>${ok?escapeHTML(item.desc||item.description||"Information accessible."):`Continue jusqu'au chapitre ${item.unlockChapter}.`}</span></article>`}).join("")}</div>`;
+ };
+ const openItem=(name,cat)=>{
+   const source=cat==="fruits"?fruits:cat==="ships"?extra.ships:cat==="techniques"?extra.techniques:cat==="mysteries"?extra.mysteries:cat==="islands"?extra.islands:characters;
+   const item=source.find(x=>x.name===name);if(!item)return;
+   const unlock=item.unlockChapter||unlocks[name]||fruitUnlocks[name]||1;if(chapter()&&unlock>chapter())return toast(`🔒 Débloqué au chapitre ${unlock}`);
+   remember(cat==="fruits"?"fruit":"character",name);
+   const img=item.img?`<img class="modal-img" src="${escapeHTML(item.img)}" alt="" onerror="this.style.display='none'">`:"";
+   document.getElementById("modalContent").innerHTML=`<h2 class="modal-title">${escapeHTML(item.name)}</h2><div class="modal-sub">Débloqué au chapitre ${unlock}</div>${img}<div class="modal-description">${escapeHTML(item.description||item.desc||"Fiche encyclopédique accessible.")}</div><div class="modal-info"><div class="modal-stat"><small>Catégorie</small><b>${escapeHTML(item.type||item.group||cat)}</b></div><div class="modal-stat"><small>Chapitre</small><b>${unlock}</b></div>${item.owner?`<div class="modal-stat"><small>Utilisateur</small><b>${escapeHTML(item.owner)}</b></div>`:""}${item.bounty?`<div class="modal-stat"><small>Prime</small><b>${Number(item.bounty).toLocaleString("fr-FR")} ฿</b></div>`:""}</div>`;
+   document.getElementById("modal").classList.add("active");updateStats();
+ };
+ const renderMap=()=>{
+   const map=document.getElementById("epMapCanvas");if(!map)return;
+   map.innerHTML=extra.islands.map(i=>{const ok=canShow(i);return `<button class="ep-marker" title="${ok?escapeHTML(i.name):"Contenu verrouillé"}" aria-label="${ok?escapeHTML(i.name):"Contenu verrouillé"}" style="left:${i.x}%;top:${i.y}%;${ok?"":"opacity:.12;pointer-events:none"}" onclick="${ok?`EP.openItem('${i.name.replace(/'/g,"\\'")}','islands'`:"void 0"}"></button>`}).join("")+`<div class="ep-map-note">🧭 ${chapter()?`Chapitre ${chapter()} — ${extra.islands.filter(canShow).length}/${extra.islands.length} lieux accessibles`:"Indique ton chapitre dans les paramètres."}</div>`;
+ };
+ const renderProgress=()=>{
+   updateStats();
+   const b=document.getElementById("epBadges");if(b)b.innerHTML=state.badges.length?state.badges.map(x=>`<span style="display:inline-block;padding:9px 12px;margin:4px;background:#15232e;border:1px solid #33495a;border-radius:9px">${escapeHTML(x)}</span>`).join(""):"Aucun badge pour le moment.";
+   const h=document.getElementById("epHistory");if(h)h.innerHTML=state.history.length?state.history.map(x=>`<div style="padding:7px 0;border-bottom:1px solid #20303d">${escapeHTML(x)}</div>`).join(""):"Aucune page consultée.";
+ };
+ const syncSettings=()=>{
+   document.querySelectorAll('input[name="epSpoil"]').forEach(x=>x.checked=Number(x.value)===Number(state.spoiler));
+   document.querySelectorAll('input[name="epTheme"]').forEach(x=>x.checked=x.value===state.theme);
+   const m=document.getElementById("epMotion");if(m)m.checked=state.motion;
+ };
+ const saveChapter=()=>{
+   const n=Math.max(1,Number(document.getElementById("epChapterInput").value||1));state.chapter=n;save();toast(`📖 Chapitre ${n} enregistré`);applySpoilers();updateStats();syncSettings();
+ };
+ const reset=()=>{
+   if(!confirm("Supprimer toutes les données locales de l'encyclopédie ?"))return;
+   state={...defaultState};save();location.reload();
+ };
+ const applySpoilers=()=>{
+   document.querySelectorAll("#characters .card").forEach((el,i)=>{
+     const item=characters[i];if(item)protect({...item,unlockChapter:unlocks[item.name]||1},el);
+   });
+   document.querySelectorAll("#fruitsList .fruit").forEach((el,i)=>{
+     const item=fruits[i];if(item)protect({...item,unlockChapter:fruitUnlocks[item.name]||1},el);
+   });
+   document.querySelectorAll("#arcRoute .arc-card").forEach((el,i)=>{
+     const item=arcs[i];if(item)protect({...item,unlockChapter:Number(String(item.chapters||"1").match(/\d+/)?.[0]||1)},el);
+   });
+ };
+ const search=()=>{
+   const q=document.getElementById("epGlobalSearch").value.trim().toLowerCase(),box=document.getElementById("epResults");
+   if(!q){box.classList.remove("show");box.innerHTML="";return}
+   const chars=characters.map(x=>({...x,type:"Personnage",unlockChapter:unlocks[x.name]||1}));
+   const fr=fruits.map(x=>({...x,type:"Fruit",unlockChapter:fruitUnlocks[x.name]||1}));
+   const ar=arcs.map(x=>({...x,type:"Arc",unlockChapter:Number(String(x.chapters||"1").match(/\d+/)?.[0]||1)}));
+   const data=[...chars,...fr,...ar,...extra.islands.map(x=>({...x,type:"Île"})),...extra.ships.map(x=>({...x,type:"Navire"})),...extra.techniques.map(x=>({...x,type:"Technique"}))];
+   const found=data.filter(x=>canShow(x)&&((x.name||"")+" "+(x.group||"")+" "+(x.owner||"")+" "+(x.description||x.desc||"")).toLowerCase().includes(q)).slice(0,12);
+   box.innerHTML=found.length?found.map(x=>`<div class="ep-result" onclick="EP.searchOpen('${String(x.name).replace(/'/g,"\\'")}','${x.type}')"><div style="font-size:25px">${x.emoji||"🔎"}</div><div><b>${escapeHTML(x.name)}</b><small>${escapeHTML(x.type)} · ${escapeHTML(x.description||x.desc||x.group||"")}</small></div></div>`).join(""):`<div class="ep-result">🔎 Aucun résultat accessible — vérifie l'orthographe ou ton chapitre.</div>`;
+   box.classList.add("show");
+ };
+ const searchOpen=(name,type)=>{
+   document.getElementById("epResults").classList.remove("show");
+   if(type==="Arc"){document.getElementById("arcs")?.scrollIntoView({behavior:"smooth"});return}
+   if(type==="Île"){go("map");const x=extra.islands.find(i=>i.name===name);if(x&&canShow(x))toast("🗺️ "+name);return}
+   const cat=type==="Fruit"?"fruits":type==="Île"?"islands":type==="Navire"?"ships":type==="Technique"?"techniques":"characters";openItem(name,cat);
+ };
+ const init=()=>{
+   if(!state.chapter){
+     setTimeout(()=>{const n=prompt("🧭 Jusqu'à quel chapitre de One Piece es-tu ?\n\nEntre un nombre, par exemple 535.");if(n!==null&&Number(n)>0){state.chapter=Number(n);save()}updateStats();syncSettings();applySpoilers()},50);
+   }else{updateStats();syncSettings();applySpoilers()}
+   document.getElementById("epGlobalSearch").addEventListener("input",search);
+   document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();document.getElementById("epGlobalSearch").focus()}if(e.key==="Escape")document.getElementById("epResults").classList.remove("show")});
+   document.addEventListener("click",e=>{if(!document.getElementById("epSearchArea").contains(e.target))document.getElementById("epResults").classList.remove("show")});
+   document.querySelectorAll('input[name="epSpoil"]').forEach(x=>x.addEventListener("change",()=>{state.spoiler=Number(x.value);save();applySpoilers();toast("🛡️ Niveau anti-spoiler enregistré")}));
+   document.querySelectorAll('input[name="epTheme"]').forEach(x=>x.addEventListener("change",()=>{state.theme=x.value;save();document.body.classList.toggle("ep-mode-paper",x.value==="paper")}));
+   document.getElementById("epMotion").addEventListener("change",e=>{state.motion=e.target.checked;save();document.documentElement.style.scrollBehavior=state.motion?"auto":"smooth"});
+   document.body.classList.toggle("ep-mode-paper",state.theme==="paper");
+   badges();updateStats();
+ };
+ return {go,openCategory,openItem,searchOpen,saveChapter,reset,renderMap,init,applySpoilers};
+})();
+
+window.addEventListener("load",()=>{
+ EP.init();
+ /* Anti-spoil centralisé après chaque rendu de l'ancien site */
+ const oldRenders=[window.renderCharacters,window.renderWanted,window.renderFruits,window.renderArcs];
+ const wrap=(name)=>{if(typeof window[name]!=="function")return;const f=window[name];window[name]=function(...a){const r=f.apply(this,a);setTimeout(()=>{try{document.querySelectorAll("#characters .card").forEach((el,i)=>{const x=characters[i];if(x) {const u={...x,unlockChapter:1};}})}catch(e){};EP.renderMap();},0);return r}};
+ /* Re-run spoiler filtering whenever controls are used. */
+ setTimeout(()=>{EP.applySpoilers()},300);
+   const obs=new MutationObserver(()=>setTimeout(()=>EP.applySpoilers(),0));
+   ["characters","fruitsList","arcRoute"].forEach(id=>{const e=document.getElementById(id);if(e)obs.observe(e,{childList:true})});
+});
+</script>
+
+</body>
+</html> repond auy demande ici remplace la ligne de ocodage avcec la nouvelle par les demande formule rznvoie la moi sans rien duautre sans texte envoie moi touit dun cou en un seul morcezau pr je copie et que je colle dans giothub
