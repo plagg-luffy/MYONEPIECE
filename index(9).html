@@ -1,0 +1,4375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ONE PIECE — Grand Line</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#05080d;
+color:#eee;
+overflow-x:hidden
+}
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(5,8,13,.94);
+backdrop-filter:blur(15px);
+border-bottom:1px solid #26313d
+}
+
+nav{
+max-width:1350px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 22px
+}
+
+.logo{
+color:#f4c542;
+font-size:25px;
+font-weight:1000;
+letter-spacing:-1px
+}
+
+nav a{
+color:#bbb;
+text-decoration:none;
+margin-left:15px;
+font-weight:800;
+transition:.2s
+}
+
+nav a:hover{color:#f4c542}
+
+.hero{
+min-height:680px;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+background:
+linear-gradient(90deg,#02060a 0%,rgba(3,15,25,.6),#02060a 100%),
+linear-gradient(#071725,#05080d)
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:.32;
+filter:saturate(1.2)
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,transparent 20%,#02060a 100%);
+pointer-events:none
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:900px;
+padding:30px
+}
+
+.hero-kicker{
+color:#f4c542;
+font-weight:900;
+letter-spacing:5px;
+font-size:13px;
+margin-bottom:18px
+}
+
+.hero h1{
+font-size:clamp(65px,13vw,150px);
+line-height:.9;
+color:#f4c542;
+text-shadow:0 5px 0 #9a7314,0 15px 40px #000
+}
+
+.hero h1 span{color:white}
+
+.hero p{
+color:#b7c0c8;
+font-size:20px;
+max-width:650px;
+margin:25px auto 30px;
+line-height:1.6
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap
+}
+
+.btn{
+display:inline-block;
+background:#f4c542;
+color:#111;
+padding:14px 22px;
+border-radius:10px;
+text-decoration:none;
+font-weight:900;
+border:0;
+cursor:pointer;
+transition:.2s
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px #f4c54233
+}
+
+.btn.dark{
+background:#121c26;
+color:#fff;
+border:1px solid #344555
+}
+
+.container{
+max-width:1350px;
+margin:auto;
+padding:75px 22px
+}
+
+.title{
+color:#f4c542;
+font-size:40px;
+margin-bottom:10px
+}
+
+.subtitle{
+color:#778694;
+margin-bottom:30px;
+line-height:1.6
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px
+}
+
+.stat{
+background:linear-gradient(145deg,#101a24,#080d13);
+border:1px solid #26313d;
+border-radius:17px;
+padding:28px;
+text-align:center;
+transition:.25s
+}
+
+.stat:hover{
+transform:translateY(-5px);
+border-color:#f4c542
+}
+
+.stat b{
+display:block;
+color:#f4c542;
+font-size:34px;
+margin-bottom:6px
+}
+
+.stat span{color:#818f9c}
+
+.controls{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:30px
+}
+
+input,select,textarea{
+background:#0c141d;
+color:white;
+border:1px solid #334454;
+padding:14px;
+border-radius:10px;
+outline:none
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#f4c542
+}
+
+input{flex:1;min-width:240px}
+
+.characters{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+
+.card{
+background:linear-gradient(145deg,#0e1721,#080d13);
+border:1px solid #26313d;
+border-radius:17px;
+overflow:hidden;
+transition:.3s
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#f4c542;
+box-shadow:0 20px 45px #0008
+}
+
+.card-img{
+height:280px;
+background:#101923;
+overflow:hidden;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.card-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.4s
+}
+
+.card:hover .card-img img{transform:scale(1.06)}
+
+.card-img::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 60%,#000c)
+}
+
+.fallback{
+font-size:70px;
+position:relative;
+z-index:1
+}
+
+.card-body{padding:18px}
+
+.card h3{
+font-size:21px;
+margin-bottom:5px
+}
+
+.group{
+color:#738493;
+font-size:13px
+}
+
+.bounty{
+color:#f4c542;
+font-size:20px;
+font-weight:900;
+margin:13px 0
+}
+
+.card-fruit{
+color:#9ba8b3;
+font-size:13px;
+line-height:1.5;
+min-height:40px;
+margin-bottom:14px
+}
+
+.small-btn{
+width:100%;
+background:#151f29;
+border:1px solid #354554;
+color:white;
+padding:11px;
+border-radius:9px;
+cursor:pointer;
+font-weight:800;
+transition:.2s
+}
+
+.small-btn:hover{
+background:#f4c542;
+color:#111
+}
+
+.wanted{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+padding:15px 5px
+}
+
+.poster{
+background:radial-gradient(circle,#f0e4c5,#cfc09b);
+color:#18130d;
+padding:12px;
+border-radius:3px;
+box-shadow:0 18px 35px #0009;
+transform:rotate(var(--r));
+transition:.3s;
+position:relative
+}
+
+.poster:hover{
+transform:rotate(0) translateY(-10px) scale(1.03);
+z-index:5
+}
+
+.poster-inner{
+border:5px solid #21190e;
+padding:12px;
+text-align:center;
+min-height:390px
+}
+
+.poster-top{
+font-family:Georgia,serif;
+font-size:14px;
+font-weight:bold;
+letter-spacing:3px
+}
+
+.wanted-title{
+font-family:Georgia,serif;
+font-size:45px;
+font-weight:1000;
+line-height:1
+}
+
+.poster-subtitle{
+font-family:Georgia,serif;
+font-size:17px;
+font-weight:bold
+}
+
+.poster img{
+width:100%;
+height:210px;
+object-fit:cover;
+margin:10px 0;
+border:4px solid #21190e;
+filter:sepia(.25)
+}
+
+.poster h3{
+font-family:Georgia,serif;
+font-size:22px
+}
+
+.poster-dead{
+font-family:Georgia,serif;
+font-size:12px;
+font-weight:bold;
+margin-top:3px
+}
+
+.poster .money{
+font-family:Georgia,serif;
+font-weight:1000;
+font-size:21px;
+margin-top:7px
+}
+
+.fruits{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+
+.fruit{
+background:linear-gradient(145deg,#101923,#090e14);
+border:1px solid #26313d;
+border-radius:17px;
+overflow:hidden;
+transition:.25s
+}
+
+.fruit:hover{
+transform:translateY(-7px);
+border-color:#f4c542
+}
+
+.fruit-img{
+height:180px;
+background:#131e29;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden
+}
+
+.fruit-img img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.fruit-icon{font-size:65px}
+
+.fruit-body{padding:20px}
+
+.fruit h3{
+color:#f4c542;
+margin-bottom:8px
+}
+
+.fruit p{
+color:#98a5af;
+line-height:1.55;
+font-size:14px
+}
+
+.arc-intro{
+color:#8c9aa6;
+max-width:850px;
+line-height:1.7;
+margin-bottom:28px
+}
+
+.arc-filters{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:40px
+}
+
+.arc-filter{
+background:#0d141d;
+border:1px solid #26313d;
+color:#aaa;
+padding:11px 15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+.arc-filter.active,.arc-filter:hover{
+background:#f4c542;
+color:#111;
+border-color:#f4c542
+}
+
+.arc-route{
+position:relative;
+padding:10px 0
+}
+
+.arc-route::before{
+content:"";
+position:absolute;
+left:50%;
+top:0;
+bottom:0;
+width:3px;
+transform:translateX(-50%);
+background:linear-gradient(#f4c542,#27526b,#f4c542)
+}
+
+.arc-card{
+width:calc(50% - 40px);
+background:#0c141d;
+border:1px solid #263746;
+border-radius:18px;
+overflow:hidden;
+margin-bottom:50px;
+cursor:pointer;
+position:relative;
+transition:.3s
+}
+
+.arc-card:nth-child(even){margin-left:auto}
+
+.arc-card:hover{
+transform:translateY(-7px);
+border-color:#f4c542;
+box-shadow:0 20px 50px #0008
+}
+
+.arc-card::after{
+content:"";
+position:absolute;
+width:17px;
+height:17px;
+border-radius:50%;
+background:#f4c542;
+border:4px solid #071019;
+top:30px
+}
+
+.arc-card:nth-child(odd)::after{right:-48px}
+.arc-card:nth-child(even)::after{left:-48px}
+
+.arc-card.current{
+border-color:#e65353;
+box-shadow:0 0 30px #e6535320
+}
+
+.arc-image{
+width:100%;
+height:230px;
+object-fit:cover;
+background:#101923
+}
+
+.arc-content{padding:22px}
+
+.arc-number{
+color:#f4c542;
+font-size:11px;
+font-weight:900;
+letter-spacing:2px
+}
+
+.current-badge{
+display:inline-block;
+background:#351719;
+border:1px solid #e65353;
+color:#ff8585;
+padding:5px 8px;
+border-radius:6px;
+font-size:9px;
+letter-spacing:1px;
+margin-left:8px
+}
+
+.arc-content h3{
+font-size:29px;
+margin:8px 0
+}
+
+.arc-location{
+color:#708392;
+font-size:13px;
+margin-bottom:13px
+}
+
+.arc-content p{
+color:#a9b5bd;
+line-height:1.6;
+font-size:14px
+}
+
+.arc-info{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:17px
+}
+
+.arc-info span{
+background:#151f29;
+border:1px solid #2b3c4c;
+color:#9aa7b1;
+padding:7px 9px;
+border-radius:7px;
+font-size:11px
+}
+
+.timeline{
+border-left:3px solid #f4c542;
+margin-left:15px;
+padding-left:30px
+}
+
+.event{
+position:relative;
+margin-bottom:35px;
+padding:20px;
+background:#0d141d;
+border:1px solid #26313d;
+border-radius:13px
+}
+
+.event::before{
+content:"";
+width:14px;
+height:14px;
+background:#f4c542;
+border-radius:50%;
+position:absolute;
+left:-39px;
+top:24px
+}
+
+.event.current-event{
+border-color:#e65353
+}
+
+.event.current-event h3{color:#ff8585}
+
+.event h3{
+color:#f4c542;
+margin-bottom:7px
+}
+
+.event p{
+color:#909da8;
+line-height:1.6
+}
+
+.random{
+background:radial-gradient(circle at center,#142a3a,#080e15);
+border:1px solid #26313d;
+border-radius:22px;
+padding:45px 25px;
+text-align:center
+}
+
+.random-img{
+width:170px;
+height:170px;
+margin:0 auto 20px;
+border-radius:50%;
+border:4px solid #f4c542;
+overflow:hidden;
+background:#111c26;
+box-shadow:0 0 40px #f4c54222;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.random-img img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.random-emoji{font-size:75px}
+
+.random-name{
+color:#f4c542;
+font-size:40px;
+font-weight:900;
+margin:10px
+}
+
+.random-info{
+color:#8e9da9;
+margin-bottom:25px
+}
+
+.quiz-box{
+max-width:900px;
+margin:auto;
+background:#0c141d;
+border:1px solid #263746;
+border-radius:20px;
+padding:30px
+}
+
+.quiz-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:20px
+}
+
+.quiz-progress{
+height:8px;
+background:#17222c;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:30px
+}
+
+.quiz-progress-bar{
+height:100%;
+background:#f4c542;
+width:0;
+transition:.3s
+}
+
+.quiz-question{
+font-size:25px;
+line-height:1.4;
+margin-bottom:22px
+}
+
+.quiz-answer{
+display:block;
+width:100%;
+background:#131e29;
+border:1px solid #304252;
+color:#ddd;
+text-align:left;
+padding:15px;
+margin:9px 0;
+border-radius:10px;
+cursor:pointer;
+transition:.2s
+}
+
+.quiz-answer:hover{
+border-color:#f4c542;
+transform:translateX(4px)
+}
+
+.quiz-answer.correct{
+background:#103323;
+border-color:#43d17a;
+color:#7ff0a9
+}
+
+.quiz-answer.wrong{
+background:#351719;
+border-color:#e65353;
+color:#ff8585
+}
+
+.quiz-result{
+text-align:center;
+padding:30px
+}
+
+.quiz-result-score{
+font-size:70px;
+color:#f4c542;
+font-weight:1000;
+margin:15px
+}
+
+.game-tabs{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:30px
+}
+
+.game-tab{
+background:#0d141d;
+border:1px solid #26313d;
+color:#aaa;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+.game-tab.active,.game-tab:hover{
+background:#f4c542;
+color:#111;
+border-color:#f4c542
+}
+
+.game-panel{display:none}
+.game-panel.active{display:block}
+
+.game-box{
+max-width:900px;
+margin:auto;
+background:#0c141d;
+border:1px solid #263746;
+border-radius:20px;
+padding:30px
+}
+
+.game-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:22px
+}
+
+.game-head h3{
+color:#f4c542;
+font-size:24px
+}
+
+.bingo-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:8px;
+margin-bottom:20px
+}
+
+.bingo-cell{
+aspect-ratio:1;
+background:#121d27;
+border:1px solid #2b3c4c;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:5px;
+cursor:pointer;
+font-size:11px;
+font-weight:bold;
+color:#c3ccd4;
+transition:.2s
+}
+
+.bingo-cell span{
+font-size:20px;
+margin-bottom:3px
+}
+
+.bingo-cell:hover{border-color:#f4c542}
+
+.bingo-cell.marked{
+background:#f4c542;
+color:#111;
+border-color:#f4c542
+}
+
+.bingo-cell.free{
+background:#1a2a1e;
+border-color:#43d17a;
+color:#7ff0a9
+}
+
+.bingo-win{
+text-align:center;
+color:#7ff0a9;
+font-weight:900;
+font-size:20px;
+margin-top:10px;
+display:none
+}
+
+.bingo-win.show{display:block}
+
+.memory-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:20px
+}
+
+.memory-card{
+aspect-ratio:3/4;
+perspective:600px;
+cursor:pointer
+}
+
+.memory-card-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform .4s;
+transform-style:preserve-3d
+}
+
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched .memory-card-inner{
+transform:rotateY(180deg)
+}
+
+.memory-face{
+position:absolute;
+inset:0;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+backface-visibility:hidden;
+border:1px solid #2b3c4c
+}
+
+.memory-back{
+background:linear-gradient(145deg,#121d27,#0a1119);
+font-size:26px;
+color:#f4c542
+}
+
+.memory-front{
+background:#151f29;
+transform:rotateY(180deg);
+flex-direction:column;
+padding:6px;
+text-align:center
+}
+
+.memory-front span{font-size:26px}
+
+.memory-front small{
+color:#c3ccd4;
+font-size:10px;
+margin-top:4px
+}
+
+.memory-card.matched .memory-front{
+background:#103323;
+border-color:#43d17a
+}
+
+.memory-stats{
+display:flex;
+justify-content:space-between;
+color:#9aa7b1;
+margin-bottom:15px;
+font-weight:bold
+}
+
+.guess-clue{
+background:#121d27;
+border:1px solid #2b3c4c;
+border-radius:10px;
+padding:14px;
+margin-bottom:10px;
+color:#c3ccd4
+}
+
+.guess-clue b{color:#f4c542}
+
+.guess-options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px
+}
+
+/* QUESTIONS */
+
+.questions-box{
+max-width:950px;
+margin:auto;
+background:#0c141d;
+border:1px solid #263746;
+border-radius:20px;
+padding:30px
+}
+
+.question-form{
+display:grid;
+gap:12px;
+margin-bottom:30px
+}
+
+.question-form input,
+.question-form textarea{
+width:100%;
+background:#101a24;
+color:#fff;
+border:1px solid #334454;
+border-radius:10px;
+padding:14px;
+outline:none;
+font-family:inherit
+}
+
+.question-form textarea{
+min-height:120px;
+resize:vertical
+}
+
+.question-form input:focus,
+.question-form textarea:focus{
+border-color:#f4c542
+}
+
+.questions-list{
+display:grid;
+gap:14px
+}
+
+
+
+.question-card:hover{
+border-color:#f4c542;
+transform:translateY(-2px)
+}
+
+.question-author{
+color:#f4c542;
+font-weight:900;
+margin-bottom:8px
+}
+
+.question-date{
+color:#647583;
+font-size:11px;
+margin-bottom:10px
+}
+
+.question-text{
+color:#c4ced6;
+line-height:1.6;
+white-space:pre-wrap
+}
+
+.question-delete{
+margin-top:12px;
+background:#151f29;
+border:1px solid #354554;
+color:#aaa;
+padding:7px 10px;
+border-radius:7px;
+cursor:pointer;
+font-size:11px
+}
+
+.question-delete:hover{
+background:#351719;
+border-color:#e65353;
+color:#ff8585
+}
+
+.no-question{
+text-align:center;
+color:#71818e;
+padding:25px
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#000c;
+z-index:3000;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal.active{display:flex}
+
+.modal-box{
+background:#0b141d;
+border:1px solid #f4c542;
+border-radius:20px;
+max-width:700px;
+width:100%;
+max-height:90vh;
+overflow:auto;
+padding:30px;
+position:relative;
+box-shadow:0 30px 80px #000
+}
+
+.close{
+position:absolute;
+right:18px;
+top:12px;
+font-size:30px;
+color:#aaa;
+cursor:pointer;
+z-index:2
+}
+
+.close:hover{color:#fff}
+
+.modal-img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:13px;
+margin:18px 0
+}
+
+.modal-title{
+color:#f4c542;
+font-size:34px
+}
+
+.modal-sub{
+color:#758694;
+margin-top:5px
+}
+
+.modal-info{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:20px
+}
+
+.modal-stat{
+background:#121d27;
+border:1px solid #263746;
+padding:15px;
+border-radius:10px
+}
+
+.modal-stat small{
+display:block;
+color:#6f8291;
+margin-bottom:5px
+}
+
+.modal-stat b{color:#f4c542}
+
+.modal-description{
+color:#aab6bf;
+line-height:1.7;
+margin-top:20px
+}
+
+footer{
+border-top:1px solid #26313d;
+padding:35px 20px;
+text-align:center;
+color:#66737e
+}
+
+.footer-logo{
+color:#f4c542;
+font-size:24px;
+font-weight:900;
+margin-bottom:10px
+}
+
+.signature{
+position:fixed;
+bottom:12px;
+left:15px;
+color:#f4c542;
+font-size:12px;
+font-weight:900;
+opacity:.65;
+z-index:1500
+}
+
+@media(max-width:1100px){
+.characters,.wanted,.fruits{grid-template-columns:repeat(2,1fr)}
+.stats{grid-template-columns:repeat(2,1fr)}
+nav a{display:none}
+.arc-card{width:calc(50% - 30px)}
+}
+
+@media(max-width:700px){
+.hero{min-height:580px}
+.container{padding:55px 16px}
+.title{font-size:31px}
+.characters,.wanted,.fruits,.stats{grid-template-columns:1fr}
+.arc-route::before{left:8px}
+.arc-card,.arc-card:nth-child(even){
+width:calc(100% - 30px);
+margin-left:30px
+}
+.arc-card::after,
+.arc-card:nth-child(odd)::after,
+.arc-card:nth-child(even)::after{
+left:-30px;
+right:auto
+}
+.modal-info{grid-template-columns:1fr}
+.random-name{font-size:30px}
+.guess-options{grid-template-columns:1fr}
+}
+
+/* =========================
+   ONE PIECE V2 — GAME UI
+========================= */
+:root{
+ --op-gold:#f7c94b;
+ --op-gold2:#ffdf78;
+ --op-blue:#0e6da8;
+ --op-cyan:#62d8ff;
+ --op-panel:rgba(11,18,27,.82);
+ --op-border:rgba(247,201,75,.22);
+}
+body{background:radial-gradient(circle at 50% -20%,rgba(17,105,157,.25),transparent 42%),#05080d}
+header{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+header nav{position:relative}
+.logo{letter-spacing:1px;text-shadow:0 0 18px rgba(247,201,75,.18)}
+.hero{position:relative;isolation:isolate}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:160px;background:linear-gradient(transparent,rgba(5,8,13,.96));pointer-events:none;z-index:0}
+.hero-content{position:relative;z-index:2}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(247,201,75,.35);background:rgba(7,14,21,.58);backdrop-filter:blur(10px);border-radius:999px;font-weight:700;font-size:12px;letter-spacing:1.5px}
+.hero h1{text-shadow:0 5px 35px rgba(0,0,0,.7)}
+.hero-buttons .btn{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.hero-buttons .btn:hover{transform:translateY(-3px);filter:brightness(1.08);box-shadow:0 14px 35px rgba(0,0,0,.3)}
+.op-explorer{max-width:1350px;margin:-58px auto 0;position:relative;z-index:6;padding:0 24px 30px}
+.op-launcher{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.op-launch{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:17px;border-radius:18px;background:linear-gradient(180deg,rgba(19,29,41,.92),rgba(9,15,23,.92));border:1px solid var(--op-border);box-shadow:0 16px 40px rgba(0,0,0,.24);color:#fff;text-decoration:none;transition:.2s;min-height:106px}
+.op-launch:hover{transform:translateY(-5px);border-color:rgba(247,201,75,.52);box-shadow:0 20px 45px rgba(0,0,0,.34)}
+.op-launch .icon{font-size:27px}.op-launch strong{font-size:14px}.op-launch span{font-size:11px;color:#9cadba;line-height:1.35}
+.op-dashboard{max-width:1350px;margin:0 auto;padding:12px 24px 0}
+.op-dashboard-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:18px}
+.op-panel{border:1px solid rgba(255,255,255,.07);border-radius:20px;background:linear-gradient(145deg,rgba(10,18,27,.92),rgba(7,12,18,.9));box-shadow:0 14px 35px rgba(0,0,0,.22);padding:20px}
+.op-panel h3{margin:0 0 8px;font-size:18px}.op-muted{color:#93a3af;font-size:13px}
+.op-status{display:flex;justify-content:space-between;gap:12px;align-items:center}.op-pill{border:1px solid rgba(98,216,255,.26);color:#8ee6ff;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap}.op-progress{height:10px;border-radius:99px;background:#111c25;overflow:hidden;margin:14px 0 10px}.op-progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--op-blue),var(--op-cyan),var(--op-gold));border-radius:inherit;transition:width .4s ease}.op-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.op-mini{padding:12px;border-radius:14px;background:rgba(255,255,255,.035);text-align:center}.op-mini b{display:block;font-size:19px}.op-mini span{display:block;color:#8293a0;font-size:10px;margin-top:3px}
+.op-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.op-action{border:1px solid rgba(255,255,255,.1);background:#0b151e;color:#fff;padding:10px 13px;border-radius:12px;cursor:pointer;font-weight:700;transition:.18s}.op-action:hover{transform:translateY(-2px);border-color:rgba(247,201,75,.38)}
+.op-global-search{position:fixed;left:50%;top:88px;transform:translateX(-50%) translateY(-12px);width:min(760px,calc(100vw - 24px));z-index:2500;display:none}.op-global-search.show{display:block;animation:opSearchIn .16s ease forwards}@keyframes opSearchIn{to{transform:translateX(-50%) translateY(0)}}
+.op-search-box{display:flex;gap:8px;padding:11px;border-radius:18px;background:rgba(6,11,17,.95);border:1px solid rgba(247,201,75,.3);box-shadow:0 28px 70px rgba(0,0,0,.5);backdrop-filter:blur(16px)}
+.op-search-box input{flex:1;border:0!important;background:#0d1720!important}.op-results{margin-top:8px;border-radius:16px;overflow:auto;max-height:420px;border:1px solid rgba(255,255,255,.08);background:rgba(7,13,19,.97)}.op-result{display:flex;justify-content:space-between;gap:12px;padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer}.op-result:last-child{border-bottom:0}.op-result:hover{background:rgba(247,201,75,.08)}.op-result small{color:#8597a4}
+.op-duel{max-width:1350px;margin:0 auto;padding:55px 24px}.duel-wrap{border:1px solid rgba(247,201,75,.2);border-radius:24px;background:radial-gradient(circle at 50% 0%,rgba(16,93,139,.18),transparent 45%),linear-gradient(150deg,#081018,#060b11);padding:25px;box-shadow:0 25px 65px rgba(0,0,0,.28)}.duel-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:18px}.duel-head h2{margin:0}.duel-score{display:flex;gap:9px;align-items:center}.duel-score b{font-size:26px;color:var(--op-gold)}.duel-arena{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:16px}.duel-card{min-height:230px;border-radius:20px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,rgba(17,28,40,.94),rgba(7,12,18,.96));padding:20px;display:flex;flex-direction:column;justify-content:space-between;text-align:center}.duel-card .duel-q{font-size:42px}.duel-card img{display:block;width:190px;height:190px;max-width:100%;object-fit:cover;border-radius:16px;margin:8px auto 10px;border:1px solid rgba(247,201,75,.22);box-shadow:0 12px 28px rgba(0,0,0,.35);background:#0a131b}.duel-card h3{margin:8px 0 2px}.duel-card .duel-bounty{font-size:20px;color:var(--op-gold);font-weight:900;visibility:hidden}.duel-card.revealed .duel-bounty{visibility:visible}.duel-vs{display:flex;align-items:center;justify-content:center;font-weight:1000;font-size:22px;color:#8796a3}.duel-actions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}.duel-btn{padding:12px;border-radius:13px;border:1px solid rgba(98,216,255,.18);background:#0d1821;color:#fff;font-weight:800;cursor:pointer}.duel-btn:hover{border-color:rgba(247,201,75,.35);transform:translateY(-1px)}.duel-result{text-align:center;min-height:24px;margin-top:12px;font-weight:800}.duel-result.good{color:#78e09a}.duel-result.bad{color:#ff7a7a}
+.op-top{position:fixed;right:18px;bottom:18px;z-index:2200;display:flex;flex-direction:column;gap:8px}.op-float{width:46px;height:46px;border-radius:50%;border:1px solid rgba(247,201,75,.24);background:rgba(8,14,20,.9);color:#fff;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.28);transition:.18s}.op-float:hover{transform:translateY(-3px);border-color:rgba(247,201,75,.45)}
+.op-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;z-index:3000;padding:11px 16px;border-radius:12px;border:1px solid rgba(247,201,75,.25);background:rgba(7,13,19,.96);box-shadow:0 16px 45px rgba(0,0,0,.38);pointer-events:none;transition:.22s;font-weight:700;font-size:13px}.op-toast.show{transform:translate(-50%,0);opacity:1}
+.card,.poster,.fruit-card,.arc-card,.event,.game-card,.card:hover,.poster:hover,.fruit-card:hover,.arc-card:hover,.game-card:hover,.question-card:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(0,0,0,.28);border-color:rgba(247,201,75,.2)}
+@media(max-width:1100px){.op-launcher{grid-template-columns:repeat(3,1fr)}.op-dashboard-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.op-explorer,.op-dashboard,.op-duel{padding-left:14px;padding-right:14px}.op-explorer{margin-top:-35px}.op-launcher{grid-template-columns:repeat(2,1fr)}.op-stats{grid-template-columns:1fr}.duel-arena{grid-template-columns:1fr}.duel-vs{display:none}.duel-actions{grid-template-columns:1fr}.op-top{right:12px;bottom:12px}}
+
+
+.question-contact-card{display:flex;align-items:center;gap:24px;padding:28px;border-radius:22px;border:1px solid rgba(247,201,75,.18);background:radial-gradient(circle at 8% 0%,rgba(99,216,255,.12),transparent 42%),linear-gradient(145deg,rgba(10,18,27,.97),rgba(5,11,17,.96));box-shadow:0 18px 55px rgba(0,0,0,.22)}.question-contact-icon{width:76px;height:76px;display:flex;align-items:center;justify-content:center;border-radius:20px;background:rgba(247,201,75,.08);border:1px solid rgba(247,201,75,.18);font-size:38px;flex:0 0 76px}.question-contact-kicker{font-size:10px;letter-spacing:.16em;color:#63d8ff;font-weight:1000}.question-contact-content h3{margin:6px 0 8px;font-size:23px}.question-contact-content p{margin:0 0 15px;color:#a9b7bf;line-height:1.55}.question-contact-content small{display:block;margin-top:8px;color:#72838d;font-size:11px}.instagram-contact{display:inline-flex}.instagram-inline{color:#f4c542;font-weight:1000;text-decoration:underline;text-underline-offset:3px}.instagram-inline:hover{color:#fff}.question-contact-card{margin-top:12px}@media(max-width:620px){.question-contact-card{flex-direction:column;align-items:flex-start}.question-contact-icon{width:62px;height:62px;flex-basis:62px;font-size:30px}}
+/* ===== V3 : MANGA / THEORIES / QUIZ / ARCADE / QUESTIONS ===== */
+.plus-section{position:relative}
+.plus-quiz-shell,.theory-form-wrap,.theory-banner{border:1px solid rgba(247,201,75,.16);background:linear-gradient(145deg,rgba(10,18,27,.96),rgba(5,11,17,.96));border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.24);padding:22px}
+.plus-quiz-controls{display:grid;grid-template-columns:1.2fr 1fr .7fr auto;gap:12px;align-items:end}
+.plus-field{display:flex;flex-direction:column;gap:7px}.plus-field label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8fa1ad;font-weight:900}.plus-field select{width:100%;margin:0}
+.plus-quiz-meta,.arc-mini-stats,.guess-score-line{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;color:#a5b5bf;font-size:12px}.plus-quiz-meta span,.arc-mini-stats span,.guess-score-line span{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.plus-quiz-game{min-height:360px}.plus-quiz-intro{text-align:center;padding:46px 22px}.plus-big-icon{font-size:60px;filter:drop-shadow(0 8px 25px rgba(0,0,0,.3));margin-bottom:8px}.plus-quiz-intro h3{font-size:25px;margin:5px 0 8px}.plus-quiz-intro p{max-width:720px;margin:0 auto 18px;color:#93a5b0;line-height:1.6}
+.plus-q-head{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#93a5b0;font-size:12px;margin-bottom:10px}.plus-q-bar{height:9px;border-radius:99px;background:#101a23;overflow:hidden}.plus-q-bar i{display:block;height:100%;background:linear-gradient(90deg,#3ac8ff,#f4c542);transition:.3s}.plus-q-card{margin-top:18px;padding:26px;border-radius:20px;background:radial-gradient(circle at 50% 0%,rgba(30,126,166,.16),transparent 55%),rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07)}.plus-q-category{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:#63d8ff;font-weight:900}.plus-q-title{font-size:24px;font-weight:1000;line-height:1.3;margin:12px 0 18px}.plus-q-answers{display:grid;grid-template-columns:1fr 1fr;gap:11px}.plus-q-answer{padding:15px;text-align:left;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:#0c151e;color:#fff;font-weight:800;cursor:pointer;transition:.15s}.plus-q-answer:hover{transform:translateY(-2px);border-color:rgba(247,201,75,.4)}.plus-q-answer.correct{background:rgba(63,183,111,.18);border-color:#4bd27d}.plus-q-answer.wrong{background:rgba(230,72,72,.18);border-color:#ef6868}.plus-q-explain{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(247,201,75,.06);border:1px solid rgba(247,201,75,.12);color:#d4dce0;line-height:1.55;font-size:13px}
+.plus-result{text-align:center;padding:50px 20px}.plus-result-score{font-size:54px;font-weight:1000;color:#f4c542;margin:8px 0}.plus-result-ring{display:inline-flex;align-items:center;justify-content:center;width:125px;height:125px;border-radius:50%;border:8px solid rgba(247,201,75,.2);box-shadow:inset 0 0 35px rgba(247,201,75,.08),0 10px 40px rgba(0,0,0,.25);font-weight:1000}
+.plus-game-tabs{overflow:auto;padding-bottom:5px}.plus-game-box{overflow:hidden}.plus-game-message{text-align:center;min-height:26px;margin-top:12px;font-weight:800}.race-wrap{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#07131b}.race-wrap canvas{display:block;width:100%;height:auto;max-height:520px}.race-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;background:linear-gradient(rgba(2,8,12,.28),rgba(2,8,12,.55));color:#fff;font-size:22px;font-weight:900;pointer-events:none}.race-overlay small{font-size:12px;color:#c1d0d9;margin-top:8px}.race-touch{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}.race-touch button{border:1px solid rgba(255,255,255,.08);background:#0b1720;color:#fff;border-radius:13px;padding:12px;font-weight:900}.fruit-rush-game{min-height:300px}.fruit-card-play{margin-top:18px;text-align:center;padding:35px 18px;border-radius:20px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07)}.fruit-rush-prompt{font-size:27px;font-weight:1000;margin:10px auto 20px;max-width:800px}.fruit-rush-answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:750px;margin:auto}.fruit-rush-answer{padding:15px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:#0c151e;color:#fff;cursor:pointer;font-weight:900}.fruit-rush-answer:hover{border-color:rgba(247,201,75,.4);transform:translateY(-2px)}
+.theory-banner{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:16px;background:radial-gradient(circle at 15% 0%,rgba(45,145,194,.17),transparent 40%),linear-gradient(145deg,rgba(10,19,29,.98),rgba(7,12,18,.96))}.theory-kicker{font-size:10px;letter-spacing:.18em;color:#63d8ff;font-weight:1000}.theory-banner h3{margin:5px 0 7px;font-size:23px}.theory-banner p{max-width:800px;color:#9cadb8;line-height:1.55}.theory-badge{padding:9px 12px;border-radius:999px;border:1px solid rgba(255,110,110,.25);color:#ff9c9c;font-size:11px;font-weight:1000;white-space:nowrap}.theory-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.theory-card{position:relative;padding:20px;border-radius:18px;background:linear-gradient(145deg,#0c1720,#091017);border:1px solid rgba(255,255,255,.07);overflow:hidden}.theory-card:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(#63d8ff,#f4c542)}.theory-card h3{margin:8px 0}.theory-card p{color:#a9b7bf;line-height:1.55;font-size:13px}.theory-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.theory-tag{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.04);font-size:10px;color:#93a4af}.theory-votes{display:flex;gap:8px;margin-top:15px}.theory-vote{border:1px solid rgba(255,255,255,.08);background:#0a141d;color:#fff;border-radius:10px;padding:8px 11px;cursor:pointer}.theory-vote:hover{border-color:rgba(247,201,75,.35)}.theory-form-wrap{margin-top:16px}.theory-form{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin-top:12px}.theory-form textarea{grid-column:1/-1;min-height:150px}.theory-form button{justify-self:start}
+
+@media(max-width:900px){.plus-quiz-controls{grid-template-columns:1fr 1fr}.theory-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.plus-quiz-controls{grid-template-columns:1fr}.plus-q-answers,.fruit-rush-answers{grid-template-columns:1fr}.plus-q-title{font-size:20px}.theory-banner{flex-direction:column;align-items:flex-start}.theory-form{grid-template-columns:1fr}.theory-form textarea{grid-column:auto}.race-touch{display:grid}}
+
+/* ===== BINGO PERSONNAGE — V4 ===== */
+.bingo-v4-shell{display:grid;grid-template-columns:minmax(250px,.72fr) minmax(420px,1.28fr);gap:22px;align-items:stretch}
+.bingo-character-stage{position:relative;border:1px solid rgba(247,201,75,.18);border-radius:22px;background:radial-gradient(circle at 50% 10%,rgba(36,126,180,.18),transparent 45%),linear-gradient(145deg,#09121a,#050b10);padding:18px;min-height:520px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;overflow:hidden}
+.bingo-character-stage:before{content:'⚓ BINGO GRAND LINE';position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.18em;font-weight:900;color:#9eb0bb;white-space:nowrap}
+.bingo-character-image{margin:45px auto 12px;width:min(240px,76vw);height:300px;display:flex;align-items:center;justify-content:center}
+.bingo-character-image img{width:100%;height:100%;object-fit:cover;border-radius:20px;border:1px solid rgba(247,201,75,.24);box-shadow:0 22px 50px rgba(0,0,0,.38);background:#0d1720}
+.bingo-character-name{font-size:25px;font-weight:1000;margin:0 0 5px}
+.bingo-character-sub{color:#9bb0bd;font-size:13px}
+.bingo-badge{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin:10px auto 0;padding:8px 12px;border-radius:999px;background:rgba(247,201,75,.08);border:1px solid rgba(247,201,75,.16);color:#f4c542;font-size:12px;font-weight:900}
+.bingo-timer{font-size:34px;font-weight:1000;color:#f4c542;line-height:1}
+.bingo-timer.danger{color:#ff6e6e;animation:bingoPulse .5s infinite alternate}
+@keyframes bingoPulse{to{transform:scale(1.08)}}
+.bingo-v4-board{display:flex;flex-direction:column;gap:12px}
+.bingo-v4-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.bingo-v4-cell{min-height:92px;border-radius:13px;padding:10px 7px;background:linear-gradient(180deg,#12202b,#0c151d);border:1px solid #294050;color:#d6e0e7;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:900;cursor:pointer;transition:.18s;user-select:none}
+.bingo-v4-cell:hover{transform:translateY(-2px);border-color:rgba(247,201,75,.55)}
+.bingo-v4-cell.selected{border-color:#f4c542;background:rgba(247,201,75,.14);box-shadow:inset 0 0 0 1px rgba(247,201,75,.18),0 8px 24px rgba(0,0,0,.15)}
+.bingo-v4-cell.correct{background:rgba(61,204,126,.14);border-color:#3dcc7e;color:#8cf0b4}
+.bingo-v4-cell.wrong{background:rgba(239,84,84,.14);border-color:#ef5454;color:#ff9696}
+.bingo-v4-cell.dim{opacity:.55}
+.bingo-v4-help{padding:13px 15px;border:1px dashed rgba(247,201,75,.22);border-radius:15px;color:#9fb0bb;font-size:13px;line-height:1.5}
+.bingo-v4-actions{display:flex;gap:10px;flex-wrap:wrap}
+.bingo-v4-score{display:flex;flex-wrap:wrap;gap:9px}
+.bingo-v4-score span{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-size:12px;color:#b8c5ce}
+.bingo-v4-result{min-height:24px;font-weight:900;text-align:center}
+@media(max-width:900px){.bingo-v4-shell{grid-template-columns:1fr}.bingo-character-stage{min-height:430px}.bingo-character-image{height:240px}}
+@media(max-width:560px){.bingo-v4-grid{gap:6px}.bingo-v4-cell{min-height:78px;font-size:9px;padding:7px 4px}.bingo-character-name{font-size:21px}.bingo-character-image{width:190px;height:220px}}
+
+/* ===== QUIZ V4 ===== */
+.plus-q-media{display:flex;justify-content:center;margin:14px 0 18px}
+.plus-q-media img{width:min(220px,70vw);height:220px;object-fit:cover;border-radius:18px;border:1px solid rgba(247,201,75,.18);box-shadow:0 15px 35px rgba(0,0,0,.3)}
+.plus-q-type{display:inline-flex;padding:6px 10px;border-radius:999px;background:rgba(98,216,255,.07);border:1px solid rgba(98,216,255,.14);color:#91dff8;font-size:11px;font-weight:900;margin-bottom:9px}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">☠ ONE PIECE</div>
+
+<div>
+<a href="#persos">Personnages</a>
+<a href="#primes">Primes</a>
+<a href="#fruits">Fruits</a>
+<a href="#arcs">Arcs</a>
+<a href="#random">Aléatoire</a>
+<a href="#quiz">Quiz</a>
+<a href="#minigames">Mini-jeux</a>
+<a href="#theories">Manga & Théories</a>
+<a href="#questions">Questions / idées</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+
+<img
+class="hero-bg"
+src="images/grand-line.jpg"
+alt="Grand Line"
+onerror="this.style.display='none'"
+>
+
+<div class="hero-content">
+
+<div class="hero-kicker">☠️ BIENVENUE SUR GRAND LINE</div>
+
+<h1>ONE <span>PIECE</span></h1>
+
+<p>
+Le monde de la piraterie, des légendes, des trésors
+et des aventures du Chapeau de Paille.
+</p>
+
+<div class="hero-buttons">
+<a class="btn" href="#persos">Explorer Grand Line</a>
+<a class="btn dark" href="#primes">Voir les primes</a>
+</div>
+
+</div>
+</section>
+
+<section class="container">
+
+<div class="stats">
+
+<div class="stat">
+<b>1194</b>
+<span>Dernier chapitre</span>
+</div>
+
+<div class="stat">
+<b>1179</b>
+<span>Dernier épisode</span>
+</div>
+
+<div class="stat">
+<b>∞</b>
+<span>Îles à découvrir</span>
+</div>
+
+<div class="stat">
+<b>25+</b>
+<span>Années d'aventure</span>
+</div>
+
+</div>
+
+</section>
+
+<div class="op-explorer" id="explorer">
+  <div class="op-launcher">
+    <a class="op-launch" href="#persos"><span class="icon">👒</span><strong>Personnages</strong><span>Équipages, Marines, légendes…</span></a>
+    <a class="op-launch" href="#primes"><span class="icon">💰</span><strong>Primes</strong><span>Classement des affiches</span></a>
+    <a class="op-launch" href="#fruits"><span class="icon">🍎</span><strong>Fruits</strong><span>Découvre les pouvoirs</span></a>
+    <a class="op-launch" href="#arcs"><span class="icon">🌊</span><strong>Arcs</strong><span>Parcours Grand Line</span></a>
+    <a class="op-launch" href="#quiz"><span class="icon">🧠</span><strong>Quiz</strong><span>Teste tes connaissances</span></a>
+    <a class="op-launch" href="#minigames"><span class="icon">🎮</span><strong>Mini-jeux</strong><span>Joue directement</span></a>
+  </div>
+</div>
+
+<div class="op-dashboard">
+  <div class="op-dashboard-grid">
+    <div class="op-panel">
+      <div class="op-status"><div><h3>⚓ Ton journal de bord</h3><div class="op-muted">Continue ton exploration de Grand Line.</div></div><span class="op-pill" id="opSeaState">EN MER</span></div>
+      <div class="op-progress"><i id="opProgressBar"></i></div>
+      <div class="op-muted" id="opProgressText">0% exploré</div>
+      <div class="op-stats" style="margin-top:12px">
+        <div class="op-mini"><b id="opCharCount">0</b><span>personnages</span></div>
+        <div class="op-mini"><b id="opFruitCount">0</b><span>fruits</span></div>
+        <div class="op-mini"><b id="opSeenCount">0</b><span>fiches vues</span></div>
+      </div>
+      <div class="op-actions"><button class="op-action" onclick="OPV2.random();">🎲 Personnage aléatoire</button><button class="op-action" onclick="OPV2.openSearch();">🔎 Recherche globale</button><button class="op-action" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'});">🧠 Lancer le quiz</button></div>
+    </div>
+    <div class="op-panel">
+      <h3>🔥 Défi express</h3>
+      <div class="op-muted">Qui a la plus grosse prime ?</div>
+      <div style="font-size:36px;margin:12px 0 4px">⚔️💰</div>
+      <div class="op-muted">Mets tes connaissances à l’épreuve dans le nouveau duel.</div>
+      <div class="op-actions"><button class="op-action" onclick="document.getElementById('duel').scrollIntoView({behavior:'smooth'});">Commencer le duel</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="op-duel" id="duel">
+  <div class="duel-wrap">
+    <div class="duel-head"><div><h2>⚔️ Duel des primes</h2><div class="op-muted">Choisis le personnage qui possède la prime la plus élevée.</div></div><div class="duel-score">🔥 <b id="duelScore">0</b><span class="op-muted">record <span id="duelBest">0</span></span></div></div>
+    <div class="duel-arena">
+      <div class="duel-card" id="duelLeft"></div>
+      <div class="duel-vs">VS</div>
+      <div class="duel-card" id="duelRight"></div>
+    </div>
+    <div class="duel-actions"><button class="duel-btn" onclick="OPV2.duelAnswer('left')">⬅️ La gauche</button><button class="duel-btn" onclick="OPV2.duelAnswer('right')">La droite ➡️</button></div>
+    <div class="duel-result" id="duelResult"></div>
+    <div style="text-align:center;margin-top:8px"><button class="op-action" onclick="OPV2.newDuel()">🔄 Nouveau duel</button></div>
+  </div>
+</div>
+
+<div class="op-global-search" id="opSearchPanel">
+  <div class="op-search-box"><input id="opSearchInput" placeholder="🔎 Rechercher un personnage, fruit, arc…" autocomplete="off"><button class="op-action" onclick="OPV2.closeSearch()">✕</button></div>
+  <div class="op-results" id="opSearchResults"></div>
+</div>
+
+<div class="op-top"><button class="op-float" title="Recherche" onclick="OPV2.openSearch()">🔎</button><button class="op-float" title="Haut de page" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️</button></div>
+<div class="op-toast" id="opToast"></div>
+
+<section class="container" id="persos">
+
+<h2 class="title">👒 Personnages</h2>
+
+<p class="subtitle">
+Explore les pirates, Mugiwara, Marines, alliés,
+CP0 et révolutionnaires.
+</p>
+
+<div class="controls">
+
+<input
+id="search"
+placeholder="🔎 Rechercher un personnage..."
+>
+
+<select id="group">
+
+<option value="all">Tous les groupes</option>
+<option value="Mugiwara">Mugiwara</option>
+<option value="Alliés">Alliés</option>
+<option value="Pirates">Pirates</option>
+<option value="Marine">Marine</option>
+<option value="Révolutionnaires">Révolutionnaires</option>
+<option value="CP0">CP0</option>
+
+</select>
+
+</div>
+
+<div class="characters" id="characters"></div>
+
+</section>
+
+<section class="container" id="primes">
+
+<h2 class="title">💰 Les primes</h2>
+
+<p class="subtitle">
+Les affiches recherchées des pirates les plus célèbres.
+</p>
+
+<div class="controls">
+
+<select id="bountyFilter">
+
+<option value="all">Toutes les primes</option>
+<option value="billion">1 milliard+</option>
+<option value="500">500 millions+</option>
+<option value="under">Moins de 500 millions</option>
+
+</select>
+
+</div>
+
+<div class="wanted" id="wanted"></div>
+
+</section>
+
+<section class="container" id="fruits">
+
+<h2 class="title">🍎 Fruits du démon</h2>
+
+<p class="subtitle">
+Les pouvoirs qui ont façonné le monde de One Piece.
+</p>
+
+<div class="fruits" id="fruitsList"></div>
+
+</section>
+
+<section class="container" id="arcs">
+
+<h2 class="title">🌊 Voyage sur Grand Line</h2>
+
+<p class="arc-intro">
+Suis le voyage des Mugiwara depuis East Blue jusqu'à
+la saga finale et découvre l'arc actuellement en cours.
+</p>
+
+<div class="arc-filters">
+
+<button class="arc-filter active" onclick="filterArcs('all',this)">
+🌍 Tous
+</button>
+
+<button class="arc-filter" onclick="filterArcs('East Blue',this)">
+🌊 East Blue
+</button>
+
+<button class="arc-filter" onclick="filterArcs('Grand Line',this)">
+🏜️ Grand Line
+</button>
+
+<button class="arc-filter" onclick="filterArcs('Nouveau Monde',this)">
+⚔️ Nouveau Monde
+</button>
+
+<button class="arc-filter" onclick="filterArcs('Saga Finale',this)">
+👑 Saga Finale
+</button>
+
+</div>
+
+<div class="arc-route" id="arcRoute"></div>
+
+</section>
+
+<section class="container">
+
+<h2 class="title">🌍 Chronologie</h2>
+
+<p class="subtitle">
+Quelques événements qui ont changé le monde.
+</p>
+
+<div class="timeline">
+
+<div class="event">
+<h3>🏴‍☠️ L'ère de Roger</h3>
+<p>
+Gol D. Roger atteint Laugh Tale et déclenche
+la Grande Ère de la Piraterie.
+</p>
+</div>
+
+<div class="event">
+<h3>🌊 Début du voyage</h3>
+<p>
+Luffy prend la mer avec un objectif :
+devenir le Roi des Pirates.
+</p>
+</div>
+
+<div class="event">
+<h3>⚔️ Marineford</h3>
+<p>
+La guerre au sommet bouleverse l'équilibre du monde.
+</p>
+</div>
+
+<div class="event">
+<h3>🐉 Wano</h3>
+<p>
+Luffy et ses alliés affrontent Kaido
+et libèrent le pays de Wano.
+</p>
+</div>
+
+<div class="event">
+<h3>🏝️ Egghead</h3>
+<p>
+Les Mugiwara découvrent les secrets de Vegapunk
+et affrontent le Gouvernement Mondial.
+</p>
+</div>
+
+<div class="event current-event">
+<h3>🏔️ Elbaf — ARC ACTUEL</h3>
+<p>
+Les Mugiwara poursuivent leur aventure sur Elbaf,
+la légendaire terre des Géants.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="container" id="random">
+
+<h2 class="title">🎲 Personnage aléatoire</h2>
+
+<p class="subtitle">
+Laisse Grand Line choisir un personnage pour toi.
+</p>
+
+<div class="random">
+
+<div class="random-img" id="randomContainer">
+
+<span class="random-emoji">🎲</span>
+
+<img
+id="randomImage"
+src=""
+alt=""
+style="display:none"
+>
+
+</div>
+
+<div class="random-name" id="randomName">
+Clique !
+</div>
+
+<div class="random-info" id="randomInfo">
+Découvre un personnage au hasard.
+</div>
+
+<button class="btn" onclick="randomCharacter()">
+🎲 Tirer au sort
+</button>
+
+</div>
+
+</section>
+
+<section class="container plus-section" id="quiz">
+
+<h2 class="title">🧠 Quiz One Piece — Mode Arène</h2>
+
+<p class="subtitle">Des questions qui changent automatiquement : personnages, fruits, primes, monde, manga et théories. Aucun parcours identique.</p>
+
+<div class="plus-quiz-shell">
+  <div class="plus-quiz-controls">
+    <div class="plus-field"><label for="plusQuizCategory">Catégorie</label><select id="plusQuizCategory"><option value="mix">🌊 Mix Grand Line</option><option value="characters">👒 Personnages</option><option value="bounties">💰 Primes</option><option value="fruits">🍎 Fruits du Démon</option><option value="world">🌍 Monde & manga</option><option value="theory">🧠 Manga & théories</option><option value="arcs">📖 Arcs & sagas</option><option value="images">🖼️ Quiz images</option></select></div>
+    <div class="plus-field"><label for="plusQuizDifficulty">Difficulté</label><select id="plusQuizDifficulty"><option value="easy">🟢 Facile</option><option value="medium" selected>🟡 Moyen</option><option value="hard">🔴 Difficile</option></select></div>
+    <div class="plus-field"><label for="plusQuizLength">Questions</label><select id="plusQuizLength"><option value="5">5</option><option value="10" selected>10</option><option value="15">15</option><option value="20">20</option></select></div>
+    <button class="btn" type="button" id="plusQuizStart">⚔️ Lancer une partie</button>
+  </div>
+
+  <div class="plus-quiz-meta">
+    <span id="plusQuizMode">⚓ Prêt à embarquer</span>
+    <span>🔥 Série : <b id="plusQuizStreak">0</b></span>
+    <span>🏆 Record : <b id="plusQuizBest">0</b></span>
+  </div>
+
+  <div id="plusQuizGame" class="plus-quiz-game">
+    <div class="plus-quiz-intro">
+      <div class="plus-big-icon">🧠</div>
+      <h3>Le grand quiz de Grand Line</h3>
+      <p>Choisis ton mode. Les questions sont mélangées à chaque partie et le système fabrique aussi des questions à partir des fiches personnages de ton encyclopédie.</p>
+      <button class="btn" type="button" onclick="OPQuiz.start()">🚀 Commencer</button>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section class="container plus-section" id="minigames">
+
+<h2 class="title">🎮 Mini-jeux — Grand Line Arcade</h2>
+<p class="subtitle">Plus de rythme, plus de score, plus de rejouabilité. Les records restent enregistrés sur ton appareil.</p>
+
+<div class="game-tabs plus-game-tabs">
+  <button class="game-tab active" onclick="switchGame('bingo',this)">🎯 Bingo</button>
+  <button class="game-tab" onclick="switchGame('memory',this)">🧩 Mémoire</button>
+  <button class="game-tab" onclick="switchGame('guesswho',this)">❓ Qui suis-je ?</button>
+  <button class="game-tab" onclick="switchGame('race',this)">🚢 Course Grand Line</button>
+  <button class="game-tab" onclick="switchGame('fruitrush',this)">🍎 Fruit Rush</button>
+</div>
+
+<div class="game-panel active" id="panel-bingo">
+  <div class="game-box plus-game-box">
+    <div class="game-head"><div><h3>🎯 Bingo Personnage</h3><p class="subtitle">Comment jouer : <b>le personnage affiché doit correspondre aux caractéristiques des cases.</b> Sélectionne toutes les cases qui sont vraies, puis valide. Sois rapide et précis !</p></div><button class="btn dark" onclick="newBingo()">🔄 Nouveau personnage</button></div>
+    <div class="bingo-v4-shell">
+      <div class="bingo-character-stage">
+        <div class="bingo-character-image" id="bingoCharacterImage"></div>
+        <div><h3 class="bingo-character-name" id="bingoCharacterName">Chargement…</h3><div class="bingo-character-sub" id="bingoCharacterSub">Prépare ta grille</div><div class="bingo-badge">⚡ Temps restant : <span class="bingo-timer" id="bingoTimer">15</span>s</div></div>
+        <div class="bingo-v4-score"><span>✅ Score : <b id="bingoV4Score">0</b></span><span>🔥 Série : <b id="bingoV4Streak">0</b></span><span>🏆 Record : <b id="bingoV4Best">0</b></span></div>
+      </div>
+      <div class="bingo-v4-board">
+        <div class="bingo-v4-help">💡 Exemple : un personnage <b>Mugiwara</b> peut correspondre à « Mugiwara », « A un Fruit du Démon », « Prime ≥ 500 M »… mais pas à « Marine ». Chaque manche génère une nouvelle grille.</div>
+        <div class="bingo-v4-grid" id="bingoGrid"></div>
+        <div class="bingo-v4-actions"><button class="btn" onclick="validateBingo()">✅ Valider mes réponses</button><button class="btn dark" onclick="newBingo()">➡️ Passer</button></div>
+        <div class="bingo-v4-result" id="bingoResult"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="game-panel" id="panel-memory">
+  <div class="game-box plus-game-box">
+    <div class="game-head"><div><h3>🧩 Mémoire pirate</h3><p class="subtitle">Trouve les paires le plus vite possible. Le chrono démarre dès la première carte.</p></div><button class="btn dark" onclick="newMemory()">🔄 Recommencer</button></div>
+    <div class="arc-mini-stats"><span id="memoryMoves">Coups : 0</span><span id="memoryPairs">Paires : 0/8</span><span>⏱️ <b id="memoryTimer">0s</b></span><span>🏆 <b id="memoryBest">—</b></span></div>
+    <div class="memory-grid" id="memoryGrid"></div><div class="plus-game-message" id="memoryMessage"></div>
+  </div>
+</div>
+
+<div class="game-panel" id="panel-guesswho">
+  <div class="game-box plus-game-box">
+    <div class="game-head"><div><h3>❓ Qui suis-je ?</h3><p class="subtitle">Utilise le moins d'indices possible puis choisis le personnage.</p></div><button class="btn dark" onclick="newGuessWho()">🔄 Nouveau personnage</button></div>
+    <div class="guess-score-line"><span>💡 Indices : <b id="guessClueCount">0</b></span><span>🔥 Série : <b id="guessStreak">0</b></span><span>🏆 Record : <b id="guessBest">0</b></span></div>
+    <div id="guessClues"></div>
+    <button class="btn" id="guessNextBtn" onclick="nextClue()">💡 Indice suivant</button>
+    <div class="guess-options" id="guessOptions"></div>
+  </div>
+</div>
+
+<div class="game-panel" id="panel-race">
+  <div class="game-box plus-game-box">
+    <div class="game-head"><div><h3>🚢 Course Grand Line</h3><p class="subtitle">Pilote ton navire, évite les récifs et récupère les pièces. La vitesse augmente progressivement.</p></div><button class="btn dark" onclick="OPGames.startRace()">🚀 Lancer la course</button></div>
+    <div class="arc-mini-stats"><span>📏 Distance : <b id="raceDistance">0</b> m</span><span>💰 Pièces : <b id="raceCoins">0</b></span><span>🔥 Combo : <b id="raceCombo">x1</b></span><span>🏆 Record : <b id="raceBest">0</b></span></div>
+    <div class="race-wrap"><canvas id="raceCanvas" width="900" height="420"></canvas><div class="race-overlay" id="raceOverlay">🚢 Appuie sur <b>Lancer la course</b><br><small>← → / A D pour bouger • espace pour accélérer</small></div></div>
+    <div class="race-touch"><button onclick="OPGames.moveRace(-1)">⬅️</button><button onclick="OPGames.boostRace()">⚡ BOOST</button><button onclick="OPGames.moveRace(1)">➡️</button></div>
+  </div>
+</div>
+
+<div class="game-panel" id="panel-fruitrush">
+  <div class="game-box plus-game-box">
+    <div class="game-head"><div><h3>🍎 Fruit Rush</h3><p class="subtitle">En 30 secondes, réponds à un maximum de questions sur les Fruits du Démon.</p></div><button class="btn dark" onclick="OPGames.startFruitRush()">⚡ Démarrer</button></div>
+    <div class="arc-mini-stats"><span>⏱️ Temps : <b id="fruitTime">30</b>s</span><span>✅ Score : <b id="fruitScore">0</b></span><span>🔥 Série : <b id="fruitStreak">0</b></span><span>🏆 Record : <b id="fruitBest">0</b></span></div>
+    <div id="fruitRushGame" class="fruit-rush-game"><div class="plus-quiz-intro"><div class="plus-big-icon">🍎</div><h3>Prêt pour le rush ?</h3><p>Un fruit ou un propriétaire s'affiche. Réponds vite pour conserver ta série.</p><button class="btn" onclick="OPGames.startFruitRush()">🔥 GO</button></div></div>
+  </div>
+</div>
+
+</section>
+
+<!-- QUESTIONS -->
+
+
+<section class="container plus-section" id="theories">
+  <h2 class="title">📖 Manga & Théories</h2>
+  <p class="subtitle">Ici, une théorie reste toujours une théorie : rien n'est présenté comme canon tant que le manga ne l'a pas confirmé.</p>
+
+  <div class="theory-banner">
+    <div><span class="theory-kicker">MANGA MODE</span><h3>🧭 Décrypte les indices de l'histoire</h3><p>Compare les indices, les dialogues et les détails du manga. Les cartes ci-dessous séparent clairement les faits des spéculations.</p></div>
+    <div class="theory-badge">⚠️ SPOILER</div>
+  </div>
+
+  <div class="theory-grid" id="theoryGrid"></div>
+
+  <div class="theory-form-wrap">
+    <h3>✍️ Propose ta propre théorie</h3>
+    <form class="theory-form" onsubmit="OPCommunity.addTheory(event)">
+      <input id="theoryAuthor" maxlength="24" placeholder="👤 Ton pseudo" required>
+      <input id="theoryTitle" maxlength="90" placeholder="🧠 Titre de ta théorie" required>
+      <textarea id="theoryText" maxlength="900" placeholder="Présente ta théorie et sépare bien les faits des hypothèses..." required></textarea>
+      <button class="btn" type="submit">🚀 Publier la théorie</button>
+    </form>
+  </div>
+</section>
+
+
+
+<section class="container" id="questions">
+
+<h2 class="title">💡 Questions & idées</h2>
+
+<div class="question-contact-card">
+  <div class="question-contact-icon">📩</div>
+  <div class="question-contact-content">
+    <h3>Tu as une question ou une idée à ajouter ?</h3>
+    <p>Pour des questions, des idées ou des propositions de contenu à ajouter sur l’encyclopédie, veuillez me contacter <a class="instagram-inline" href="mailto:fuko5677@gmail.com?subject=Question%20ou%20id%C3%A9e%20One%20Piece" target="_blank" rel="noopener noreferrer">ici</a> par e-mail.</p>
+  </div>
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-logo">
+☠ ONE PIECE
+</div>
+
+<p>ONE PIECE FAN SITE — Projet non officiel</p>
+
+<br>
+
+<p>Made with ❤️ by a fan</p>
+
+</footer>
+
+<div class="signature">pklagg</div>
+
+<div class="modal" id="modal" onclick="closeModalOutside(event)">
+
+<div class="modal-box">
+
+<div class="close" onclick="closeModal()">×</div>
+
+<div id="modalContent"></div>
+
+</div>
+</div>
+
+<script>
+
+/* =====================================================
+   PERSONNAGES
+===================================================== */
+
+const characters=[
+
+/* MUGIWARA */
+
+{
+name:"Monkey D. Luffy",
+group:"Mugiwara",
+emoji:"👒",
+img:"images/luffy.jpg",
+bounty:3000000000,
+fruit:"Gomu Gomu no Mi / Hito Hito no Mi, modèle Nika"
+},
+
+{
+name:"Roronoa Zoro",
+group:"Mugiwara",
+emoji:"⚔️",
+img:"images/zoro.jpg",
+bounty:1111000000,
+fruit:"Aucun"
+},
+
+{
+name:"Nami",
+group:"Mugiwara",
+emoji:"🍊",
+img:"images/nami.jpg",
+bounty:366000000,
+fruit:"Aucun"
+},
+
+{
+name:"Usopp",
+group:"Mugiwara",
+emoji:"🎯",
+img:"images/usopp.jpg",
+bounty:500000000,
+fruit:"Aucun"
+},
+
+{
+name:"Sanji",
+group:"Mugiwara",
+emoji:"🔥",
+img:"images/sanji.jpg",
+bounty:1032000000,
+fruit:"Aucun"
+},
+
+{
+name:"Tony Tony Chopper",
+group:"Mugiwara",
+emoji:"🦌",
+img:"images/chopper.jpg",
+bounty:1000,
+fruit:"Hito Hito no Mi"
+},
+
+{
+name:"Nico Robin",
+group:"Mugiwara",
+emoji:"🌸",
+img:"images/robin.jpg",
+bounty:930000000,
+fruit:"Hana Hana no Mi"
+},
+
+{
+name:"Franky",
+group:"Mugiwara",
+emoji:"🤖",
+img:"images/franky.jpg",
+bounty:394000000,
+fruit:"Aucun"
+},
+
+{
+name:"Brook",
+group:"Mugiwara",
+emoji:"💀",
+img:"images/brook.jpg",
+bounty:383000000,
+fruit:"Yomi Yomi no Mi"
+},
+
+{
+name:"Jinbe",
+group:"Mugiwara",
+emoji:"🌊",
+img:"images/jinbe.jpg",
+bounty:1100000000,
+fruit:"Aucun"
+},
+
+/* PIRATES */
+
+{
+name:"Shanks",
+group:"Pirates",
+emoji:"🍷",
+img:"images/shanks.jpg",
+bounty:4048900000,
+fruit:"Aucun"
+},
+
+{
+name:"Marshall D. Teach",
+group:"Pirates",
+emoji:"🌑",
+img:"images/blackbeard.jpg",
+bounty:3996000000,
+fruit:"Yami Yami no Mi + Gura Gura no Mi"
+},
+
+{
+name:"Dracule Mihawk",
+group:"Pirates",
+emoji:"🗡️",
+img:"images/mihawk.jpg",
+bounty:3590000000,
+fruit:"Aucun"
+},
+
+{
+name:"Buggy",
+group:"Pirates",
+emoji:"🤡",
+img:"images/buggy.jpg",
+bounty:3189000000,
+fruit:"Bara Bara no Mi"
+},
+
+{
+name:"Trafalgar Law",
+group:"Pirates",
+emoji:"💉",
+img:"images/law.jpg",
+bounty:3000000000,
+fruit:"Ope Ope no Mi"
+},
+
+{
+name:"Eustass Kid",
+group:"Pirates",
+emoji:"🧲",
+img:"images/kid.jpg",
+bounty:3000000000,
+fruit:"Jiki Jiki no Mi"
+},
+
+{
+name:"Gol D. Roger",
+group:"Pirates",
+emoji:"👑",
+img:"images/roger.jpg",
+bounty:5564800000,
+fruit:"Aucun"
+},
+
+{
+name:"Edward Newgate",
+group:"Pirates",
+emoji:"🌊",
+img:"images/whitebeard.jpg",
+bounty:5046000000,
+fruit:"Gura Gura no Mi"
+},
+
+{
+name:"Kaido",
+group:"Pirates",
+emoji:"🐲",
+img:"images/kaido.jpg",
+bounty:4611100000,
+fruit:"Uo Uo no Mi, modèle Seiryu"
+},
+
+{
+name:"Charlotte Linlin",
+group:"Pirates",
+emoji:"🍰",
+img:"images/bigmom.jpg",
+bounty:4388000000,
+fruit:"Soru Soru no Mi"
+},
+
+{
+name:"Bartolomeo",
+group:"Pirates",
+emoji:"🛡️",
+img:"images/bartolomeo.jpg",
+bounty:200000000,
+fruit:"Bari Bari no Mi"
+},
+
+{
+name:"Crocodile",
+group:"Pirates",
+emoji:"🏜️",
+img:"images/crocodile.jpg",
+bounty:1965000000,
+fruit:"Suna Suna no Mi"
+},
+
+{
+name:"Donquixote Doflamingo",
+group:"Pirates",
+emoji:"🦩",
+img:"images/doflamingo.jpg",
+bounty:340000000,
+fruit:"Ito Ito no Mi"
+},
+
+{
+name:"Arlong",
+group:"Pirates",
+emoji:"🦈",
+img:"images/arlong.jpg",
+bounty:20000000,
+fruit:"Aucun"
+},
+
+{
+name:"Kuro",
+group:"Pirates",
+emoji:"🐈",
+img:"images/kuro.jpg",
+bounty:24000000,
+fruit:"Aucun"
+},
+
+{
+name:"Don Krieg",
+group:"Pirates",
+emoji:"🛡️",
+img:"images/krieg.jpg",
+bounty:17000000,
+fruit:"Aucun"
+},
+
+{
+name:"Alvida",
+group:"Pirates",
+emoji:"🏴‍☠️",
+img:"images/alvida.jpg",
+bounty:5000000,
+fruit:"Sube Sube no Mi"
+},
+
+{
+name:"Bellamy",
+group:"Pirates",
+emoji:"🦁",
+img:"images/bellamy.jpg",
+bounty:195000000,
+fruit:"Bane Bane no Mi"
+},
+
+{
+name:"Jewelry Bonney",
+group:"Pirates",
+emoji:"💎",
+img:"images/bonney.jpg",
+bounty:320000000,
+fruit:"Toshi Toshi no Mi"
+},
+
+{
+name:"X Drake",
+group:"Pirates",
+emoji:"🦖",
+img:"images/drake.jpg",
+bounty:222000000,
+fruit:"Ryu Ryu no Mi, modèle Allosaurus"
+},
+
+{
+name:"Gecko Moria",
+group:"Pirates",
+emoji:"🦇",
+img:"images/moria.jpg",
+bounty:320000000,
+fruit:"Kage Kage no Mi"
+},
+
+{
+name:"Doc Q",
+group:"Pirates",
+emoji:"💀",
+img:"images/docq.jpg",
+bounty:0,
+fruit:"Shiku Shiku no Mi"
+},
+
+{
+name:"Boa Hancock",
+group:"Pirates",
+emoji:"🐍",
+img:"images/boa.jpg",
+bounty:1659000000,
+fruit:"Mero Mero no Mi"
+},
+
+{
+name:"Portgas D. Ace",
+group:"Pirates",
+emoji:"🔥",
+img:"images/ace.jpg",
+bounty:550000000,
+fruit:"Mera Mera no Mi"
+},
+
+{
+name:"Brogy",
+group:"Pirates",
+emoji:"🪓",
+img:"images/brogy.jpg",
+bounty:100000000,
+fruit:"Aucun"
+},
+
+{
+name:"Dorry",
+group:"Pirates",
+emoji:"⚔️",
+img:"images/dorry.jpg",
+bounty:100000000,
+fruit:"Aucun"
+},
+
+{
+name:"Charlotte Katakuri",
+group:"Pirates",
+emoji:"🍩",
+img:"images/katakuri.jpg",
+bounty:1057000000,
+fruit:"Mochi Mochi no Mi"
+},
+
+{
+name:"Charlotte Perospero",
+group:"Pirates",
+emoji:"🍭",
+img:"images/perospero.jpg",
+bounty:700000000,
+fruit:"Pero Pero no Mi"
+},
+
+{
+name:"King",
+group:"Pirates",
+emoji:"🔥",
+img:"images/king.jpg",
+bounty:1390000000,
+fruit:"Ryu Ryu no Mi, modèle Pteranodon"
+},
+
+{
+name:"Ulti",
+group:"Pirates",
+emoji:"🦖",
+img:"images/ulti.jpg",
+bounty:400000000,
+fruit:"Ryu Ryu no Mi, modèle Pachycephalosaurus"
+},
+
+{
+name:"Page One",
+group:"Pirates",
+emoji:"🦖",
+img:"images/page-one.jpg",
+bounty:290000000,
+fruit:"Ryu Ryu no Mi, modèle Spinosaurus"
+},
+
+{
+name:"Loki",
+group:"Alliés",
+emoji:"👑",
+img:"images/loki.jpg",
+bounty:0,
+fruit:"Inconnue"
+},
+
+/* MARINE */
+
+{
+name:"Borsalino Kizaru",
+group:"Marine",
+emoji:"✨",
+img:"images/kizaru.jpg",
+bounty:0,
+fruit:"Pika Pika no Mi"
+},
+
+{
+name:"Issho Fujitora",
+group:"Marine",
+emoji:"🌑",
+img:"images/fujitora.jpg",
+bounty:0,
+fruit:"Zushi Zushi no Mi"
+},
+
+{
+name:"Ryokugyu Aramaki",
+group:"Marine",
+emoji:"🌳",
+img:"images/ryokugyu.jpg",
+bounty:0,
+fruit:"Mori Mori no Mi"
+},
+
+{
+name:"Sakazuki Akainu",
+group:"Marine",
+emoji:"🌋",
+img:"images/akainu.jpg",
+bounty:0,
+fruit:"Magu Magu no Mi"
+},
+
+{
+name:"Kuzan Aokiji",
+group:"Marine",
+emoji:"❄️",
+img:"images/aokiji.jpg",
+bounty:0,
+fruit:"Hie Hie no Mi"
+},
+
+{
+name:"Monkey D. Garp",
+group:"Marine",
+emoji:"👊",
+img:"images/garp.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Sengoku",
+group:"Marine",
+emoji:"🧘",
+img:"images/sengoku.jpg",
+bounty:0,
+fruit:"Hito Hito no Mi, modèle Daibutsu"
+},
+
+{
+name:"Koby",
+group:"Marine",
+emoji:"👊",
+img:"images/koby.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Morgan",
+group:"Marine",
+emoji:"⚓",
+img:"images/morgan.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+/* CP0 */
+
+{
+name:"Rob Lucci",
+group:"CP0",
+emoji:"🐆",
+img:"images/lucci.jpg",
+bounty:0,
+fruit:"Neko Neko no Mi, modèle Léopard"
+},
+
+{
+name:"Kaku",
+group:"CP0",
+emoji:"🦒",
+img:"images/kaku.jpg",
+bounty:0,
+fruit:"Ushi Ushi no Mi, modèle Girafe"
+},
+
+{
+name:"Jabra",
+group:"CP0",
+emoji:"🐺",
+img:"images/jabra.jpg",
+bounty:0,
+fruit:"Inu Inu no Mi, modèle Loup"
+},
+
+{
+name:"Blueno",
+group:"CP0",
+emoji:"🚪",
+img:"images/blueno.jpg",
+bounty:0,
+fruit:"Doa Doa no Mi"
+},
+
+/* REVOLUTIONNAIRES */
+
+{
+name:"Monkey D. Dragon",
+group:"Révolutionnaires",
+emoji:"🐉",
+img:"images/dragon.jpg",
+bounty:0,
+fruit:"Inconnue"
+},
+
+{
+name:"Sabo",
+group:"Révolutionnaires",
+emoji:"🔥",
+img:"images/sabo.jpg",
+bounty:602000000,
+fruit:"Mera Mera no Mi"
+},
+
+{
+name:"Bartholomew Kuma",
+group:"Révolutionnaires",
+emoji:"🐾",
+img:"images/kuma.jpg",
+bounty:296000000,
+fruit:"Nikyu Nikyu no Mi"
+},
+
+/* ALLIÉS */
+
+{
+name:"Yamato",
+group:"Alliés",
+emoji:"🐺",
+img:"images/yamato.jpg",
+bounty:0,
+fruit:"Inu Inu no Mi, modèle Okuchi no Makami"
+},
+
+{
+name:"Gaimon",
+group:"Alliés",
+emoji:"📦",
+img:"images/gaimon.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Gan Fall",
+group:"Alliés",
+emoji:"🪽",
+img:"images/gan-fall.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Wyper",
+group:"Alliés",
+emoji:"🔥",
+img:"images/wyper.jpg",
+bounty:0,
+fruit:"Aucun"
+},
+
+{
+name:"Enel",
+group:"Pirates",
+emoji:"⚡",
+img:"images/enel.jpg",
+bounty:0,
+fruit:"Goro Goro no Mi"
+}
+
+];
+
+
+/* =====================================================
+   ARCS
+===================================================== */
+
+const arcs=[
+
+{
+name:"Romance Dawn",
+saga:"East Blue",
+location:"🏝️ Île de Dawn",
+image:"images/romance-dawn.jpg",
+episodes:"1",
+chapters:"1 — 7",
+enemy:"Higuma",
+description:"Luffy quitte le village de Fusha et rencontre Zoro.",
+moment:"La rencontre entre Luffy et Zoro."
+},
+
+{
+name:"Orange Town",
+saga:"East Blue",
+location:"🏘️ Orange Town",
+image:"images/orange-town.jpg",
+episodes:"2 — 8",
+chapters:"8 — 21",
+enemy:"Buggy",
+description:"Luffy et Zoro affrontent Buggy et rencontrent Nami.",
+moment:"La première grande victoire contre Buggy."
+},
+
+{
+name:"Syrup Village",
+saga:"East Blue",
+location:"🌲 Syrup Village",
+image:"images/syrup-village.jpg",
+episodes:"9 — 18",
+chapters:"22 — 41",
+enemy:"Kuro",
+description:"Usopp rejoint l'aventure après l'affrontement contre Kuro.",
+moment:"Usopp rejoint l'équipage."
+},
+
+{
+name:"Baratie",
+saga:"East Blue",
+location:"🍽️ Le Baratie",
+image:"images/baratie.jpg",
+episodes:"19 — 30",
+chapters:"42 — 68",
+enemy:"Don Krieg",
+description:"Luffy rencontre Sanji et Zoro affronte Mihawk.",
+moment:"Zoro affronte Mihawk."
+},
+
+{
+name:"Arlong Park",
+saga:"East Blue",
+location:"🐟 Cocoyasi Village",
+image:"images/arlong-park.jpg",
+episodes:"31 — 44",
+chapters:"69 — 95",
+enemy:"Arlong",
+description:"Luffy affronte Arlong pour libérer Nami.",
+moment:"Nami rejoint officiellement l'équipage."
+},
+
+{
+name:"Loguetown",
+saga:"East Blue",
+location:"⚓ Loguetown",
+image:"images/loguetown.jpg",
+episodes:"45 — 53",
+chapters:"96 — 100",
+enemy:"Smoker",
+description:"L'équipage quitte East Blue et entre sur Grand Line.",
+moment:"Luffy entre sur Grand Line."
+},
+
+{
+name:"Reverse Mountain",
+saga:"Grand Line",
+location:"⛰️ Reverse Mountain",
+image:"images/reverse-mountain.jpg",
+episodes:"54 — 55",
+chapters:"101 — 105",
+enemy:"Laboon",
+description:"Les Mugiwara franchissent Reverse Mountain et rencontrent Laboon.",
+moment:"Entrée sur Grand Line."
+},
+
+{
+name:"Whisky Peak",
+saga:"Grand Line",
+location:"🌵 Whisky Peak",
+image:"images/whisky-peak.jpg",
+episodes:"56 — 61",
+chapters:"106 — 114",
+enemy:"Baroque Works",
+description:"L'équipage découvre Baroque Works.",
+moment:"Première apparition de Vivi."
+},
+
+{
+name:"Little Garden",
+saga:"Grand Line",
+location:"🦕 Little Garden",
+image:"images/little-garden.jpg",
+episodes:"61 — 67",
+chapters:"115 — 129",
+enemy:"Mr. 3",
+description:"Les Mugiwara rencontrent les géants Dorry et Brogy.",
+moment:"L'amitié de Dorry et Brogy."
+},
+
+{
+name:"Drum Island",
+saga:"Grand Line",
+location:"❄️ Drum Island",
+image:"images/drum-island.jpg",
+episodes:"68 — 91",
+chapters:"130 — 154",
+enemy:"Wapol",
+description:"Luffy rencontre Chopper.",
+moment:"Chopper rejoint l'équipage."
+},
+
+{
+name:"Alabasta",
+saga:"Grand Line",
+location:"🏜️ Royaume d'Alabasta",
+image:"images/alabasta.jpg",
+episodes:"92 — 130",
+chapters:"155 — 217",
+enemy:"Crocodile",
+description:"Les Mugiwara tentent d'empêcher la guerre civile organisée par Crocodile.",
+moment:"Luffy bat Crocodile."
+},
+
+{
+name:"Jaya",
+saga:"Grand Line",
+location:"🏴‍☠️ Île de Jaya",
+image:"images/jaya.jpg",
+episodes:"144 — 152",
+chapters:"218 — 236",
+enemy:"Bellamy",
+description:"Luffy rencontre Bellamy et découvre l'existence de Skypiea.",
+moment:"Luffy frappe Bellamy d'un seul coup."
+},
+
+{
+name:"Skypiea",
+saga:"Grand Line",
+location:"☁️ Île céleste",
+image:"images/skypiea.jpg",
+episodes:"153 — 195",
+chapters:"237 — 302",
+enemy:"Ener",
+description:"Les Mugiwara arrivent dans le ciel et affrontent Ener.",
+moment:"Luffy contre Ener."
+},
+
+{
+name:"Water 7",
+saga:"Grand Line",
+location:"🚂 Water 7",
+image:"images/water7.jpg",
+episodes:"229 — 263",
+chapters:"322 — 374",
+enemy:"CP9",
+description:"L'équipage rencontre le CP9 et traverse une crise majeure.",
+moment:"La séparation avec le Going Merry."
+},
+
+{
+name:"Enies Lobby",
+saga:"Grand Line",
+location:"⚖️ Enies Lobby",
+image:"images/enies-lobby.jpg",
+episodes:"264 — 312",
+chapters:"375 — 430",
+enemy:"Rob Lucci",
+description:"Les Mugiwara déclarent la guerre au Gouvernement Mondial pour sauver Robin.",
+moment:"Luffy contre Rob Lucci."
+},
+
+{
+name:"Thriller Bark",
+saga:"Grand Line",
+location:"👻 Thriller Bark",
+image:"images/thriller-bark.jpg",
+episodes:"337 — 381",
+chapters:"442 — 489",
+enemy:"Gecko Moria",
+description:"Les Mugiwara affrontent Moria et recrutent Brook.",
+moment:"Zoro accepte de prendre la douleur de Luffy."
+},
+
+{
+name:"Sabaody",
+saga:"Grand Line",
+location:"🌳 Archipel Sabaody",
+image:"images/sabaody.jpg",
+episodes:"382 — 405",
+chapters:"490 — 513",
+enemy:"Kizaru / Kuma",
+description:"L'équipage découvre les Nobles Mondiaux avant d'être séparé.",
+moment:"Kuma disperse l'équipage."
+},
+
+{
+name:"Impel Down",
+saga:"Grand Line",
+location:"⛓️ Impel Down",
+image:"images/impel-down.jpg",
+episodes:"422 — 452",
+chapters:"525 — 549",
+enemy:"Magellan",
+description:"Luffy infiltre la prison pour tenter de sauver Ace.",
+moment:"L'évasion massive d'Impel Down."
+},
+
+{
+name:"Marineford",
+saga:"Grand Line",
+location:"⚓ Marineford",
+image:"images/marineford.jpg",
+episodes:"457 — 489",
+chapters:"550 — 580",
+enemy:"Marine",
+description:"La guerre au sommet bouleverse le monde.",
+moment:"La mort d'Ace et de Barbe Blanche."
+},
+
+{
+name:"Fish-Man Island",
+saga:"Nouveau Monde",
+location:"🐠 Île des Hommes-Poissons",
+image:"images/fishman-island.jpg",
+episodes:"517 — 574",
+chapters:"603 — 653",
+enemy:"Hody Jones",
+description:"Les Mugiwara retrouvent l'océan après deux années d'entraînement.",
+moment:"Luffy protège l'île des Hommes-Poissons."
+},
+
+{
+name:"Punk Hazard",
+saga:"Nouveau Monde",
+location:"☢️ Punk Hazard",
+image:"images/punk-hazard.jpg",
+episodes:"579 — 625",
+chapters:"654 — 700",
+enemy:"Caesar Clown",
+description:"Luffy et Law forment leur alliance.",
+moment:"Alliance Luffy-Law."
+},
+
+{
+name:"Dressrosa",
+saga:"Nouveau Monde",
+location:"🌹 Dressrosa",
+image:"images/dressrosa.jpg",
+episodes:"629 — 746",
+chapters:"701 — 801",
+enemy:"Doflamingo",
+description:"Luffy affronte Doflamingo pour libérer Dressrosa.",
+moment:"Gear Fourth contre Doflamingo."
+},
+
+{
+name:"Zou",
+saga:"Nouveau Monde",
+location:"🐘 Zou",
+image:"images/zou.jpg",
+episodes:"751 — 779",
+chapters:"802 — 824",
+enemy:"Jack",
+description:"Les Mugiwara découvrent les secrets des Minks et de Wano.",
+moment:"Découverte de la Road Ponéglyphe."
+},
+
+{
+name:"Whole Cake Island",
+saga:"Nouveau Monde",
+location:"🍰 Totto Land",
+image:"images/whole-cake.jpg",
+episodes:"783 — 877",
+chapters:"825 — 902",
+enemy:"Big Mom",
+description:"Luffy part récupérer Sanji.",
+moment:"Luffy contre Katakuri."
+},
+
+{
+name:"Wano",
+saga:"Nouveau Monde",
+location:"🏯 Pays de Wano",
+image:"images/wano.jpg",
+episodes:"890 — 1085",
+chapters:"909 — 1057",
+enemy:"Kaido",
+description:"Une alliance gigantesque tente de libérer Wano.",
+moment:"L'éveil de Nika et la chute de Kaido."
+},
+
+{
+name:"Egghead",
+saga:"Saga Finale",
+location:"🏝️ Île d'Egghead",
+image:"images/egghead.jpg",
+episodes:"1086 — 1178",
+chapters:"1058 — 1125",
+enemy:"Gouvernement Mondial",
+description:"Les Mugiwara rencontrent Vegapunk et découvrent des informations majeures sur le monde.",
+moment:"Le message de Vegapunk."
+},
+
+{
+name:"Elbaf",
+saga:"Saga Finale",
+location:"🏔️ Royaume des Géants",
+image:"images/elbaf.jpg",
+episodes:"1179+",
+chapters:"1126+",
+enemy:"Gouvernement Mondial / Chevaliers Divins",
+current:true,
+description:"Les Mugiwara arrivent enfin à Elbaf, la légendaire terre des Géants. Cette étape est liée à l'histoire des Géants, d'Usopp et aux grands mystères de la saga finale.",
+moment:"🔴 ARC ACTUEL — Les Mugiwara sont à Elbaf."
+}
+
+];
+
+
+/* =====================================================
+   FRUITS
+===================================================== */
+
+const fruits=[
+
+{
+name:"Gomu Gomu no Mi",
+type:"Zoan mythique",
+owner:"Luffy",
+emoji:"👒",
+img:"images/fruit-luffy.jpg",
+description:"Le pouvoir associé au modèle Nika."
+},
+
+{
+name:"Ope Ope no Mi",
+type:"Paramecia",
+owner:"Trafalgar Law",
+emoji:"💉",
+img:"images/fruit-law.jpg",
+description:"Permet de créer une ROOM et de manipuler ce qui s'y trouve."
+},
+
+{
+name:"Mera Mera no Mi",
+type:"Logia",
+owner:"Sabo",
+emoji:"🔥",
+img:"images/fruit-mera.jpg",
+description:"Permet de créer, contrôler et devenir du feu."
+},
+
+{
+name:"Pika Pika no Mi",
+type:"Logia",
+owner:"Kizaru",
+emoji:"✨",
+img:"images/fruit-pika.jpg",
+description:"Permet de créer et contrôler la lumière."
+},
+
+{
+name:"Hie Hie no Mi",
+type:"Logia",
+owner:"Kuzan",
+emoji:"❄️",
+img:"images/fruit-hie.jpg",
+description:"Permet de créer et contrôler la glace."
+},
+
+{
+name:"Magu Magu no Mi",
+type:"Logia",
+owner:"Akainu",
+emoji:"🌋",
+img:"images/fruit-magu.jpg",
+description:"Permet de créer et contrôler le magma."
+},
+
+{
+name:"Gura Gura no Mi",
+type:"Paramecia",
+owner:"Barbe Blanche",
+emoji:"🌊",
+img:"images/fruit-gura.jpg",
+description:"Permet de générer de puissantes vibrations."
+},
+
+{
+name:"Hana Hana no Mi",
+type:"Paramecia",
+owner:"Nico Robin",
+emoji:"🌸",
+img:"images/fruit-hana.jpg",
+description:"Permet de faire apparaître des parties du corps sur différentes surfaces."
+},
+
+{
+name:"Bari Bari no Mi",
+type:"Paramecia",
+owner:"Bartolomeo",
+emoji:"🛡️",
+img:"images/fruit-bari.jpg",
+description:"Permet de créer de puissantes barrières."
+},
+
+{
+name:"Goro Goro no Mi",
+type:"Logia",
+owner:"Enel",
+emoji:"⚡",
+img:"images/fruit-goro.jpg",
+description:"Permet de créer, contrôler et devenir la foudre."
+},
+
+{
+name:"Ito Ito no Mi",
+type:"Paramecia",
+owner:"Doflamingo",
+emoji:"🦩",
+img:"images/fruit-ito.jpg",
+description:"Permet de créer et contrôler des fils extrêmement résistants."
+},
+
+{
+name:"Mochi Mochi no Mi",
+type:"Paramecia spécial",
+owner:"Katakuri",
+emoji:"🍩",
+img:"images/fruit-mochi.jpg",
+description:"Permet de créer et contrôler du mochi."
+},
+
+{
+name:"Nikyu Nikyu no Mi",
+type:"Paramecia",
+owner:"Kuma",
+emoji:"🐾",
+img:"images/fruit-kuma.jpg",
+description:"Permet de repousser pratiquement toute chose avec les coussinets des mains."
+},
+
+{
+name:"Kage Kage no Mi",
+type:"Paramecia",
+owner:"Gecko Moria",
+emoji:"🌑",
+img:"images/fruit-kage.jpg",
+description:"Permet de manipuler les ombres."
+},
+
+{
+name:"Suna Suna no Mi",
+type:"Logia",
+owner:"Crocodile",
+emoji:"🏜️",
+img:"images/fruit-suna.jpg",
+description:"Permet de créer et contrôler le sable."
+}
+
+];
+
+
+/* =====================================================
+   OUTILS
+===================================================== */
+
+function formatBounty(n){
+
+if(!n)return "Inconnue";
+
+return n.toLocaleString("fr-FR")+" B";
+
+}
+
+function imageHTML(c, cls=""){
+  const src=String(c&&c.img||"");
+  const root=src.split("/").pop();
+  const alt=escapeHTML(c&&c.name||"");
+  const emoji=escapeHTML(c&&c.emoji||"👤");
+  return `<img class="${cls}" src="${escapeHTML(src)}" alt="${alt}" data-fallback-root="${escapeHTML(root)}" onerror="if(this.dataset.fallbackRoot && !this.dataset.triedRoot){this.dataset.triedRoot='1';this.src=this.dataset.fallbackRoot;return;}this.style.display='none';if(this.parentElement&&!this.parentElement.querySelector('.fallback'))this.parentElement.insertAdjacentHTML('beforeend','<span class="fallback">${emoji}</span>')">`;
+}
+
+function imageFromSrc(src, alt="Illustration", cls=""){
+  const value=String(src||"");
+  const root=value.split("/").pop();
+  return `<img class="${cls}" src="${escapeHTML(value)}" alt="${escapeHTML(alt)}" data-fallback-root="${escapeHTML(root)}" onerror="if(this.dataset.fallbackRoot && !this.dataset.triedRoot){this.dataset.triedRoot='1';this.src=this.dataset.fallbackRoot;return;}this.style.display='none'">`;
+}
+
+function escapeHTML(text){
+
+return String(text)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   PERSONNAGES
+===================================================== */
+
+function renderCharacters(){
+
+const search=document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+const group=document
+.getElementById("group")
+.value;
+
+const list=characters.filter(c=>
+c.name.toLowerCase().includes(search)
+&&
+(group==="all"||c.group===group)
+);
+
+document.getElementById("characters").innerHTML=
+
+list.length
+
+?
+
+list.map(c=>`
+
+<div class="card">
+
+<div class="card-img">
+${imageHTML(c)}
+</div>
+
+<div class="card-body">
+
+<h3>${escapeHTML(c.name)}</h3>
+
+<div class="group">${escapeHTML(c.group)}</div>
+
+<div class="bounty">
+${formatBounty(c.bounty)}
+</div>
+
+<div class="card-fruit">
+🍎 ${escapeHTML(c.fruit)}
+</div>
+
+<button
+class="small-btn"
+onclick="openCharacter('${escapeHTML(c.name)}')"
+>
+Voir la fiche
+</button>
+
+</div>
+</div>
+
+`).join("")
+
+:
+
+`
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:50px;
+color:#71818e;
+">
+🔎 Aucun personnage trouvé.
+</div>
+`;
+
+}
+
+
+/* =====================================================
+   WANTED
+===================================================== */
+
+function renderWanted(){
+
+const filter=document
+.getElementById("bountyFilter")
+.value;
+
+let list=characters
+.filter(c=>c.bounty>0)
+.sort((a,b)=>b.bounty-a.bounty);
+
+if(filter==="billion")
+list=list.filter(c=>c.bounty>=1000000000);
+
+if(filter==="500")
+list=list.filter(c=>c.bounty>=500000000);
+
+if(filter==="under")
+list=list.filter(c=>c.bounty<500000000);
+
+document.getElementById("wanted").innerHTML=
+
+list.map((c,i)=>`
+
+<div
+class="poster"
+style="--r:${i%2===0?'-1':'1'}deg"
+>
+
+<div class="poster-inner">
+
+<div class="poster-top">
+MARINE HEADQUARTERS
+</div>
+
+<div class="wanted-title">
+WANTED
+</div>
+
+<div class="poster-subtitle">
+DEAD OR ALIVE
+</div>
+
+<img
+src="${c.img}"
+alt="${escapeHTML(c.name)}"
+onerror="this.style.opacity='.15'"
+>
+
+<h3>${escapeHTML(c.name)}</h3>
+
+<div class="poster-dead">
+DEAD OR ALIVE
+</div>
+
+<div class="money">
+${formatBounty(c.bounty)}
+</div>
+
+</div>
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   FRUITS
+===================================================== */
+
+function renderFruits(){
+
+document.getElementById("fruitsList").innerHTML=
+
+fruits.map(f=>`
+
+<div class="fruit">
+
+<div class="fruit-img">
+
+<img
+src="${f.img}"
+alt="${escapeHTML(f.name)}"
+onerror="
+this.style.display='none';
+this.parentElement.innerHTML='<span class=\\'fruit-icon\\'>${f.emoji}</span>'
+"
+>
+
+</div>
+
+<div class="fruit-body">
+
+<h3>${escapeHTML(f.name)}</h3>
+
+<p>
+<b>${escapeHTML(f.type)}</b> — ${escapeHTML(f.owner)}
+</p>
+
+<p style="margin-top:10px">
+${escapeHTML(f.description)}
+</p>
+
+</div>
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   ARCS
+===================================================== */
+
+function renderArcs(filter="all"){
+
+const list=arcs.filter(a=>
+filter==="all"||a.saga===filter
+);
+
+document.getElementById("arcRoute").innerHTML=
+
+list.map((arc,index)=>`
+
+<article
+class="arc-card ${arc.current?"current":""}"
+onclick="openArc('${escapeHTML(arc.name)}')"
+>
+
+<img
+class="arc-image"
+src="${arc.image}"
+alt="${escapeHTML(arc.name)}"
+onerror="this.style.opacity='.2'"
+>
+
+<div class="arc-content">
+
+<div class="arc-number">
+
+ARC ${String(index+1).padStart(2,"0")}
+
+${arc.current
+?
+`<span class="current-badge">🔴 ARC ACTUEL</span>`
+:
+""
+}
+
+</div>
+
+<h3>${escapeHTML(arc.name)}</h3>
+
+<div class="arc-location">
+${escapeHTML(arc.location)}
+</div>
+
+<p>
+${escapeHTML(arc.description)}
+</p>
+
+<div class="arc-info">
+
+<span>📺 ${escapeHTML(arc.episodes)}</span>
+
+<span>📖 ${escapeHTML(arc.chapters)}</span>
+
+<span>👑 ${escapeHTML(arc.enemy)}</span>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+function filterArcs(type,button){
+
+document
+.querySelectorAll(".arc-filter")
+.forEach(b=>b.classList.remove("active"));
+
+button.classList.add("active");
+
+renderArcs(type);
+
+}
+
+
+/* =====================================================
+   RANDOM
+===================================================== */
+
+function randomCharacter(){
+
+const c=characters[
+Math.floor(Math.random()*characters.length)
+];
+
+const image=document.getElementById("randomImage");
+const container=document.getElementById("randomContainer");
+
+image.src=c.img;
+image.alt=c.name;
+image.style.display="block";
+
+container.querySelector(".random-emoji")?.remove();
+
+image.onerror=()=>{
+image.style.display="none";
+
+if(!container.querySelector(".random-emoji")){
+container.insertAdjacentHTML(
+"beforeend",
+`<span class="random-emoji">${c.emoji}</span>`
+);
+}
+};
+
+document.getElementById("randomName")
+.textContent=c.name;
+
+document.getElementById("randomInfo")
+.textContent=
+`${c.group} • ${formatBounty(c.bounty)} • ${c.fruit}`;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openCharacter(name){
+
+const c=characters.find(x=>x.name===name);
+
+if(!c)return;
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2 class="modal-title">
+${escapeHTML(c.name)}
+</h2>
+
+<div class="modal-sub">
+${escapeHTML(c.group)}
+</div>
+
+<img
+class="modal-img"
+src="${c.img}"
+alt="${escapeHTML(c.name)}"
+onerror="this.style.opacity='.15'"
+>
+
+<div class="modal-info">
+
+<div class="modal-stat">
+<small>💰 Prime</small>
+<b>${formatBounty(c.bounty)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🍎 Fruit</small>
+<b>${escapeHTML(c.fruit)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🏴‍☠️ Groupe</small>
+<b>${escapeHTML(c.group)}</b>
+</div>
+
+<div class="modal-stat">
+<small>👤 Personnage</small>
+<b>${escapeHTML(c.name)}</b>
+</div>
+
+</div>
+
+<p class="modal-description">
+${escapeHTML(c.name)} est un personnage de l'univers
+One Piece appartenant au groupe
+<strong>${escapeHTML(c.group)}</strong>.
+</p>
+
+`;
+
+document.getElementById("modal").classList.add("active");
+
+}
+
+function openArc(name){
+
+const arc=arcs.find(a=>a.name===name);
+
+if(!arc)return;
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2 class="modal-title">
+${escapeHTML(arc.name)}
+${arc.current?` <span class="current-badge">🔴 ACTUEL</span>`:""}
+</h2>
+
+<div class="modal-sub">
+${escapeHTML(arc.location)}
+</div>
+
+<img
+class="modal-img"
+src="${arc.image}"
+alt="${escapeHTML(arc.name)}"
+>
+
+<p class="modal-description">
+${escapeHTML(arc.description)}
+</p>
+
+<div class="modal-info">
+
+<div class="modal-stat">
+<small>📺 Épisodes</small>
+<b>${escapeHTML(arc.episodes)}</b>
+</div>
+
+<div class="modal-stat">
+<small>📖 Chapitres</small>
+<b>${escapeHTML(arc.chapters)}</b>
+</div>
+
+<div class="modal-stat">
+<small>👑 Antagoniste</small>
+<b>${escapeHTML(arc.enemy)}</b>
+</div>
+
+<div class="modal-stat">
+<small>🔥 Moment</small>
+<b>${escapeHTML(arc.moment)}</b>
+</div>
+
+</div>
+
+`;
+
+document.getElementById("modal").classList.add("active");
+
+}
+
+function closeModal(){
+document.getElementById("modal").classList.remove("active");
+}
+
+function closeModalOutside(event){
+
+if(event.target.id==="modal"){
+closeModal();
+}
+
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape")closeModal();
+});
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const questions=[
+
+{
+q:"Qui est le capitaine des Mugiwara ?",
+a:["Roronoa Zoro","Monkey D. Luffy","Sanji","Shanks"],
+c:1
+},
+
+{
+q:"Quelle est la prime de Gol D. Roger ?",
+a:["3 milliards","4 milliards","5 564 800 000","6 milliards"],
+c:2
+},
+
+{
+q:"Quel fruit possède Trafalgar Law ?",
+a:["Ope Ope no Mi","Mera Mera no Mi","Hie Hie no Mi","Pika Pika no Mi"],
+c:0
+},
+
+{
+q:"Qui possède le Pika Pika no Mi ?",
+a:["Akainu","Kizaru","Kuzan","Sabo"],
+c:1
+},
+
+{
+q:"Quel est le rêve de Luffy ?",
+a:["Devenir Amiral","Devenir Roi des Pirates","Devenir Yonko","Devenir Marine"],
+c:1
+},
+
+{
+q:"Qui est le père de Luffy ?",
+a:["Garp","Shanks","Monkey D. Dragon","Roger"],
+c:2
+},
+
+{
+q:"Quel est le surnom de Zoro ?",
+a:["Le Chasseur de Pirates","Le Démon","Le Dragon","Le Faucon"],
+c:0
+},
+
+{
+q:"Qui était le capitaine des Pirates de Barbe Blanche ?",
+a:["Shanks","Kaido","Edward Newgate","Teach"],
+c:2
+},
+
+{
+q:"Qui est le Dieu de Skypiea ?",
+a:["Enel","Doflamingo","Kaido","Crocodile"],
+c:0
+},
+
+{
+q:"Quel est le navire principal des Mugiwara après le Going Merry ?",
+a:["Red Force","Thousand Sunny","Polar Tang","Moby Dick"],
+c:1
+},
+
+{
+q:"Qui est l'ennemi principal d'Enies Lobby ?",
+a:["Crocodile","Rob Lucci","Kaido","Katakuri"],
+c:1
+},
+
+{
+q:"Quel personnage possède le Ito Ito no Mi ?",
+a:["Doflamingo","Law","Kuma","Moria"],
+c:0
+},
+
+{
+q:"Sur quelle île vivent les Géants dans la saga finale ?",
+a:["Wano","Elbaf","Zou","Dressrosa"],
+c:1
+},
+
+{
+q:"Quel personnage est associé à Elbaf depuis East Blue ?",
+a:["Usopp","Nami","Brook","Franky"],
+c:0
+}
+
+];
+
+let currentQuestion=0;
+let score=0;
+let quizLocked=false;
+
+function renderQuiz(){
+
+const game=document.getElementById("quizGame");
+if(!game){ return; }
+
+if(currentQuestion>=questions.length){
+
+game.innerHTML=`
+
+<div class="quiz-result">
+
+<div>🏆 QUIZ TERMINÉ</div>
+
+<div class="quiz-result-score">
+${score}/${questions.length}
+</div>
+
+<p style="color:#9aa8b3;line-height:1.6">
+
+${
+score===questions.length
+?"🔥 LÉGENDAIRE !"
+:
+score>=10
+?"🏴‍☠️ Excellent !"
+:
+score>=7
+?"🌊 Pas mal !"
+:
+"📖 Il faut repartir à l'aventure !"
+}
+
+</p>
+
+<br>
+
+<button class="btn" onclick="restartQuiz()">
+🔄 Recommencer
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+const q=questions[currentQuestion];
+
+const progress=
+(currentQuestion/questions.length)*100;
+
+game.innerHTML=`
+
+<div class="quiz-top">
+
+<strong>
+Question ${currentQuestion+1}/${questions.length}
+</strong>
+
+<strong style="color:#f4c542">
+${score} point${score>1?"s":""}
+</strong>
+
+</div>
+
+<div class="quiz-progress">
+
+<div
+class="quiz-progress-bar"
+style="width:${progress}%"
+></div>
+
+</div>
+
+<div class="quiz-question">
+${escapeHTML(q.q)}
+</div>
+
+${q.a.map((answer,index)=>`
+
+<button
+class="quiz-answer"
+onclick="answerQuiz(this,${index})"
+>
+${escapeHTML(answer)}
+</button>
+
+`).join("")}
+
+`;
+
+quizLocked=false;
+
+}
+
+function answerQuiz(button,index){
+
+if(quizLocked)return;
+
+quizLocked=true;
+
+const q=questions[currentQuestion];
+
+const buttons=document.querySelectorAll(".quiz-answer");
+
+buttons.forEach((btn,i)=>{
+if(i===q.c)btn.classList.add("correct");
+});
+
+if(index===q.c){
+score++;
+}else{
+button.classList.add("wrong");
+}
+
+setTimeout(()=>{
+currentQuestion++;
+renderQuiz();
+},900);
+
+}
+
+function restartQuiz(){
+
+currentQuestion=0;
+score=0;
+
+renderQuiz();
+
+}
+
+
+/* =====================================================
+   MINI-JEUX
+===================================================== */
+
+function shuffle(array){
+
+const a=array.slice();
+
+for(let i=a.length-1;i>0;i--){
+
+const j=Math.floor(Math.random()*(i+1));
+
+[a[i],a[j]]=[a[j],a[i]];
+
+}
+
+return a;
+
+}
+
+function switchGame(name,button){
+
+document
+.querySelectorAll(".game-tab")
+.forEach(b=>b.classList.remove("active"));
+
+document
+.querySelectorAll(".game-panel")
+.forEach(p=>p.classList.remove("active"));
+
+button.classList.add("active");
+
+document
+.getElementById("panel-"+name)
+.classList.add("active");
+
+}
+
+
+/* BINGO */
+
+let bingoMarked=[];
+let bingoRound=null;
+let bingoTimerId=null;
+let bingoScore=0;
+let bingoStreak=0;
+let bingoBest=Number(localStorage.getItem("opBingoBestV4")||0);
+
+function bingoTraits(c){
+  const fruit=String(c.fruit||"");
+  const bounty=Number(c.bounty)||0;
+  return [
+    {label:"👒 Mugiwara",ok:c.group==="Mugiwara"},
+    {label:"🏴‍☠️ Pirate",ok:c.group==="Pirates"},
+    {label:"⚓ Marine",ok:c.group==="Marine"},
+    {label:"🔥 Révolutionnaire",ok:c.group==="Révolutionnaires"},
+    {label:"🕵️ CP0",ok:c.group==="CP0"},
+    {label:"🤝 Allié",ok:c.group==="Alliés"},
+    {label:"🍎 A un Fruit",ok:fruit!==""&&fruit!=="Aucun"&&fruit!=="Inconnue"},
+    {label:"🚫 Aucun Fruit",ok:fruit==="Aucun"},
+    {label:"❓ Fruit inconnu",ok:fruit==="Inconnue"},
+    {label:"💰 Prime ≥ 1 Md",ok:bounty>=1000000000},
+    {label:"💰 Prime ≥ 500 M",ok:bounty>=500000000},
+    {label:"💰 Prime ≥ 100 M",ok:bounty>=100000000},
+    {label:"💰 Prime < 100 M",ok:bounty>0&&bounty<100000000},
+    {label:"🍎 Logia",ok:/\bLogia\b/i.test(fruit)},
+    {label:"🍎 Paramecia",ok:/\bParamecia\b/i.test(fruit)},
+    {label:"🍎 Zoan",ok:/\bZoan\b/i.test(fruit)},
+    {label:"⚔️ Prime connue",ok:bounty>0},
+    {label:"🌊 Pas de prime",ok:bounty<=0},
+    {label:"🧭 Fiche encyclopédie",ok:true},
+    {label:"⭐ Célèbre",ok:bounty>=500000000||c.group==="Mugiwara"},
+    {label:"👑 Prime ≥ 3 Md",ok:bounty>=3000000000},
+    {label:"🔥 Prime ≥ 1,5 Md",ok:bounty>=1500000000},
+    {label:"🧩 Fruit non confirmé",ok:fruit==="Inconnue"},
+    {label:"📚 Groupe renseigné",ok:Boolean(c.group)}
+  ];
+}
+
+function updateBingoScore(){
+  const a=document.getElementById("bingoV4Score");if(a)a.textContent=bingoScore;
+  const b=document.getElementById("bingoV4Streak");if(b)b.textContent=bingoStreak;
+  const c=document.getElementById("bingoV4Best");if(c)c.textContent=bingoBest;
+}
+
+function startBingoTimer(){
+  clearInterval(bingoTimerId);
+  let left=15;
+  const el=document.getElementById("bingoTimer");
+  if(el){el.textContent=left;el.classList.remove("danger");}
+  bingoTimerId=setInterval(()=>{
+    left--;
+    if(el){el.textContent=Math.max(0,left);if(left<=5)el.classList.add("danger");}
+    if(left<=0){clearInterval(bingoTimerId);validateBingo(true);}
+  },1000);
+}
+
+function newBingo(){
+  if(!Array.isArray(characters)||!characters.length)return;
+  clearInterval(bingoTimerId);
+  const c=characters[Math.floor(Math.random()*characters.length)];
+  const traits=shuffle(bingoTraits(c)).slice(0,24);
+  bingoRound={character:c,traits,submitted:false};
+  bingoMarked=new Array(25).fill(false);
+  bingoMarked[12]=true;
+
+  const imageBox=document.getElementById("bingoCharacterImage");
+  if(imageBox)imageBox.innerHTML=imageHTML(c);
+  const nameBox=document.getElementById("bingoCharacterName");
+  if(nameBox)nameBox.textContent=c.name;
+  const subBox=document.getElementById("bingoCharacterSub");
+  if(subBox)subBox.textContent=`${c.group} • ${c.fruit||"Fruit inconnu"}`;
+  const result=document.getElementById("bingoResult");
+  if(result)result.textContent="";
+
+  const grid=document.getElementById("bingoGrid");
+  if(!grid)return;
+  grid.innerHTML="";
+  traits.forEach((trait,i)=>{
+    const cell=document.createElement("button");
+    cell.type="button";
+    cell.className="bingo-v4-cell";
+    cell.dataset.i=String(i<12?i:i+1);
+    cell.textContent=trait.label;
+    cell.onclick=()=>toggleBingo(Number(cell.dataset.i),cell);
+    grid.appendChild(cell);
+  });
+  const free=document.createElement("button");
+  free.type="button";
+  free.className="bingo-v4-cell selected";
+  free.disabled=true;
+  free.dataset.i="12";
+  free.textContent="★ LIBRE";
+  grid.insertBefore(free,grid.children[12]);
+  updateBingoScore();
+  startBingoTimer();
+}
+
+function toggleBingo(i,cell){
+  if(!bingoRound||bingoRound.submitted||i===12)return;
+  bingoMarked[i]=!bingoMarked[i];
+  cell.classList.toggle("selected",bingoMarked[i]);
+}
+
+function validateBingo(auto=false){
+  if(!bingoRound||bingoRound.submitted)return;
+  bingoRound.submitted=true;
+  clearInterval(bingoTimerId);
+  let good=0,wrong=0,missed=0;
+  document.querySelectorAll("#bingoGrid .bingo-v4-cell").forEach(cell=>{
+    const i=Number(cell.dataset.i); if(i===12)return;
+    const trait=bingoRound.traits[i<12?i:i-1]; if(!trait)return;
+    const chosen=Boolean(bingoMarked[i]);
+    cell.classList.remove("selected");
+    if(chosen&&trait.ok){good++;cell.classList.add("correct");}
+    else if(chosen&&!trait.ok){wrong++;cell.classList.add("wrong");}
+    else if(!chosen&&trait.ok){missed++;cell.classList.add("correct");}
+  });
+  const points=Math.max(0,good*10-wrong*7-missed*3+(auto?0:5));
+  bingoScore+=points;
+  if(wrong===0&&missed===0)bingoStreak++;else bingoStreak=0;
+  if(bingoStreak>bingoBest){bingoBest=bingoStreak;localStorage.setItem("opBingoBestV4",String(bingoBest));}
+  updateBingoScore();
+  const result=document.getElementById("bingoResult");
+  if(result)result.innerHTML=`${wrong===0&&missed===0?"✅ PARFAIT !":"🎯 Manche terminée"} — <b>+${points} pts</b> • ✅ ${good} • ❌ ${wrong} • ⚠️ ${missed}${auto?" • ⏰ Temps écoulé":""}`;
+}
+
+/* MEMORY */
+
+let memoryCards=[];
+let memoryFlipped=[];
+let memoryMoves=0;
+let memoryPairs=0;
+let memoryLock=false;
+
+function newMemory(){
+
+if(!Array.isArray(characters)||characters.length<8){const g=document.getElementById('memoryGrid');if(g)g.innerHTML='<div class="plus-game-message">Pas assez de personnages pour le jeu mémoire.</div>';return;}
+const chosen=shuffle(characters).slice(0,8);
+
+const pairs=shuffle([...chosen,...chosen]);
+
+memoryCards=pairs;
+memoryFlipped=[];
+memoryMoves=0;
+memoryPairs=0;
+memoryLock=false;
+
+document.getElementById("memoryMoves")
+.textContent="Coups : 0";
+
+document.getElementById("memoryPairs")
+.textContent="Paires : 0/8";
+
+document.getElementById("memoryGrid").innerHTML=
+
+pairs.map((c,i)=>`
+
+<div
+class="memory-card"
+data-i="${i}"
+onclick="flipMemory(${i})"
+>
+
+<div class="memory-card-inner">
+
+<div class="memory-face memory-back">
+❓
+</div>
+
+<div class="memory-face memory-front">
+
+<span>${c.emoji}</span>
+
+<small>
+${escapeHTML(c.name)}
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function flipMemory(i){
+
+if(memoryLock)return;
+
+const cardEl=
+document.querySelector(
+`.memory-card[data-i="${i}"]`
+);
+
+if(
+cardEl.classList.contains("flipped")||
+cardEl.classList.contains("matched")
+)return;
+
+cardEl.classList.add("flipped");
+
+memoryFlipped.push(i);
+
+if(memoryFlipped.length===2){
+
+memoryMoves++;
+
+document.getElementById("memoryMoves")
+.textContent="Coups : "+memoryMoves;
+
+memoryLock=true;
+
+const [a,b]=memoryFlipped;
+
+if(memoryCards[a].name===memoryCards[b].name){
+
+document
+.querySelector(`.memory-card[data-i="${a}"]`)
+.classList.add("matched");
+
+document
+.querySelector(`.memory-card[data-i="${b}"]`)
+.classList.add("matched");
+
+memoryPairs++;
+
+document.getElementById("memoryPairs")
+.textContent="Paires : "+memoryPairs+"/8";
+
+memoryFlipped=[];
+memoryLock=false;
+
+}else{
+
+setTimeout(()=>{
+
+document
+.querySelector(`.memory-card[data-i="${a}"]`)
+.classList.remove("flipped");
+
+document
+.querySelector(`.memory-card[data-i="${b}"]`)
+.classList.remove("flipped");
+
+memoryFlipped=[];
+memoryLock=false;
+
+},900);
+
+}
+
+}
+
+}
+
+
+/* QUI SUIS-JE */
+
+let guessTarget=null;
+let guessStep=0;
+
+function bountyRange(n){
+
+if(!n)return "Aucune prime connue";
+
+if(n>=4000000000)return "Plus de 4 milliards";
+
+if(n>=1000000000)return "Entre 1 et 4 milliards";
+
+if(n>=500000000)return "Entre 500 millions et 1 milliard";
+
+return "Moins de 500 millions";
+
+}
+
+function newGuessWho(){
+
+if(!Array.isArray(characters)||!characters.length){return;}
+guessTarget=
+characters[
+Math.floor(Math.random()*characters.length)
+];
+
+guessStep=1;
+
+document.getElementById("guessOptions").innerHTML="";
+
+document.getElementById("guessNextBtn").style.display="inline-block";
+
+renderGuessClues();
+
+}
+
+function renderGuessClues(){
+
+const c=guessTarget;
+
+let html="";
+
+if(guessStep>=1){
+
+html+=`
+<div class="guess-clue">
+🏴‍☠️ Groupe :
+<b>${escapeHTML(c.group)}</b>
+</div>
+`;
+
+}
+
+if(guessStep>=2){
+
+html+=`
+<div class="guess-clue">
+🍎 Fruit :
+<b>${escapeHTML(c.fruit)}</b>
+</div>
+`;
+
+}
+
+if(guessStep>=3){
+
+html+=`
+<div class="guess-clue">
+💰 Prime :
+<b>${bountyRange(c.bounty)}</b>
+</div>
+`;
+
+}
+
+document.getElementById("guessClues").innerHTML=html;
+
+if(guessStep>=3){
+
+document
+.getElementById("guessNextBtn")
+.style.display="none";
+
+showGuessOptions();
+
+}
+
+}
+
+function nextClue(){
+
+guessStep++;
+
+renderGuessClues();
+
+}
+
+function showGuessOptions(){
+
+const wrong=shuffle(
+characters.filter(
+c=>c.name!==guessTarget.name
+)
+).slice(0,3);
+
+const options=shuffle([
+guessTarget,
+...wrong
+]);
+
+document.getElementById("guessOptions").innerHTML=
+
+options.map(c=>`
+
+<button
+class="quiz-answer"
+onclick="answerGuessWho('${escapeHTML(c.name)}',this)"
+>
+${c.emoji} ${escapeHTML(c.name)}
+</button>
+
+`).join("");
+
+}
+
+function answerGuessWho(name,button){
+
+const buttons=
+document.querySelectorAll(
+"#guessOptions .quiz-answer"
+);
+
+buttons.forEach(b=>{
+
+if(
+b.textContent.trim()
+.includes(guessTarget.name)
+){
+
+b.classList.add("correct");
+
+}
+
+});
+
+if(name!==guessTarget.name){
+button.classList.add("wrong");
+}
+
+buttons.forEach(b=>b.onclick=null);
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+document
+.getElementById("search")
+.addEventListener("input",renderCharacters);
+
+document
+.getElementById("group")
+.addEventListener("change",renderCharacters);
+
+document
+.getElementById("bountyFilter")
+.addEventListener("change",renderWanted);
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+renderCharacters();
+renderWanted();
+renderFruits();
+renderArcs();
+renderQuiz();
+newBingo();
+newMemory();
+newGuessWho();
+
+
+
+/* =========================
+   ONE PIECE V2 — INTERACTIONS
+========================= */
+const OPV2={
+ state:{seen:JSON.parse(localStorage.getItem('opV2Seen')||'[]'),duelScore:0,duelBest:Number(localStorage.getItem('opV2DuelBest')||0),left:null,right:null,locked:false},
+ save(){localStorage.setItem('opV2Seen',JSON.stringify(this.state.seen.slice(-120)));localStorage.setItem('opV2DuelBest',String(this.state.duelBest));},
+ toast(msg){const el=document.getElementById('opToast');if(!el)return;el.textContent=msg;el.classList.add('show');clearTimeout(this._toast);this._toast=setTimeout(()=>el.classList.remove('show'),1700)},
+ update(){
+   const chars=(typeof characters!=='undefined' && Array.isArray(characters))?characters:[];
+   const frs=(typeof fruits!=='undefined' && Array.isArray(fruits))?fruits:[];
+   const total=Math.max(chars.length,1); const seen=new Set(this.state.seen);
+   const pct=Math.min(100,Math.round(seen.size/total*100));
+   const a=document.getElementById('opCharCount'); if(a)a.textContent=chars.length;
+   const b=document.getElementById('opFruitCount'); if(b)b.textContent=frs.length;
+   const c=document.getElementById('opSeenCount'); if(c)c.textContent=seen.size;
+   const bar=document.getElementById('opProgressBar'); if(bar)bar.style.width=pct+'%';
+   const txt=document.getElementById('opProgressText'); if(txt)txt.textContent=pct+'% exploré';
+   const best=document.getElementById('duelBest'); if(best)best.textContent=this.state.duelBest;
+ },
+ mark(name){if(!name)return;if(!this.state.seen.includes(name)){this.state.seen.push(name);this.save();this.update();}},
+ random(){if(typeof randomCharacter==='function'){randomCharacter();this.toast('🎲 Nouveau personnage !');}},
+ openSearch(){document.getElementById('opSearchPanel').classList.add('show');document.getElementById('opSearchInput').focus();this.renderSearch('');},
+ closeSearch(){document.getElementById('opSearchPanel').classList.remove('show');},
+ renderSearch(q){
+   const box=document.getElementById('opSearchResults'); if(!box)return; q=(q||'').toLowerCase().trim();
+   const out=[];
+   ((typeof characters!=='undefined' && Array.isArray(characters))?characters:[]).forEach(c=>{if(!q||String(c.name).toLowerCase().includes(q))out.push({name:c.name,type:'Personnage',fn:()=>{this.closeSearch();if(typeof openCharacter==='function')openCharacter(c.name);this.mark(c.name)}})});
+   ((typeof fruits!=='undefined' && Array.isArray(fruits))?fruits:[]).forEach(f=>{if(!q||String(f.name).toLowerCase().includes(q))out.push({name:f.name,type:'Fruit',fn:()=>{this.closeSearch();document.getElementById('fruits').scrollIntoView({behavior:'smooth'});this.toast('🍎 Section Fruits');}})});
+   ((typeof arcs!=='undefined' && Array.isArray(arcs))?arcs:[]).forEach(a=>{if(!q||String(a.name).toLowerCase().includes(q))out.push({name:a.name,type:'Arc',fn:()=>{this.closeSearch();if(typeof openArc==='function')openArc(a.name);}})});
+   const list=out.slice(0,18);
+   box.innerHTML=list.length?list.map((r,i)=>`<div class="op-result" data-i="${i}"><b>${escapeHTML(String(r.name))}</b><small>${escapeHTML(r.type)}</small></div>`).join(''):`<div class="op-result"><span>🔎 Aucun résultat</span><small>Essaie un autre mot</small></div>`;
+   [...box.querySelectorAll('.op-result[data-i]')].forEach(el=>el.addEventListener('click',()=>list[Number(el.dataset.i)].fn()));
+ },
+ duelPool(){return ((typeof characters!=='undefined' && Array.isArray(characters))?characters:[]).filter(c=>Number(c.bounty)>0)},
+ newDuel(){
+   const pool=this.duelPool(); if(pool.length<2){this.toast('Pas assez de personnages avec une prime.');return;}
+   this.state.locked=false;this.state.duelScore=0;const i=Math.floor(Math.random()*pool.length);let j=Math.floor(Math.random()*pool.length);while(j===i)j=Math.floor(Math.random()*pool.length);this.state.left=pool[i];this.state.right=pool[j];
+   this.renderDuel();
+ },
+ renderDuel(){
+   const l=this.state.left,r=this.state.right;if(!l||!r)return;
+   const card=(c,side)=>`<div class="duel-q">⚔️</div>${imageHTML(c)}<h3>${escapeHTML(c.name)}</h3><div class="op-muted">${escapeHTML(c.group||'Personnage')}</div><div class="duel-bounty">${Number(c.bounty).toLocaleString('fr-FR')} B</div>`;
+   const L=document.getElementById('duelLeft'),R=document.getElementById('duelRight');L.innerHTML=card(l,'left');R.innerHTML=card(r,'right');L.classList.remove('revealed');R.classList.remove('revealed');document.getElementById('duelScore').textContent=this.state.duelScore;document.getElementById('duelResult').textContent='';document.getElementById('duelResult').className='duel-result';
+ },
+ duelAnswer(side){
+   if(this.state.locked)return;const {left,right}=this.state;if(!left||!right)return;
+   this.state.locked=true;const winner=Number(left.bounty)>=Number(right.bounty)?'left':'right';const L=document.getElementById('duelLeft'),R=document.getElementById('duelRight');L.classList.add('revealed');R.classList.add('revealed');
+   const result=document.getElementById('duelResult');
+   if(side===winner){this.state.duelScore++;if(this.state.duelScore>this.state.duelBest){this.state.duelBest=this.state.duelScore;this.toast('🏆 Nouveau record !')}result.textContent='✅ Bien joué !';result.className='duel-result good';}
+   else{result.textContent='❌ Raté !';result.className='duel-result bad';if(this.state.duelScore>this.state.duelBest)this.state.duelBest=this.state.duelScore;}
+   this.save();this.update();setTimeout(()=>{this.state.locked=false;const pool=this.duelPool();if(pool.length>=2){let a=Math.floor(Math.random()*pool.length),b=Math.floor(Math.random()*pool.length);while(b===a)b=Math.floor(Math.random()*pool.length);this.state.left=pool[a];this.state.right=pool[b];this.renderDuel();}},900);
+ }
+};
+window.OPV2=OPV2;
+
+const opOldOpenCharacter=window.openCharacter;
+if(typeof opOldOpenCharacter==='function'){
+ window.openCharacter=function(name){OPV2.mark(name);return opOldOpenCharacter.apply(this,arguments)};
+}
+
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();OPV2.openSearch()}if(e.key==='Escape')OPV2.closeSearch()});
+document.addEventListener('DOMContentLoaded',()=>{
+ const i=document.getElementById('opSearchInput'); if(i)i.addEventListener('input',e=>OPV2.renderSearch(e.target.value));
+ OPV2.update();OPV2.newDuel();
+});
+
+
+
+/* ===== V3 JS ===== */
+const OPQuiz={
+  state:{deck:[],index:0,score:0,streak:0,best:Number(localStorage.getItem('opQuizBestV3')||0),locked:false,category:'mix',difficulty:'medium',length:10},
+  static:[
+    {cat:'world',diff:'easy',q:'Quel est le nom du navire actuel des Mugiwara ?',a:['Thousand Sunny','Going Merry','Red Force','Polar Tang'],c:0,e:'Le Thousand Sunny est le navire principal des Mugiwara.'},
+    {cat:'world',diff:'easy',q:'Quel est le rêve de Luffy ?',a:['Devenir Amiral','Devenir Roi des Pirates','Trouver All Blue','Devenir Shichibukai'],c:1,e:'Luffy veut devenir le Roi des Pirates.'},
+    {cat:'world',diff:'easy',q:'Qui a recueilli Luffy enfant ?',a:['Garp','Shanks','Rayleigh','Dragon'],c:0,e:'Garp est le grand-père de Luffy et l’a encadré durant son enfance.'},
+    {cat:'world',diff:'medium',q:'Quel événement a marqué la guerre au sommet ?',a:['Enies Lobby','Marineford','Water 7','Whole Cake Island'],c:1,e:'Marineford est le théâtre de la guerre au sommet.'},
+    {cat:'world',diff:'medium',q:'Quel ancien royaume est au cœur de nombreuses énigmes historiques ?',a:['Le Royaume Ancien','Le Royaume de Goa','Le royaume de Drum','Le royaume de Dressrosa'],c:0,e:'Le Royaume Ancien est lié au mystère du Siècle Oublié.'},
+    {cat:'world',diff:'hard',q:'Quel terme désigne le groupe de personnes capables de lire les poneglyphes dans le récit ?',a:['Kozuki','CP0','Cipher Pol','Tenryubito'],c:0,e:'La famille Kozuki est notamment liée à la création des poneglyphes.'},
+    {cat:'theory',diff:'easy',q:'Laquelle de ces propositions est présentée comme une théorie et non comme un fait canonique ?',a:['La nature exacte du One Piece','Le nom de Luffy','L’existence de Zoro','Le bateau Sunny'],c:0,e:'La nature exacte du trésor reste un élément de mystère ; toute explication précise doit être signalée comme spéculative tant qu’elle n’est pas confirmée.'},
+    {cat:'theory',diff:'medium',q:'Quel sujet est directement associé aux grandes théories autour du Siècle Oublié ?',a:['Le Gouvernement Mondial','Le Baratie','Le village de Fuchsia uniquement','East Blue uniquement'],c:0,e:'Le Siècle Oublié et le Gouvernement Mondial sont souvent étudiés ensemble dans les théories sur l’histoire du monde.'},
+    {cat:'theory',diff:'hard',q:'Dans une encyclopédie anti-spoiler, une théorie non confirmée doit être présentée comment ?',a:['Comme un fait','Avec la mention “théorie”','Comme une révélation','Sans contexte'],c:1,e:'Une théorie doit être clairement identifiée comme telle.'},
+    {cat:'theory',diff:'easy',q:'Quel élément est surtout associé aux mystères historiques de One Piece ?',a:['Les Poneglyphes','Les Dials uniquement','Les Berry uniquement','Les Den Den Mushi uniquement'],c:0,e:'Les Poneglyphes sont au cœur de nombreux mystères historiques de l’œuvre.'},
+    {cat:'theory',diff:'easy',q:'Quel thème revient souvent dans les théories sur le monde de One Piece ?',a:['Le Siècle Oublié','La météo de chaque île','La cuisine du Baratie uniquement','Les primes uniquement'],c:0,e:'Le Siècle Oublié est un grand sujet de réflexion et de théorie.'},
+    {cat:'theory',diff:'medium',q:'Quel sujet peut être étudié sans affirmer qu’une théorie est vraie ?',a:['Les indices et symboles du manga','Une révélation inventée présentée comme officielle','Un spoiler non vérifié présenté comme certitude','Une rumeur sans contexte'],c:0,e:'On peut analyser les indices sans transformer une hypothèse en fait.'},
+    {cat:'theory',diff:'medium',q:'Quel mot doit apparaître clairement lorsqu’une explication n’est pas confirmée ?',a:['Théorie','Canon','Officiel','Révélation'],c:0,e:'Le mot « théorie » permet de distinguer l’hypothèse du contenu confirmé.'},
+    {cat:'theory',diff:'hard',q:'Le mystère du “D.” est présenté dans le site comme…',a:['Un sujet d’interprétation','Une information sans aucun débat','Une question déjà expliquée par le site','Un personnage'],c:0,e:'Le “D.” fait partie des sujets de réflexion et d’interprétation.'},
+    {cat:'theory',diff:'hard',q:'Quelle bonne pratique protège le lecteur contre les spoilers dans une fiche de théorie ?',a:['Séparer les faits des hypothèses','Tout mélanger','Mettre les révélations sans avertissement','Cacher la source'],c:0,e:'Séparer faits, indices et hypothèses rend la fiche plus claire et limite les spoilers.'},
+    {cat:'theory',diff:'medium',q:'Une théorie peut-elle être intéressante même sans être confirmée ?',a:['Oui, comme hypothèse à discuter','Non, jamais','Seulement si elle est officiellement annoncée','Uniquement dans le manga'],c:0,e:'Une théorie peut être discutée comme hypothèse sans être présentée comme un fait.'},
+    {cat:'theory',diff:'medium',q:'Quel élément est pertinent pour argumenter une théorie ?',a:['Des indices du récit','Une phrase inventée','Une information sans source','Une supposition présentée comme preuve'],c:0,e:'Une théorie gagne en solidité lorsqu’elle s’appuie sur des éléments observables du récit.'},
+    {cat:'theory',diff:'hard',q:'Quelle différence entre un fait canonique et une théorie ?',a:['Le fait est confirmé par l’œuvre ; la théorie est une hypothèse','Ils sont exactement identiques','La théorie est toujours plus vraie','Le fait vient forcément d’un fan'],c:0,e:'La distinction principale est le niveau de confirmation.'},
+    {cat:'theory',diff:'easy',q:'Quel mystère peut être classé dans une section “Manga & Théories” ?',a:['Le One Piece','La couleur du fond du site','La taille du bouton accueil','Le nom du développeur uniquement'],c:0,e:'La nature du One Piece est explicitement présentée comme un mystère dans le système du site.'},
+    {cat:'theory',diff:'medium',q:'Que faut-il éviter lorsqu’on présente une théorie de fan ?',a:['Dire qu’elle est confirmée sans preuve','Donner les arguments','Mentionner les incertitudes','Séparer faits et hypothèses'],c:0,e:'Il faut éviter de transformer une hypothèse en information officielle.'},
+    {cat:'theory',diff:'medium',q:'Une fiche anti-spoiler doit surtout permettre de distinguer…',a:['Ce qui est connu de ce qui est supposé','Les personnages par couleur','Les sites par taille','Les boutons par forme'],c:0,e:'La séparation entre information connue et hypothèse est essentielle.'},
+    {cat:'theory',diff:'hard',q:'Quel sujet peut relier plusieurs théories dans One Piece ?',a:['L’histoire du monde','La taille des menus','Le design d’un bouton','Le temps de chargement du site'],c:0,e:'L’histoire du monde permet de croiser de nombreux indices et hypothèses.'},
+    {cat:'theory',diff:'hard',q:'Quand une théorie contient un indice réel mais une conclusion spéculative, comment la présenter ?',a:['Indice confirmé + conclusion théorique','Tout comme fait','Tout comme faux','Sans expliquer la différence'],c:0,e:'On peut distinguer l’indice observé de l’interprétation proposée.'}
+  ],
+  escape(v){return escapeHTML(v)},
+  shuffle(arr){return shuffle(arr)},
+  pickOther(pool,current,n=3){return this.shuffle(pool.filter(x=>x!==current)).slice(0,n)},
+  dynamic(){
+    const out=[];
+    const cs=characters.filter(c=>c&&c.name);
+    const fs=Array.isArray(fruits)?fruits.filter(f=>f&&f.name):[];
+    const as=Array.isArray(arcs)?arcs.filter(a=>a&&a.name):[];
+    const uniq=a=>[...new Set(a.filter(Boolean))];
+    const pick=(arr,n=3)=>this.shuffle(arr).slice(0,n);
+    const charNames=cs.map(c=>c.name);
+    const groups=uniq(cs.map(c=>c.group));
+
+    cs.forEach(c=>{
+      // 1) Identification par image
+      const wrongNames=pick(charNames.filter(n=>n!==c.name),3);
+      let imageAnswers=this.shuffle([c.name,...wrongNames]);
+      out.push({cat:'characters',diff:'medium',q:'Qui est ce personnage ?',img:c.img,a:imageAnswers,c:imageAnswers.indexOf(c.name),e:`La fiche affichée correspond à ${c.name}.`});
+
+      // 2) Groupe
+      if(groups.length>=4){const a=this.shuffle([c.group,...pick(groups.filter(g=>g!==c.group),3)]);out.push({cat:'characters',diff:'easy',q:`Dans quel groupe est classé ${c.name} ?`,a,c:a.indexOf(c.group),e:`Dans cette encyclopédie, ${c.name} est classé dans le groupe « ${c.group} ».`})}
+
+      // 3) Fruit
+      if(c.fruit){const fp=cs.filter(x=>x!==c&&x.fruit).map(x=>x.fruit);const a=this.shuffle([c.fruit,...pick(fp.filter(x=>x!==c.fruit),3)]);out.push({cat:'fruits',diff:c.fruit==='Aucun'?'easy':'medium',q:`Quel fruit est associé à ${c.name} dans l’encyclopédie ?`,a,c:a.indexOf(c.fruit),e:`La fiche indique : ${c.fruit}.`})}
+
+      // 4) Prime exacte
+      if(Number(c.bounty)>0){const vals=uniq([c,...pick(cs.filter(x=>x!==c&&Number(x.bounty)>0),6)]).map(x=>Number(x.bounty).toLocaleString('fr-FR')+' B');const a=this.shuffle([Number(c.bounty).toLocaleString('fr-FR')+' B',...pick(vals.filter(v=>v!==Number(c.bounty).toLocaleString('fr-FR')+' B'),3)]);out.push({cat:'bounties',diff:Number(c.bounty)>=1000000000?'hard':'medium',q:`Quelle prime est affichée pour ${c.name} ?`,a,c:a.indexOf(Number(c.bounty).toLocaleString('fr-FR')+' B'),e:`La prime indiquée est ${Number(c.bounty).toLocaleString('fr-FR')} B.`})}
+
+      // 5) Vrai / Faux sur le personnage
+      out.push({cat:'characters',diff:'medium',q:`Vrai ou faux : ${c.name} est classé « ${c.group} ».`,a:['Vrai','Faux'],c:0,e:`La fiche de l’encyclopédie le classe dans « ${c.group} ».`});
+    });
+
+    // 6) Fruits → propriétaire / type / nom
+    fs.forEach(f=>{
+      const owner=cs.find(c=>c.name.toLowerCase().includes(String(f.owner||'').toLowerCase())||String(c.name).toLowerCase()===String(f.owner||'').toLowerCase());
+      const ownerName=owner?owner.name:f.owner;
+      const ownerPool=pick(cs.filter(c=>c.name!==ownerName).map(c=>c.name),3);
+      const a=this.shuffle([ownerName,...ownerPool]);
+      out.push({cat:'fruits',diff:'medium',q:`Qui possède le ${f.name} ?`,a,c:a.indexOf(ownerName),e:`La fiche du fruit indique comme propriétaire : ${ownerName}.`});
+      const types=uniq(fs.map(x=>x.type));
+      if(types.length>=4){const ta=this.shuffle([f.type,...pick(types.filter(x=>x!==f.type),3)]);out.push({cat:'fruits',diff:'hard',q:`Quel est le type du ${f.name} ?`,a:ta,c:ta.indexOf(f.type),e:`Ce fruit est classé « ${f.type} » dans les données du site.`})}
+      const imgs=this.shuffle([f,...pick(fs.filter(x=>x!==f),3)]);out.push({cat:'images',diff:'hard',q:'Quel Fruit du Démon est montré ?',img:f.img,a:imgs.map(x=>x.name),c:imgs.findIndex(x=>x===f),e:`L’image correspond au ${f.name}.`});
+    });
+
+    // 7) Arcs : saga, lieu, ennemi, chapitres, image
+    const sagas=uniq(as.map(a=>a.saga));
+    as.forEach(a=>{
+      if(sagas.length>=4){const x=this.shuffle([a.saga,...pick(sagas.filter(v=>v!==a.saga),3)]);out.push({cat:'arcs',diff:'easy',q:`À quelle saga appartient l’arc ${a.name} ?`,a:x,c:x.indexOf(a.saga),e:`${a.name} est classé dans la saga « ${a.saga} ».`})}
+      const places=uniq(as.map(x=>x.location)); if(places.length>=4){const x=this.shuffle([a.location,...pick(places.filter(v=>v!==a.location),3)]);out.push({cat:'arcs',diff:'medium',q:`Quelle localisation correspond à l’arc ${a.name} ?`,a:x,c:x.indexOf(a.location),e:`La localisation indiquée est « ${a.location} ».`})}
+      const enemies=uniq(as.map(x=>x.enemy)); if(enemies.length>=4){const x=this.shuffle([a.enemy,...pick(enemies.filter(v=>v!==a.enemy),3)]);out.push({cat:'arcs',diff:'medium',q:`Quel adversaire est associé à l’arc ${a.name} dans cette encyclopédie ?`,a:x,c:x.indexOf(a.enemy),e:`La fiche de l’arc indique : ${a.enemy}.`})}
+      const imgs=this.shuffle([a,...pick(as.filter(x=>x!==a),3)]);out.push({cat:'images',diff:'medium',q:'Quel arc est montré ?',img:a.image,a:imgs.map(x=>x.name),c:imgs.findIndex(x=>x===a),e:`L’image correspond à l’arc ${a.name}.`})
+    });
+
+    // 8) Comparaisons de primes : chaque manche change réellement
+    const bountyChars=cs.filter(c=>Number(c.bounty)>0);
+    for(let i=0;i<Math.min(120,bountyChars.length*4);i++){
+      const pair=this.shuffle(bountyChars).slice(0,2);if(pair.length<2)continue;
+      const [x,y]=pair;const winner=Number(x.bounty)>=Number(y.bounty)?x:y;
+      const a=this.shuffle([x.name,y.name,'Même prime','Impossible à savoir']);
+      out.push({cat:'bounties',diff:'hard',q:`Qui a la prime la plus élevée entre ${x.name} et ${y.name} ?`,a,c:a.indexOf(winner.name),e:`${winner.name} a la prime la plus élevée dans les données du site (${Number(winner.bounty).toLocaleString('fr-FR')} B).`});
+    }
+
+    return out;
+  },
+  normalize(q){
+    if(q.c!==null && q.c!==undefined)return q;
+    const idx=q.a.indexOf(q._winner);return {...q,c:idx};
+  },
+  build(){
+    let pool=this.static.concat(this.dynamic()).map(q=>this.normalize(q));
+    if(this.state.category!=='mix')pool=pool.filter(q=>q.cat===this.state.category || (this.state.category==='images' && q.cat==='images'));
+    if(this.state.difficulty==='easy')pool=pool.filter(q=>q.diff==='easy'||q.diff==='medium');
+    if(this.state.difficulty==='hard')pool=pool.filter(q=>q.diff==='hard'||q.diff==='medium');
+    pool=this.shuffle(pool);
+    const seen=new Set(); this.state.deck=[];
+    for(const q of pool){const key=q.q+'|'+q.a.join('|');if(seen.has(key))continue;seen.add(key);this.state.deck.push(q);if(this.state.deck.length>=this.state.length)break;}
+    if(this.state.deck.length<this.state.length && this.state.category!=='mix'){
+      const extra=this.dynamic().concat(this.static).map(q=>this.normalize(q));
+      for(const q of this.shuffle(extra)){const key=q.q+'|'+q.a.join('|');if(seen.has(key))continue;seen.add(key);this.state.deck.push(q);if(this.state.deck.length>=this.state.length)break;}
+    }
+    this.state.index=0;this.state.score=0;this.state.streak=0;this.state.locked=false;
+  },
+  start(){
+    this.state.category=document.getElementById('plusQuizCategory').value;this.state.difficulty=document.getElementById('plusQuizDifficulty').value;this.state.length=Number(document.getElementById('plusQuizLength').value);this.build();this.render();this.meta();
+  },
+  meta(){document.getElementById('plusQuizBest').textContent=this.state.best;document.getElementById('plusQuizStreak').textContent=this.state.streak;},
+  render(){
+    const box=document.getElementById('plusQuizGame');if(!box)return;
+    if(!this.state.deck.length){box.innerHTML='<div class="plus-quiz-intro"><div class="plus-big-icon">🏴‍☠️</div><h3>Pas assez de questions</h3><p>Choisis « Mix Grand Line » pour utiliser les questions dynamiques de l’encyclopédie.</p></div>';return;}
+    if(this.state.index>=this.state.deck.length){this.finish();return;}
+    const q=this.state.deck[this.state.index],pct=(this.state.index/this.state.deck.length)*100;
+    const media=q.img?`<div class="plus-q-media">${imageFromSrc(q.img,'Illustration')}</div>`:'';box.innerHTML=`<div class="plus-q-head"><span>Question ${this.state.index+1}/${this.state.deck.length}</span><span>Score : <b>${this.state.score}</b></span></div><div class="plus-q-bar"><i style="width:${pct}%"></i></div><div class="plus-q-card"><div class="plus-q-category">${this.catLabel(q.cat)}</div>${media}<div class="plus-q-title">${this.escape(q.q)}</div><div class="plus-q-answers">${q.a.map((a,i)=>`<button class="plus-q-answer" onclick="OPQuiz.answer(${i},this)">${this.escape(a)}</button>`).join('')}</div><div id="plusQuizExplain"></div></div>`;
+    this.state.locked=false;this.meta();
+  },
+  catLabel(c){return ({characters:'👒 Personnages',bounties:'💰 Primes',fruits:'🍎 Fruits du Démon',world:'🌍 Monde & manga',theory:'🧠 Théorie',arcs:'📖 Arcs & sagas',images:'🖼️ Identification'})[c]||'🌊 Grand Line'},
+  answer(i,btn){
+    if(this.state.locked)return;this.state.locked=true;const q=this.state.deck[this.state.index];const buttons=document.querySelectorAll('.plus-q-answer');buttons.forEach((b,k)=>{if(k===q.c)b.classList.add('correct')});if(i===q.c){this.state.score++;this.state.streak++;if(this.state.streak>this.state.best){this.state.best=this.state.streak;localStorage.setItem('opQuizBestV3',String(this.state.best));OPV2?.toast?.('🔥 Nouveau record de série !')}}else{btn.classList.add('wrong');this.state.streak=0}document.getElementById('plusQuizStreak').textContent=this.state.streak;document.getElementById('plusQuizExplain').innerHTML=`<div class="plus-q-explain">${i===q.c?'✅ Bonne réponse !':'❌ Mauvaise réponse.'} ${this.escape(q.e||'')}</div>`;setTimeout(()=>{this.state.index++;this.render()},900);
+  },
+  finish(){
+    const box=document.getElementById('plusQuizGame');const pct=Math.round((this.state.score/this.state.deck.length)*100);const msg=pct>=90?'👑 Empereur du quiz':pct>=70?'🔥 Très solide':pct>=50?'🌊 Bon navigateur':'📖 Il faut repartir explorer';box.innerHTML=`<div class="plus-result"><div class="plus-result-ring">${pct}%</div><h3 style="margin-top:16px">${msg}</h3><div class="plus-result-score">${this.state.score}/${this.state.deck.length}</div><p style="color:#9cadb8">Série finale : ${this.state.streak} • Record : ${this.state.best}</p><div style="margin-top:18px"><button class="btn" onclick="OPQuiz.start()">🔄 Nouvelle partie</button></div></div>`;this.meta();
+  }
+};
+window.OPQuiz=OPQuiz;
+document.addEventListener('DOMContentLoaded',()=>{const q=document.getElementById('plusQuizStart');if(q)q.addEventListener('click',()=>OPQuiz.start());});
+
+const OPGames={
+  race:{running:false,x:450,speed:3,boost:0,distance:0,coins:0,combo:1,best:Number(localStorage.getItem('opRaceBestV3')||0),obs:[],coinItems:[],last:0,raf:0},
+  fruit:{running:false,time:30,score:0,streak:0,best:Number(localStorage.getItem('opFruitBestV3')||0),timer:null,current:null},
+  updateRaceStats(){const r=this.race;document.getElementById('raceDistance').textContent=Math.floor(r.distance);document.getElementById('raceCoins').textContent=r.coins;document.getElementById('raceCombo').textContent='x'+r.combo;document.getElementById('raceBest').textContent=r.best;},
+  startRace(){const r=this.race;r.running=true;r.x=450;r.speed=3;r.boost=0;r.distance=0;r.coins=0;r.combo=1;r.obs=[];r.coinItems=[];r.last=performance.now();const o=document.getElementById('raceOverlay');o.style.display='none';this.updateRaceStats();cancelAnimationFrame(r.raf);r.raf=requestAnimationFrame(t=>this.raceLoop(t));},
+  endRace(){const r=this.race;r.running=false;cancelAnimationFrame(r.raf);if(Math.floor(r.distance)>r.best){r.best=Math.floor(r.distance);localStorage.setItem('opRaceBestV3',String(r.best));OPV2?.toast?.('🏆 Nouveau record à la course !')}document.getElementById('raceOverlay').innerHTML='💥 GAME OVER<div style="font-size:14px;margin-top:8px">Distance : '+Math.floor(r.distance)+' m • '+r.coins+' pièces</div><small>Relance une course pour repartir.</small>';document.getElementById('raceOverlay').style.display='flex';this.updateRaceStats();},
+  moveRace(dir){const r=this.race;if(!r.running)return;r.x=Math.max(55,Math.min(845,r.x+dir*50))},
+  boostRace(){const r=this.race;if(r.running)r.boost=Math.min(1.8,r.boost+.45)},
+  spawnRace(){const r=this.race;if(Math.random()<.025){r.obs.push({x:35+Math.random()*830,y:-30,size:20+Math.random()*18})}if(Math.random()<.018){r.coinItems.push({x:35+Math.random()*830,y:-20,size:9})}},
+  raceLoop(t){
+    const r=this.race;if(!r.running)return;const dt=Math.min(.035,(t-r.last)/1000);r.last=t;r.speed=Math.min(9,r.speed+dt*.42);r.boost=Math.max(0,r.boost-dt*0.35);const scroll=(r.speed+r.boost*5)*dt*120;r.distance+=scroll/6;this.spawnRace();r.obs.forEach(o=>o.y+=scroll);r.coinItems.forEach(c=>c.y+=scroll);r.obs=r.obs.filter(o=>o.y<470);r.coinItems=r.coinItems.filter(c=>c.y<470);
+    for(const o of r.obs){if(Math.abs(o.x-r.x)<o.size+18 && Math.abs(o.y-360)<o.size+24){this.endRace();return}}
+    r.coinItems=r.coinItems.filter(c=>{if(Math.abs(c.x-r.x)<25&&Math.abs(c.y-360)<28){r.coins++;r.combo=Math.min(9,r.combo+1);return false}return true});if(Math.random()<.002)r.combo=Math.max(1,r.combo-1);this.drawRace();this.updateRaceStats();r.raf=requestAnimationFrame(x=>this.raceLoop(x));
+  },
+  drawRace(){const r=this.race,canvas=document.getElementById('raceCanvas'),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);ctx.fillStyle='#062638';ctx.fillRect(0,0,w,h);for(let i=0;i<8;i++){ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=2;ctx.beginPath();for(let x=0;x<=w;x+=30){const y=i*70+15+Math.sin((x+r.distance*5)/55+i)*7;ctx.lineTo(x,y)}ctx.stroke()}ctx.fillStyle='rgba(247,201,75,.75)';r.coinItems.forEach(c=>{ctx.beginPath();ctx.arc(c.x,c.y,c.size,0,Math.PI*2);ctx.fill()});ctx.fillStyle='rgba(230,70,70,.9)';r.obs.forEach(o=>{ctx.save();ctx.translate(o.x,o.y);ctx.rotate(o.y/30);ctx.beginPath();ctx.moveTo(-o.size, o.size);ctx.lineTo(0,-o.size);ctx.lineTo(o.size,o.size);ctx.closePath();ctx.fill();ctx.restore()});ctx.fillStyle='#f4c542';ctx.beginPath();ctx.moveTo(r.x,390);ctx.lineTo(r.x-24,350);ctx.lineTo(r.x+24,350);ctx.closePath();ctx.fill();ctx.fillStyle='rgba(255,255,255,.3)';ctx.fillRect(r.x-3,350,6,48);},
+  startFruitRush(){
+    clearInterval(this.fruit.timer);const f=this.fruit;f.running=true;f.time=30;f.score=0;f.streak=0;this.renderFruitRush();document.getElementById('fruitTime').textContent=f.time;f.timer=setInterval(()=>{f.time--;document.getElementById('fruitTime').textContent=f.time;if(f.time<=0){clearInterval(f.timer);f.running=false;this.renderFruitRush(true)}},1000);
+  },
+  fruitPool(){return characters.filter(c=>c.fruit&&c.fruit!=='Aucun')},
+  renderFruitRush(end=false){
+    const box=document.getElementById('fruitRushGame');if(end){const f=this.fruit;if(f.score>f.best){f.best=f.score;localStorage.setItem('opFruitBestV3',String(f.best));}document.getElementById('fruitBest').textContent=f.best;box.innerHTML=`<div class="plus-quiz-intro"><div class="plus-big-icon">🏆</div><h3>Temps écoulé !</h3><div class="plus-result-score">${f.score}</div><p>Bonne réponses • meilleure série : ${f.streak}</p><button class="btn" onclick="OPGames.startFruitRush()">⚡ Rejouer</button></div>`;return}const pool=this.fruitPool();if(pool.length<4){box.innerHTML='<div class="plus-quiz-intro">Pas assez de fruits dans les données.</div>';return}const target=pool[Math.floor(Math.random()*pool.length)],wrong=shuffle(pool.filter(c=>c!==target)).slice(0,3);const opts=shuffle([target,...wrong]);this.fruit.current=target;box.innerHTML=`<div class="fruit-card-play"><div class="plus-q-category">🍎 FRUIT RUSH</div><div class="fruit-rush-prompt">Quel personnage est associé au <span style="color:#f4c542">${escapeHTML(target.fruit)}</span> ?</div><div class="fruit-rush-answers">${opts.map(c=>`<button class="fruit-rush-answer" onclick="OPGames.answerFruit('${escapeHTML(c.name)}',this)">${escapeHTML(c.name)}</button>`).join('')}</div></div>`;document.getElementById('fruitScore').textContent=this.fruit.score;document.getElementById('fruitStreak').textContent=this.fruit.streak;document.getElementById('fruitBest').textContent=this.fruit.best;
+  },
+  answerFruit(name,btn){const f=this.fruit;if(!f.running)return;if(name===f.current.name){f.score++;f.streak++;OPV2?.toast?.('✅ +1 !')}else{btn.style.borderColor='#ef6868';f.streak=0;OPV2?.toast?.('❌ Raté !')}setTimeout(()=>this.renderFruitRush(),260)},
+};
+window.OPGames=OPGames;
+window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')OPGames.moveRace(-1);if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')OPGames.moveRace(1);if(e.code==='Space'){e.preventDefault();OPGames.boostRace()}});
+
+const OPCommunity={
+  theoriesKey:'opTheoriesV3',
+  theories:[
+    {id:'canon-vs-theory',author:'Encyclopédie',title:'Le One Piece comme révélation historique',text:'La théorie : le trésor serait lié à l’histoire véritable du monde et au Siècle Oublié. Fait à retenir : le manga conserve volontairement le mystère autour de la nature exacte du trésor. Cette fiche ne présente pas l’hypothèse comme un fait.',type:'THEORIE',likes:12,dislikes:1},
+    {id:'d',author:'Encyclopédie',title:'Le mystère du “D.”',text:'La théorie porte sur le rôle du “D.” dans l’histoire mondiale et sur la possibilité qu’il soit lié à un héritage ancien. Plusieurs interprétations existent ; aucune ne doit être traitée comme confirmée sans source canonique.',type:'THEORIE',likes:18,dislikes:2},
+    {id:'nika',author:'Encyclopédie',title:'Les symboles de liberté autour de Nika',text:'Des fans rapprochent différents symboles de liberté apparus dans l’œuvre. La carte sert à rassembler les indices et les arguments, pas à transformer une interprétation en vérité.',type:'THEORIE',likes:9,dislikes:3}
+  ],
+  load(){try{const t=JSON.parse(localStorage.getItem(this.theoriesKey)||'null');if(Array.isArray(t))this.theories=t}catch{}},
+  save(){localStorage.setItem(this.theoriesKey,JSON.stringify(this.theories.slice(0,80)))},
+  renderTheories(){const box=document.getElementById('theoryGrid');if(!box)return;box.innerHTML=this.theories.map(t=>`<article class="theory-card"><div class="theory-tags"><span class="theory-tag">${escapeHTML(t.type||'THEORIE')}</span><span class="theory-tag">🧠 Non confirmée</span><span class="theory-tag">👤 ${escapeHTML(t.author)}</span></div><h3>${escapeHTML(t.title)}</h3><p>${escapeHTML(t.text)}</p><div class="theory-votes"><button class="theory-vote" onclick="OPCommunity.vote('${t.id}',1)">👍 ${t.likes||0}</button><button class="theory-vote" onclick="OPCommunity.vote('${t.id}',-1)">👎 ${t.dislikes||0}</button></div></article>`).join('')},
+  vote(id,dir){const t=this.theories.find(x=>x.id===id);if(!t)return;dir>0?t.likes=(t.likes||0)+1:t.dislikes=(t.dislikes||0)+1;this.save();this.renderTheories()},
+  addTheory(e){e.preventDefault();const author=document.getElementById('theoryAuthor').value.trim(),title=document.getElementById('theoryTitle').value.trim(),text=document.getElementById('theoryText').value.trim();if(!author||!title||!text)return;this.theories.unshift({id:'u'+Date.now(),author,title,text,type:'THEORIE FAN',likes:0,dislikes:0});this.save();this.renderTheories();e.target.reset();OPV2?.toast?.('🧠 Théorie publiée sur cet appareil !')
+  }
+};
+window.OPCommunity=OPCommunity;
+
+// Améliorations des mini-jeux existants
+/* Ancien bingo v3 remplacé par OPBingoV4. */
+
+const opOldNewMemory=window.newMemory;
+window.newMemory=function(){opOldNewMemory?.();document.getElementById('memoryTimer').textContent='0s';document.getElementById('memoryMessage').textContent='';const memBest=localStorage.getItem('opMemoryBestV3');if(document.getElementById('memoryBest'))document.getElementById('memoryBest').textContent=memBest?memBest+' coups':'—';window._opMemStart=0;clearInterval(window._opMemTimer)};
+const opOldFlipMemory=window.flipMemory;
+window.flipMemory=function(i){if(!window._opMemStart){window._opMemStart=Date.now();clearInterval(window._opMemTimer);window._opMemTimer=setInterval(()=>{if(window._opMemStart)document.getElementById('memoryTimer').textContent=Math.floor((Date.now()-window._opMemStart)/1000)+'s'},500)}opOldFlipMemory?.(i);setTimeout(()=>{if(window.memoryPairs===8){}},120)};
+
+/* ===== BINGO PERSONNAGE V4 ===== */
+const OPBingoV4={
+  character:null,traits:[],selected:new Set(),score:0,streak:0,best:Number(localStorage.getItem('opBingoV4Best')||0),time:15,timer:null,locked:false,
+  fruitType(c){
+    const f=(Array.isArray(fruits)?fruits:[]).find(x=>String(x.owner||'').toLowerCase()===String(c.name||'').toLowerCase()||String(c.name||'').toLowerCase().includes(String(x.owner||'').toLowerCase()));
+    return f?String(f.type||''):
+      (/^.*Logia/i.test(String(c.fruit||''))?'Logia':'');
+  },
+  buildTraits(){
+    const groups=[...new Set(characters.map(c=>c.group).filter(Boolean))];
+    const traits=[
+      ['👒 Mugiwara',c=>c.group==='Mugiwara'],['🏴‍☠️ Pirate',c=>c.group==='Pirates'],['⚓ Marine',c=>c.group==='Marine'],
+      ['🌹 Révolutionnaires',c=>c.group==='Révolutionnaires'],['🕶️ CP0',c=>c.group==='CP0'],['🤝 Alliés',c=>c.group==='Alliés'],
+      ['🍎 A un Fruit du Démon',c=>c.fruit&&c.fruit!=='Aucun'],['🚫 Sans Fruit du Démon',c=>!c.fruit||c.fruit==='Aucun'],
+      ['💰 Prime ≥ 3 milliards',c=>Number(c.bounty)>=3000000000],['💰 Prime ≥ 1 milliard',c=>Number(c.bounty)>=1000000000],
+      ['💰 Prime ≥ 500 millions',c=>Number(c.bounty)>=500000000],['💰 Prime < 500 millions',c=>Number(c.bounty)<500000000],
+      ['💰 Prime < 1 milliard',c=>Number(c.bounty)<1000000000],['💰 Prime entre 1 et 3 milliards',c=>Number(c.bounty)>=1000000000&&Number(c.bounty)<3000000000],
+      ['🌑 Possède plusieurs Fruits',c=>String(c.fruit||'').includes('+')],['🔠 Son nom contient « D. »',c=>/D\./i.test(String(c.name||''))],
+      ['🔤 Son nom contient la lettre Z',c=>/z/i.test(String(c.name||''))],['🔤 Son nom contient la lettre A',c=>/a/i.test(String(c.name||''))],
+      ['⚡ Prime > 2 milliards',c=>Number(c.bounty)>2000000000],['⭐ Prime > 100 millions',c=>Number(c.bounty)>100000000],
+      ['🧊 Associé à un Logia',c=>this.fruitType(c)==='Logia'],['🛡️ Associé à un Paramecia',c=>this.fruitType(c).startsWith('Paramecia')],
+      ['🍩 Fiche contenant « fruit »',c=>String(c.fruit||'').toLowerCase().includes('fruit')],['📜 Une prime est renseignée',c=>Number(c.bounty)>0],
+      ['👑 Prime ≥ 3 milliards ET pas Mugiwara',c=>Number(c.bounty)>=3000000000&&c.group!=='Mugiwara']
+    ];
+    return traits;
+  },
+  newRound(){
+    const pool=characters.filter(c=>c&&c.name);if(pool.length<1)return;
+    clearInterval(this.timer);this.locked=false;this.selected.clear();
+    this.character=pool[Math.floor(Math.random()*pool.length)];
+    const all=this.buildTraits();
+    // Favorise une grille contenant plusieurs vraies cases sans la rendre évidente.
+    const truths=all.filter(t=>t[1](this.character));const falses=all.filter(t=>!t[1](this.character));
+    const truthCount=Math.min(8,truths.length);const selected=this.shuffle([...this.shuffle(truths).slice(0,truthCount),...this.shuffle(falses).slice(0,25-truthCount)]).slice(0,25);
+    this.traits=selected;
+    const img=document.getElementById('bingoCharacterImage'); if(img) img.innerHTML=imageHTML(this.character);
+    const nm=document.getElementById('bingoCharacterName'); if(nm) nm.textContent=this.character.name;
+    const sub=document.getElementById('bingoCharacterSub'); if(sub) sub.textContent=`${this.character.group||'Personnage'} • ${formatBounty(Number(this.character.bounty)||0)}`;
+    const grid=document.getElementById('bingoGrid'); if(grid) grid.innerHTML=this.traits.map((t,i)=>`<button type="button" class="bingo-v4-cell" data-i="${i}" onclick="OPBingoV4.toggle(${i},this)">${escapeHTML(t[0])}</button>`).join('');
+    const res=document.getElementById('bingoResult');if(res){res.textContent='';res.className='bingo-v4-result';}
+    this.startTimer();this.updateScore();
+  },
+  shuffle(a){return shuffle(a)},
+  toggle(i,el){if(this.locked)return;const idx=Number(i);if(this.selected.has(idx)){this.selected.delete(idx);el.classList.remove('selected')}else{this.selected.add(idx);el.classList.add('selected')}},
+  startTimer(){this.time=15;this.renderTimer();this.timer=setInterval(()=>{this.time--;this.renderTimer();if(this.time<=0){clearInterval(this.timer);this.validate(true)}},1000)},
+  renderTimer(){const e=document.getElementById('bingoTimer');if(e){e.textContent=this.time;e.classList.toggle('danger',this.time<=5)}},
+  validate(timeout=false){
+    if(this.locked||!this.character)return;this.locked=true;clearInterval(this.timer);
+    const correct=new Set(this.traits.map((t,i)=>t[1](this.character)?i:null).filter(i=>i!==null));
+    let hits=0,misses=0;
+    this.traits.forEach((t,i)=>{const cell=document.querySelector(`#bingoGrid .bingo-v4-cell[data-i="${i}"]`);if(!cell)return;const should=correct.has(i),picked=this.selected.has(i);cell.disabled=true;if(should&&picked){cell.classList.add('correct');hits++}else if(!should&&picked){cell.classList.add('wrong');misses++}else if(should&&!picked){cell.classList.add('wrong');cell.textContent='✅ '+t[0]}});
+    const perfect=hits===correct.size&&misses===0;
+    const result=document.getElementById('bingoResult');
+    if(perfect){this.score++;this.streak++;if(this.streak>this.best){this.best=this.streak;localStorage.setItem('opBingoV4Best',String(this.best));}if(result){result.textContent=timeout?'⏱️ Trop tard… mais grille parfaite.':'🏆 PARFAIT ! Toutes les caractéristiques sont correctes.';result.className='bingo-v4-result';result.style.color='#7ff0a9';}}
+    else{this.streak=0;if(result){result.textContent=`❌ ${timeout?'Temps écoulé. ':' '}Tu as trouvé ${hits}/${correct.size} bonnes caractéristiques.`;result.className='bingo-v4-result';result.style.color='#ff8d8d';}}
+    this.updateScore();
+    setTimeout(()=>this.newRound(),1400);
+  },
+  updateScore(){const s=document.getElementById('bingoV4Score');if(s)s.textContent=this.score;const st=document.getElementById('bingoV4Streak');if(st)st.textContent=this.streak;const b=document.getElementById('bingoV4Best');if(b)b.textContent=this.best;}
+};
+window.OPBingoV4=OPBingoV4;
+window.newBingo=()=>OPBingoV4.newRound();
+window.toggleBingo=()=>{};
+
+OPCommunity.load();
+document.addEventListener('DOMContentLoaded',()=>{try{OPBingoV4.newRound();}catch(e){} try{newMemory();}catch(e){} try{newGuessWho();}catch(e){} OPCommunity.renderTheories();const rb=document.getElementById('raceBest');if(rb)rb.textContent=OPGames.race.best;const fb=document.getElementById('fruitBest');if(fb)fb.textContent=OPGames.fruit.best;});
+</script>
+
+</body>
+</html>
